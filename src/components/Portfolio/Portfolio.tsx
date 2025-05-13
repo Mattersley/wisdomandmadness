@@ -1,8 +1,8 @@
 import WisdomAndMadnessLogo from '@/assets/WisdomLogo'
 
 const Portfolio = () => (
-  <div className="h-[100vh] bg-white w-screen flex flex-col items-center justify-start pt-20 px-2 sm:px-10 sm:pt-30 md:px-30">
-    <div className="relative h-16 w-full items-center justify-between border-gray-200 border-y gap-2 px-2 flex flex-row">
+  <div className="bg-white w-screen flex flex-col items-center justify-start pt-30 px-2 sm:px-10 md:px-30">
+    <div className="relative h-16 w-full items-center justify-between border-gray-200 border-y border-b-black border-b-2 gap-2 px-2 flex flex-row">
       <div className="flex flex-row items-center gap-2 text-xs">
         <p>Web App</p>
         <p>UI/UX</p>
