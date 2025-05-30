@@ -33,7 +33,7 @@ const Hero = () => {
                 width={20}
               />
             </div>
-            {/*<TorusKnot />*/}
+            <TorusKnot />
             <LavaLamp />
           </div>
         </div>
