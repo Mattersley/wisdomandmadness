@@ -2,8 +2,8 @@ import WisdomAndMadnessLogo from '@/assets/WisdomLogo'
 import Link from 'next/link'
 
 const Nav = () => (
-  <div className="z-10 flex w-full flex-col items-end justify-end gap-y-4 pt-6 sm:justify-between sm:pt-8">
-    <div className="flex size-12 flex-row items-center justify-center rounded-[3rem] bg-white px-3 sm:h-16 sm:w-full sm:justify-between sm:px-10">
+  <div className="relative z-10 flex w-full flex-col items-end justify-between gap-y-4 pt-6 sm:pt-8">
+    <div className="flex size-12 h-16 w-full flex-row items-center justify-between rounded-[3rem] bg-white px-6 sm:px-10">
       <div className="flex flex-row items-center">
         <div className="size-10">
           <WisdomAndMadnessLogo />
@@ -19,10 +19,10 @@ const Nav = () => (
         <p className="text-xs tracking-widest">CONTACT</p>
       </div>
     </div>
-    <div className="flex flex-row gap-2 md:ml-2">
+    <div className="mx-auto md:mx-0 flex flex-row gap-2 md:ml-2">
       <div className="z-20 flex flex-row gap-2 self-end">
         <Link href="/wisdom">
-          <div className="flex size-12 items-center justify-center rounded-[50%] bg-rose-500 text-white hover:bg-gray-500 sm:size-16">
+          <div className="absolute top-8 right-[3.7rem] flex size-12 items-center justify-center rounded-[50%] bg-rose-500 text-white hover:bg-gray-500 sm:relative sm:top-auto sm:right-auto sm:size-16">
             <svg
               className="mx-auto size-6 sm:size-[32px]"
               fill="none"
@@ -42,7 +42,7 @@ const Nav = () => (
             </svg>
           </div>
         </Link>
-        <div className="flex size-12 items-center justify-center rounded-[50%] bg-indigo-500 text-white hover:bg-gray-500 sm:size-16">
+        <div className="absolute top-8 right-2 flex size-12 items-center justify-center rounded-[50%] bg-indigo-500 text-white hover:bg-gray-500 sm:relative sm:top-auto sm:right-auto sm:size-16">
           <span className="size-full">
             <svg
               className="mx-auto mt-3 size-6 sm:mt-4 sm:size-[32px]"
@@ -74,7 +74,7 @@ const Nav = () => (
           </svg>
         </div>
       </div>
-      <div className="z-20 right-[5%] hidden items-center rounded-[3rem] bg-gradient-to-tl from-[#3F5EFB] to-[#FC466B] text-center text-white hover:bg-gradient-to-tr sm:flex sm:h-16 sm:w-52 md:w-40 lg:w-52">
+      <div className="right-[5%] z-20 hidden items-center rounded-[3rem] bg-gradient-to-tl from-[#3F5EFB] to-[#FC466B] text-center text-white hover:bg-gradient-to-tr sm:flex sm:h-16 sm:w-52 md:w-40 lg:w-52">
         <p className="w-full text-xs font-bold tracking-widest">GET STARTED</p>
       </div>
     </div>

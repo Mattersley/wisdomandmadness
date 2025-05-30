@@ -47,7 +47,7 @@ const LogoText = ({
         className={`${row && 'hidden'} absolute top-10 z-[1] h-20 w-full bg-gradient-to-t from-neutral-950 to-transparent`}
       />
       <p
-        className={`absolute shadow-2xl ${rightAlign ? 'top-[6rem] -right-[2.01rem] z-[2] text-[#FC466B]' : 'top-8 right-4'} leading-0 ${row && 'md:relative md:top-0 md:right-0 md:-mx-4 md:h-auto md:pb-8 md:leading-normal'} ${colour ? 'text-gray-400' : 'opacity-30 hover:opacity-100'} ${textSizes(sizeM)} scale-30`}
+        className={`absolute shadow-2xl ${rightAlign ? 'top-[6rem] -right-[2.01rem] z-[2] text-[#FC466B]' : 'top-24 right-4'} leading-0 ${row && 'sm:relative sm:top-0 sm:right-0 sm:-mx-4 sm:h-auto sm:pb-8 sm:leading-normal'} ${colour ? 'text-gray-400' : 'opacity-30 hover:opacity-100'} ${textSizes(sizeM)} scale-30`}
       >
         +
       </p>

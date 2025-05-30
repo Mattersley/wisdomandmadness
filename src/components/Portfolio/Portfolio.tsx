@@ -18,7 +18,7 @@ const images = [
 const Portfolio = ({current, setCurrent}: {current: string, setCurrent: React.Dispatch<SetStateAction<string>>}) => {
 
   return (
-    <div className={'relative flex h-auto min-h-screen w-screen snap-mandatory snap-center flex-col items-center justify-start bg-white px-2 pt-40 sm:px-10 md:px-30'}>
+    <div className={'relative flex h-auto min-h-screen w-screen snap-mandatory snap-center flex-col items-center justify-start bg-white px-2 pt-48 sm:pt-40 sm:px-10 md:px-30'}>
       <div className="relative flex h-16 w-full flex-row items-center justify-between gap-2 border-y border-b-2 border-gray-200 border-b-black px-2">
         <div className="hidden flex-row items-center gap-2 text-xs sm:flex">
           <p>Web App</p>
@@ -76,7 +76,7 @@ const Portfolio = ({current, setCurrent}: {current: string, setCurrent: React.Di
           />
         ))}
       </div>
-      <div className="absolute right-10 bottom-10">
+      <div className="absolute right-3 bottom-3 sm:right-10 sm:bottom-10">
         <Egg id={0} />
       </div>
     </div>

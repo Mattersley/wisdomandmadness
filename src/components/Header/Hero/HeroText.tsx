@@ -13,22 +13,22 @@ const HeroText = () => {
   }
 
   return (
-    <div className="flex h-auto flex-col items-center justify-start p-10 pb-2 3xl:pb-10">
-      <div className="absolute -top-10 -left-10 size-32 self-start rounded-3xl bg-white" />
-      <div className="flex flex-col text-center xl:items-end">
+    <div className="3xl:pb-10 flex h-auto w-screen flex-col items-center pt-6 pb-2 sm:p-10 md:w-auto xl:justify-start">
+      <div className="absolute -top-10 -left-10 hidden size-32 self-start rounded-3xl bg-white xl:block" />
+      <div className="flex flex-col items-center text-center xl:items-end">
         <div className="relative">
           <div className="w-28 scale-75 text-white sm:scale-100">
             <WisdomAndMadnessLogo />
           </div>
           <div className="absolute top-9 left-7 mb-6 size-12 scale-75 rounded-4xl bg-gradient-to-tl from-[#3F5EFB]/60 to-[#FC466B]/60 hover:bg-gradient-to-tr sm:top-10 sm:scale-100" />
         </div>
-        <div className="text-white xl:hidden">
+        <div className="-mt-8 scale-[56%] text-white sm:mt-auto sm:scale-75 xl:hidden">
           <LogoText
             colour
             rightAlign={false}
             row={false}
-            sizeM={1.75}
-            sizeW={1}
+            sizeM={10.75}
+            sizeW={10}
           />
         </div>
         <div className="hidden text-white xl:block">
@@ -54,14 +54,16 @@ const HeroText = () => {
               Design
             </h1>
           </button>
-          <div className="flex max-w-[40rem] flex-col text-center font-mono text-sm text-white/60 xl:items-end xl:text-right xl:text-[1.1rem]">
+          <div className="-mt-8 items-center flex max-w-80 flex-col text-center font-mono text-sm text-white/60 sm:mt-0 sm:max-w-[30rem] md:max-w-[40rem] xl:items-end xl:text-right xl:text-[1.1rem]">
             <div className="flex flex-row md:mt-6">
-              <span className="flex flex-col gap-2"><p>100% custom, human-coded, creative websites.</p>
+              <span className="flex flex-col gap-2">
+                <p>100% custom, human-coded, creative websites.</p>
                 <p>
                   No page builders, no unnecessary bulky packages, just your
                   imagination.
-                </p></span>
-              <div className="my-auto ml-4 hidden scale-105 text-white lg:block">
+                </p>
+              </span>
+              <div className="my-auto xl:ml-4 hidden scale-105 text-white xl:block">
                 <svg
                   fill="none"
                   height="24"
@@ -85,7 +87,7 @@ const HeroText = () => {
                 Innovative pricing structures, 24/7 support, and a dedicated
                 team
               </p>
-              <div className="my-auto ml-4 hidden scale-105 text-white lg:block">
+              <div className="my-auto xl:ml-4 hidden scale-105 text-white xl:block">
                 <svg
                   fill="none"
                   height="24"
@@ -103,9 +105,9 @@ const HeroText = () => {
                 </svg>
               </div>
             </div>
-            <div className="mt-6 flex flex-row">
+            <div className="mt-6 flex flex-row self-center xl:self-end">
               <p>No design, no fee</p>
-              <div className="my-auto ml-4 hidden scale-105 text-white lg:block">
+              <div className="my-auto xl:ml-4 hidden scale-105 text-white xl:block">
                 <svg
                   fill="none"
                   height="24"
@@ -130,7 +132,7 @@ const HeroText = () => {
               <p>
                 From single page static websites, to enterprise app development
               </p>
-              <div className="my-auto ml-4 hidden scale-105 text-white lg:block">
+              <div className="my-auto xl:ml-4 hidden scale-105 text-white xl:block">
                 <svg
                   fill="none"
                   height="24"

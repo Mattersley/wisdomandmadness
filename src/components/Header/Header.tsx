@@ -2,7 +2,7 @@ import Hero from '@/components/Header/Hero/Hero'
 
 const Header = () => (
   <div className="md:h-screen w-screen snap-start overflow-x-clip bg-neutral-950 sm:pt-6">
-    <button className="absolute top-6 ml-6 text-white hover:text-indigo-500">
+    <button className="hidden sm:block absolute top-6 ml-6 text-white hover:text-indigo-500">
       <svg
         fill="none"
         height="24"

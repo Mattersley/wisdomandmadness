@@ -136,7 +136,7 @@ const About = () => {
           concepts and ideas into elegant, creative solutions.
         </p>
         <motion.div
-          className="relative mx-auto mt-6 grid w-[70%] gap-6 rounded-4xl border border-white px-3 py-4 text-center sm:grid-cols-3 sm:rounded-[5rem] sm:px-8 xl:col-span-2 xl:mt-0 xl:w-[35%]"
+          className="relative mx-auto mt-6 grid w-[60%] sm:w-[90%] md:w-[70%] gap-6 rounded-4xl border border-white px-3 py-4 text-center sm:col-span-2 sm:grid-cols-3 sm:rounded-[5rem] sm:px-8 xl:mt-0 xl:w-[60%]"
           initial={'hidden'}
           variants={containerVariants}
           whileHover={'visible'}

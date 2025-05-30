@@ -96,7 +96,7 @@ const Card = ({
       </CaseStudy>
       <motion.div
         className={
-          `relative flex h-32 w-60 flex-col rounded-xl shadow-lg md:h-40 md:w-72 ${current === name && 'z-0'}`
+          `relative flex h-40 w-72 sm:h-32 sm:w-60 flex-col rounded-xl shadow-lg md:h-40 md:w-72 ${current === name && 'z-0'}`
         }
         layout
         onClick={handleClick}
