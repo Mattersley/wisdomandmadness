@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import './globals.css'
+import { EggProvider } from '@/context/eggContext'
 
 export const metadata: Metadata = {
   title: 'Wisdom & Madness Design Co.',
@@ -12,9 +13,11 @@ const RootLayout = ({
   children: React.ReactNode;
 }>) => {
   return (
-    <html lang="en">
-      <body className={'antialiased'}>{children}</body>
-    </html>
+    <EggProvider>
+      <html lang="en">
+        <body className="antialiased">{children}</body>
+      </html>
+    </EggProvider>
   )
 }
 

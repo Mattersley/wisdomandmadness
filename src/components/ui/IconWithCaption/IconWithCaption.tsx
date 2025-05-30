@@ -1,14 +1,23 @@
 const IconWithCaption = ({
   iconPaths,
-  caption
+  caption,
+  current,
+  onClick
 }: {
   iconPaths: React.ReactNode;
   caption: string;
+  current: string;
+  onClick: (event: React.MouseEvent<HTMLButtonElement>) => void;
 }) => {
   return (
-    <div className="px-2 flex flex-col justify-center items-center text-white">
+    <button
+      className="relative flex flex-col items-center justify-center text-white"
+      disabled={current === caption}
+      onClick={onClick}
+      type="button"
+    >
       <svg
-        className="size-5"
+        className="z-10 size-5"
         fill="none"
         height="24"
         stroke="currentColor"
@@ -20,8 +29,8 @@ const IconWithCaption = ({
       >
         {iconPaths}
       </svg>
-      <span className="mt-2 text-xs text-center">{caption}</span>
-    </div>
+      <span className="z-10 mt-2 text-center text-xs">{caption}</span>
+    </button>
   )
 }
 

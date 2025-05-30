@@ -2,8 +2,11 @@
 
 import './LavaLamp.css'
 import { useEffect } from 'react'
+import useIsSSR from '@/hooks/useIsSSR'
 
 const LavaLamp = () => {
+  const isSSR = useIsSSR()
+
   useEffect(() => {
     document.addEventListener('DOMContentLoaded', () => {
       const interBubble =
@@ -31,6 +34,11 @@ const LavaLamp = () => {
     })
   }, [])
 
+  // Only render on client side to avoid hydration mismatch
+  if (isSSR) {
+    return null
+  }
+
   return (
     <div className="relative mx-auto size-full">
       <div className="gradient-bg rounded-3xl opacity-60">
@@ -53,11 +61,11 @@ const LavaLamp = () => {
           </defs>
         </svg>
         <div className="gradients-container">
-          <div className="g1"></div>
-          <div className="g2"></div>
-          <div className="g3"></div>
-          <div className="g4"></div>
-          <div className="g5"></div>
+          <div className="g1" />
+          <div className="g2" />
+          <div className="g3" />
+          <div className="g4" />
+          <div className="g5" />
         </div>
       </div>
     </div>
