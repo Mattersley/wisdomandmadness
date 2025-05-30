@@ -1,6 +1,6 @@
 'use client'
 
-import { createContext, useCallback, useMemo, useReducer } from 'react'
+import React, { createContext, useCallback, useMemo, useReducer } from 'react'
 import eggReducer from '@/reducers/eggReducer'
 import { EggContextType } from '@/context/eggContext.types'
 

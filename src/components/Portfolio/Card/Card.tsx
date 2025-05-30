@@ -2,11 +2,10 @@ import React, { MouseEventHandler, SetStateAction, useState } from 'react'
 import { motion, useSpring, useTransform } from 'motion/react'
 import Image from 'next/image'
 import CaseStudy from '@/components/Portfolio/CaseStudy/CaseStudy'
-import Pando from "@/components/Portfolio/Pando/Pando";
+import Pando from '@/components/Portfolio/Pando/Pando'
 
 const cardRotation = 30
 const cardScale = 1.1
-const sheenSize = 500
 
 const Card = ({
   current,
@@ -79,7 +78,7 @@ const Card = ({
     }
   }
 
-  const handleMouseLeave: MouseEventHandler = (e) => {
+  const handleMouseLeave: MouseEventHandler = () => {
     scale.set(1)
     xPcnt.set(0)
     yPcnt.set(0)
@@ -113,7 +112,7 @@ const Card = ({
           className="rounded-xl"
           fill
           sizes="(max-width: 768px) 288px, 240px"
-          src={`/images/Portfolio/${name}BG.png`}
+          src={`/images/Portfolio/Cards/${name}BG.png`}
         />
         <div
           className="absolute inset-0 grid place-content-center rounded-xl"
@@ -126,7 +125,7 @@ const Card = ({
             alt="image"
             fill
             sizes="(max-width: 768px) 288px, 240px"
-            src={`/images/Portfolio/${name}FG.png`}
+            src={`/images/Portfolio/Cards/${name}FG.png`}
           />
         </div>
       </motion.div>

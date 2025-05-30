@@ -1,8 +1,7 @@
 import WisdomAndMadnessLogo from '@/assets/WisdomLogo'
 import Card from '@/components/Portfolio/Card/Card'
-import React, { SetStateAction, useState } from 'react'
+import React, { SetStateAction } from 'react'
 import Egg from '@/components/Egg/Egg'
-import CaseStudy from '@/components/Portfolio/CaseStudy/CaseStudy'
 
 const images = [
   { name: 'Pando', z: 20 },

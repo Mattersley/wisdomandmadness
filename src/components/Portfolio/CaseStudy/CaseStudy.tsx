@@ -1,5 +1,5 @@
 import { motion } from 'motion/react'
-import React, { SetStateAction, useState } from 'react'
+import React, { SetStateAction } from 'react'
 
 const CaseStudy = ({
   children,
