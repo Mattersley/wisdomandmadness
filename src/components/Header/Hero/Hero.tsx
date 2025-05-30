@@ -15,7 +15,7 @@ const Hero = () => {
             <HeroText />
             <div className="3xl:block absolute -right-28 -bottom-28 hidden size-60 rounded-4xl bg-gradient-to-tl from-[#3F5EFB]/50 to-[#FC466B]/50"></div>
           </div>
-          <div className="relative z-50 mt-auto -mb-20 h-48 rounded-3xl bg-white sm:mb-6 sm:h-96 md:z-[1] md:-mt-14 md:mr-28 md:size-full">
+          <div className="relative z-50 mt-auto -mb-[20%] h-48 rounded-3xl bg-white sm:mb-6 sm:h-96 md:z-[1] md:-mt-14 md:mr-28 md:size-full">
             <div className="absolute top-0 right-0 z-[2] hidden h-18 w-[28rem] rounded-bl-3xl bg-neutral-950 md:block md:w-[24.5rem] lg:w-[28rem]" />
             <div className="absolute top-[4.5rem] right-0 z-10 hidden rotate-90 md:block">
               <Image
@@ -33,7 +33,7 @@ const Hero = () => {
                 width={20}
               />
             </div>
-            <TorusKnot />
+            {/*<TorusKnot />*/}
             <LavaLamp />
           </div>
         </div>

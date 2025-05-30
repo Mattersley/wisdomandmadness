@@ -57,6 +57,7 @@ const Section2 = () => (
     <div className="mt-auto -ml-26 -mb-16 h-52 scale-50 sm:hidden">
       <LogoText
         colour={true}
+        footer={true}
         rightAlign={false}
         row={false}
         sizeM={10.75}

@@ -5,7 +5,7 @@ const Nav = () => (
   <div className="relative z-10 flex w-full flex-col items-end justify-between gap-y-4 pt-6 sm:pt-8">
     <div className="flex size-12 h-16 w-full flex-row items-center justify-between rounded-[3rem] bg-white px-6 sm:px-10">
       <div className="flex flex-row items-center">
-        <div className="size-10">
+        <div className="size-10 text-black">
           <WisdomAndMadnessLogo />
         </div>
         <p className="ml-2 hidden text-xs sm:block">

@@ -1,8 +1,17 @@
-import React, { MouseEventHandler, SetStateAction, useState } from 'react'
+import React, { DragEventHandler, MouseEventHandler, SetStateAction, TouchEventHandler, useState } from 'react'
 import { motion, useSpring, useTransform } from 'motion/react'
 import Image from 'next/image'
 import CaseStudy from '@/components/Portfolio/CaseStudy/CaseStudy'
 import Pando from '@/components/Portfolio/Pando/Pando'
+
+// ... other imports remain the same
+
+interface PointerPosition {
+  currentX: number;
+  currentY: number;
+  containerWidth: number;
+  containerHeight: number;
+}
 
 const cardRotation = 30
 const cardScale = 1.1
@@ -43,42 +52,52 @@ const Card = ({
     setClosing(false)
   }
 
-  const getMousePosition = (e: React.MouseEvent<Element, MouseEvent>) => {
-    const { width, height, left, top } =
-      e.currentTarget.getBoundingClientRect()
+  const getPointerPosition = (
+    e: React.MouseEvent | React.TouchEvent | TouchEvent | MouseEvent
+  ): PointerPosition => {
+    const rect = (e.currentTarget as Element).getBoundingClientRect()
+    const { width, height, left, top } = rect
 
-    const currentMouseX = e.clientX - left
-    const currentMouseY = e.clientY - top
+    // Handle both mouse and touch events
+    const clientX = 'touches' in e ? e.touches[0].clientX : (e as MouseEvent).clientX
+    const clientY = 'touches' in e ? e.touches[0].clientY : (e as MouseEvent).clientY
+
+    const currentX = clientX - left
+    const currentY = clientY - top
 
     return {
-      currentMouseX,
-      currentMouseY,
+      currentX,
+      currentY,
       containerWidth: width,
       containerHeight: height
     }
   }
 
-  const handleMouseMove: MouseEventHandler = (e) => {
+  const updatePointerPosition = (position: PointerPosition) => {
     if (current === '') {
-      const { currentMouseX, currentMouseY, containerWidth, containerHeight } =
-        getMousePosition(e)
-      xPcnt.set(currentMouseX / containerWidth - 0.5)
-      yPcnt.set(currentMouseY / containerHeight - 0.5)
-      mouseX.set(currentMouseX)
-      mouseY.set(currentMouseY)
+      const { currentX, currentY, containerWidth, containerHeight } = position
+      xPcnt.set(currentX / containerWidth - 0.5)
+      yPcnt.set(currentY / containerHeight - 0.5)
+      mouseX.set(currentX)
+      mouseY.set(currentY)
     }
   }
 
-  const handleMouseEnter: MouseEventHandler = (e) => {
+  const handlePointerMove = (e: React.MouseEvent | React.TouchEvent) => {
+    const position = getPointerPosition(e)
+    updatePointerPosition(position)
+  }
+
+  const handlePointerEnter = (e: React.MouseEvent | React.TouchEvent) => {
     if (current === '') {
-      const { currentMouseX, currentMouseY } = getMousePosition(e)
+      const { currentX, currentY } = getPointerPosition(e)
       scale.set(cardScale)
-      mouseX.jump(currentMouseX)
-      mouseY.jump(currentMouseY)
+      mouseX.jump(currentX)
+      mouseY.jump(currentY)
     }
   }
 
-  const handleMouseLeave: MouseEventHandler = () => {
+  const handlePointerLeave = () => {
     scale.set(1)
     xPcnt.set(0)
     yPcnt.set(0)
@@ -100,9 +119,12 @@ const Card = ({
         }
         layout
         onClick={handleClick}
-        onMouseEnter={handleMouseEnter}
-        onMouseLeave={handleMouseLeave}
-        onMouseMove={handleMouseMove}
+        onMouseEnter={handlePointerEnter}
+        onMouseLeave={handlePointerLeave}
+        onMouseMove={handlePointerMove}
+        onTouchEnd={handlePointerLeave}
+        onTouchMove={handlePointerMove}
+        onTouchStart={handlePointerEnter}
         style={{ transformStyle: 'preserve-3d', rotateX, rotateY, scale }}
         whileHover={current === name ? { scale: 1 } : { scale: 1.05 }}
         whileTap={current === name ? { scale: 1 } : { scale: 0.8 }}

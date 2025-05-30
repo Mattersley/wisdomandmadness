@@ -8,6 +8,7 @@ const instrumentFont = localFont({
 
 interface LogoTextProps {
   colour?: boolean;
+  footer?: boolean;
   rightAlign?: boolean;
   row?: boolean;
   sizeM: 1 | 1.75 | 10 | 10.75 | 20 | 20.75;
@@ -16,6 +17,7 @@ interface LogoTextProps {
 
 const LogoText = ({
   colour = false,
+  footer = false,
   rightAlign = false,
   sizeM,
   sizeW,
@@ -44,7 +46,7 @@ const LogoText = ({
         Wisdom
       </p>
       <div
-        className={`${row && 'hidden'} absolute top-10 z-[1] h-20 w-full bg-gradient-to-t from-neutral-950 to-transparent`}
+        className={`${row && 'hidden'} absolute top-10 z-[1] h-20 w-full bg-gradient-to-t ${footer ? 'from-neutral-800' : 'from-neutral-950'}  to-transparent`}
       />
       <p
         className={`absolute shadow-2xl ${rightAlign ? 'top-[6rem] -right-[2.01rem] z-[2] text-[#FC466B]' : 'top-24 right-4'} leading-0 ${row && 'sm:relative sm:top-0 sm:right-0 sm:-mx-4 sm:h-auto sm:pb-8 sm:leading-normal'} ${colour ? 'text-gray-400' : 'opacity-30 hover:opacity-100'} ${textSizes(sizeM)} scale-30`}

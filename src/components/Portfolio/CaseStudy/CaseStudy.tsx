@@ -21,7 +21,7 @@ const CaseStudy = ({
 
   return (
     <motion.div
-      className={`flex-col bg-transparent ${!closing && 'backdrop-blur-xl'} ${open ? 'p-10 fixed top-0 left-0 z-50 w-screen h-screen overflow-y-hidden' : 'absolute h-32 w-60 md:h-40 md:w-72'}`}
+      className={`flex-col bg-transparent ${!closing && 'backdrop-blur-xl'} ${open ? 'md:p-10 fixed top-0 left-0 z-50 w-screen h-screen overflow-y-hidden' : 'absolute h-32 w-60 md:h-40 md:w-72'}`}
       layout
       transition={{ duration: 0.7, ease: 'easeInOut' }}
     >
