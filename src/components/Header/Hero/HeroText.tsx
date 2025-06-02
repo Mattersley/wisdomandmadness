@@ -13,7 +13,7 @@ const HeroText = () => {
   }
 
   return (
-    <div className="3xl:pb-10 flex h-auto w-screen flex-col items-center pt-6 pb-2 sm:p-10 md:w-auto xl:justify-start">
+    <div className="flex min-h-screen md:min-h-80 w-screen flex-col items-center py-6 xl:py-20 sm:p-10 md:w-auto xl:justify-start">
       <div className="absolute -top-10 -left-10 hidden size-32 self-start rounded-3xl bg-white xl:block" />
       <div className="flex flex-col items-center text-center xl:items-end">
         <div className="relative">
@@ -153,7 +153,7 @@ const HeroText = () => {
               </div>
             </div>
           </div>
-          <div className="mt-10 mb-20 flex h-16 w-52 items-center rounded-[3rem] bg-gradient-to-tl from-[#3F5EFB] to-[#FC466B] text-center text-white hover:bg-gradient-to-tr">
+          <div className="mt-10 md:mb-0 flex h-16 w-52 items-center rounded-[3rem] bg-gradient-to-tl from-[#3F5EFB] to-[#FC466B] text-center text-white hover:bg-gradient-to-tr">
             <p className="w-full text-xs font-bold tracking-widest">
               LEARN MORE
             </p>

@@ -18,7 +18,7 @@ const images = [
 const Portfolio = ({current, setCurrent}: {current: string, setCurrent: React.Dispatch<SetStateAction<string>>}) => {
 
   return (
-    <div className={'relative flex h-auto min-h-screen w-screen snap-mandatory snap-center flex-col items-center justify-start bg-white px-2 pt-48 sm:pt-40 sm:px-10 md:px-30'}>
+    <div className={'relative py-20 flex h-auto min-h-screen w-screen snap-mandatory snap-center flex-col items-center justify-start bg-white px-2 pt-80 sm:pt-[28rem] sm:px-10 md:px-30 md:pt-40'}>
       <div className="relative flex h-16 w-full flex-row items-center justify-between gap-2 border-y border-b-2 border-gray-200 border-b-black px-2">
         <div className="hidden flex-row items-center gap-2 text-xs sm:flex">
           <p>Web App</p>

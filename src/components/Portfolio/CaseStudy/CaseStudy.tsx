@@ -21,7 +21,7 @@ const CaseStudy = ({
 
   return (
     <motion.div
-      className={`flex-col bg-transparent ${!closing && 'backdrop-blur-xl'} ${open ? 'md:p-10 fixed top-0 left-0 z-50 w-screen h-screen overflow-y-hidden' : 'absolute h-32 w-60 md:h-40 md:w-72'}`}
+      className={`flex-col bg-transparent ${!closing && 'backdrop-blur-xl'} ${open ? 'md:p-3 fixed top-0 left-0 z-50 w-screen h-screen overflow-y-hidden' : 'absolute h-32 w-60 md:h-40 md:w-72'}`}
       layout
       transition={{ duration: 0.7, ease: 'easeInOut' }}
     >
@@ -35,12 +35,12 @@ const CaseStudy = ({
               CASE STUDY
             </p>
             <button
-              className="absolute top-0 flex h-8 w-full flex-row items-center justify-between rounded-t-xl bg-red-900 px-10 font-bold tracking-widest text-red-600"
+              className="absolute top-0 flex h-8 w-full flex-row items-center justify-between md:rounded-t-xl bg-red-900 px-10 font-bold tracking-widest text-red-600"
               onClick={handleClose}
             >
-              <span>EXIT</span>
-              <span>EXIT</span>
-              <span>EXIT</span>
+              <span className="hidden md:block">EXIT</span>
+              <span className="hidden md:block">EXIT</span>
+              <span className="hidden md:block">EXIT</span>
               <span>EXIT</span>
               <span>EXIT</span>
               <span>EXIT</span>
