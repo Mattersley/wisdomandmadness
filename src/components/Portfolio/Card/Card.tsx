@@ -22,21 +22,6 @@ const Card = ({
   const startY = useRef(0)
   const currentY = useRef(0)
 
-  useEffect(() => {
-    const lenis = (window as any).lenis
-
-    if (isCurrentCard && lenis) {
-      // Only stop Lenis when card is open
-      lenis.stop()
-    }
-
-    return () => {
-      if (isCurrentCard && lenis) {
-        lenis.start()
-      }
-    }
-  }, [isCurrentCard])
-
   const handleTouchStart = (e: React.TouchEvent) => {
     startY.current = e.touches[0].clientY
     currentY.current = e.touches[0].clientY
@@ -58,8 +43,8 @@ const Card = ({
     <div
       className={`relative ${current !== '' && 'overflow-y-clip'}`}
       data-prevent-scroll="true"
-      onTouchStart={handleTouchStart}
       onTouchMove={handleTouchMove}
+      onTouchStart={handleTouchStart}
     >
       <CaseStudy
         closing={closing}
