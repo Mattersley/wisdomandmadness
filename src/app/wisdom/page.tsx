@@ -22,13 +22,13 @@ const wnmAcii = `
        ######  #########      ##   #######   #####    ######`
 
 const WisdomPage = () => {
-  const [dark, setDark] = useState(true)
+  const [dark, setDark] = useState(false)
 
   return (
     <main
       className={`${dark && 'dark'} flex h-screen w-screen flex-col items-center overflow-x-auto px-10 font-mono dark:bg-[#0e1111] dark:text-[#3ea34b]`}
     >
-      <div className="m-0 scale-75 p-0">
+      <div className="sm:m-0 mt-10 -mb-10 scale-50 sm:scale-75 p-0">
         <pre className="font-mono leading-none whitespace-pre">{wnmAcii}</pre>
       </div>
       <h1 className="mb-6 text-xl font-mono font-bold">Wisdom & Madness Design Co.</h1>

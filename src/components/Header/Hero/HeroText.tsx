@@ -130,7 +130,7 @@ const HeroText = () => {
             </div>
             <div className="mt-6 flex flex-row">
               <p>
-                From single page static websites, to enterprise app development
+                From super simple single page static websites, all the way to enterprise app development
               </p>
               <div className="my-auto xl:ml-4 hidden scale-105 text-white xl:block">
                 <svg
