@@ -122,22 +122,22 @@ Sent from wisdomandmadness.com
             <div className="pointer-events-none fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6">
               <motion.div
                 animate={{ opacity: 1, scale: 1, y: 0 }}
-                className={`bg-background pointer-events-auto flex max-h-[90vh] w-full flex-col overflow-hidden rounded-2xl border border-white/10 shadow-2xl transition-[max-width] duration-500 ease-in-out ${
+                className={`bg-background pointer-events-auto flex max-h-[90vh] w-full flex-col overflow-hidden rounded-2xl shadow-2xl transition-[max-width] duration-500 ease-in-out ${
                   showDetails ? 'max-w-2xl lg:max-w-5xl' : 'max-w-2xl'
                 }`}
                 exit={{ opacity: 0, scale: 0.95, y: 20 }}
                 initial={{ opacity: 0, scale: 0.95, y: 20 }}
                 transition={{ duration: 0.2 }}
               >
-                <div className="bg-background relative z-10 flex-shrink-0 border-b border-gray-100 px-6 py-5 dark:border-white/10">
-                  <h2 className="font-gabarito text-xl font-bold tracking-tight">
+                <div className="bg-gradient-to-tl from-[#3F5EFB] to-[#FC466B] text-white relative z-10 flex-shrink-0 border-b border-gray-100 px-6 py-5 dark:border-white/10">
+                  <h2 className="font-mono text-xl font-bold tracking-tight">
                     Project Inquiry
                   </h2>
-                  <p className="text-sm text-gray-500">
-                    Tell us about your vision.
+                  <p className="text-sm text-white">
+                    Tell us about your vision
                   </p>
                   <button
-                    className="absolute top-5 right-5 rounded-full p-1 text-gray-500 transition-colors hover:bg-gray-100 hover:text-gray-900 dark:hover:bg-white/10 dark:hover:text-white"
+                    className="absolute top-5 right-5 rounded-full p-1 text-white transition-colors hover:bg-gray-100 hover:text-gray-900 dark:hover:bg-white/10 dark:hover:text-white"
                     onClick={closeContact}
                   >
                     <svg
@@ -177,7 +177,7 @@ Sent from wisdomandmadness.com
                             onClick={() => setShowDetails(!showDetails)}
                             type="button"
                           >
-                            <span>
+                            <span className="bg-gradient-to-tl from-[#3F5EFB] to-[#FC466B] text-transparent bg-clip-text">
                               {showDetails
                                 ? 'Hide Details'
                                 : 'Go into more detail'}
@@ -263,12 +263,30 @@ Sent from wisdomandmadness.com
 
                 <div className="flex-shrink-0 border-t border-gray-100 bg-gray-50/80 px-6 py-4 backdrop-blur dark:border-white/10 dark:bg-white/5">
                   <button
-                    className="bg-foreground font-gabarito text-background w-full rounded-lg py-3 text-sm font-bold shadow-lg transition-all hover:scale-[1.01] hover:opacity-90 active:scale-[0.99] disabled:opacity-50 disabled:hover:scale-100"
+                    className="bg-indigo-500 font-mono text-background w-full rounded-lg py-3 text-sm font-bold shadow-lg transition-all hover:scale-[1.01] hover:opacity-90 active:scale-[0.99] disabled:opacity-50 disabled:hover:scale-100"
                     disabled={isSubmitting}
                     form="project-form"
                     type="submit"
                   >
-                    {isSubmitting ? 'Sending...' : 'Submit Project Request'}
+                    <div
+                      className="flex flex-row items-center justify-center gap-2">
+                      {isSubmitting ? 'Sending...' : 'Submit Project Request'}
+                      <svg
+                        fill="none"
+                        height="26"
+                        stroke="currentColor"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth="1.2"
+                        viewBox="0 0 24 24"
+                        width="26"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path d="M10 14l11 -11" />
+                        <path d="M21 3l-6.5 18a.55 .55 0 0 1 -1 0l-3.5 -7l-7 -3.5a.55 .55 0 0 1 0 -1l18 -6.5" />
+                      </svg>
+                    </div>
+
                   </button>
                 </div>
               </motion.div>

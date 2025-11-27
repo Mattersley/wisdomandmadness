@@ -7,7 +7,7 @@ export const ContactForm = () => {
 
   return (
     <div className="space-y-4">
-      <h3 className="text-xs font-bold tracking-wider text-gray-400 uppercase">
+      <h3 className="text-xs font-bold tracking-wider text-indigo-500 uppercase">
         01. Contact Info
       </h3>
       <div className="grid gap-4 sm:grid-cols-2">

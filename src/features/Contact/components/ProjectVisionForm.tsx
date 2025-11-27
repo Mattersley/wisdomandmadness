@@ -6,7 +6,7 @@ export const ProjectVision = () => {
 
   return (
     <div className="space-y-6">
-      <h3 className="text-xs font-bold tracking-wider text-gray-400 uppercase">
+      <h3 className="text-xs font-bold tracking-wider text-indigo-500 uppercase">
         04. The Vision
       </h3>
 

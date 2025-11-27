@@ -17,7 +17,7 @@ export const Logistics = () => {
 
   return (
     <div className="space-y-6">
-      <h3 className="text-xs font-bold tracking-wider text-gray-400 uppercase">
+      <h3 className="text-xs font-bold tracking-wider text-indigo-500 uppercase">
         03. Logistics
       </h3>
 
@@ -26,7 +26,7 @@ export const Logistics = () => {
           <label className="text-xs font-medium text-gray-500" htmlFor="budget">
             Estimated Budget
           </label>
-          <span className="font-gabarito text-foreground text-lg font-bold">
+          <span className="text-indigo-400 text-lg font-bold">
             {formatBudget(budgetValue)}
           </span>
         </div>
@@ -37,7 +37,7 @@ export const Logistics = () => {
           step="1000"
           type="range"
           {...register('budget')}
-          className="accent-foreground h-2 w-full cursor-pointer appearance-none rounded-lg bg-gray-200 dark:bg-white/10"
+          className="accent-indigo-500 h-2 w-full cursor-pointer appearance-none rounded-lg bg-gray-200 dark:bg-white/10"
         />
         <div className="flex justify-between text-[10px] font-medium text-gray-400">
           <span>$1k</span>

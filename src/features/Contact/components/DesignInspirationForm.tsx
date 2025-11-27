@@ -11,7 +11,7 @@ export const DesignInspiration = () => {
   return (
     <div className="space-y-4">
       <div className="flex items-center justify-between">
-        <h3 className="text-xs font-bold tracking-wider text-gray-400 uppercase">
+        <h3 className="text-xs font-bold tracking-wider text-indigo-500 uppercase">
           05. Design Inspiration
         </h3>
         <button
