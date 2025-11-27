@@ -3,12 +3,13 @@ import { motion } from 'motion/react'
 import { useContext } from 'react'
 import { EggContext } from '@/context/eggContext'
 import Egg from '@/features/Egg/Egg'
+import { Variants } from "motion";
 
 const vagraFont = localFont({
   src: '../../../public/fonts/vagra-pixel.woff2'
 })
 
-const containerVariants = {
+const containerVariants: Variants = {
   hidden: {
     height: '3rem',
     opacity: 0.5,
@@ -26,7 +27,7 @@ const containerVariants = {
   }
 }
 
-const titleVariants = {
+const titleVariants: Variants = {
   visible: {
     display: 'none',
     x: '20%',
@@ -38,7 +39,7 @@ const titleVariants = {
   }
 }
 
-const contentVariants = {
+const contentVariants: Variants = {
   hidden: {
     display: 'none',
     height: '0%',
@@ -118,8 +119,6 @@ const ProfileCard = () => {
 const TriviaCard = () => {
     return (
         <motion.div
-            // Removed 'hidden', changed to 'flex flex-col' for mobile default
-            // Added arbitrary height 'h-auto' to override variant issues if necessary on mobile
             className="relative mx-auto mt-6 flex flex-col sm:grid w-[60%] sm:w-[90%] md:w-[70%] gap-6 rounded-4xl border border-white px-3 py-4 text-center sm:col-span-2 sm:grid-cols-3 sm:rounded-[5rem] sm:px-8 xl:mt-0 xl:w-[60%]"
             initial={'hidden'}
             variants={containerVariants}
