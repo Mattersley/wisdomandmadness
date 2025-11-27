@@ -1,5 +1,6 @@
 import WisdomAndMadnessLogo from '@/assets/WisdomLogo'
 import Link from 'next/link'
+import Contact from '@/features/Contact/Contact'
 
 const Nav = () => (
   <div className="relative z-50 px-4 sm:px-6 md:px-0 flex w-full flex-col items-end justify-between gap-y-4 pt-6 sm:pt-8">
@@ -13,10 +14,12 @@ const Nav = () => (
         </p>
       </div>
       <div className="ml-6 hidden flex-row items-center gap-4 sm:flex">
-        <p className="text-xs tracking-widest">WORK</p>
-        <p className="text-xs tracking-widest">TEAM</p>
-        <p className="text-xs tracking-widest">PRICING</p>
-        <p className="text-xs tracking-widest">CONTACT</p>
+        <Link href="#work">
+          <p className="text-xs tracking-widest">WORK</p>
+        </Link>
+        <Link href="#about">
+          <p className="text-xs tracking-widest">ABOUT</p>
+        </Link>
       </div>
     </div>
     <div className="mx-auto md:mx-0 flex flex-row gap-2 md:ml-2">
@@ -59,7 +62,10 @@ const Nav = () => (
             </svg>
           </span>
         </div>
-        <div className="hidden size-12 items-center justify-center rounded-[50%] bg-white sm:flex sm:size-16">
+        <a
+          className="hidden size-12 items-center justify-center rounded-[50%] bg-white hover:bg-gray-500 hover:text-white sm:flex sm:size-16"
+          href="mailto:webinquiry@wisdomandmadness.com?subject=Inquiry%20from%20W&M%20Website"
+        >
           <svg
             className="mx-auto size-6 sm:size-[32px]"
             fill="none"
@@ -72,11 +78,12 @@ const Nav = () => (
           >
             <path d="M15 10l-4 4l6 6l4 -16l-18 7l4 2l2 6l3 -4"></path>
           </svg>
-        </div>
+        </a>
       </div>
-      <div className="right-[5%] z-20 hidden items-center rounded-[3rem] bg-gradient-to-tl from-[#3F5EFB] to-[#FC466B] text-center text-white hover:bg-gradient-to-tr sm:flex sm:h-16 sm:w-52 md:w-40 lg:w-52">
-        <p className="w-full text-xs font-bold tracking-widest">GET STARTED</p>
-      </div>
+      <Contact />
+      {/*<div className="right-[5%] z-20 hidden items-center rounded-[3rem] bg-gradient-to-tl from-[#3F5EFB] to-[#FC466B] text-center text-white hover:bg-gradient-to-tr sm:flex sm:h-16 sm:w-52 md:w-40 lg:w-52">*/}
+      {/*  <p className="w-full text-xs font-bold tracking-widest">GET STARTED</p>*/}
+      {/*</div>*/}
     </div>
   </div>
 )

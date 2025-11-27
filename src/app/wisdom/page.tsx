@@ -26,7 +26,7 @@ const WisdomPage = () => {
 
   return (
     <main
-      className={`${dark && 'dark'} flex h-screen w-screen flex-col items-center overflow-x-auto px-10 font-mono dark:bg-[#0e1111] dark:text-[#3ea34b]`}
+      className={`${dark && 'dark'} cursor-default flex h-screen w-screen flex-col items-center overflow-x-auto px-10 font-mono dark:bg-[#0e1111] dark:text-[#3ea34b]`}
     >
       <div className="sm:m-0 mt-10 -mb-10 scale-50 sm:scale-75 p-0">
         <pre className="font-mono leading-none whitespace-pre">{wnmAcii}</pre>
@@ -34,11 +34,11 @@ const WisdomPage = () => {
       <h1 className="mb-6 text-xl font-mono font-bold">Wisdom & Madness Design Co.</h1>
       <hr className="h-0.5 mb-6 w-full border border-gray-400 dark:border-[#3ea34b]" />
       <div className="text-left w-full">
-        <p className="text-lg font-bold">Intentional Design</p>
-        <p>100% custom, human-coded, creative websites</p>
-        <p>Innovative pricing structures, 24/7 support, and a dedicated team</p>
-        <p>No design, no fee</p>
-        <p>From single page websites, to enterprise app development</p>
+        <p className="text-lg font-bold">Coming Soon!</p>
+        {/*<p>100% custom, human-coded, creative websites</p>*/}
+        {/*<p>Innovative pricing structures, 24/7 support, and a dedicated team</p>*/}
+        {/*<p>No design, no fee</p>*/}
+        {/*<p>From single page websites, to enterprise app development</p>*/}
 
       </div>
       <div className="absolute top-10 left-10 flex flex-row gap-2">

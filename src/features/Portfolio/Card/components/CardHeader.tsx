@@ -13,8 +13,10 @@ const CardHeader = ({ bgColours, image, url, served }: CardHeaderProps) => {
   const textUrl = url.replace(urlRegex, '')
 
   const bgList = {
-    'cupendium1': 'hover:bg-[#f4d03f]',
-    'cupendium2': 'hover:bg-[#16a085]'
+    'cupendium1': 'from-[#f4d03f]/20',
+    'cupendium2': 'hover:bg-[#f4d03f]',
+    'cupendium3': 'to-[#16a085]/20',
+    'cupendium4': 'hover:bg-[#16a085]'
   }
 
   return (
@@ -26,9 +28,9 @@ const CardHeader = ({ bgColours, image, url, served }: CardHeaderProps) => {
           fill="none"
           height="32"
           stroke="currentColor"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          stroke-width="1"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="1"
           viewBox="0 0 24 24"
           width="32"
           xmlns="http://www.w3.org/2000/svg"
@@ -49,10 +51,18 @@ const CardHeader = ({ bgColours, image, url, served }: CardHeaderProps) => {
             width={image.width}
           />
         </div>
-        <div className="flex flex-row items-start text-right">
-          <div className="flex flex-col">
-            <p className="font-mono text-xs tracking-[0.3rem]">URL</p>
-            <a className="hover:text-indigo-600 hover:underline" href={url}>
+        <div className="flex flex-row items-start text-right gap-x-2">
+          <div className="flex flex-col text-right">
+            <p className="font-mono text-xs tracking-[0.3rem] mb-2">URL</p>
+            <a className="flex flex-col justify-end items-end hover:opacity-50" href={url}>
+            <Image
+              alt="favicon"
+              className="mr-2.5"
+              height={25}
+              src={'/images/Portfolio/Cards/CupendiumICO.svg'}
+              width={25}
+            />
+
               <p>{textUrl}</p>
             </a>
           </div>

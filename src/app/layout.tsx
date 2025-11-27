@@ -2,6 +2,7 @@ import React from 'react'
 import type { Metadata } from 'next'
 import './globals.css'
 import { EggProvider } from '@/context/eggContext'
+import { ContactProvider } from '@/context/contactContext'
 import { Analytics } from '@vercel/analytics/next'
 
 export const metadata: Metadata = {
@@ -16,10 +17,12 @@ const RootLayout = ({
 }>) => {
   return (
     <EggProvider>
-      <Analytics />
-      <html lang="en">
-        <body className="antialiased md:cursor-none">{children}</body>
-      </html>
+      <ContactProvider>
+        <Analytics />
+        <html lang="en">
+          <body className="antialiased md:cursor-none">{children}</body>
+        </html>
+      </ContactProvider>
     </EggProvider>
   )
 }

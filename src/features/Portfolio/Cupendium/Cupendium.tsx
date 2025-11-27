@@ -6,7 +6,7 @@ const Cupendium = () => (
     <CardHeader
       bgColours={{1: '#f4d03f', 2: '#16a085'}}
       image={{src: '/images/Portfolio/CaseStudies/CupendiumLogo.png',
-        alt: 'cupendium logo', width: 600, height: 200}}
+        alt: 'cupendium logo', width: 400, height: 200}}
       served={[
         'Brand ID',
         'Logo Design',

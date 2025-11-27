@@ -3,7 +3,7 @@ import { motion } from 'motion/react'
 import { useContext } from 'react'
 import { EggContext } from '@/context/eggContext'
 import Egg from '@/features/Egg/Egg'
-import { Variants } from "motion";
+import { Variants } from 'motion'
 
 const vagraFont = localFont({
   src: '../../../public/fonts/vagra-pixel.woff2'
@@ -67,7 +67,7 @@ const ProfileCard = () => {
     const showHiddenEgg = eggs.eggs !== 0 && !eggs.eggList[5].found
 
     return (
-        <div className="relative mb-4 border-white/40 py-4 pr-5 md:border-r">
+        <div className="relative mb-4 border-white/40 py-4 pr-5 md:border-r" id="about">
             <div className="absolute top-0 right-0 hidden w-5 border-t border-white/40 md:block"/>
             <p className="text-xl text-white/50 md:text-lg">
                 Design // Code // Science
