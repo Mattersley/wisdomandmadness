@@ -1,6 +1,7 @@
 import { motion } from 'motion/react'
+import { Variants } from 'motion'
 
-const marqueeVariants = {
+const marqueeVariants: Variants = {
   animate: {
     x: [0, -570],
     transition: {
