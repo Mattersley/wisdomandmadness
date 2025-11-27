@@ -18,7 +18,7 @@ const RootLayout = ({
     <EggProvider>
       <Analytics />
       <html lang="en">
-        <body className="antialiased">{children}</body>
+        <body className="antialiased md:cursor-none">{children}</body>
       </html>
     </EggProvider>
   )

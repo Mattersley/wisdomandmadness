@@ -1,34 +1,43 @@
 'use client'
 
-import Portfolio from '@/components/Portfolio/Portfolio'
+import Portfolio from '@/features/Portfolio/Portfolio'
 import { useState } from 'react'
-import Footer from '@/components/Footer/Footer'
-import Parallax from '@/components/Parallax/Parallax'
-import Cursor from '@/components/ui/Cursor/Cursor'
-import About from '@/components/About/About'
-import Header from '@/components/Header/Header'
-import EggCounter from '@/components/Egg/EggCounter'
-import { useLenis } from '@/hooks/useLenis'
+import Footer from '@/features/Footer/Footer'
+import Parallax from '@/features/Parallax/Parallax'
+import Cursor from '@/features/Shared/Cursor/components/Cursor'
+import About from '@/features/About/About'
+import Header from '@/features/Header/Header'
+import EggCounter from '@/features/Egg/EggCounter'
+import { useRef } from 'react'
 
 const Home = () => {
   const [current, setCurrent] = useState('')
-
-  useLenis()
+  const containerRef = useRef(null)
 
   return (
-    <div className={`${current !== '' ? 'fixed inset-0' : ''}`}>
-      <div className="right-6 z-50 bottom-6 fixed">
+    <>
+      <div className="fixed right-6 bottom-6 z-50">
         <EggCounter />
       </div>
       <Cursor helpMode />
-      <main className={'snap-y snap-mandatory h-full'}>
-        <Header />
-        <Portfolio current={current} setCurrent={setCurrent} />
-        <Parallax />
-        <About />
+      <main className={`h-screen w-screen overflow-x-clip snap-y scroll-smooth ${current ? 'overflow-hidden' : 'overflow-auto'}`} ref={containerRef}>
+        <section className="w-full snap-none">
+          <Header />
+        </section>
+        <section className="w-full snap-start snap-mandatory">
+          <Portfolio current={current} setCurrent={setCurrent} />
+        </section>
+        <section className="w-full snap-none">
+          <Parallax container={containerRef} />
+        </section>
+        <section className="w-full snap-none">
+          <About />
+        </section>
+        <section className="w-full snap-none">
+          <Footer />
+        </section>
       </main>
-      <Footer />
-    </div>
+    </>
   )
 }
 

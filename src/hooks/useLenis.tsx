@@ -6,10 +6,15 @@ export const useLenis = () => {
     if (typeof document === 'undefined') return
 
     const lenis = new Lenis({
+      duration: 1.5,
       eventsTarget: document.documentElement,
-      touchMultiplier: 2,
+      gestureOrientation: 'vertical',
       infinite: false,
-      gestureOrientation: 'vertical'
+      lerp: 0.1,
+      orientation: 'vertical',
+      smoothWheel: true,
+      syncTouch: true,
+      touchMultiplier: 2
     })
 
     function raf(time: number) {

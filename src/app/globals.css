@@ -34,6 +34,10 @@
   @apply border border-red-600;
 }
 
+@utility no-scrollbar {
+    @apply [scrollbar-width:none] [&::-webkit-scrollbar]:hidden;
+}
+
 body {
   background: var(--background);
   color: var(--foreground);
