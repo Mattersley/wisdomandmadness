@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react'
 import { useForm, SubmitHandler, FormProvider } from 'react-hook-form'
 import { motion, AnimatePresence } from 'motion/react'
-import ReCAPTCHA from 'react-google-recaptcha'
 import { Inputs } from './types'
 import ContactForm from './components/ContactForm'
 import Services from '@/features/Contact/components/ServicesForm'
@@ -14,7 +13,6 @@ import { useContact } from '@/context/contactContext'
 const Contact = () => {
   const { isOpen, closeContact, openContact } = useContact()
   const [showDetails, setShowDetails] = useState(false)
-  const [captchaValue, setCaptchaValue] = useState<string | null>(null)
 
   const methods = useForm<Inputs>({
     defaultValues: {
@@ -41,67 +39,30 @@ const Contact = () => {
   }, [isOpen])
 
   const onSubmit: SubmitHandler<Inputs> = async (data: any) => {
-    if (!captchaValue) {
-      alert('Please complete the reCAPTCHA verification.')
-      return
+    // Pass the form data
+    const payload = { ...data }
+
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(payload)
+      })
+
+      if (!response.ok) {
+        throw new Error('Failed to send message')
+      }
+
+      reset()
+      closeContact()
+      setShowDetails(false)
+      alert('Message sent successfully!')
+    } catch (error) {
+      console.error('Error submitting form:', error)
+      alert('Something went wrong. Please try again later.')
     }
-
-    await new Promise((resolve) => setTimeout(resolve, 1000))
-
-    const subject = `Project Inquiry: ${data.name || 'New Request'}`
-
-    const servicesList =
-      Array.isArray(data.services) && data.services.length > 0
-        ? data.services.map((s: string) => `• ${s}`).join('\n')
-        : 'None selected'
-
-    const inspirationLinks = Array.isArray(data.inspiration)
-      ? data.inspiration
-          .map((item: { url: string }) => item.url)
-          .filter((url: string) => url)
-          .map((url: string) => `• ${url}`)
-          .join('\n')
-      : ''
-
-    const body = `
-New Project Inquiry via Website
-================================
-
-CONTACT DETAILS
---------------------------------
-Name:    ${data.name || 'N/A'}
-Email:   ${data.email || 'N/A'}
-Company: ${data.company || 'N/A'}
-Phone:   ${data.phone || 'N/A'}
-
-PROJECT OVERVIEW
---------------------------------
-Status:   ${data.projectStatus}
-Timeline: ${data.timeline}
-Budget:   $${data.budget}
-
-SERVICES REQUIRED
---------------------------------
-${servicesList}
-
-PROJECT VISION
---------------------------------
-${data.projectVision || data.description || 'No details provided.'}
-
-DESIGN INSPIRATION
---------------------------------
-${inspirationLinks || 'No links provided.'}
-
---------------------------------
-Sent from wisdomandmadness.com
-`.trim()
-
-    window.location.href = `mailto:webinquiry@wisdomandmadness.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`
-
-    reset()
-    setCaptchaValue(null)
-    closeContact()
-    setShowDetails(false)
   }
 
   return (
@@ -248,20 +209,6 @@ Sent from wisdomandmadness.com
                           </motion.div>
                         )}
                       </AnimatePresence>
-
-                      <div
-                        className={`flex justify-center pt-4 ${
-                          showDetails ? 'lg:col-span-2' : ''
-                        }`}
-                      >
-                        <ReCAPTCHA
-                          onChange={(val) => setCaptchaValue(val)}
-                          sitekey={
-                            process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY || ''
-                          }
-                          theme="dark"
-                        />
-                      </div>
                     </form>
                   </FormProvider>
                 </div>
