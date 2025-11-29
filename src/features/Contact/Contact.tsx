@@ -26,7 +26,11 @@ const Contact = () => {
     }
   })
 
-  const { handleSubmit, reset, formState: { isSubmitting } } = methods
+  const {
+    handleSubmit,
+    reset,
+    formState: { isSubmitting }
+  } = methods
 
   useEffect(() => {
     if (isOpen) {
@@ -46,9 +50,10 @@ const Contact = () => {
 
     const subject = `Project Inquiry: ${data.name || 'New Request'}`
 
-    const servicesList = Array.isArray(data.services) && data.services.length > 0
-      ? data.services.map((s: string) => `• ${s}`).join('\n')
-      : 'None selected'
+    const servicesList =
+      Array.isArray(data.services) && data.services.length > 0
+        ? data.services.map((s: string) => `• ${s}`).join('\n')
+        : 'None selected'
 
     const inspirationLinks = Array.isArray(data.inspiration)
       ? data.inspiration
@@ -102,7 +107,7 @@ Sent from wisdomandmadness.com
   return (
     <>
       <button
-        className="right-[5%] z-20 hidden items-center rounded-[3rem] bg-gradient-to-tl from-[#3F5EFB] to-[#FC466B] text-center text-white hover:bg-gradient-to-tr sm:flex sm:h-16 sm:w-52 md:w-40 lg:w-52"
+        className="wnm-gradient absolute top-8 right-[6vw] z-20 h-12 w-28 items-center rounded-[3rem] text-center text-white hover:bg-gradient-to-tr sm:relative sm:top-0 sm:right-0 sm:flex sm:h-16 sm:w-52 md:w-40 lg:w-52"
         onClick={openContact}
       >
         <p className="w-full text-xs font-bold tracking-widest">INQUIRE</p>
@@ -129,7 +134,7 @@ Sent from wisdomandmadness.com
                 initial={{ opacity: 0, scale: 0.95, y: 20 }}
                 transition={{ duration: 0.2 }}
               >
-                <div className="bg-gradient-to-tl from-[#3F5EFB] to-[#FC466B] text-white relative z-10 flex-shrink-0 border-b border-gray-100 px-6 py-5 dark:border-white/10">
+                <div className="wnm-gradient relative z-10 flex-shrink-0 border-b border-gray-100 px-6 py-5 text-white dark:border-white/10">
                   <h2 className="font-mono text-xl font-bold tracking-tight">
                     Project Inquiry
                   </h2>
@@ -173,17 +178,17 @@ Sent from wisdomandmadness.com
 
                         <div className="flex justify-center">
                           <button
-                            className="group flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-gray-400 hover:text-blue-500 transition-colors"
+                            className="group flex items-center gap-2 text-xs font-bold tracking-widest text-gray-400 uppercase transition-colors hover:text-blue-500"
                             onClick={() => setShowDetails(!showDetails)}
                             type="button"
                           >
-                            <span className="bg-gradient-to-tl from-[#3F5EFB] to-[#FC466B] text-transparent bg-clip-text">
+                            <span className="wnm-gradient bg-clip-text text-transparent">
                               {showDetails
                                 ? 'Hide Details'
                                 : 'Go into more detail'}
                             </span>
                             <svg
-                              className={`w-4 h-4 transition-transform duration-300 ${
+                              className={`h-4 w-4 transition-transform duration-300 ${
                                 showDetails ? 'rotate-180' : ''
                               }`}
                               fill="none"
@@ -263,13 +268,12 @@ Sent from wisdomandmadness.com
 
                 <div className="flex-shrink-0 border-t border-gray-100 bg-gray-50/80 px-6 py-4 backdrop-blur dark:border-white/10 dark:bg-white/5">
                   <button
-                    className="bg-indigo-500 font-mono text-background w-full rounded-lg py-3 text-sm font-bold shadow-lg transition-all hover:scale-[1.01] hover:opacity-90 active:scale-[0.99] disabled:opacity-50 disabled:hover:scale-100"
+                    className="text-background w-full rounded-lg bg-indigo-500 py-3 font-mono text-sm font-bold shadow-lg transition-all hover:scale-[1.01] hover:opacity-90 active:scale-[0.99] disabled:opacity-50 disabled:hover:scale-100"
                     disabled={isSubmitting}
                     form="project-form"
                     type="submit"
                   >
-                    <div
-                      className="flex flex-row items-center justify-center gap-2">
+                    <div className="flex flex-row items-center justify-center gap-2">
                       {isSubmitting ? 'Sending...' : 'Submit Project Request'}
                       <svg
                         fill="none"
@@ -286,7 +290,6 @@ Sent from wisdomandmadness.com
                         <path d="M21 3l-6.5 18a.55 .55 0 0 1 -1 0l-3.5 -7l-7 -3.5a.55 .55 0 0 1 0 -1l18 -6.5" />
                       </svg>
                     </div>
-
                   </button>
                 </div>
               </motion.div>

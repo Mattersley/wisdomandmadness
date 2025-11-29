@@ -12,7 +12,7 @@ const Hero = () => {
         <Nav />
         <ThreeD />
         <div className="relative flex h-[95%] w-full flex-col md:gap-x-6">
-          <div className="relative -mb-6 min-h-[70vh] z-30 w-[98%] md:w-full rounded-3xl bg-white sm:mt-4 md:z-[1] md:-mt-14 md:mr-28 md:min-h-[90vh]">
+          <div className="relative z-30 -mb-12 mx-auto min-h-[120vh] w-[98%] rounded-3xl bg-white sm:mt-4 sm:min-h-[60vh] md:z-[1] md:-mt-14 md:min-h-[90vh] md:w-full">
             {/*Header Buttons BG*/}
             <div className="absolute top-0 right-0 z-[2] hidden h-18 w-[28rem] rounded-bl-3xl bg-neutral-950 md:block md:w-[24.5rem] lg:w-[28rem]" />
             {/*Corners of LavaLamp*/}

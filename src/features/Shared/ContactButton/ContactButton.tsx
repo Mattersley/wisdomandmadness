@@ -26,7 +26,7 @@ const ContactButton = ({ transparent, onClick }: ContactButtonProps) => {
 
   return (
     <button
-      className={`right-[5%] z-20 hidden items-center rounded-[3rem] ${transparent ? 'border-[0.5px] border-white bg-transparent hover:border-[2px]' : 'bg-gradient-to-tl from-[#3F5EFB] to-[#FC466B] hover:bg-gradient-to-tr'} text-center text-white sm:flex sm:h-16 sm:w-52 md:w-40 lg:w-52`}
+      className={`right-[5%] z-20 hidden items-center rounded-[3rem] ${transparent ? 'border-[0.5px] border-white bg-transparent hover:border-[2px]' : 'wnm-gradient hover:bg-gradient-to-tr'} text-center text-white sm:flex sm:h-16 sm:w-52 md:w-40 lg:w-52`}
       onClick={onClick || openContact}
     >
       <div className="mt-6 relative size-full h-10 w-60 overflow-x-hidden sm:w-52 md:w-40 lg:w-52">

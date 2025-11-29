@@ -70,7 +70,7 @@ const Parallax = ({ container }: { container: React.RefObject<HTMLElement | null
   }, [])
 
   return (
-      <div className="relative -mb-[3.4rem] snap-none">
+      <div className="relative -mb-[2.8rem] snap-none">
         <div className="relative">
           <div className={styles.spacer}></div>
           <div className={styles.gallery} ref={gallery}>

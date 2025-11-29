@@ -328,7 +328,7 @@ const FeatureList = () => {
             <Egg id={4} />
           </div>
         )}
-        <p className="bg-gradient-to-tr from-[#3F5EFB] to-[#FC466B] bg-clip-text text-transparent italic">
+        <p className="wnm-gradient bg-clip-text text-transparent italic">
           {currentBlurb()}
         </p>
 

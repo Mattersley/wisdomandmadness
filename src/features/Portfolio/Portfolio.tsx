@@ -15,10 +15,20 @@ const images = [
   { name: 'CIMS', z: 40 }
 ]
 
-const Portfolio = ({current, setCurrent}: {current: string, setCurrent: React.Dispatch<SetStateAction<string>>}) => {
-
+const Portfolio = ({
+  current,
+  setCurrent
+}: {
+  current: string;
+  setCurrent: React.Dispatch<SetStateAction<string>>;
+}) => {
   return (
-    <div className={'relative py-20 flex h-auto min-h-screen w-screen snap-mandatory snap-center flex-col items-center justify-start bg-white px-2 sm:px-10 md:px-30 md:pt-32'} id="work">
+    <div
+      className={
+        'relative flex h-auto min-h-screen w-screen snap-mandatory snap-center flex-col items-center justify-start bg-white px-2 py-20 sm:px-10 md:px-30 md:pt-32'
+      }
+      id="work"
+    >
       <div className="relative flex h-16 w-full flex-row items-center justify-between gap-2 border-y border-b-2 border-gray-200 border-b-black px-2">
         {/*<div className="hidden flex-row items-center gap-2 text-xs md:flex">*/}
         {/*  <p>Web App</p>*/}
@@ -65,7 +75,7 @@ const Portfolio = ({current, setCurrent}: {current: string, setCurrent: React.Di
         {/*</div>*/}
       </div>
 
-      <div className="3xl:grid-cols-5 my-10 grid grid-cols-1 gap-10 sm:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4">
+      <div className="3xl:grid-cols-5 my-10 grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4">
         {images.map((item, i) => (
           <Card
             key={i}

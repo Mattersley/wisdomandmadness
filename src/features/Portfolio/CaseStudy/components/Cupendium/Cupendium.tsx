@@ -1,21 +1,20 @@
 import React from 'react'
-import CardHeader from '@/features/Portfolio/Card/components/CardHeader'
+import CaseStudyHeader from '@/features/Portfolio/CaseStudy/components/CaseStudyHeader'
 
 const Cupendium = () => (
-  <div className="mt-16 flex h-full w-full flex-col items-center select-none">
-    <CardHeader
-      bgColours={{1: '#f4d03f', 2: '#16a085'}}
-      image={{src: '/images/Portfolio/CaseStudies/CupendiumLogo.png',
-        alt: 'cupendium logo', width: 400, height: 200}}
-      served={[
-        'Brand ID',
-        'Logo Design',
-        'Typography',
-        'Hosting',
-        'Enterprise Web App'
-      ]}
-      url={'https://www.cupendium.com'} />
-    <div className="no-scrollbar grid w-2/3 grid-cols-3 gap-4 overflow-y-scroll pt-10 pb-32 text-sm">
+  <>
+    <CaseStudyHeader
+      bgColours={{ 1: '#f4d03f', 2: '#16a085' }}
+      image={{
+        src: '/images/Portfolio/CaseStudies/CupendiumLogo.png',
+        alt: 'cupendium logo',
+        width: 400,
+        height: 200
+      }}
+      served={['Brand ID', 'Logo Design', 'Typography', 'Hosting', 'Web App']}
+      url={'https://www.cupendium.com'}
+    />
+    <div className="no-scrollbar px-10 md:grid md:w-2/3 grid-cols-3 gap-4 pt-10 pb-32 text-sm md:overflow-y-scroll">
       <div className="col-span-2">
         <p className="mb-2 font-mono text-xs tracking-[0.3rem]">DETAIL</p>
         <p>Tasting Log, Digital & Printable Tools for Pour-Over Coffee</p>
@@ -145,7 +144,7 @@ const Cupendium = () => (
         </p>
       </div>
     </div>
-  </div>
+  </>
 )
 
 export default Cupendium

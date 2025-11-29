@@ -1,7 +1,7 @@
 import Hero from '@/features/Header/Hero/Hero'
 
 const Header = () => (
-  <div className="w-screen h-screen snap-start bg-neutral-950 sm:pt-6">
+  <div className="w-screen md:h-screen snap-start bg-neutral-950 sm:pt-6">
     {/*<button className="hidden sm:block absolute top-6 ml-6 text-white hover:text-indigo-500">*/}
     {/*  <svg*/}
     {/*    fill="none"*/}

@@ -3,7 +3,7 @@ import Link from 'next/link'
 import Contact from '@/features/Contact/Contact'
 
 const Nav = () => (
-  <div className="relative z-50 px-4 sm:px-6 md:px-0 flex w-full flex-col items-end justify-between gap-y-4 pt-6 sm:pt-8">
+  <div className="relative px-4 sm:px-6 md:px-0 flex w-full flex-col items-end justify-between gap-y-4 pt-6 sm:pt-8">
     <div className="flex size-12 h-16 w-full flex-row items-center justify-between rounded-[3rem] bg-white px-6 sm:px-10">
       <div className="flex flex-row items-center">
         <div className="size-10 text-black">
@@ -13,7 +13,7 @@ const Nav = () => (
           Wisdom + Madness Design Co.
         </p>
       </div>
-      <div className="ml-6 hidden flex-row items-center gap-4 sm:flex">
+      <div className="ml-6 hidden z-50 flex-row items-center gap-4 sm:flex">
         <Link href="#work">
           <p className="text-xs tracking-widest">WORK</p>
         </Link>
@@ -22,10 +22,10 @@ const Nav = () => (
         </Link>
       </div>
     </div>
-    <div className="mx-auto md:mx-0 flex flex-row gap-2 md:ml-2">
+    <div className="mx-auto md:mx-0 flex flex-row gap-2 md:ml-2 z-50">
       <div className="z-20 flex flex-row gap-2 self-end">
         <Link href="/wisdom">
-          <div className="absolute top-8 right-[21vw] flex size-12 items-center justify-center rounded-[50%] bg-rose-500 text-white hover:bg-gray-500 sm:relative sm:top-auto sm:right-auto sm:size-16">
+          <div className="hidden absolute top-8 right-[21vw] sm:flex size-12 items-center justify-center rounded-[50%] bg-rose-500 text-white hover:bg-gray-500 sm:relative sm:top-auto sm:right-auto sm:size-16">
             <svg
               className="mx-auto size-6 sm:size-[32px]"
               fill="none"
@@ -64,7 +64,7 @@ const Nav = () => (
         </div>
         <a
           className="hidden size-12 items-center justify-center rounded-[50%] bg-white hover:bg-gray-500 hover:text-white sm:flex sm:size-16"
-          href="mailto:webinquiry@wisdomandmadness.com?subject=Inquiry%20from%20W&M%20Website"
+          href="mailto:webinquiry@wisdomandmadness.com?subject=Inquiry%20from%20Wisdom%20and%20Madness%20Website"
         >
           <svg
             className="mx-auto size-6 sm:size-[32px]"
@@ -81,7 +81,7 @@ const Nav = () => (
         </a>
       </div>
       <Contact />
-      {/*<div className="right-[5%] z-20 hidden items-center rounded-[3rem] bg-gradient-to-tl from-[#3F5EFB] to-[#FC466B] text-center text-white hover:bg-gradient-to-tr sm:flex sm:h-16 sm:w-52 md:w-40 lg:w-52">*/}
+      {/*<div className="right-[5%] z-20 hidden items-center rounded-[3rem] wnm-gradient text-center text-white hover:bg-gradient-to-tr sm:flex sm:h-16 sm:w-52 md:w-40 lg:w-52">*/}
       {/*  <p className="w-full text-xs font-bold tracking-widest">GET STARTED</p>*/}
       {/*</div>*/}
     </div>

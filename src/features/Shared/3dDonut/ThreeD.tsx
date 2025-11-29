@@ -9,21 +9,29 @@ const ThreeD = () => {
   const ref = useRef(null)
 
   return (
-    <div className="z-40 -mt-50 sm:mt-0 absolute h-screen top-0 w-screen left-0" ref={ref}>
-        <Canvas
-          camera={{
-            fov: 40,
-            near: 0.01,
-            far: 10
-          }}
-          dpr={[1, 2]}
-        >
-          <OrbitControls dampingFactor={0.25} enableDamping={true} enablePan={false} enableZoom={false} />
-          <group>
-            <directionalLight castShadow intensity={100} position={[0, -1, 6]} />
-            <LogoTitle />
-          </group>
-        </Canvas>
+    <div
+      className="absolute top-0 left-0 z-40 sm:mt-0 h-screen w-screen"
+      ref={ref}
+    >
+      <Canvas
+        camera={{
+          fov: 40,
+          near: 0.01,
+          far: 10
+        }}
+        dpr={[1, 2]}
+      >
+        <OrbitControls
+          dampingFactor={0.25}
+          enableDamping={true}
+          enablePan={false}
+          enableZoom={false}
+        />
+        <group>
+          <directionalLight castShadow intensity={100} position={[0, -1, 6]} />
+          <LogoTitle />
+        </group>
+      </Canvas>
     </div>
   )
 }

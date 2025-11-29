@@ -1,10 +1,10 @@
 import React, { SetStateAction, useState } from 'react'
 import Image from 'next/image'
 import CaseStudy from '@/features/Portfolio/CaseStudy/CaseStudy'
-import Pando from '@/features/Portfolio/Pando/Pando'
+import Pando from '@/features/Portfolio/CaseStudy/components/Pando/Pando'
 import CardContainer from '@/features/Portfolio/Card/components/CardContainer'
-import Druid from '../Druid/Druid'
-import Cupendium from '@/features/Portfolio/Cupendium/Cupendium'
+import Druid from '@/features/Portfolio/CaseStudy/components/Druid/Druid'
+import Cupendium from '@/features/Portfolio/CaseStudy/components/Cupendium/Cupendium'
 import useSwipeToClose from '@/features/Portfolio/Card/hooks/useSwipeToClose'
 
 interface CardProps {
@@ -29,9 +29,11 @@ const Card = ({ current, name, setCurrent, z }: CardProps) => {
         setClosing={setClosing}
         setCurrent={setCurrent}
       >
+        <div className="no-scrollbar mt-8 flex h-full w-full flex-col items-center overflow-y-scroll select-none md:overflow-auto">
         {current === 'Pando' && <Pando />}
         {current === 'Druid' && <Druid />}
         {current === 'Cupendium' && <Cupendium />}
+        </div>
       </CaseStudy>
       <div
         className={`relative ${current !== '' ? 'overflow-y-clip' : ''}`}

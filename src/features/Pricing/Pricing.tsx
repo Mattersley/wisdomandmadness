@@ -122,7 +122,7 @@ const Pricing = () => {
   return (
     <div className="w-2/3 -mb-32 flex flex-col items-center justify-start rounded-3xl bg-white py-20 text-white select-none z-50">
       <h2
-        className={`${instrumentFont.className} bg-gradient-to-tr from-[#3F5EFB] to-[#FC466B] bg-clip-text text-[6rem] text-transparent`}
+        className={`${instrumentFont.className} wnm-gradient bg-clip-text text-[6rem] text-transparent`}
       >
         Pricing
       </h2>
