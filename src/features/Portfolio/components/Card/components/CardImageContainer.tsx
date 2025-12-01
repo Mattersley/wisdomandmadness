@@ -1,7 +1,7 @@
-import use3DCard from '@/features/Portfolio/Card/hooks/use3DCard'
+import use3DCard from '@/features/Portfolio/components/Card/hooks/use3DCard'
 import { motion } from 'motion/react'
 import React, { SetStateAction } from 'react'
-import useCardGestures from '@/features/Portfolio/Card/hooks/useCardGestures'
+import useCardGestures from '@/features/Portfolio/components/Card/hooks/useCardGestures'
 
 interface CardContainerProps {
   children: React.ReactNode;
@@ -11,7 +11,7 @@ interface CardContainerProps {
   setCurrent: React.Dispatch<SetStateAction<string>>;
 }
 
-const CardContainer = ({
+const CardImageContainer = ({
   children,
   current,
   name,
@@ -55,7 +55,7 @@ const CardContainer = ({
 
   return (
     <motion.div
-      className={'shadow-xl flex [touch-action: none] flex-col rounded-xl h-40 w-72 sm:h-32 sm:w-60 md:h-40 md:w-72'}
+      className={'relative shadow-xl flex [touch-action: none] flex-col rounded-xl h-40 w-72 sm:h-32 sm:w-60 md:h-40 md:w-72'}
       layout
       onClick={handleClick}
       onMouseEnter={handlePointerEnter}
@@ -92,4 +92,4 @@ const CardContainer = ({
   )
 }
 
-export default CardContainer
+export default CardImageContainer

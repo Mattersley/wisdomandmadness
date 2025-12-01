@@ -15,7 +15,7 @@ const month = currentDate.getMonth() + 1 // Month is 0-indexed
 
 const HeroText = () => {
   return (
-    <div className="absolute right-0 bottom-20 sm:bottom-[8vh] z-50 flex w-full p-4 sm:p-10">
+    <div className="absolute right-0 bottom-20 sm:bottom-[8vh] z-[100] flex w-full p-4 sm:p-10">
       <div className={`${inter.className} mx-auto flex border border-gray-500 border-t-2 p-10 text-left text-neutral-800`}>
         <div className="flex flex-col">
           <div className="flex w-full flex-row items-center justify-between">

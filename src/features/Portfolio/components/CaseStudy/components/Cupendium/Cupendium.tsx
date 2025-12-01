@@ -1,19 +1,8 @@
 import React from 'react'
-import CaseStudyHeader from '@/features/Portfolio/CaseStudy/components/CaseStudyHeader'
+import CaseStudyHeader from '@/features/Portfolio/components/CaseStudy/components/CaseStudyHeader'
 
 const Cupendium = () => (
   <>
-    <CaseStudyHeader
-      bgColours={{ 1: '#f4d03f', 2: '#16a085' }}
-      image={{
-        src: '/images/Portfolio/CaseStudies/CupendiumLogo.png',
-        alt: 'cupendium logo',
-        width: 400,
-        height: 200
-      }}
-      served={['Brand ID', 'Logo Design', 'Typography', 'Hosting', 'Web App']}
-      url={'https://www.cupendium.com'}
-    />
     <div className="no-scrollbar px-10 md:grid md:w-2/3 grid-cols-3 gap-4 pt-10 pb-32 text-sm md:overflow-y-scroll">
       <div className="col-span-2">
         <p className="mb-2 font-mono text-xs tracking-[0.3rem]">DETAIL</p>

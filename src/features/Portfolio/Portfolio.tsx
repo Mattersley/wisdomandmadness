@@ -1,27 +1,35 @@
-import WisdomAndMadnessLogo from '@/assets/WisdomLogo'
-import Card from '@/features/Portfolio/Card/Card'
-import React, { SetStateAction } from 'react'
+import React, { useState } from 'react'
 import Egg from '@/features/Egg/Egg'
+import { projects } from '@/features/Portfolio/data/projects'
+import PortfolioNavBar from '@/features/Portfolio/components/NavBar/PortfolioNavBar'
+import ProjectContainer from '@/features/Portfolio/components/ProjectContainer/ProjectContainer'
 
-const images = [
-  { name: 'Pando', z: 20 },
-  { name: 'Cupendium', z: 60 },
-  { name: 'Druid', z: 60 },
-  { name: 'Naturalist', z: 20 },
-  { name: 'Hattersleys', z: 20 },
-  { name: 'SpiritFish', z: 20 },
-  { name: 'GlassRoots', z: 40 },
-  { name: 'LI', z: 40 },
-  { name: 'CIMS', z: 40 }
-]
+interface PortfolioPropTypes {
+  currentProject: string;
+  setCurrentProject: React.Dispatch<React.SetStateAction<string>>;
+}
 
 const Portfolio = ({
-  current,
-  setCurrent
-}: {
-  current: string;
-  setCurrent: React.Dispatch<SetStateAction<string>>;
-}) => {
+  currentProject,
+  setCurrentProject
+}: PortfolioPropTypes) => {
+  const [direction, setDirection] = useState(0)
+  const currentIndex = projects.findIndex(
+    (item) => item.name === currentProject
+  )
+
+  const handleNext = () => {
+    setDirection(1)
+    const nextIndex = (currentIndex + 1) % projects.length
+    setCurrentProject(projects[nextIndex].name)
+  }
+
+  const handlePrev = () => {
+    setDirection(-1)
+    const prevIndex = (currentIndex - 1 + projects.length) % projects.length
+    setCurrentProject(projects[prevIndex].name)
+  }
+
   return (
     <div
       className={
@@ -29,63 +37,22 @@ const Portfolio = ({
       }
       id="work"
     >
-      <div className="relative flex h-16 w-full flex-row items-center justify-between gap-2 border-y border-b-2 border-gray-200 border-b-black px-2">
-        {/*<div className="hidden flex-row items-center gap-2 text-xs md:flex">*/}
-        {/*  <p>Web App</p>*/}
-        {/*  <p>UI/UX</p>*/}
-        {/*  <p>F&B</p>*/}
-        {/*  <p>Branding</p>*/}
-        {/*  <p>Packaging</p>*/}
-        {/*</div>*/}
-        <p>{current}</p>
-        <div className="absolute bottom-2.5 flex h-12 w-30 flex-row justify-center text-gray-500 md:left-[47%]">
-          <WisdomAndMadnessLogo />
-          <p className="mt-5 ml-2 text-xs tracking-widest">WORK</p>
-        </div>
-        {/*<div className="flex flex-row">*/}
-        {/*  <svg*/}
-        {/*    fill="none"*/}
-        {/*    height="16"*/}
-        {/*    stroke="currentColor"*/}
-        {/*    strokeLinecap="round"*/}
-        {/*    strokeLinejoin="round"*/}
-        {/*    strokeWidth="1"*/}
-        {/*    viewBox="0 0 24 24"*/}
-        {/*    width="16"*/}
-        {/*    xmlns="http://www.w3.org/2000/svg"*/}
-        {/*  >*/}
-        {/*    <path d="M10 10m-7 0a7 7 0 1 0 14 0a7 7 0 1 0 -14 0"></path>*/}
-        {/*    <path d="M21 21l-6 -6"></path>*/}
-        {/*  </svg>*/}
-        {/*  <svg*/}
-        {/*    fill="none"*/}
-        {/*    height="16"*/}
-        {/*    stroke="currentColor"*/}
-        {/*    strokeLinecap="round"*/}
-        {/*    strokeLinejoin="round"*/}
-        {/*    strokeWidth="1"*/}
-        {/*    viewBox="0 0 24 24"*/}
-        {/*    width="16"*/}
-        {/*    xmlns="http://www.w3.org/2000/svg"*/}
-        {/*  >*/}
-        {/*    <path d="M12 12m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0"></path>*/}
-        {/*    <path d="M12 19m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0"></path>*/}
-        {/*    <path d="M12 5m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0"></path>*/}
-        {/*  </svg>*/}
-        {/*</div>*/}
-      </div>
-
+      <PortfolioNavBar />
       <div className="3xl:grid-cols-5 my-10 grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4">
-        {images.map((item, i) => (
-          <Card
-            key={i}
-            current={current}
-            name={item.name}
-            setCurrent={setCurrent}
-            z={item.z}
+        {projects.map((item, i) => (
+          <ProjectContainer
+            key={item.name + i.toString()}
+            currentProject={currentProject}
+            direction={direction}
+            handleNext={handleNext}
+            handlePrev={handlePrev}
+            item={item}
+            setCurrentProject={setCurrentProject}
+            setDirection={setDirection}
           />
         ))}
       </div>
+
       <div className="absolute right-3 bottom-3 sm:right-10 sm:bottom-10">
         <Egg id={0} />
       </div>

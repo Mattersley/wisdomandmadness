@@ -10,7 +10,7 @@ const ThreeD = () => {
 
   return (
     <div
-      className="absolute top-0 left-0 z-40 sm:mt-0 h-screen w-screen"
+      className="absolute h-1/2 top-0 left-0 z-40 mt-10 sm:mt-0 sm:h-screen w-screen"
       ref={ref}
     >
       <Canvas

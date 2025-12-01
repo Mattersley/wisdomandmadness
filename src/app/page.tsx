@@ -1,7 +1,7 @@
 'use client'
 
 import Portfolio from '@/features/Portfolio/Portfolio'
-import { useState } from 'react'
+import { SetStateAction, useState } from 'react'
 import Footer from '@/features/Footer/Footer'
 import Parallax from '@/features/Parallax/Parallax'
 import Cursor from '@/features/Shared/Cursor/components/Cursor'
@@ -11,8 +11,8 @@ import EggCounter from '@/features/Egg/EggCounter'
 import { useRef } from 'react'
 
 const Home = () => {
-  const [current, setCurrent] = useState('')
   const containerRef = useRef(null)
+  const [currentProject, setCurrentProject] = useState<string>('')
 
   return (
     <>
@@ -20,12 +20,18 @@ const Home = () => {
         <EggCounter />
       </div>
       <Cursor helpMode />
-      <main className={`h-screen w-screen overflow-x-clip snap-y scroll-smooth ${current ? 'overflow-hidden' : 'overflow-auto'}`} ref={containerRef}>
+      <main
+        className={`h-screen w-screen snap-y overflow-x-clip scroll-smooth ${currentProject ? 'overflow-hidden' : 'overflow-auto'}`}
+        ref={containerRef}
+      >
         <section className="w-full snap-none">
           <Header />
         </section>
-        <section className="w-full snap-start snap-mandatory">
-          <Portfolio current={current} setCurrent={setCurrent} />
+        <section className="w-full snap-start">
+          <Portfolio
+            currentProject={currentProject}
+            setCurrentProject={setCurrentProject}
+          />
         </section>
         <section className="w-full snap-none">
           <Parallax container={containerRef} />

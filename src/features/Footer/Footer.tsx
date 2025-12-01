@@ -6,10 +6,10 @@ const Footer = () => {
   return (
     <footer>
       <div
-        className="relative h-[600px]"
+        className="relative h-[700px]"
         style={{ clipPath: 'polygon(0% 0, 100% 0%, 100% 100%, 0 100%)' }}
       >
-        <div className="fixed bottom-0 h-[900px] w-full">
+        <div className="fixed bottom-0 h-[700px] w-full pointer-events-none">
           <div className="flex h-full w-full flex-col bg-neutral-800">
             <Section1 />
             <Section2 />
@@ -23,7 +23,7 @@ const Footer = () => {
 const Section1 = () => (
   <>
     <div className="mx-auto mt-auto flex h-40 w-[80%] flex-row items-center justify-between border-b border-white/50 pt-5">
-      <ContactButton transparent={true} />
+      <div className="pointer-events-auto"><ContactButton transparent={true} /></div>
 
       <div className="mb-10 flex flex-col items-center">
         <div className="relative mr-6 size-24 text-white">
@@ -36,7 +36,7 @@ const Section1 = () => (
         </p>
       </div>
     </div>
-    <div className="mx-auto mt-5 flex w-[80%] flex-col gap-1 text-right text-xs text-white/20 underline">
+    <div className="pointer-events-auto mx-auto mt-5 flex w-[80%] flex-col gap-1 text-right text-xs text-white/20 underline">
       <p>Privacy Policy</p>
       <p>Terms & Conditions</p>
     </div>

@@ -172,7 +172,7 @@ const TriviaCard = () => {
 
 const About = () => {
   return (
-    <div className="relative flex w-screen snap-mandatory snap-start flex-col items-center bg-neutral-950 py-20 text-white select-none">
+    <div className="relative flex w-screen  flex-col items-center bg-neutral-950 py-20 text-white select-none">
       <h2
         className={`${vagraFont.className} bg-gradient-to-tr from-[#3F5EFB] to-[#FC466B] bg-clip-text text-[6rem] text-transparent`}
       >
