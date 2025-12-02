@@ -42,6 +42,22 @@
     @apply bg-gradient-to-tl from-[#3F5EFB] to-[#FC466B]
 }
 
+@utility cup-gradient {
+    @apply bg-gradient-to-l from-[#16a085]/40 to-[#f4d03f]/40
+}
+
+@utility pando-gradient {
+    @apply bg-gradient-to-l from-[#E3FDF5] to-[#FFE6FA]
+}
+
+@utility druid-gradient {
+    @apply bg-gradient-to-tl from-[#363C48] to-[#1B1B19]
+}
+
+@utility naturalist-gradient {
+    @apply bg-gradient-to-tr from-[#d6e9d4] to-[#ffffff]
+}
+
 @utility glassmorphism {
     background: rgba(255, 255, 255, 0.2);
     border-radius: 16px;

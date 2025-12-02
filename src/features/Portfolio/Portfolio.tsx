@@ -33,7 +33,7 @@ const Portfolio = ({
   return (
     <div
       className={
-        'relative flex h-auto min-h-screen w-screen snap-mandatory snap-center flex-col items-center justify-start bg-white px-2 py-20 sm:px-10 md:px-30 md:pt-32'
+        'no-scrollbar relative flex h-auto min-h-screen w-screen snap-mandatory snap-center flex-col items-center justify-start bg-white px-2 py-20 sm:px-10 md:px-30 md:pt-32'
       }
       id="work"
     >

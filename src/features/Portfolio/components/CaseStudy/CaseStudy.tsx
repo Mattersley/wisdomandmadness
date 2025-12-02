@@ -47,7 +47,7 @@ const CaseStudy = ({
         <motion.div
           key="modal"
           animate="animate"
-          className="fixed top-0 left-0 z-50 h-screen w-screen bg-white"
+          className="no-scrollbar fixed top-0 left-0 z-50 h-screen w-screen bg-white"
           custom={direction}
           exit="exit"
           initial="initial"

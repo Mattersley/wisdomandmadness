@@ -3,6 +3,9 @@ export type ProjectType = {
       '1': string;
       '2': string;
     };
+    bgImage?: string;
+    bgOpacity: number;
+    dark?: boolean;
     image: {
       alt: string;
       src: string;
@@ -11,6 +14,10 @@ export type ProjectType = {
     };
     name: string;
     served: string[];
-    url: string;
+    urls:
+      {
+        url: string,
+        favi: string
+      }[];
     z: number;
 }

@@ -75,7 +75,7 @@ ${inspirationLinks}
 
       console.log('Form received:', emailContent) // For debugging
 
-      return NextResponse.json({ success: true, message: 'Inquiry sent successfully' })
+      return NextResponse.json({ success: true, message: 'Message sent successfully! We will get back to you as soon as we can.' })
     } catch (error) {
       console.error('Contact API Error:', error)
       return NextResponse.json(
