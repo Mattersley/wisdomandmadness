@@ -69,11 +69,10 @@ const ProfileCard = () => {
   return (
     <div
       className="flex flex-col items-center md:items-end relative mb-4 border-white/40 py-4 pr-5 md:border-r"
-      id="about"
     >
       <div className="absolute top-0 right-0 hidden w-5 border-t border-white/40 md:block" />
       <p className="text-xl text-white/50 md:text-lg">
-        Design // Code // Science
+        Design // Code
       </p>
       <p className="text-5xl tracking-widest">
         MAT_AT
@@ -89,6 +88,7 @@ const ProfileCard = () => {
         )}
       </p>
       <div className="absolute top-[50%] -right-[1.27rem] hidden w-5 border-t border-white/40 md:block" />
+      <p className="text-xl text-white/60 mt-2 md:text-lg">Matt Hattersley</p>
       <p className="my-4 ml-auto w-80 self-end text-xs text-indigo-300 italic xl:text-right">
         Creative Director
         <br />
@@ -121,7 +121,7 @@ const ProfileCard = () => {
 const TriviaCard = () => {
   return (
     <motion.div
-      className="relative mx-auto mt-6 flex w-[60%] flex-col gap-6 rounded-4xl border border-white px-3 py-4 text-center sm:col-span-2 sm:grid sm:w-[90%] sm:grid-cols-3 sm:rounded-[5rem] sm:px-8 md:w-[70%] xl:mt-0 xl:w-[60%]"
+      className="hidden relative mx-auto mt-6 w-[60%] flex-col gap-6 rounded-4xl border border-white px-3 py-4 text-center sm:col-span-2 sm:grid sm:w-[90%] sm:grid-cols-3 sm:rounded-[5rem] sm:px-8 md:w-[70%] xl:mt-0 xl:w-[60%]"
       initial={'hidden'}
       variants={containerVariants}
       whileHover={'visible'}
@@ -172,7 +172,7 @@ const TriviaCard = () => {
 
 const About = () => {
   return (
-    <div className="relative flex w-screen  flex-col items-center bg-neutral-950 py-20 text-white select-none">
+    <div className="relative flex w-screen flex-col items-center bg-neutral-950 py-20 text-white select-none" id="about">
       <h2
         className={`${vagraFont.className} bg-gradient-to-tr from-[#3F5EFB] to-[#FC466B] bg-clip-text text-[6rem] text-transparent`}
       >

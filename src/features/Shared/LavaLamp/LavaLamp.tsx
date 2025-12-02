@@ -9,8 +9,6 @@ const LavaLamp = () => {
 
   useEffect(() => {
     document.addEventListener('DOMContentLoaded', () => {
-      const interBubble =
-        document.querySelector<HTMLDivElement>('.interactive')!
       let curX = 0
       let curY = 0
       let tgX = 0
@@ -19,18 +17,11 @@ const LavaLamp = () => {
       function move() {
         curX += (tgX - curX) / 20
         curY += (tgY - curY) / 20
-        interBubble.style.transform = `translate(${Math.round(curX)}px, ${Math.round(curY)}px)`
+        // interBubble.style.transform = `translate(${Math.round(curX)}px, ${Math.round(curY)}px)`
         requestAnimationFrame(() => {
           move()
         })
       }
-
-      window.addEventListener('mousemove', (event) => {
-        tgX = event.clientX
-        tgY = event.clientY
-      })
-
-      move()
     })
   }, [])
 
@@ -40,8 +31,8 @@ const LavaLamp = () => {
   }
 
   return (
-    <div className="relative mx-auto w-full h-full">
-      <div className="gradient-bg rounded-3xl opacity-60">
+    <div className="relative mx-auto w-full h-full opacity-60 overflow-clip rounded-3xl">
+      <div className="gradient-bg rounded-3xl">
         <svg xmlns="http://www.w3.org/2000/svg">
           <defs>
             <filter id="goo">

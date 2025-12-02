@@ -1,16 +1,3 @@
-/*:root {*/
-/*    --color-bg1: rgb(244, 208, 63);*/
-/*    --color-bg2: rgb(22, 160, 133);*/
-/*    --color1: 22, 160, 133;*/
-/*    --color2: 22, 160, 133;*/
-/*    --color3: 22, 160, 133;*/
-/*    --color4: 244, 208, 63;*/
-/*    --color5: 244, 208, 63;*/
-/*    --color-interactive: 244, 208, 63;*/
-/*    --circle-size: 120%;*/
-/*    --blending: hard-light;*/
-/*}*/
-
 :root {
   --color-bg1: rgb(63, 94, 251, 1);
   --color-bg2: rgb(252, 70, 107, 1);
@@ -81,6 +68,7 @@
     filter: url(#goo) blur(40px);
     width: 100%;
     height: 100%;
+
   }
 
   .g1 {

@@ -30,9 +30,9 @@ const LogoTitle = () => {
 
     const scaleFactor = () => {
     if (viewport.width < 2) {
-        return viewport.width / 3
-      } else if (viewport.width < 3) {
         return viewport.width / 4
+      } else if (viewport.width < 3) {
+        return viewport.width / 3
       } else if (viewport.width > 4) {
         return viewport.width / 6
       }

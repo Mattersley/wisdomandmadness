@@ -36,10 +36,10 @@ const Section1 = () => (
         </p>
       </div>
     </div>
-    <div className="pointer-events-auto mx-auto mt-5 flex w-[80%] flex-col gap-1 text-right text-xs text-white/20 underline">
-      <p>Privacy Policy</p>
-      <p>Terms & Conditions</p>
-    </div>
+    {/*<div className="pointer-events-auto mx-auto mt-5 flex w-[80%] flex-col gap-1 text-right text-xs text-white/20 underline">*/}
+    {/*  <p>Privacy Policy</p>*/}
+    {/*  <p>Terms & Conditions</p>*/}
+    {/*</div>*/}
   </>
 )
 

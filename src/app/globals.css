@@ -30,6 +30,7 @@
   }
 }
 
+/* Test Border */
 @utility tb {
   @apply border border-red-600;
 }

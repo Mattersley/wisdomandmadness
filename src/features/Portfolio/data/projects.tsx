@@ -7,7 +7,7 @@ export const projects = [
     dark: false,
     image: {
       src: '/images/Portfolio/CaseStudies/PandoLogo.png',
-      alt: 'pando logo',
+      alt: 'Pando Logo',
       width: 150,
       height: 75
     },
@@ -30,7 +30,7 @@ export const projects = [
     dark: false,
     image: {
       src: '/images/Portfolio/CaseStudies/CupendiumLogo.png',
-      alt: 'cupendium logo',
+      alt: 'Cupendium Logo',
       width: 400,
       height: 200
     },
@@ -50,7 +50,7 @@ export const projects = [
     dark: true,
     image: {
       src: '/images/Portfolio/CaseStudies/DruidLogoWhite.png',
-      alt: 'druid logo',
+      alt: 'Druid Logo',
       width: 130,
       height: 100
     },
@@ -63,8 +63,8 @@ export const projects = [
     bgOpacity: 1,
     dark: false,
     image: {
-      src: '/images/Portfolio/CaseStudies/NaturalistLogo.png',
-      alt: 'naturalist logo',
+      src: '/images/Portfolio/CaseStudies/NaturalistLogo2.png',
+      alt: 'The Naturalist Logo',
       width: 450,
       height: 200
     },
@@ -78,7 +78,7 @@ export const projects = [
     dark: false,
     image: {
       src: '/images/Portfolio/CaseStudies/CupendiumLogo.png',
-      alt: 'cupendium logo',
+      alt: 'Hattersleys Logo',
       width: 400,
       height: 200
     },
@@ -92,22 +92,18 @@ export const projects = [
   },
   { name: 'SpiritFish',
     z: 20,
-    bgColours: { 1: '#f4d03f', 2: '#16a085' },
+    bgColours: { 1: '#30b44a', 2: '#9cb49c' },
+    bgImage: '/images/Portfolio/CaseStudies/SpiritfishBackground.jpg',
     bgOpacity: 1,
-    dark: false,
+    dark: true,
     image: {
-      src: '/images/Portfolio/CaseStudies/CupendiumLogo.png',
-      alt: 'cupendium logo',
-      width: 400,
-      height: 200
+      src: '/images/Portfolio/CaseStudies/SpiritfishLogo.png',
+      alt: 'Spiritfish Logo',
+      width: 450,
+      height: 100
     },
-    served: ['Brand ID', 'Logo Design', 'Typography', 'Hosting', 'Web App'],
-    urls: [
-      {
-        url: 'https://www.cupendium.com',
-        favi: '/images/Portfolio/Favis/CupendiumICO.svg'
-      }
-    ]
+    served: ['Brand ID', 'Logo Design', 'Typography', 'Web App'],
+    urls: []
   },
   { name: 'GlassRoots',
     z: 40,

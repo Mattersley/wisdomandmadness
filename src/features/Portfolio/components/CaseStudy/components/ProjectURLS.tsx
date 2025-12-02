@@ -4,9 +4,9 @@ import { ProjectType } from '@/features/Portfolio/data/projects.types'
 
 const ProjectURLS = ({ urls }: { urls: ProjectType['urls'] }) => {
   const urlRegex = /^(https?:\/\/)?(www\.)?/
-
+console.log(urls.length)
   return (
-    <div className="glassmorphism flex w-full flex-row items-center justify-center rounded-2xl p-3 text-right md:flex-col md:items-end xl:p-6">
+    <div className={`glassmorphism flex w-full ${urls.length <= 2 ? 'flex-col' : 'flex-row'} items-center justify-center rounded-2xl p-3 text-right md:flex-col md:items-end xl:p-6`}>
       <p className="mr-2 font-mono text-xs tracking-[0.3rem] md:mr-0 md:mb-2">
         {urls.length !== 1 ? 'URLS' : 'URL'}
       </p>
