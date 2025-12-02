@@ -40,7 +40,7 @@ const LavaLamp = () => {
   }
 
   return (
-    <div className="relative mx-auto w-full h-full sm:min-h-[94vh]">
+    <div className="relative mx-auto w-full h-full">
       <div className="gradient-bg rounded-3xl opacity-60">
         <svg xmlns="http://www.w3.org/2000/svg">
           <defs>

@@ -46,6 +46,7 @@ export const projects = [
     z: 60,
     bgColours: { 1: '#363C48', 2: '#1B1B19' },
     bgImage: '/images/Portfolio/CaseStudies/DruidBackground.jpg',
+    bgOpacity: 1,
     dark: true,
     image: {
       src: '/images/Portfolio/CaseStudies/DruidLogoWhite.png',
@@ -59,6 +60,7 @@ export const projects = [
   { name: 'Naturalist',
     z: 20,
     bgColours: { 1: '#d6e9d4', 2: '#ffffff' },
+    bgOpacity: 1,
     dark: false,
     image: {
       src: '/images/Portfolio/CaseStudies/NaturalistLogo.png',
@@ -72,6 +74,7 @@ export const projects = [
   { name: 'Hattersleys',
     z: 20,
     bgColours: { 1: '#f4d03f', 2: '#16a085' },
+    bgOpacity: 1,
     dark: false,
     image: {
       src: '/images/Portfolio/CaseStudies/CupendiumLogo.png',
@@ -90,6 +93,7 @@ export const projects = [
   { name: 'SpiritFish',
     z: 20,
     bgColours: { 1: '#f4d03f', 2: '#16a085' },
+    bgOpacity: 1,
     dark: false,
     image: {
       src: '/images/Portfolio/CaseStudies/CupendiumLogo.png',
@@ -108,6 +112,7 @@ export const projects = [
   { name: 'GlassRoots',
     z: 40,
     bgColours: { 1: '#f4d03f', 2: '#16a085' },
+    bgOpacity: 1,
     dark: false,
     image: {
       src: '/images/Portfolio/CaseStudies/CupendiumLogo.png',
@@ -126,6 +131,7 @@ export const projects = [
   { name: 'LI',
     z: 40,
     bgColours: { 1: '#f4d03f', 2: '#16a085' },
+    bgOpacity: 1,
     dark: false,
     image: {
       src: '/images/Portfolio/CaseStudies/CupendiumLogo.png',
@@ -144,6 +150,7 @@ export const projects = [
   { name: 'CIMS',
     z: 40,
     bgColours: { 1: '#f4d03f', 2: '#16a085' },
+    bgOpacity: 1,
     dark: false,
     image: {
       src: '/images/Portfolio/CaseStudies/CupendiumLogo.png',
