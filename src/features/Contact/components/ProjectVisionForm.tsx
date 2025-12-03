@@ -46,7 +46,7 @@ export const ProjectVision = () => {
           {...register('goals', {
             required: 'Please specify a goal'
           })}
-          className="text-center w-full resize-none rounded-lg border border-gray-200 bg-transparent px-3 py-2.5 text-sm outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 dark:border-white/10 dark:focus:border-indigo-400"
+          className="text-center w-full resize-none rounded-lg border border-gray-200 bg-transparent px-3 py-2.5 text-sm outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500"
           placeholder="e.g. Increase conversion rates, launch a new product..."
           rows={2}
         />
@@ -64,7 +64,7 @@ export const ProjectVision = () => {
         <input
           id="audience"
           {...register('targetAudience')}
-          className="w-full text-center rounded-lg border border-gray-200 bg-transparent px-3 py-2.5 text-sm outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 dark:border-white/10 dark:focus:border-indigo-400"
+          className="w-full text-center rounded-lg border border-gray-200 bg-transparent px-3 py-2.5 text-sm outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500"
           placeholder="e.g. Young professionals, B2B..."
         />
       </div>
@@ -76,7 +76,7 @@ export const ProjectVision = () => {
         <textarea
           id="additionalInfo"
           {...register('additionalInfo')}
-          className="w-full text-center resize-none rounded-lg border border-gray-200 bg-transparent px-3 py-2.5 text-sm outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 dark:border-white/10 dark:focus:border-indigo-400"
+          className="w-full text-center resize-none rounded-lg border border-gray-200 bg-transparent px-3 py-2.5 text-sm outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500"
           placeholder="Specific features, constraints, or burning questions..."
           rows={3}
         />

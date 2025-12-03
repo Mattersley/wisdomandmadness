@@ -17,8 +17,8 @@ export const DesignInspiration = () => {
         <h3 className={'font-mono font-xl font-bold tracking-wider text-indigo-500 uppercase'}>
           Design Inspiration
         </h3>
-        <p className="text-sm text-center text-gray-500 dark:text-gray-400">
-          Please provide links to websites that you found helpful or inspiring. You can explain in the additional notes above if you would like.
+        <p className="text-sm text-center text-gray-500">
+          If you like, provide links to websites that you found helpful or inspiring. You can explain in the additional notes above if you would like.
         </p>
       </div>
       <div className="flex items-center justify-end">

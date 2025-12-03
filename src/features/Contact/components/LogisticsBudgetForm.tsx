@@ -8,7 +8,7 @@ export const Logistics = () => {
   const formatBudget = (val: string) => {
     const num = parseInt(val, 10)
     if (num >= 20000) return '$20,000+'
-    return new Intl.NumberFormat('en-US', {
+    return new Intl.NumberFormat('en-CA', {
       style: 'currency',
       currency: 'CAD',
       maximumFractionDigits: 0
@@ -26,23 +26,24 @@ export const Logistics = () => {
         </h3>
       </div>
 
-      <div className="space-y-4 rounded-xl bg-white p-4 dark:bg-white/5">
+      <div className="space-y-4 rounded-xl bg-white border border-gray-200 p-4">
         <div className="flex items-center justify-between">
           <label className="font-mono text-indigo-500 text-xs font-medium uppercase" htmlFor="budget">
             Estimated Budget
           </label>
           <span className="text-indigo-400 font-mono text-lg font-bold">
-            {formatBudget(budgetValue)}
+            {formatBudget(budgetValue)}<small className="text-[0.6rem]">CAD</small>
           </span>
         </div>
         <input
+          defaultValue="500"
           id="budget"
           max="20000"
           min="500"
           step="1000"
           type="range"
           {...register('budget')}
-          className="accent-indigo-500 h-2 w-full cursor-pointer appearance-none rounded-lg bg-gray-200 dark:bg-white/10"
+          className="accent-indigo-500 h-2 w-full cursor-pointer appearance-none rounded-lg bg-gray-200"
         />
         <div className="flex justify-between text-xs font-medium text-gray-400">
           <span>$500</span>

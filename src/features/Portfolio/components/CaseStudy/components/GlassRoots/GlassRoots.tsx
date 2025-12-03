@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Pando = () => (
+const GlassRoots = () => (
   <>
     <div className="no-scrollbar px-10 md:grid md:w-2/3 grid-cols-3 gap-4 pt-10 pb-32 text-sm md:overflow-y-scroll">
       <div className="col-span-2">
@@ -14,4 +14,4 @@ const Pando = () => (
   </>
 )
 
-export default Pando
+export default GlassRoots

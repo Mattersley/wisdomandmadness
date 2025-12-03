@@ -22,7 +22,7 @@ const Contact = () => {
 
   const methods = useForm<Inputs>({
     defaultValues: {
-      budget: '5000',
+      budget: '500',
       services: [],
       timeline: '1-3m',
       projectStatus: 'new',
@@ -55,7 +55,7 @@ const Contact = () => {
 
   const onSubmit: SubmitHandler<Inputs> = async (data: any) => {
     // Pass the form data
-    const payload = { ...data }
+    const payload = { ...data, simpleWebsite: simplePlease }
 
     try {
       const response = await fetch('/api/contact', {
@@ -71,6 +71,7 @@ const Contact = () => {
       }
 
       reset()
+      setSimplePlease(false)
       closeContact()
       setShowDetails(false)
       alert('Message sent successfully!')
@@ -108,7 +109,7 @@ const Contact = () => {
                 initial={{ opacity: 0, scale: 0.95, y: 20 }}
                 transition={{ duration: 0.2 }}
               >
-                <div className="wnm-gradient relative z-10 flex-shrink-0 border-b border-gray-100 px-6 py-5 text-center text-white dark:border-white/10">
+                <div className="wnm-gradient relative z-10 flex-shrink-0 border-b border-gray-100 px-6 py-5 text-center text-white">
                   <h2
                     className={`${instrumentFont.className} mt-6 text-4xl font-bold`}
                   >
@@ -116,7 +117,7 @@ const Contact = () => {
                   </h2>
                   <p className="mt-1 text-white">Tell us about your vision</p>
                   <button
-                    className="absolute top-5 right-5 rounded-full p-1 text-white transition-colors hover:bg-gray-100 hover:text-gray-900 dark:hover:bg-white/10 dark:hover:text-white"
+                    className="absolute top-5 right-5 rounded-full p-1 text-white transition-colors hover:bg-gray-100 hover:text-gray-900"
                     onClick={closeContact}
                   >
                     <svg
@@ -151,9 +152,9 @@ const Contact = () => {
                         <ContactForm />
 
                         <div
-                          className={`glassmorphism ${!simplePlease ? 'grid grid-cols-3' : ''} w-full items-center justify-center rounded-xl border border-indigo-500/50 bg-indigo-500/10 px-6 py-4`}
+                          className={`glassmorphism ${!simplePlease ? 'grid gap-y-3 sm:gap-y-0 sm:gap-x-3 sm:grid-cols-3' : ''} w-full items-center justify-center rounded-xl border border-indigo-500/50 bg-indigo-500/10 px-6 py-4`}
                         >
-                          <div className="relative col-span-2 mr-6 flex h-full flex-row items-center justify-center rounded-xl border border-indigo-500 p-4 text-center">
+                          <div className="relative w-full col-span-2 mr-6 flex h-full flex-row items-center justify-center rounded-xl border border-indigo-500 p-4 text-center">
                             <label
                               className={`mr-4 w-full ${simplePlease ? 'text-center' : 'text-right'} font-mono text-xs font-bold text-indigo-500 uppercase`}
                               htmlFor="spa"
@@ -161,13 +162,14 @@ const Contact = () => {
                               I just want a simple single page website please!
                             </label>
                             <input
+                              checked={simplePlease}
                               className="peer relative h-6 w-6 cursor-pointer appearance-none rounded-sm border-2 border-gray-500 checked:border-indigo-500 checked:bg-indigo-500"
                               id="spa"
                               name="spa"
                               onChange={handleChange}
                               type="checkbox"
                             />
-                            <div className="pointer-events-none absolute right-3.5 hidden h-6 w-6 items-center justify-center stroke-white text-lg font-bold peer-checked:block">
+                            <div className="pointer-events-none absolute right-[0.88rem] sm:right-[0.95rem] hidden h-6 w-6 items-center justify-center stroke-white text-lg font-bold peer-checked:block">
                               <svg
                                 fill="none"
                                 height="24"
@@ -186,26 +188,33 @@ const Contact = () => {
                           </div>
                           {!simplePlease && (
                             <button
-                              className="group flex h-full w-full items-center justify-center rounded-xl border border-indigo-500 bg-indigo-500 p-3 font-mono text-xs font-bold tracking-widest text-white uppercase transition-colors hover:bg-white hover:text-indigo-500"
+                              className="group col-span-2 sm:col-span-1 flex h-full w-full flex-col items-center justify-center rounded-xl border border-indigo-500 bg-indigo-500 p-3 font-mono text-xs font-bold tracking-widest text-white transition-colors hover:bg-white hover:text-indigo-500"
                               onClick={() => setShowDetails(!showDetails)}
                               type="button"
                             >
-                              <svg
-                                className="size-8 stroke-2 transition-transform duration-300"
-                                fill="none"
-                                height={20}
-                                stroke="currentColor"
-                                viewBox="0 0 24 24"
-                                width={20}
-                              >
-                                <path d="M12 5l0 14" />
-                                <path d="M5 12l14 0" />
-                              </svg>
-                              <span className="ml-3 text-left">
-                                {showDetails
-                                  ? 'Hide Details'
-                                  : 'Go into more detail'}
-                              </span>
+                              <div className="flex flex-row w-full h-4 sm:h-auto">
+                                <svg
+                                  className="size-8 stroke-2 transition-transform duration-300"
+                                  fill="none"
+                                  height={20}
+                                  stroke="currentColor"
+                                  viewBox="0 0 24 24"
+                                  width={20}
+                                >
+                                  <path d="M12 5l0 14" />
+                                  <path d="M5 12l14 0" />
+                                </svg>
+                                <span className="ml-3 text-left uppercase">
+                                  {showDetails
+                                    ? 'Hide Details'
+                                    : 'Go into more detail'}
+                                </span>
+                              </div>
+                              {!showDetails && (
+                                <small className="mt-1 text-[0.5rem] tracking-normal normal-case">
+                                  Only fill out what you want
+                                </small>
+                              )}
                             </button>
                           )}
                         </div>
@@ -257,7 +266,7 @@ const Contact = () => {
                   </FormProvider>
                 </div>
 
-                <div className="wnm-gradient flex-shrink-0 border-t border-gray-100 px-6 py-4 backdrop-blur">
+                <div className="wnm-gradient flex-shrink-0 border-t border-gray-100 px-6 py-4 backdrop-blur rounded-b-2xl">
                   <button
                     className="text-background w-full rounded-lg bg-indigo-500 py-3 font-mono text-sm font-bold shadow-lg transition-all hover:scale-[1.01] hover:opacity-90 active:scale-[0.99] disabled:opacity-50 disabled:hover:scale-100"
                     disabled={isSubmitting}

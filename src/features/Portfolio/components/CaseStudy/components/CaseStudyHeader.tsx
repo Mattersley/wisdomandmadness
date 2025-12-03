@@ -33,7 +33,9 @@ const CaseStudyHeader = ({ item, handleNext, handlePrev }: CardHeaderProps) => {
       '#ffffff': 'hover:bg-[#ffffff]',
       '#30b44a': 'hover:bg-[#30b44a]',
       '#9cb49c': 'hover:bg-[#9cb49c]',
-      '#27aae1': 'hover:bg-[#27aae1]'
+      '#27aae1': 'hover:bg-[#27aae1]',
+      '#303b74': 'hover:bg-[#303b74]',
+      '#393939': 'hover:bg-[#393939]'
     }
     return colours[colour]
   }

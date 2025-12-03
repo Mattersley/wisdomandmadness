@@ -17,7 +17,7 @@ const ManagerApproval = () => {
           Manager Approval
         </h3>
       </div>
-      <p className="mb-4 text-xs text-center text-gray-500 dark:text-gray-400">
+      <p className="mb-4 text-xs text-center text-gray-500">
         Our CEO (a very judgmental dog) requires a vibe
         check. Please submit a photo of your pet. If you do not
         have a pet, a drawing of a hypothetical pet is

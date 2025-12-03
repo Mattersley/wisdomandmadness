@@ -6,6 +6,12 @@ import Druid from '@/features/Portfolio/components/CaseStudy/components/Druid/Dr
 import Cupendium from '@/features/Portfolio/components/CaseStudy/components/Cupendium/Cupendium'
 import React, { useState } from 'react'
 import { ProjectType } from '@/features/Portfolio/data/projects.types'
+import LiquidInquirer from '@/features/Portfolio/components/CaseStudy/components/LiquidInquirer/LiquidInquirer'
+import CIMS from '@/features/Portfolio/components/CaseStudy/components/CIMS/CIMS'
+import GlassRoots from '@/features/Portfolio/components/CaseStudy/components/GlassRoots/GlassRoots'
+import SpiritFish from '@/features/Portfolio/components/CaseStudy/components/SpiritFish/SpiritFish'
+import Hattersleys from '@/features/Portfolio/components/CaseStudy/components/Hattersleys/Hattersleys'
+import Naturalist from '@/features/Portfolio/components/CaseStudy/components/Naturalist/Naturalist'
 
 interface ProjectContainerProps {
   currentProject: string;
@@ -47,6 +53,12 @@ const ProjectContainer = ({currentProject, direction, handleNext, handlePrev, it
           {currentProject === 'Pando' && <Pando />}
           {currentProject === 'Druid' && <Druid />}
           {currentProject === 'Cupendium' && <Cupendium />}
+          {currentProject === 'Naturalist' && <Naturalist />}
+          {currentProject === 'Hattersleys' && <Hattersleys />}
+          {currentProject === 'SpiritFish' && <SpiritFish />}
+          {currentProject === 'GlassRoots' && <GlassRoots />}
+          {currentProject === 'LI' && <LiquidInquirer />}
+          {currentProject === 'CIMS' && <CIMS />}
         </div>
       </CaseStudy>
     </>

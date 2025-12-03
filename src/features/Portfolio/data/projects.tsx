@@ -83,7 +83,7 @@ export const projects = [
       width: 250,
       height: 200
     },
-    served: ['Brand ID', 'Logo Design', 'Typography'],
+    served: ['Brand ID', 'Logo Design', 'Typography', 'Packaging', 'Website'],
     urls: []
   },
   { name: 'SpiritFish',
@@ -117,30 +117,32 @@ export const projects = [
   },
   { name: 'LI',
     z: 40,
-    bgColours: { 1: '#f4d03f', 2: '#16a085' },
+    bgColours: { 1: '#393939', 2: '#393939' },
+    bgImage: '/images/Portfolio/CaseStudies/LIBackground.png',
     bgOpacity: 1,
     dark: false,
     image: {
-      src: '/images/Portfolio/CaseStudies/CupendiumLogo.png',
-      alt: 'cupendium logo',
-      width: 400,
+      src: '/images/Portfolio/CaseStudies/LI.png',
+      alt: 'LI logo',
+      width: 350,
       height: 200
     },
-    served: ['Brand ID', 'Logo Design', 'Typography', 'Hosting', 'Web App'],
+    served: ['Brand ID', 'Logo Design', 'Typography'],
     urls: []
   },
   { name: 'CIMS',
     z: 40,
-    bgColours: { 1: '#f4d03f', 2: '#16a085' },
+    bgColours: { 1: '#303b74', 2: '#303b74' },
+    bgImage: '/images/Portfolio/CaseStudies/CIMSBackground.png',
     bgOpacity: 1,
     dark: false,
     image: {
-      src: '/images/Portfolio/CaseStudies/CupendiumLogo.png',
-      alt: 'cupendium logo',
-      width: 400,
-      height: 200
+      src: '/images/Portfolio/CaseStudies/CIMSLogo1.png',
+      alt: 'cims logo',
+      width: 250,
+      height: 400
     },
-    served: ['Brand ID', 'Logo Design', 'Typography', 'Hosting', 'Web App'],
+    served: ['Brand ID', 'Logo Design'],
     urls: []
   }
 ]
