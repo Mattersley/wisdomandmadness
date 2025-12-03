@@ -9,13 +9,21 @@ export const DesignInspiration = () => {
   })
 
   return (
-    <div className="space-y-4">
-      <div className="flex items-center justify-between">
-        <h3 className="text-xs font-bold tracking-wider text-indigo-500 uppercase">
-          05. Design Inspiration
+    <div className="space-y-4 p-4 border border-gray-200 rounded-xl bg-indigo-50/20">
+      <div className="flex items-center flex-col">
+        <p className={'font-mono opacity-50 text-2xl tracking-wider text-indigo-500 uppercase'}>
+          05.
+        </p>
+        <h3 className={'font-mono font-xl font-bold tracking-wider text-indigo-500 uppercase'}>
+          Design Inspiration
         </h3>
+        <p className="text-sm text-center text-gray-500 dark:text-gray-400">
+          Please provide links to websites that you found helpful or inspiring. You can explain in the additional notes above if you would like.
+        </p>
+      </div>
+      <div className="flex items-center justify-end">
         <button
-          className="text-[10px] font-bold tracking-wide text-blue-600 uppercase hover:underline dark:text-blue-400"
+          className="text-xs text-right font-bold font-mono tracking-widest text-indigo-600 uppercase hover:underline"
           onClick={() => append({ url: '' })}
           type="button"
         >
@@ -27,7 +35,7 @@ export const DesignInspiration = () => {
           <div key={field.id} className="flex gap-2">
             <input
               {...register(`inspiration.${index}.url`)}
-              className="flex-1 rounded-lg border border-gray-200 bg-transparent px-3 py-2.5 text-sm outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 dark:border-white/10 dark:focus:border-blue-400"
+              className="flex-1 text-center rounded-lg border border-gray-200 bg-transparent px-3 py-2.5 text-sm outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500"
               placeholder="https://example.com/awesome-design"
             />
             {index > 0 && (

@@ -23,7 +23,9 @@ const Footer = () => {
 const Section1 = () => (
   <>
     <div className="mx-auto mt-auto flex h-40 w-[80%] flex-row items-center justify-between border-b border-white/50 pt-5">
-      <div className="pointer-events-auto"><ContactButton transparent={true} /></div>
+      <div className="pointer-events-auto">
+        <ContactButton transparent={true} />
+      </div>
 
       <div className="mb-10 flex flex-col items-center">
         <div className="relative mr-6 size-24 text-white">

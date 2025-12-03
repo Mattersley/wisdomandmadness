@@ -5,13 +5,18 @@ export const ProjectVision = () => {
   const { register, formState: { errors } } = useFormContext<Inputs>()
 
   return (
-    <div className="space-y-6">
-      <h3 className="text-xs font-bold tracking-wider text-indigo-500 uppercase">
-        04. The Vision
+    <div className="space-y-6 p-4 border border-gray-200 rounded-xl bg-indigo-50/20">
+      <div className="flex items-center flex-col">
+      <p className={'font-mono opacity-50 text-2xl tracking-wider text-indigo-500 uppercase'}>
+        04.
+      </p>
+      <h3 className={'font-mono font-xl font-bold tracking-wider text-indigo-500 uppercase'}>
+        The Vision
       </h3>
+      </div>
 
-      <div className="space-y-2">
-        <label className="text-xs font-medium text-gray-500" htmlFor="status">
+      <div className="text-center">
+        <label className="text-xs font-mono uppercase tracking-widest text-center font-medium text-indigo-500" htmlFor="status">
           Current Status
         </label>
         <div className="grid grid-cols-1 gap-2 sm:grid-cols-3">
@@ -24,7 +29,7 @@ export const ProjectVision = () => {
                 {...register('projectStatus')}
                 className="peer sr-only"
               />
-              <div className="flex items-center justify-center rounded-lg border border-gray-200 py-2.5 text-xs font-medium transition-all peer-checked:border-blue-500 peer-checked:bg-blue-50 peer-checked:text-blue-700 hover:border-gray-300 dark:border-white/10 dark:peer-checked:border-blue-400 dark:peer-checked:bg-blue-900/20 dark:peer-checked:text-blue-400 dark:hover:border-white/20">
+              <div className="flex items-center justify-center rounded-lg border border-gray-200 py-2.5 text-xs font-medium transition-all peer-checked:border-indigo-500 peer-checked:bg-indigo-50 peer-checked:text-indigo-700 hover:border-gray-300">
                 {status.label}
               </div>
             </label>
@@ -32,8 +37,8 @@ export const ProjectVision = () => {
         </div>
       </div>
 
-      <div className="space-y-1.5">
-        <label className="text-xs font-medium text-gray-500" htmlFor="goal">
+      <div className="text-center">
+        <label className="text-xs font-medium font-mono uppercase text-indigo-500 tracking-widest" htmlFor="goal">
           What is the primary goal of this project?
         </label>
         <textarea
@@ -41,7 +46,7 @@ export const ProjectVision = () => {
           {...register('goals', {
             required: 'Please specify a goal'
           })}
-          className="w-full resize-none rounded-lg border border-gray-200 bg-transparent px-3 py-2.5 text-sm outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 dark:border-white/10 dark:focus:border-blue-400"
+          className="text-center w-full resize-none rounded-lg border border-gray-200 bg-transparent px-3 py-2.5 text-sm outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 dark:border-white/10 dark:focus:border-indigo-400"
           placeholder="e.g. Increase conversion rates, launch a new product..."
           rows={2}
         />
@@ -52,26 +57,26 @@ export const ProjectVision = () => {
         )}
       </div>
 
-      <div className="space-y-1.5">
-        <label className="text-xs font-medium text-gray-500" htmlFor="audience">
+      <div className="space-y-1.5 text-center">
+        <label className="text-xs font-mono text-center uppercase tracking-widest font-medium text-indigo-500" htmlFor="audience">
           Who is the target audience?
         </label>
         <input
           id="audience"
           {...register('targetAudience')}
-          className="w-full rounded-lg border border-gray-200 bg-transparent px-3 py-2.5 text-sm outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 dark:border-white/10 dark:focus:border-blue-400"
+          className="w-full text-center rounded-lg border border-gray-200 bg-transparent px-3 py-2.5 text-sm outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 dark:border-white/10 dark:focus:border-indigo-400"
           placeholder="e.g. Young professionals, B2B..."
         />
       </div>
 
-      <div className="space-y-1.5">
-        <label className="text-xs font-medium text-gray-500" htmlFor="additionalInfo">
+      <div className="space-y-1.5 text-center">
+        <label className="text-xs font-medium font-mono uppercase tracking-widest text-indigo-500" htmlFor="additionalInfo">
           Additional Details
         </label>
         <textarea
           id="additionalInfo"
           {...register('additionalInfo')}
-          className="w-full resize-none rounded-lg border border-gray-200 bg-transparent px-3 py-2.5 text-sm outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 dark:border-white/10 dark:focus:border-blue-400"
+          className="w-full text-center resize-none rounded-lg border border-gray-200 bg-transparent px-3 py-2.5 text-sm outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 dark:border-white/10 dark:focus:border-indigo-400"
           placeholder="Specific features, constraints, or burning questions..."
           rows={3}
         />

@@ -9,10 +9,16 @@ import ProjectVision from '@/features/Contact/components/ProjectVisionForm'
 import DesignInspiration from '@/features/Contact/components/DesignInspirationForm'
 import ManagerApproval from '@/features/Contact/components/ManagerApprovalPetSubmission'
 import { useContact } from '@/context/contactContext'
+import localFont from 'next/font/local'
+
+const instrumentFont = localFont({
+  src: '../../../public/fonts/InstrumentSerif-Regular.woff2'
+})
 
 const Contact = () => {
   const { isOpen, closeContact, openContact } = useContact()
   const [showDetails, setShowDetails] = useState(false)
+  const [simplePlease, setSimplePlease] = useState(false)
 
   const methods = useForm<Inputs>({
     defaultValues: {
@@ -37,6 +43,15 @@ const Contact = () => {
       document.body.style.overflow = 'unset'
     }
   }, [isOpen])
+
+  const handleChange = (event: {
+    target: { checked: boolean | ((prevState: boolean) => boolean) };
+  }) => {
+    setSimplePlease(event.target.checked)
+    if (event.target.checked) {
+      setShowDetails(false)
+    }
+  }
 
   const onSubmit: SubmitHandler<Inputs> = async (data: any) => {
     // Pass the form data
@@ -88,20 +103,18 @@ const Contact = () => {
             <div className="pointer-events-none fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6">
               <motion.div
                 animate={{ opacity: 1, scale: 1, y: 0 }}
-                className={`bg-background pointer-events-auto flex max-h-[90vh] w-full flex-col overflow-hidden rounded-2xl shadow-2xl transition-[max-width] duration-500 ease-in-out ${
-                  showDetails ? 'max-w-2xl lg:max-w-5xl' : 'max-w-2xl'
-                }`}
+                className={`bg-background pointer-events-auto flex max-h-[90vh] w-full flex-col overflow-hidden rounded-2xl shadow-2xl transition-[max-width] duration-500 ease-in-out ${showDetails ? 'max-w-2xl lg:max-w-5xl' : 'max-w-2xl'}`}
                 exit={{ opacity: 0, scale: 0.95, y: 20 }}
                 initial={{ opacity: 0, scale: 0.95, y: 20 }}
                 transition={{ duration: 0.2 }}
               >
-                <div className="wnm-gradient relative z-10 flex-shrink-0 border-b border-gray-100 px-6 py-5 text-white dark:border-white/10">
-                  <h2 className="font-mono text-xl font-bold tracking-tight">
+                <div className="wnm-gradient relative z-10 flex-shrink-0 border-b border-gray-100 px-6 py-5 text-center text-white dark:border-white/10">
+                  <h2
+                    className={`${instrumentFont.className} mt-6 text-4xl font-bold`}
+                  >
                     Project Inquiry
                   </h2>
-                  <p className="text-sm text-white">
-                    Tell us about your vision
-                  </p>
+                  <p className="mt-1 text-white">Tell us about your vision</p>
                   <button
                     className="absolute top-5 right-5 rounded-full p-1 text-white transition-colors hover:bg-gray-100 hover:text-gray-900 dark:hover:bg-white/10 dark:hover:text-white"
                     onClick={closeContact}
@@ -128,42 +141,73 @@ const Contact = () => {
                     <form
                       className={
                         showDetails
-                          ? 'space-y-10 lg:grid lg:grid-cols-2 lg:gap-8 lg:space-y-0'
-                          : 'space-y-10'
+                          ? 'space-y-6 lg:grid lg:grid-cols-2 lg:gap-6 lg:space-y-0'
+                          : 'space-y-6'
                       }
                       id="project-form"
                       onSubmit={handleSubmit(onSubmit)}
                     >
-                      <div className="space-y-10">
+                      <div className="space-y-6">
                         <ContactForm />
 
-                        <div className="flex justify-center">
-                          <button
-                            className="group flex items-center gap-2 text-xs font-bold tracking-widest text-gray-400 uppercase transition-colors hover:text-blue-500"
-                            onClick={() => setShowDetails(!showDetails)}
-                            type="button"
-                          >
-                            <span className="wnm-gradient bg-clip-text text-transparent">
-                              {showDetails
-                                ? 'Hide Details'
-                                : 'Go into more detail'}
-                            </span>
-                            <svg
-                              className={`h-4 w-4 transition-transform duration-300 ${
-                                showDetails ? 'rotate-180' : ''
-                              }`}
-                              fill="none"
-                              stroke="currentColor"
-                              viewBox="0 0 24 24"
+                        <div
+                          className={`glassmorphism ${!simplePlease ? 'grid grid-cols-3' : ''} w-full items-center justify-center rounded-xl border border-indigo-500/50 bg-indigo-500/10 px-6 py-4`}
+                        >
+                          <div className="relative col-span-2 mr-6 flex h-full flex-row items-center justify-center rounded-xl border border-indigo-500 p-4 text-center">
+                            <label
+                              className={`mr-4 w-full ${simplePlease ? 'text-center' : 'text-right'} font-mono text-xs font-bold text-indigo-500 uppercase`}
+                              htmlFor="spa"
                             >
-                              <path
-                                d="M19 9l-7 7-7-7"
+                              I just want a simple single page website please!
+                            </label>
+                            <input
+                              className="peer relative h-6 w-6 cursor-pointer appearance-none rounded-sm border-2 border-gray-500 checked:border-indigo-500 checked:bg-indigo-500"
+                              id="spa"
+                              name="spa"
+                              onChange={handleChange}
+                              type="checkbox"
+                            />
+                            <div className="pointer-events-none absolute right-3.5 hidden h-6 w-6 items-center justify-center stroke-white text-lg font-bold peer-checked:block">
+                              <svg
+                                fill="none"
+                                height="24"
+                                stroke="#ffffff"
                                 strokeLinecap="round"
                                 strokeLinejoin="round"
-                                strokeWidth={2}
-                              />
-                            </svg>
-                          </button>
+                                strokeWidth="2"
+                                viewBox="0 0 24 24"
+                                width="24"
+                                xmlns="http://www.w3.org/2000/svg"
+                              >
+                                <path d="M18 6l-12 12" />
+                                <path d="M6 6l12 12" />
+                              </svg>
+                            </div>
+                          </div>
+                          {!simplePlease && (
+                            <button
+                              className="group flex h-full w-full items-center justify-center rounded-xl border border-indigo-500 bg-indigo-500 p-3 font-mono text-xs font-bold tracking-widest text-white uppercase transition-colors hover:bg-white hover:text-indigo-500"
+                              onClick={() => setShowDetails(!showDetails)}
+                              type="button"
+                            >
+                              <svg
+                                className="size-8 stroke-2 transition-transform duration-300"
+                                fill="none"
+                                height={20}
+                                stroke="currentColor"
+                                viewBox="0 0 24 24"
+                                width={20}
+                              >
+                                <path d="M12 5l0 14" />
+                                <path d="M5 12l14 0" />
+                              </svg>
+                              <span className="ml-3 text-left">
+                                {showDetails
+                                  ? 'Hide Details'
+                                  : 'Go into more detail'}
+                              </span>
+                            </button>
+                          )}
                         </div>
 
                         <AnimatePresence>
@@ -213,7 +257,7 @@ const Contact = () => {
                   </FormProvider>
                 </div>
 
-                <div className="flex-shrink-0 border-t border-gray-100 bg-gray-50/80 px-6 py-4 backdrop-blur dark:border-white/10 dark:bg-white/5">
+                <div className="wnm-gradient flex-shrink-0 border-t border-gray-100 px-6 py-4 backdrop-blur">
                   <button
                     className="text-background w-full rounded-lg bg-indigo-500 py-3 font-mono text-sm font-bold shadow-lg transition-all hover:scale-[1.01] hover:opacity-90 active:scale-[0.99] disabled:opacity-50 disabled:hover:scale-100"
                     disabled={isSubmitting}
@@ -221,7 +265,7 @@ const Contact = () => {
                     type="submit"
                   >
                     <div className="flex flex-row items-center justify-center gap-2">
-                      {isSubmitting ? 'Sending...' : 'Submit Project Request'}
+                      {isSubmitting ? 'Sending...' : 'Submit'}
                       <svg
                         fill="none"
                         height="26"
