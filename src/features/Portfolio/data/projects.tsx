@@ -74,30 +74,26 @@ export const projects = [
   { name: 'Hattersleys',
     z: 20,
     bgColours: { 1: '#f4d03f', 2: '#16a085' },
+    bgImage: '/images/Portfolio/CaseStudies/HattersleysBackground.png',
     bgOpacity: 1,
     dark: false,
     image: {
-      src: '/images/Portfolio/CaseStudies/CupendiumLogo.png',
+      src: '/images/Portfolio/CaseStudies/HattersleysLogo.png',
       alt: 'Hattersleys Logo',
-      width: 400,
+      width: 250,
       height: 200
     },
-    served: ['Brand ID', 'Logo Design', 'Typography', 'Hosting', 'Web App'],
-    urls: [
-      {
-        url: 'https://www.cupendium.com',
-        favi: '/images/Portfolio/Favis/CupendiumICO.svg'
-      }
-    ]
+    served: ['Brand ID', 'Logo Design', 'Typography'],
+    urls: []
   },
   { name: 'SpiritFish',
     z: 20,
-    bgColours: { 1: '#30b44a', 2: '#9cb49c' },
+    bgColours: { 1: '#9cb49c', 2: '#9cb49c' },
     bgImage: '/images/Portfolio/CaseStudies/SpiritfishBackground.jpg',
     bgOpacity: 1,
     dark: true,
     image: {
-      src: '/images/Portfolio/CaseStudies/SpiritfishLogo.png',
+      src: '/images/Portfolio/CaseStudies/SpiritfishLogo1.png',
       alt: 'Spiritfish Logo',
       width: 450,
       height: 100
@@ -107,22 +103,17 @@ export const projects = [
   },
   { name: 'GlassRoots',
     z: 40,
-    bgColours: { 1: '#f4d03f', 2: '#16a085' },
+    bgColours: { 1: '#ffffff', 2: '#27aae1' },
     bgOpacity: 1,
     dark: false,
     image: {
-      src: '/images/Portfolio/CaseStudies/CupendiumLogo.png',
-      alt: 'cupendium logo',
-      width: 400,
+      src: '/images/Portfolio/CaseStudies/GlassrootsLogo.png',
+      alt: 'Glassroots Logo',
+      width: 250,
       height: 200
     },
-    served: ['Brand ID', 'Logo Design', 'Typography', 'Hosting', 'Web App'],
-    urls: [
-      {
-        url: 'https://www.cupendium.com',
-        favi: '/images/Portfolio/Favis/CupendiumICO.svg'
-      }
-    ]
+    served: ['Brand ID', 'Logo Design', 'Typography'],
+    urls: []
   },
   { name: 'LI',
     z: 40,
@@ -136,12 +127,7 @@ export const projects = [
       height: 200
     },
     served: ['Brand ID', 'Logo Design', 'Typography', 'Hosting', 'Web App'],
-    urls: [
-      {
-        url: 'https://www.cupendium.com',
-        favi: '/images/Portfolio/Favis/CupendiumICO.svg'
-      }
-    ]
+    urls: []
   },
   { name: 'CIMS',
     z: 40,
@@ -155,11 +141,6 @@ export const projects = [
       height: 200
     },
     served: ['Brand ID', 'Logo Design', 'Typography', 'Hosting', 'Web App'],
-    urls: [
-      {
-        url: 'https://www.cupendium.com',
-        favi: '/images/Portfolio/Favis/CupendiumICO.svg'
-      }
-    ]
+    urls: []
   }
 ]

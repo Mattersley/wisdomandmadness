@@ -15,7 +15,8 @@ const CaseStudyHeader = ({ item, handleNext, handlePrev }: CardHeaderProps) => {
       Cupendium: 'cup-gradient',
       Pando: 'pando-gradient',
       Druid: 'druid-gradient',
-      Naturalist: 'naturalist-gradient'
+      Naturalist: 'naturalist-gradient',
+      GlassRoots: 'glassroots-gradient'
     }
     return colours[item.name]
   }
@@ -29,7 +30,10 @@ const CaseStudyHeader = ({ item, handleNext, handlePrev }: CardHeaderProps) => {
       '#363C48': 'hover:bg-[#363C48]',
       '#1B1B19': 'hover:bg-[#1B1B19]',
       '#d6e9d4': 'hover:bg-[#d6e9d4]',
-      '#ffffff': 'hover:bg-[#ffffff]'
+      '#ffffff': 'hover:bg-[#ffffff]',
+      '#30b44a': 'hover:bg-[#30b44a]',
+      '#9cb49c': 'hover:bg-[#9cb49c]',
+      '#27aae1': 'hover:bg-[#27aae1]'
     }
     return colours[colour]
   }

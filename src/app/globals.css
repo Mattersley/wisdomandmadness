@@ -59,6 +59,10 @@
     @apply bg-gradient-to-tr from-[#d6e9d4] to-[#ffffff]
 }
 
+@utility glassroots-gradient {
+    @apply bg-gradient-to-r from-[#ffffff] to-[#27aae1]
+}
+
 @utility glassmorphism {
     background: rgba(255, 255, 255, 0.2);
     border-radius: 16px;
