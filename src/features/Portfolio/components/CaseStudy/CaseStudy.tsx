@@ -56,23 +56,38 @@ const CaseStudy = ({
         >
           <div className="relative h-full w-full">
             <button
-              className="absolute top-0 flex h-8 w-full flex-row items-center justify-between md:rounded-t-xl bg-red-900 px-10 font-bold tracking-widest text-red-600"
+              className="absolute top-8 flex h-8 w-full flex-row items-center justify-center pt-2 font-bold tracking-widest text-red-600 opacity-50 sm:top-0 sm:pb-2 sm:justify-between sm:bg-red-900 sm:opacity-100 md:rounded-t-xl"
               onClick={handleClose}
             >
+              <svg
+                className="sm:hidden"
+                fill="none"
+                height="20"
+                stroke="currentColor"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                viewBox="0 0 24 24"
+                width="20"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path d="M18 6 6 18" />
+                <path d="m6 6 12 12" />
+              </svg>
               <span className="hidden md:block">EXIT</span>
               <span className="hidden md:block">EXIT</span>
               <span className="hidden md:block">EXIT</span>
-              <span>EXIT</span>
-              <span>EXIT</span>
-              <span>EXIT</span>
-              <span>EXIT</span>
+              <span className="hidden sm:block">EXIT</span>
+              <span className="hidden sm:block">EXIT</span>
+              <span className="hidden sm:block">EXIT</span>
+              <span className="hidden sm:block">EXIT</span>
             </button>
-            <div className="flex h-full w-full flex-col items-center justify-center">
+            <div className="-mt-8 flex h-full w-full flex-col items-center justify-center sm:mt-0">
               {children}
             </div>
           </div>
         </motion.div>
-        )}
+      )}
     </AnimatePresence>
   )
 }
