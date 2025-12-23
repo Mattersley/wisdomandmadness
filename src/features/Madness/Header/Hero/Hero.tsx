@@ -1,0 +1,55 @@
+import LavaLamp from '@/features/Shared/LavaLamp/LavaLamp'
+import Nav from '@/features/Madness/Header/Nav/Nav'
+import ThreeD from '@/features/Shared/3dDonut/ThreeD'
+import Image from 'next/image'
+import React from 'react'
+import HeroText from '@/features/Madness/Header/Hero/HeroText'
+
+const Hero = () => {
+  return (
+    <div className="relative z-10 flex size-full md:-mb-24">
+      <div className="w-full flex-row md:px-20">
+        <Nav />
+        <ThreeD />
+        <div className="relative flex h-[95%] w-full flex-col md:gap-x-6">
+          <div className="relative mx-auto -mb-12 min-h-[120vh] w-[98%] rounded-3xl bg-white sm:mt-4 sm:min-h-[90vh] md:z-1 md:-mt-14 md:min-h-[95vh] md:w-full">
+            {/*Header Buttons BG*/}
+            <div className="absolute top-0 right-0 z-2 hidden h-18 w-md rounded-bl-3xl bg-neutral-950 md:block md:w-98 lg:w-md" />
+            {/*Corners of LavaLamp*/}
+            <div className="absolute top-18 right-0 z-10 hidden rotate-90 md:block">
+              <Image
+                alt="image"
+                height={20}
+                src={'/images/corner.png'}
+                width={20}
+              />
+            </div>
+            <div className="absolute top-0 right-112 z-10 hidden rotate-90 md:right-98 md:block lg:right-112">
+              <Image
+                alt="image"
+                height={20}
+                src={'/images/corner.png'}
+                width={20}
+              />
+            </div>
+            <div className="absolute top-26 right-6 z-2 flex flex-col gap-3 text-right text-xs">
+              <p>linear-gradient()</p>
+              <div className="flex flex-row justify-end gap-2">
+                <div className="size-4 rounded-[50%] bg-[#FC466B]" />
+                <p className="text-[#FC466B]">#FC466B</p>
+              </div>
+              <div className="flex flex-row justify-end gap-2">
+                <div className="size-4 rounded-[50%] bg-[#3F5EFB]" />
+                <p className="text-[#3F5EFB]">#3F5EFB</p>
+              </div>
+            </div>
+            <HeroText />
+            <LavaLamp />
+          </div>
+        </div>
+      </div>
+    </div>
+  )
+}
+
+export default Hero

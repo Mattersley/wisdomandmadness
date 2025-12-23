@@ -37,7 +37,7 @@ const LogoText = ({
 
   return (
     <div
-      className={`select-none relative mb-10 flex ${row ? 'flex-row md:items-baseline' : 'flex-col'} ${rightAlign ? 'items-end' : 'items-center'} justify-center gap-2 text-center`}
+      className={`relative mb-10 flex select-none ${row ? 'flex-row md:items-baseline' : 'flex-col'} ${rightAlign ? 'items-end' : 'items-center'} justify-center gap-2 text-center`}
     >
       <p
         className={`z-0 leading-32 ${row && 'md:mt-0'} ${textSizes(sizeW)} ${instrumentFont.className} ${colour ? 'text-white opacity-100' : 'opacity-30 hover:opacity-100'} `}
@@ -48,12 +48,12 @@ const LogoText = ({
       {/*  className={`${row && 'hidden'} absolute top-10 z-[1] h-20 w-full bg-gradient-to-t ${footer ? 'from-neutral-800' : 'from-neutral-950'}  to-transparent`}*/}
       {/*/>*/}
       <p
-        className={`absolute shadow-2xl ${rightAlign ? 'top-[6rem] -right-[2.01rem] z-[2] text-[#FC466B]' : 'top-24 right-4'} leading-0 ${row && 'sm:relative sm:top-0 sm:right-0 sm:-mx-4 sm:h-auto sm:pb-8 sm:leading-normal'} ${colour ? 'text-gray-400' : 'opacity-30 hover:opacity-100'} ${textSizes(sizeM)} scale-30`}
+        className={`absolute shadow-2xl ${rightAlign ? 'top-24 -right-[2.01rem] z-2 text-[#FC466B]' : 'top-24 right-4'} leading-0 ${row && 'sm:relative sm:top-0 sm:right-0 sm:-mx-4 sm:h-auto sm:pb-8 sm:leading-normal'} ${colour ? 'text-gray-400' : 'opacity-30 hover:opacity-100'} ${textSizes(sizeM)} scale-30`}
       >
         +
       </p>
       <p
-        className={`z-[2] -mt-26 leading-[9.5rem] drop-shadow drop-shadow-black/20 ${row && 'md:mt-0 md:drop-shadow-none'} ${textSizes(sizeM)} ${vagraFont.className} ${colour ? 'bg-gradient-to-tr bg-clip-text text-transparent' : 'opacity-30 hover:bg-gradient-to-tr hover:bg-clip-text hover:text-transparent hover:opacity-100'} from-[#3F5EFB] to-[#FC466B]`}
+        className={`z-2 -mt-26 leading-38 drop-shadow drop-shadow-black/20 ${row && 'md:mt-0 md:drop-shadow-none'} ${textSizes(sizeM)} ${vagraFont.className} ${colour ? 'bg-linear-to-tr bg-clip-text text-transparent' : 'opacity-30 hover:bg-linear-to-tr hover:bg-clip-text hover:text-transparent hover:opacity-100'} from-[#3F5EFB] to-[#FC466B]`}
       >
         Madness
       </p>

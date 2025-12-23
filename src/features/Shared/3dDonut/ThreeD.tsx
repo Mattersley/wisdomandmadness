@@ -3,7 +3,7 @@
 import { Canvas } from '@react-three/fiber'
 import React, { useRef } from 'react'
 import { OrbitControls } from '@react-three/drei'
-import LogoTitle from '@/features/Header/Hero/LogoTitle'
+import LogoTitle from '@/features/Madness/Header/Hero/LogoTitle'
 
 const ThreeD = () => {
   const ref = useRef(null)

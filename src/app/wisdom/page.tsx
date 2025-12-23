@@ -2,7 +2,7 @@
 
 import Link from 'next/link'
 import { useState } from 'react'
-import Egg from '@/features/Egg/Egg'
+import Egg from '@/features/Madness/Egg/Egg'
 
 const wnmAcii = `                                                                
                        ##               ##                      

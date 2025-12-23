@@ -16,6 +16,7 @@ interface CursorProps {
 
 // TODO: morph dot into arrows etc hovering over inputs
 // TODO: tap/touch
+// TODO: stop cursor creating scrollbars when near sides of screen
 
 const Cursor = ({helpMode}: CursorProps) => {
     // --- Refs ---
@@ -67,15 +68,15 @@ const Cursor = ({helpMode}: CursorProps) => {
     // --- Event Handlers ---
     const onMouseMove = useCallback(
         (event: MouseEvent) => {
-            const {pageX, pageY} = event
-            mousePosition.current = {x: pageX, y: pageY}
+            const {clientX, clientY} = event
+            mousePosition.current = {x: clientX, y: clientY}
 
             // Immediate positioning for the dot and text (no lag)
             if (cursorDot.current && cursorTextRef.current) {
-                cursorDot.current.style.top = `${pageY}px`
-                cursorDot.current.style.left = `${pageX}px`
-                cursorTextRef.current.style.top = `${pageY}px`
-                cursorTextRef.current.style.left = `${pageX}px`
+                cursorDot.current.style.top = `${clientY}px`
+                cursorDot.current.style.left = `${clientX}px`
+                cursorTextRef.current.style.top = `${clientY}px`
+                cursorTextRef.current.style.left = `${clientX}px`
             }
 
             if (!cursorVisible.current) {
@@ -132,17 +133,17 @@ const Cursor = ({helpMode}: CursorProps) => {
     return (
         <div className="hidden md:block">
             <div
-                className="pointer-events-none absolute top-1/2 left-1/2 z-[100] size-[12px] -translate-x-1/2 -translate-y-1/2 opacity-50 transition-transform"
+                className="pointer-events-none fixed top-1/2 left-1/2 z-[100] size-[12px] -translate-x-1/2 -translate-y-1/2 opacity-50 transition-transform"
                 id="cursor-dot-outline"
                 ref={cursorDotOutline}
             />
             <div
-                className="pointer-events-none absolute top-1/2 left-1/2 z-[100] size-[5px] -translate-x-1/2 -translate-y-1/2 rounded-2xl bg-[#ffffff] transition-opacity"
+                className="pointer-events-none fixed top-1/2 left-1/2 z-[100] size-[5px] -translate-x-1/2 -translate-y-1/2 rounded-2xl bg-[#ffffff] transition-opacity"
                 id="cursor-dot"
                 ref={cursorDot}
             />
             <div
-                className="pointer-events-none absolute top-1/2 left-1/2 z-[100] size-20 -translate-x-1/2 -translate-y-1/2 cursor-text rounded-2xl font-mono text-xs transition-all"
+                className="pointer-events-none fixed top-1/2 left-1/2 z-[100] size-20 -translate-x-1/2 -translate-y-1/2 cursor-text rounded-2xl font-mono text-xs transition-all"
                 id="cursor-text"
                 ref={cursorTextRef}
             >
