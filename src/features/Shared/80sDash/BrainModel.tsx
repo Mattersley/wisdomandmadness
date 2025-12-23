@@ -17,7 +17,7 @@ type GLTFResult = GLTF & {
   materials: {};
 };
 
-const Bubbles = ({ count, radius, height }) => {
+const Bubbles = ({ count, radius, height }: { count: number, radius: number, height: number }) => {
   const points = useMemo(
     () =>
       Array.from({ length: count }, () => ({
