@@ -129,7 +129,7 @@ const WaveLayer = ({
 
   return (
     <group>
-      <line geometry={lineGeometry}>
+      <line>
         <lineBasicMaterial
           color={color}
           linewidth={2}
@@ -138,7 +138,7 @@ const WaveLayer = ({
         />
       </line>
       {index < 3 && (
-        <line geometry={lineGeometry}>
+        <line>
           <lineBasicMaterial
             color={0x00ffff}
             linewidth={4}
