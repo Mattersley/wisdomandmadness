@@ -5,7 +5,7 @@ import Typewriter from '@/features/Shared/80sDash/Typewriter/Typewriter'
 import { motion } from 'motion/react'
 import { WormContext } from '@/context/wormContext'
 
-const wnmAcii = `                                                                
+const wnmAscii = `                                                                
                        ##               ##                      
                      #######          ##########                
                ##   #########       #### #########              
@@ -21,6 +21,40 @@ const wnmAcii = `
       ######  #######  ##### ###  #######   ######   ######     
       ####### ############  ##### ########  #######  #######    
        ######  #########      ##   #######   #####    ######`
+
+const wnmAscii2 = `                        .                    +-                       
+                      .>@@^:.             .~%@}::<+:.                 
+                    .^%@@@@@[:           .[@@].^@@@@#):               
+             :>+.   :(@@@@@@@#~        .<@@@=.(@@@@@@@@#~    ...      
+           .)@@@%*.   .>%@@@@{-       ~#@@@<. .-^@@@@@@{-  .<@@{*.    
+          ~#@@@@@@@-   .[@@@@{-      =@@@@@>.     ]@@@@}-.*#@@@@@@}:  
+          .:[@@@@@@~   .[@@@@{:      =@@@@@>.     [@@@@[:.~[@@@@@@@*  
+  .+%%*:.    ~%@@@@:   .[@@@@}:      +@@@@@>.     [@@@@[:    ^@@@@@+  
+.+#@@@@@}.   ~@@@@@.   .[@@@@}.      *@@@@@>.     [@@@@]:    *@@@@@=  
+.<#@@@@@#.   ~@@@@%    .[@@@@}.      *@@@@@^.     }@@@@].    ^@@@@@-  
+  .=@@@@#.   =@@@@%    .[@@@@}.      ^@@@@@^.     }@@@@(.    >@@@@@:  
+   ~@@@@#.   +@@@@#    .[@@@@}       >@@@@@^.     }@@@@(.    )@@@@@.  
+   ~@@@@#.   *@@@@{    .[@@@@[  =(:  <@@@@@^.    .{@@@@(.    (@@@@%   
+   =@@@@#.   ^@@@@[    .[@@@@[  *[:  <@@@@@*.    .{@@@@).    ]@@@@{   
+   +@@@@#.   <@@@@(    .[@@@@[  >]:  <@@@@@*     :{@@@@<     }@@@@}   
+   +@@@@#.   (@@@@(:   .[@@@@(  )(.  )@@@@%+.    -#@@@@>     {@@@@]   
+   *@@@@@%). [@@@@@@{- .[@@[-.>}%%}- (@@@@@@%(-  -#@@@@%].   {@@@@@]~ 
+   *@@@@@@@].[@@@@@@%<:}@%+    .@[:  (@@@@@@@@{: =#@@@@@@*   #@@@@@@(.
+   .-)@@@(=:..:^#@%*.>@%^.     .*=.  .-^#@@@%*:.  :<@@#*.    -)@@@{=. 
+       .         ..  -).                  ~:.       :.          =~.   `
+
+const wnmAscii3 = `            .=.        .+=...         
+          .=@@@#:     =@#-@@@+.       
+     .-@@-..=@@@+  .:#@%.:*@@@*.:@#:..
+ ... .+@@@+ .%@@=  .=@@#   *@@+-#@@@*.
+.*@%+ .*@@+ .%@@=  .=@@*   *@@+  =@@+.
+.+@@% .*@@- .%@@=  .=@@+   #@@=  +@@+.
+ :%@% .*@@: .%@@=...=@@+  .#@@=  *@@+.
+ :%@% .*@@: .%@%-+:.=@@=  .#@@-  #@@=.
+ -%@% .#@@- .%@%:+:.=@@=  .#@%-  #@@=.
+ -%@@@=#@@@*+@=.:#+.=@@@@+.#@@@-.%@@@-
+  .+=. .:+:-*.   .. .:+*:. .+=.  .=*:.
+`
 
 const currentDate = new Date()
 const year = currentDate.getFullYear()
@@ -61,17 +95,27 @@ const Splash = () => {
       >
         <div className="relative col-span-6 -mt-20 flex size-full flex-col items-center justify-center sm:mt-0">
           <div className="sm:mb-10">
-            <pre className="scale-45 bg-linear-to-tl from-[#3F5EFB] to-[#FC466B] bg-clip-text leading-none whitespace-pre text-transparent sm:scale-70 md:scale-100">
+            <pre className="hidden bg-linear-to-tl from-[#3F5EFB] to-[#FC466B] bg-clip-text leading-none whitespace-pre text-transparent md:block sm:scale-60 md:scale-90">
               <Typewriter
                 change={false}
                 cursorSize={3}
                 delay={0}
                 removeAfter={true}
                 speed={8}
-                text={wnmAcii}
+                text={wnmAscii2}
               />
             </pre>
-            <div className="-mt-16 bg-linear-to-tl from-[#3F5EFB] to-[#FC466B] bg-clip-text text-center text-xl leading-none whitespace-pre text-transparent sm:-mt-10 md:mt-0 lg:mr-10">
+            <pre className="scale-70 sm:scale-100 bg-linear-to-tl from-[#3F5EFB] to-[#FC466B] bg-clip-text leading-none whitespace-pre text-transparent md:hidden">
+              <Typewriter
+                change={false}
+                cursorSize={3}
+                delay={0}
+                removeAfter={true}
+                speed={8}
+                text={wnmAscii3}
+              />
+            </pre>
+            <div className="-mt-12 bg-linear-to-tl from-[#3F5EFB] to-[#FC466B] bg-clip-text text-center leading-none whitespace-pre text-transparent sm:-mt-5 sm:text-xl md:-mt-3 lg:-mt-6 lg:text-2xl lg:mr-10">
               <Typewriter
                 change={false}
                 cursorSize={3}

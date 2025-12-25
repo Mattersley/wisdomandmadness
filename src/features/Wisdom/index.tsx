@@ -38,24 +38,24 @@ const Wisdom = () => {
         {/*      <p className="">WISDOM</p>*/}
         {/*    </button>*/}
         {/*  </div>*/}
-        <div className="my-10 h-10 w-20 rounded-full bg-gray-100 shadow-inner" />
+        <div className="mt-4 mb-20 h-10 w-20 rounded-full bg-gray-100 shadow-inner" />
         <div className="absolute top-8 right-8 w-10 text-gray-300">
           <WisdomLogo />
         </div>
         <p className="font-inter mt-2 rounded-4xl border-2 p-2 px-6 text-2xl">
           Observer
         </p>
-        <p className="font-vt323 pt-2 text-4xl text-rose-700">
+        <p className="font-vt323 pt-2 text-5xl text-rose-700">
           {observerNumber}
         </p>
         <p className="font-vt323 -mt-2 text-xl text-rose-700">
-          {today.toLocaleDateString('en-US', {
-            year: 'numeric',
-            month: 'short',
-            day: 'numeric'
+          {today.toLocaleDateString("en-US", {
+            year: "numeric",
+            month: "short",
+            day: "numeric",
           })}
         </p>
-        <p className="font-vt323 absolute top-24 -left-20 h-2 -rotate-90 p-2 px-6 text-xs text-gray-500">
+        <p className="font-vt323 absolute top-24 -left-[21vw] h-2 -rotate-90 p-2 px-6 text-xs text-gray-500 sm:-left-20">
           {rando * 10} SYNO-TRANSMUTE EVENT
         </p>
         <div className="absolute top-36 left-6 h-24 w-2 bg-gray-200" />
@@ -67,9 +67,9 @@ const Wisdom = () => {
           <div className="flex w-auto flex-row items-center justify-between">
             <div>
               <Image
-                alt={'Gradient Circle Image'}
+                alt={"Gradient Circle Image"}
                 height={35}
-                src={'/images/web-app-manifest-192x192.png'}
+                src={"/images/web-app-manifest-192x192.png"}
                 width={35}
               />
             </div>
@@ -81,47 +81,56 @@ const Wisdom = () => {
         <div className="h-12 w-full rounded-b-3xl bg-linear-to-r from-[#3F5EFB] to-[#FC466B]" />
       </div>
       <div className="col-span-10 mt-10 px-10 xl:mt-0">
-        <div className="hidden relative xl:flex w-full flex-row items-center justify-between gap-2 border-y border-b-2 border-gray-200 border-b-gray-400 px-2 py-2">
-          <div className="flex flex-row justify-center text-gray-500">
-            <p className="mt-5 ml-2 text-xs tracking-widest">WORK</p>
-          </div>
-          <div className="flex flex-row">
-            <svg
-              fill="none"
-              height="16"
-              stroke="currentColor"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth="1"
-              viewBox="0 0 24 24"
-              width="16"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path d="M10 10m-7 0a7 7 0 1 0 14 0a7 7 0 1 0 -14 0"></path>
-              <path d="M21 21l-6 -6"></path>
-            </svg>
-            <svg
-              fill="none"
-              height="16"
-              stroke="currentColor"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth="1"
-              viewBox="0 0 24 24"
-              width="16"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path d="M12 12m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0"></path>
-              <path d="M12 19m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0"></path>
-              <path d="M12 5m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0"></path>
-            </svg>
-          </div>
+        {/*<div className="relative hidden w-full flex-row items-center justify-between gap-2 border-y border-b-2 border-gray-200 border-b-gray-400 px-2 py-2 xl:flex">*/}
+        {/*  <div className="flex flex-row justify-center text-gray-500">*/}
+        {/*    <p className="mt-5 ml-2 text-xs tracking-widest">WORK</p>*/}
+        {/*  </div>*/}
+        {/*  <div className="flex flex-row">*/}
+        {/*    <svg*/}
+        {/*      fill="none"*/}
+        {/*      height="16"*/}
+        {/*      stroke="currentColor"*/}
+        {/*      strokeLinecap="round"*/}
+        {/*      strokeLinejoin="round"*/}
+        {/*      strokeWidth="1"*/}
+        {/*      viewBox="0 0 24 24"*/}
+        {/*      width="16"*/}
+        {/*      xmlns="http://www.w3.org/2000/svg"*/}
+        {/*    >*/}
+        {/*      <path d="M10 10m-7 0a7 7 0 1 0 14 0a7 7 0 1 0 -14 0"></path>*/}
+        {/*      <path d="M21 21l-6 -6"></path>*/}
+        {/*    </svg>*/}
+        {/*    <svg*/}
+        {/*      fill="none"*/}
+        {/*      height="16"*/}
+        {/*      stroke="currentColor"*/}
+        {/*      strokeLinecap="round"*/}
+        {/*      strokeLinejoin="round"*/}
+        {/*      strokeWidth="1"*/}
+        {/*      viewBox="0 0 24 24"*/}
+        {/*      width="16"*/}
+        {/*      xmlns="http://www.w3.org/2000/svg"*/}
+        {/*    >*/}
+        {/*      <path d="M12 12m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0"></path>*/}
+        {/*      <path d="M12 19m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0"></path>*/}
+        {/*      <path d="M12 5m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0"></path>*/}
+        {/*    </svg>*/}
+        {/*  </div>*/}
+        {/*</div>*/}
+        <div className="grid h-full gap-0 grid-cols-12 grid-rows-6 bg-linear-to-r  rounded-3xl p-10">
+          <div>WORK 1</div>
+        {/*  {Array.from({ length: 59 }).map((_, i) => (*/}
+        {/*    <div*/}
+        {/*      key={i}*/}
+        {/*      className={`-mt-px -ml-px border border-gray-300 bg-indigo-600/10 ${(i % 4) + Math.floor(Math.random() * 3) === 0 && "row-span-2 rounded-full bg-indigo-600/50"} ${(i % 2) + Math.floor(Math.random() * 7.5) === 0 ? "col-span-2 row-span-1 rounded-full bg-rose-600/50" : "col-span-1 row-span-1 rounded-xl"}`}*/}
+        {/*    />*/}
+        {/*  ))}*/}
         </div>
       </div>
       <div className="absolute right-10 bottom-10 flex flex-row">
         <div className="font-inter relative flex w-full tracking-widest sm:flex-col sm:items-end sm:justify-end">
           <button
-            className="mr-2 sm:mr-0 flex size-14 items-center justify-center rounded-full bg-gray-300 text-indigo-600 hover:bg-white sm:mb-2"
+            className="mr-2 flex size-14 items-center justify-center rounded-full bg-gray-300 text-indigo-600 hover:bg-white sm:mr-0 sm:mb-2"
             onClick={() => setSeenSplash(false)}
             type="button"
           >
@@ -144,7 +153,7 @@ const Wisdom = () => {
           </button>
           <button
             className="flex h-14 w-40 items-center justify-center gap-2 rounded-4xl bg-linear-to-r from-[#3F5EFB] to-[#FC466B] text-sm text-white hover:bg-linear-to-b sm:h-52 sm:w-14 sm:flex-col sm:bg-linear-to-t sm:pt-4 sm:pb-6"
-            onClick={() => setWorm('madness')}
+            onClick={() => setWorm("madness")}
             type="button"
           >
             <svg
@@ -163,11 +172,11 @@ const Wisdom = () => {
               MADNESS
             </p>
           </button>
-          <div className="-ml-4 size-14 rounded-full bg-linear-to-r from-[#3F5EFB] to-[#FC466B] opacity-80 hover:bg-linear-to-b sm:-mt-6 sm:ml-0 sm:bg-linear-to-t"></div>
+          <div className="-ml-4 hidden size-14 rounded-full bg-linear-to-r from-[#3F5EFB] to-[#FC466B] opacity-80 hover:bg-linear-to-b sm:-mt-6 sm:ml-0 sm:block sm:bg-linear-to-t"></div>
         </div>
       </div>
     </div>
-  )
+  );
 }
 
 export default Wisdom
