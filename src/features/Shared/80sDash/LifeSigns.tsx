@@ -145,7 +145,7 @@ const InteractiveLifeMonitor: React.FC = () => {
 
   return (
     <div className="relative flex max-w-60 flex-col gap-2 overflow-hidden border-[#1a1a1a] bg-[#0a0a0a] p-6">
-      {/* Header Info */}
+      {/* features Info */}
       <div
         className="relative flex flex-col items-start justify-between border-b-2 pb-2"
         style={{ borderColor: themeColor }}

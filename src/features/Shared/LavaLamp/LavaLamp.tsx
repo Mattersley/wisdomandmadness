@@ -1,66 +1,44 @@
 'use client'
 
 import './LavaLamp.css'
-import { useEffect } from 'react'
-import useIsSSR from '@/hooks/useIsSSR'
+import React, { memo } from 'react'
 
-const LavaLamp = () => {
-  const isSSR = useIsSSR()
-
-  useEffect(() => {
-    document.addEventListener('DOMContentLoaded', () => {
-      let curX = 0
-      let curY = 0
-      let tgX = 0
-      let tgY = 0
-
-      function move() {
-        curX += (tgX - curX) / 20
-        curY += (tgY - curY) / 20
-        // interBubble.style.transform = `translate(${Math.round(curX)}px, ${Math.round(curY)}px)`
-        requestAnimationFrame(() => {
-          move()
-        })
-      }
-    })
-  }, [])
-
-  // Only render on client side to avoid hydration mismatch
-  if (isSSR) {
-    return null
-  }
-
-  return (
-    <div className="relative mx-auto w-full h-full opacity-60 overflow-clip rounded-3xl">
-      <div className="gradient-bg rounded-3xl">
-        <svg xmlns="http://www.w3.org/2000/svg">
-          <defs>
+const GooeyFilter = () => (
+    <svg aria-hidden="true" className="pointer-events-none absolute h-0 w-0 overflow-hidden">
+        <defs>
             <filter id="goo">
-              <feGaussianBlur
-                in="SourceGraphic"
-                result="blur-sm"
-                stdDeviation="10"
-              />
-              <feColorMatrix
-                in="blur-sm"
-                mode="matrix"
-                result="goo"
-                values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 18 -8"
-              />
-              <feBlend in="SourceGraphic" in2="goo" />
+                <feGaussianBlur in="SourceGraphic" result="blur" stdDeviation="10"/>
+                <feColorMatrix
+                    in="blur"
+                    mode="matrix"
+                    result="goo"
+                    values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 18 -8"
+                />
+                <feBlend in="SourceGraphic" in2="goo"/>
             </filter>
-          </defs>
-        </svg>
-        <div className="gradients-container">
-          <div className="g1" />
-          <div className="g2" />
-          <div className="g3" />
-          <div className="g4" />
-          <div className="g5" />
+        </defs>
+    </svg>
+)
+
+// Use memo to prevent LavaLamp from rerendering when features or HeroText rerenders
+const LavaLamp = memo(() => {
+    return (
+        <div className="absolute inset-0 z-0 overflow-clip rounded-3xl opacity-60">
+            <div className="gradient-bg h-full w-full">
+                <GooeyFilter/>
+
+                <div className="gradients-container">
+                    <div className="g1"/>
+                    <div className="g2"/>
+                    <div className="g3"/>
+                    <div className="g4"/>
+                    <div className="g5"/>
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
-  )
-}
+    )
+})
+
+LavaLamp.displayName = 'LavaLamp'
 
 export default LavaLamp

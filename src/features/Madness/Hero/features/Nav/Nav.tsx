@@ -1,11 +1,22 @@
 import WisdomAndMadnessLogo from '@/assets/WisdomLogo'
 import Link from 'next/link'
 import Contact from '@/features/Madness/Contact/Contact'
-import { useContext } from 'react'
+import React, { useContext } from 'react'
 import { WormContext } from '@/context/wormContext'
+import {
+  Move,
+  RefreshCcw,
+  RotateCw,
+  Bomb,
+  Ghost,
+  Drum,
+  Activity,
+  Sparkles,
+  Flame
+} from 'lucide-react'
 
 const Nav = () => {
-  const { setWorm, setSeenSplash } = useContext(WormContext)
+  const { setWorm, setSeenSplash, logoState, setLogoState } = useContext(WormContext)
 
   return (
     <div className="relative flex w-full flex-col items-end justify-between gap-y-4 px-4 pt-6 sm:px-6 sm:pt-8 md:px-0">
@@ -27,6 +38,73 @@ const Nav = () => {
           </Link>
         </div>
       </div>
+          {/*<div className="absolute top-36 left-24 z-50">*/}
+          {/*  <div className="mr-4 flex flex-row items-center gap-2 rounded-full bg-white/10 p-2 backdrop-blur-sm">*/}
+          {/*    <button*/}
+          {/*      className={`rounded-lg p-2 transition-all duration-300 ${logoState === 'default' ? 'bg-indigo-500 text-white scale-110' : 'text-neutral-400 hover:bg-white/10'}`}*/}
+          {/*      onClick={() => setLogoState('default')}*/}
+          {/*      title="Reset"*/}
+          {/*    >*/}
+          {/*      <RefreshCcw size={16} />*/}
+          {/*    </button>*/}
+          {/*    <button*/}
+          {/*      className={`rounded-lg p-2 transition-all duration-300 ${logoState === 'spin' ? 'bg-indigo-500 text-white scale-110' : 'text-neutral-400 hover:bg-white/10'}`}*/}
+          {/*      onClick={() => setLogoState('spin')}*/}
+          {/*      title="Hyper Spin"*/}
+          {/*    >*/}
+          {/*      <RotateCw size={16} />*/}
+          {/*    </button>*/}
+          {/*    <button*/}
+          {/*      className={`rounded-lg p-2 transition-all duration-300 ${logoState === 'float' ? 'bg-indigo-500 text-white scale-110' : 'text-neutral-400 hover:bg-white/10'}`}*/}
+          {/*      onClick={() => setLogoState('float')}*/}
+          {/*      title="Zero Gravity"*/}
+          {/*    >*/}
+          {/*      <Move size={16} />*/}
+          {/*    </button>*/}
+          {/*    <button*/}
+          {/*      className={`rounded-lg p-2 transition-all duration-300 ${logoState === 'explode' ? 'bg-rose-500 text-white scale-110' : 'text-neutral-400 hover:bg-white/10'}`}*/}
+          {/*      onClick={() => setLogoState('explode')}*/}
+          {/*      title="Explode"*/}
+          {/*    >*/}
+          {/*      <Bomb size={16} />*/}
+          {/*    </button>*/}
+          {/*    <button*/}
+          {/*      className={`rounded-lg p-2 transition-all duration-300 ${logoState === 'ghost' ? 'bg-indigo-500 text-white scale-110' : 'text-neutral-400 hover:bg-white/10'}`}*/}
+          {/*      onClick={() => setLogoState('ghost')}*/}
+          {/*      title="Ghost Mode"*/}
+          {/*    >*/}
+          {/*      <Ghost size={16} />*/}
+          {/*    </button>*/}
+          {/*    <button*/}
+          {/*      className={`rounded-lg p-2 transition-all duration-300 ${logoState === 'pulse' ? 'bg-indigo-500 text-white scale-110' : 'text-neutral-400 hover:bg-white/10'}`}*/}
+          {/*      onClick={() => setLogoState('pulse')}*/}
+          {/*      title="Heartbeat"*/}
+          {/*    >*/}
+          {/*      <Activity size={16} />*/}
+          {/*    </button>*/}
+          {/*    <button*/}
+          {/*      className={`rounded-lg p-2 transition-all duration-300 ${logoState === 'jiggle' ? 'bg-indigo-500 text-white scale-110' : 'text-neutral-400 hover:bg-white/10'}`}*/}
+          {/*      onClick={() => setLogoState('jiggle')}*/}
+          {/*      title="Jiggle"*/}
+          {/*    >*/}
+          {/*      <Drum size={16} />*/}
+          {/*    </button>*/}
+          {/*    <button*/}
+          {/*      className={`rounded-lg p-2 transition-all duration-300 ${logoState === 'disco' ? 'bg-fuchsia-500 text-white scale-110' : 'text-neutral-400 hover:bg-white/10'}`}*/}
+          {/*      onClick={() => setLogoState('disco')}*/}
+          {/*      title="Disco"*/}
+          {/*    >*/}
+          {/*      <Sparkles size={16} />*/}
+          {/*    </button>*/}
+          {/*    <button*/}
+          {/*      className={`rounded-lg p-2 transition-all duration-300 ${logoState === 'meltdown' ? 'bg-orange-600 text-white scale-110' : 'text-neutral-400 hover:bg-white/10'}`}*/}
+          {/*      onClick={() => setLogoState('meltdown')}*/}
+          {/*      title="Meltdown"*/}
+          {/*    >*/}
+          {/*      <Flame size={16} />*/}
+          {/*    </button>*/}
+          {/*  </div>*/}
+          {/*</div>*/}
       <div className="z-50 mx-auto flex flex-row gap-2 md:mx-0 md:ml-2">
         <div className="z-20 flex flex-row gap-2 self-end">
           <button

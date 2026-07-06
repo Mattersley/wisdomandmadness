@@ -1,10 +1,10 @@
-import Header from '@/features/Madness/Header/Header'
 import Portfolio from '@/features/Madness/Portfolio/Portfolio'
 import Parallax from '@/features/Madness/Parallax/Parallax'
 import About from '@/features/Madness/About/About'
 import Footer from '@/features/Madness/Footer/Footer'
 import { useContext } from 'react'
 import { WormContext } from '@/context/wormContext'
+import Hero from '@/features/Madness/Hero'
 
 const Madness = ({containerRef}: {containerRef: React.RefObject<HTMLDivElement | null>}) => {
   const { setCurrentProject, currentProject } = useContext(WormContext)
@@ -12,7 +12,7 @@ const Madness = ({containerRef}: {containerRef: React.RefObject<HTMLDivElement |
   return (
     <>
       <section className="w-full snap-start">
-        <Header />
+        <Hero />
       </section>
       <section className="w-full snap-mandatory snap-start">
         <Portfolio

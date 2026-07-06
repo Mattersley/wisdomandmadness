@@ -1,6 +1,6 @@
 'use client'
 
-import { useContext } from 'react'
+import { Suspense, useContext } from 'react'
 import Cursor from '@/features/Shared/Cursor/components/Cursor'
 import EggCounter from '@/features/Madness/Egg/EggCounter'
 import { useRef } from 'react'
@@ -24,7 +24,6 @@ const Home = () => {
           <div className="fixed right-6 bottom-6 z-50 mr-20">
             <EggCounter />
           </div>
-          <Cursor helpMode />
           <main
             className={`no-scrollbar h-screen w-screen overflow-x-clip sm:snap-y ${isOpen ? 'overflow-hidden' : 'overflow-auto'} ${currentProject ? 'overflow-hidden' : 'overflow-auto'}`}
             ref={containerRef}

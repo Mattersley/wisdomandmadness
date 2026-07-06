@@ -33,13 +33,13 @@ const Card = ({ closing, current, name, setClosing, setCurrent, z }: CardProps) 
         >
           <Image
           alt="image"
-          className="relative rounded-xl [touch-action:none]"
+          className="relative rounded-xl touch-none"
           fill
           sizes="(max-width: 768px) 288px, 240px"
           src={`/images/Portfolio/Cards/${name}BG.png`}
         />
         <div
-          className="absolute inset-0 grid place-content-center rounded-xl [touch-action:none]"
+          className="absolute inset-0 grid place-content-center rounded-xl touch-none"
           style={{
             transform: `translateZ(${z}px)`,
             transformStyle: 'preserve-3d'

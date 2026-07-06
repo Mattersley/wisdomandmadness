@@ -6,7 +6,7 @@ const PortfolioNavBar = () => {
   return (
     <div className="relative flex h-16 w-full flex-row items-center justify-between gap-2 border-y border-b-2 border-gray-200 border-b-black px-2">
       {/*<div className="hidden flex-row items-center gap-2 text-xs md:flex">*/}
-      {/*  <p>Web App</p>*/}
+      {/*  <p>Web Dither</p>*/}
       {/*  <p>UI/UX</p>*/}
       {/*  <p>F&B</p>*/}
       {/*  <p>Branding</p>*/}

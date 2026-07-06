@@ -1,15 +1,17 @@
-import { AnimatePresence, motion } from 'motion/react'
-import React, { SetStateAction } from 'react'
+import { AnimatePresence, motion, useScroll, useTransform } from 'motion/react'
+import React, { SetStateAction, useRef } from 'react'
 
 interface CaseStudyProps {
   children: React.ReactNode;
   closing: boolean;
+  containerNode?: HTMLDivElement | null;
   direction?: number;
   open: boolean;
   setClosing: React.Dispatch<React.SetStateAction<boolean>>;
   setCurrent: React.Dispatch<React.SetStateAction<string>>;
   setDirection: React.Dispatch<SetStateAction<number>>;
 }
+
 
 const variants = {
   initial: (custom: number) => ({
@@ -26,8 +28,27 @@ const variants = {
   })
 }
 
+const exitButtonVariants = {
+  hovered: {
+    height: '80px'
+  },
+  idle: {
+    height: '32px'
+  }
+}
+
+const marginTopVariants = {
+  hovered: {
+    marginTop: '80px'
+  },
+  idle: {
+    marginTop: '0px'
+  }
+}
+
 const CaseStudy = ({
   children,
+  containerNode,
   closing,
   direction = 0,
   open,
@@ -55,9 +76,13 @@ const CaseStudy = ({
           variants={variants}
         >
           <div className="relative h-full w-full">
-            <button
-              className="absolute top-8 flex h-8 w-full flex-row items-center justify-center pt-2 font-bold tracking-widest text-red-600 opacity-50 sm:top-0 sm:pb-2 sm:justify-between sm:bg-red-900 sm:opacity-100 md:rounded-t-xl"
+            <motion.button
+              className="absolute z-20 top-8 flex h-8 w-full flex-row items-center justify-center pt-2 font-bold tracking-widest text-red-600 opacity-50 sm:top-0 sm:pb-2 sm:justify-between sm:bg-red-900 sm:opacity-100"
+              initial="idle"
+              layout
               onClick={handleClose}
+              variants={exitButtonVariants}
+              whileHover='hovered'
             >
               <svg
                 className="sm:hidden"
@@ -81,10 +106,10 @@ const CaseStudy = ({
               <span className="hidden sm:block">EXIT</span>
               <span className="hidden sm:block">EXIT</span>
               <span className="hidden sm:block">EXIT</span>
-            </button>
-            <div className="-mt-8 flex h-full w-full flex-col items-center justify-center sm:mt-0">
+            </motion.button>
+            <motion.div className="-z-10 -mt-8 flex h-full w-full flex-col items-center justify-center sm:mt-0" variants={marginTopVariants}>
               {children}
-            </div>
+            </motion.div>
           </div>
         </motion.div>
       )}

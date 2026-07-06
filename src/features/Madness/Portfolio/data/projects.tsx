@@ -11,7 +11,7 @@ export const projects = [
       width: 150,
       height: 75
     },
-    served: ['Brand ID', 'Logo Design', 'Typography', 'Hosting', 'Website', 'Web App'],
+    served: ['Brand ID', 'Logo Design', 'Typography', 'Hosting', 'Website', 'Web Dither'],
     urls: [
       {
         url: 'https://www.pandonuts.club',
@@ -34,7 +34,7 @@ export const projects = [
       width: 400,
       height: 200
     },
-    served: ['Brand ID', 'Logo Design', 'Typography', 'Hosting', 'Web App'],
+    served: ['Brand ID', 'Logo Design', 'Typography', 'Hosting', 'Web Dither'],
     urls: [
       {
         url: 'https://www.cupendium.com',
@@ -54,7 +54,7 @@ export const projects = [
       width: 130,
       height: 100
     },
-    served: ['Brand ID', 'Logo Design', 'Typography', 'Hosting', 'Web App'],
+    served: ['Brand ID', 'Logo Design', 'Typography', 'Hosting', 'Web Dither'],
     urls: []
   },
   { name: 'Naturalist',
@@ -98,7 +98,7 @@ export const projects = [
       width: 450,
       height: 100
     },
-    served: ['Brand ID', 'Logo Design', 'Typography', 'Web App'],
+    served: ['Brand ID', 'Logo Design', 'Typography', 'Web Dither'],
     urls: []
   },
   { name: 'GlassRoots',
