@@ -35,6 +35,10 @@ const createInitialEggState = {
         id: 5,
         name: 'myName',
         found: false
+      },{
+        id: 6,
+        name: 'IDCard',
+        found: false
       }
       ]
   }

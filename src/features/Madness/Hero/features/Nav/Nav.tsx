@@ -3,20 +3,9 @@ import Link from 'next/link'
 import Contact from '@/features/Madness/Contact/Contact'
 import React, { useContext } from 'react'
 import { WormContext } from '@/context/wormContext'
-import {
-  Move,
-  RefreshCcw,
-  RotateCw,
-  Bomb,
-  Ghost,
-  Drum,
-  Activity,
-  Sparkles,
-  Flame
-} from 'lucide-react'
 
 const Nav = () => {
-  const { setWorm, setSeenSplash, logoState, setLogoState } = useContext(WormContext)
+  const { setWorm } = useContext(WormContext)
 
   return (
     <div className="relative flex w-full flex-col items-end justify-between gap-y-4 px-4 pt-6 sm:px-6 sm:pt-8 md:px-0">
@@ -132,7 +121,6 @@ const Nav = () => {
           </button>
           <button
             className="absolute top-8 right-[7vw] flex size-12 items-center justify-center rounded-[50%] bg-indigo-500 text-white hover:bg-gray-500 sm:relative sm:top-auto sm:right-auto sm:size-16"
-            onClick={() => setSeenSplash(false)}
             type="button"
           >
             <span className="size-full">

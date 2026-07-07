@@ -2,9 +2,13 @@ import React, { useContext } from 'react'
 import { WormContext } from '@/context/wormContext'
 import IDCard from '@/features/Wisdom/features/IDCard/IDCard'
 import { DitheringShader } from '@/features/Dither/components/ui/dithering-shader'
+import Egg from '@/features/Madness/Egg/Egg'
+import { EggContext } from '@/context/eggContext'
 
 const Wisdom = () => {
-  const { setWorm, setSeenSplash } = useContext(WormContext)
+  const { setWorm } = useContext(WormContext)
+  const { eggs } = useContext(EggContext)
+  const showHiddenEgg = eggs.eggs !== 0 && !eggs.eggList[6].found
 
   return (
     <div className="flex h-screen w-screen flex-col items-center justify-center bg-gray-100">
@@ -36,8 +40,17 @@ const Wisdom = () => {
           <p className="font-vt323 text-6xl">Welcome Observer.</p>
           <p className="text-xl">Your ID card has been assigned</p>
         </div>
-        <div className="relative" style={{ contain: 'layout' }}>
+        {!showHiddenEgg && (
+          <div className="absolute top-1/2 right-1/2 -mt-17 -mr-15 -translate-x-1/2 -translate-y-1/2 text-6xl">
+            <span>🥚</span>
+            <span className="absolute right-9 z-50 -mt-7 -mr-4 scale-290 text-transparent">
+              <Egg id={6} />
+            </span>
+          </div>
+        )}
+        <div className="relative" style={{ contain: "layout" }}>
           {/* Fixed dimensions container to prevent layout shifts */}
+
           <div className="relative h-[700px] w-[400px] overflow-y-hidden">
             <IDCard />
           </div>
@@ -46,31 +59,30 @@ const Wisdom = () => {
 
       <div className="absolute right-10 bottom-10 flex flex-row">
         <div className="font-inter relative flex w-full tracking-widest sm:flex-col sm:items-end sm:justify-end">
+          {/*<button*/}
+          {/*  className="mr-2 flex size-14 items-center justify-center rounded-full bg-gray-300 text-indigo-600 hover:bg-white sm:mr-0 sm:mb-2"*/}
+          {/*  type="button"*/}
+          {/*>*/}
+          {/*  <svg*/}
+          {/*    fill="none"*/}
+          {/*    height="32"*/}
+          {/*    stroke="currentColor"*/}
+          {/*    strokeLinecap="round"*/}
+          {/*    strokeLinejoin="round"*/}
+          {/*    strokeWidth="1"*/}
+          {/*    viewBox="0 0 24 24"*/}
+          {/*    width="32"*/}
+          {/*    xmlns="http://www.w3.org/2000/svg"*/}
+          {/*  >*/}
+          {/*    <path d="M20 11a8.1 8.1 0 0 0 -15.5 -2m-.5 -4v4h4" />*/}
+          {/*    <path d="M4 13a8.1 8.1 0 0 0 15.5 2m.5 4v-4h-4" />*/}
+          {/*    <path d="M12 9l0 3" />*/}
+          {/*    <path d="M12 15l.01 0" />*/}
+          {/*  </svg>*/}
+          {/*</button>*/}
           <button
-            className="mr-2 flex size-14 items-center justify-center rounded-full bg-gray-300 text-indigo-600 hover:bg-white sm:mr-0 sm:mb-2"
-            onClick={() => setSeenSplash(false)}
-            type="button"
-          >
-            <svg
-              fill="none"
-              height="32"
-              stroke="currentColor"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth="1"
-              viewBox="0 0 24 24"
-              width="32"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path d="M20 11a8.1 8.1 0 0 0 -15.5 -2m-.5 -4v4h4" />
-              <path d="M4 13a8.1 8.1 0 0 0 15.5 2m.5 4v-4h-4" />
-              <path d="M12 9l0 3" />
-              <path d="M12 15l.01 0" />
-            </svg>
-          </button>
-          <button
-            className="rounded-full bg-linear-to-r pt-2 flex size-14 items-center justify-center from-[#3F5EFB] to-[#FC466B] text-sm text-white hover:bg-linear-to-b sm:bg-linear-to-t"
-            onClick={() => setWorm('madness')}
+            className="flex size-14 items-center justify-center rounded-full bg-linear-to-r from-[#3F5EFB] to-[#FC466B] pt-2 text-sm text-white hover:bg-linear-to-b sm:bg-linear-to-t"
+            onClick={() => setWorm("madness")}
             type="button"
           >
             <svg
@@ -89,7 +101,7 @@ const Wisdom = () => {
         </div>
       </div>
     </div>
-  )
+  );
 }
 
 export default Wisdom

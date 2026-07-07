@@ -5,16 +5,14 @@ import Image from 'next/image'
 import React, { useContext } from 'react'
 import HeroText from '@/features/Madness/Hero/features/HeroText'
 import { WormContext } from '@/context/wormContext'
-import { DitheringShader } from '@/features/Dither/components/ui/dithering-shader'
-import { Brain, RefreshCcw, RotateCw, Zap } from 'lucide-react'
 
 const Hero = () => {
-  const { observerNumber, logoState, setLogoState } = useContext(WormContext)
+  const { observerNumber } = useContext(WormContext)
 
   return (
     <div className="w-screen snap-start bg-neutral-950 sm:pt-6 md:h-screen">
       <div className="relative z-10 flex size-full md:-mb-24">
-        <button className="font-vt323 absolute -top-2 left-[48vw] z-50 hidden rounded-2xl border px-3 text-neutral-700 hover:border-indigo-500 hover:bg-indigo-500 hover:text-white sm:block">
+        <button className="font-vt323 absolute -top-2 left-[48vw] z-40 hidden rounded-2xl border px-3 text-neutral-700 hover:border-indigo-500 hover:bg-indigo-500 hover:text-white sm:block">
           OBS#{observerNumber}-MADNESS
         </button>
         <div className="w-full flex-row md:px-20">
