@@ -1,11 +1,11 @@
 import React, { useContext } from 'react'
 import { WormContext } from '@/context/wormContext'
-import IDCard from '@/features/Wisdom/features/IDCard/IDCard'
+import IDCard from '@/features/ID/features/IDCard/IDCard'
 import { DitheringShader } from '@/features/Dither/components/ui/dithering-shader'
 import Egg from '@/features/Madness/Egg/Egg'
 import { EggContext } from '@/context/eggContext'
 
-const Wisdom = () => {
+const ID = () => {
   const { setWorm } = useContext(WormContext)
   const { eggs } = useContext(EggContext)
   const showHiddenEgg = eggs.eggs !== 0 && !eggs.eggList[6].found
@@ -48,7 +48,7 @@ const Wisdom = () => {
             </span>
           </div>
         )}
-        <div className="relative" style={{ contain: "layout" }}>
+        <div className="relative" style={{ contain: 'layout' }}>
           {/* Fixed dimensions container to prevent layout shifts */}
 
           <div className="relative h-[700px] w-[400px] overflow-y-hidden">
@@ -82,7 +82,7 @@ const Wisdom = () => {
           {/*</button>*/}
           <button
             className="flex size-14 items-center justify-center rounded-full bg-linear-to-r from-[#3F5EFB] to-[#FC466B] pt-2 text-sm text-white hover:bg-linear-to-b sm:bg-linear-to-t"
-            onClick={() => setWorm("madness")}
+            onClick={() => setWorm('madness')}
             type="button"
           >
             <svg
@@ -101,7 +101,7 @@ const Wisdom = () => {
         </div>
       </div>
     </div>
-  );
+  )
 }
 
-export default Wisdom
+export default ID

@@ -20,7 +20,7 @@ const Madness = ({containerRef}: {containerRef: React.RefObject<HTMLDivElement |
           setCurrentProject={setCurrentProject}
         />
       </section>
-      <section className="w-full">
+      <section className="relative w-full">
         <Parallax container={containerRef} />
       </section>
       <section className="w-full">

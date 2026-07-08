@@ -12,7 +12,7 @@ const inter = Inter({ weight: ['400', '500', '600'], variable: '--font-inter' })
 const instrumentSerif = Instrument_Serif({ weight: ['400'], variable: '--font-instrument-serif'  })
 
 export const metadata: Metadata = {
-  title: 'Wisdom & Madness Design Co.',
+  title: 'ID & Madness Design Co.',
   description: 'Small Business Web Design.'
 }
 

@@ -5,10 +5,11 @@ import EggCounter from '@/features/Madness/Egg/EggCounter'
 import { useRef } from 'react'
 import { useContact } from '@/context/contactContext'
 import { WormContext } from '@/context/wormContext'
-import Wisdom from '@/features/Wisdom'
+import ID from '@/features/ID'
 import Madness from '@/features/Madness'
 import LoadingScreen from '@/features/Shared/LoadingScreen/LoadingScreen'
 import { preloadSceneAssets } from '@/hooks/sceneLoader'
+import CurtainWipeTransition from '@/features/Shared/Transitions/CurtainWipeTransition'
 
 preloadSceneAssets()
 
@@ -20,18 +21,28 @@ const Home = () => {
   return (
     <>
       <LoadingScreen />
-        <div className="fixed right-8 bottom-6 z-50">
-          <EggCounter />
-        </div>
-        <main
-          className={`no-scrollbar h-screen w-screen overflow-x-clip ${isOpen ? 'overflow-hidden' : 'overflow-auto'} ${currentProject ? 'overflow-hidden' : 'overflow-auto'}`}
-          ref={containerRef}
+      <div className="fixed right-8 bottom-6 z-50">
+        <EggCounter />
+      </div>
+      <main
+        className={`no-scrollbar relative h-screen w-screen overflow-x-clip ${isOpen ? 'overflow-hidden' : 'overflow-auto'} ${currentProject ? 'overflow-hidden' : 'overflow-auto'}`}
+        ref={containerRef}
+      >
+        <CurtainWipeTransition
+          curtainColor="bg-neutral-950"
+          panelCount={6}
+          stateKey={worm}
         >
-          {worm === 'madness' && (
-            <Madness containerRef={containerRef} />
-          )}
-          {worm === 'wisdom' && <Wisdom />}
-        </main>
+          {worm === 'madness' && <Madness containerRef={containerRef} />}
+        </CurtainWipeTransition>
+        <CurtainWipeTransition
+          curtainColor="bg-rose-500"
+          panelCount={6}
+          stateKey={worm}
+        >
+          {worm === 'ID' && <ID />}
+        </CurtainWipeTransition>
+      </main>
     </>
   )
 }

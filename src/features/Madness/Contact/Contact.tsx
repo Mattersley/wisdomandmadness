@@ -10,6 +10,7 @@ import DesignInspiration from '@/features/Madness/Contact/components/DesignInspi
 import ManagerApproval from '@/features/Madness/Contact/components/ManagerApprovalPetSubmission'
 import { useContact } from '@/context/contactContext'
 import localFont from 'next/font/local'
+import ContactButton from "@/features/Madness/Contact/components/ContactButton";
 
 const instrumentFont = localFont({
   src: '../../../../public/fonts/InstrumentSerif-Regular.woff2'
@@ -83,12 +84,13 @@ const Contact = () => {
 
   return (
     <>
-      <button
-        className="wnm-gradient absolute top-8 right-[6vw] z-20 h-12 w-28 items-center rounded-[3rem] text-center text-white hover:bg-gradient-to-tr sm:relative sm:top-0 sm:right-0 sm:flex sm:h-16 sm:w-52 md:w-40 lg:w-52"
-        onClick={openContact}
-      >
-        <p className="w-full text-xs font-bold tracking-widest">INQUIRE</p>
-      </button>
+      <ContactButton openContact={openContact} />
+      {/*<button*/}
+      {/*  className="wnm-gradient absolute top-8 right-[6vw] z-20 h-12 w-28 cursor-pointer items-center rounded-[3rem] text-center text-white hover:bg-linear-to-tr sm:relative sm:top-0 sm:right-0 sm:flex sm:h-16 sm:w-52 md:w-40 lg:w-52"*/}
+      {/*  onClick={openContact}*/}
+      {/*>*/}
+      {/*  <p className="w-full text-xs font-bold tracking-widest">CONTACT</p>*/}
+      {/*</button>*/}
 
       <AnimatePresence>
         {isOpen && (
@@ -109,7 +111,7 @@ const Contact = () => {
                 initial={{ opacity: 0, scale: 0.95, y: 20 }}
                 transition={{ duration: 0.2 }}
               >
-                <div className="wnm-gradient relative z-10 flex-shrink-0 border-b border-gray-100 px-6 py-5 text-center text-white">
+                <div className="wnm-gradient relative z-10 shrink-0 border-b border-gray-100 px-6 py-5 text-center text-white">
                   <h2
                     className={`${instrumentFont.className} mt-6 text-4xl font-bold`}
                   >
@@ -152,9 +154,9 @@ const Contact = () => {
                         <ContactForm />
 
                         <div
-                          className={`glassmorphism ${!simplePlease ? 'grid gap-y-3 sm:gap-y-0 sm:gap-x-3 sm:grid-cols-3' : ''} w-full items-center justify-center rounded-xl border border-indigo-500/50 bg-indigo-500/10 px-6 py-4`}
+                          className={`glassmorphism ${!simplePlease ? 'grid gap-y-3 sm:grid-cols-3 sm:gap-x-3 sm:gap-y-0' : ''} w-full items-center justify-center rounded-xl border border-indigo-500/50 bg-indigo-500/10 px-6 py-4`}
                         >
-                          <div className="relative w-full col-span-2 mr-6 flex h-full flex-row items-center justify-center rounded-xl border border-indigo-500 p-4 text-center">
+                          <div className="relative col-span-2 mr-6 flex h-full w-full flex-row items-center justify-center rounded-xl border border-indigo-500 p-4 text-center">
                             <label
                               className={`mr-4 w-full ${simplePlease ? 'text-center' : 'text-right'} font-mono text-xs font-bold text-indigo-500 uppercase`}
                               htmlFor="spa"
@@ -169,7 +171,7 @@ const Contact = () => {
                               onChange={handleChange}
                               type="checkbox"
                             />
-                            <div className="pointer-events-none absolute right-[0.88rem] sm:right-[0.95rem] hidden h-6 w-6 items-center justify-center stroke-white text-lg font-bold peer-checked:block">
+                            <div className="pointer-events-none absolute right-[0.88rem] hidden h-6 w-6 items-center justify-center stroke-white text-lg font-bold peer-checked:block sm:right-[0.95rem]">
                               <svg
                                 fill="none"
                                 height="24"
@@ -188,11 +190,11 @@ const Contact = () => {
                           </div>
                           {!simplePlease && (
                             <button
-                              className="group col-span-2 sm:col-span-1 flex h-full w-full flex-col items-center justify-center rounded-xl border border-indigo-500 bg-indigo-500 p-3 font-mono text-xs font-bold tracking-widest text-white transition-colors hover:bg-white hover:text-indigo-500"
+                              className="group col-span-2 flex h-full w-full flex-col items-center justify-center rounded-xl border border-indigo-500 bg-indigo-500 p-3 font-mono text-xs font-bold tracking-widest text-white transition-colors hover:bg-white hover:text-indigo-500 sm:col-span-1"
                               onClick={() => setShowDetails(!showDetails)}
                               type="button"
                             >
-                              <div className="flex flex-row w-full h-4 sm:h-auto">
+                              <div className="flex h-4 w-full flex-row sm:h-auto">
                                 <svg
                                   className="size-8 stroke-2 transition-transform duration-300"
                                   fill="none"
@@ -266,7 +268,7 @@ const Contact = () => {
                   </FormProvider>
                 </div>
 
-                <div className="wnm-gradient flex-shrink-0 border-t border-gray-100 px-6 py-4 backdrop-blur rounded-b-2xl">
+                <div className="wnm-gradient flex-shrink-0 rounded-b-2xl border-t border-gray-100 px-6 py-4 backdrop-blur">
                   <button
                     className="text-background w-full rounded-lg bg-indigo-500 py-3 font-mono text-sm font-bold shadow-lg transition-all hover:scale-[1.01] hover:opacity-90 active:scale-[0.99] disabled:opacity-50 disabled:hover:scale-100"
                     disabled={isSubmitting}

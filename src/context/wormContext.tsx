@@ -15,8 +15,8 @@ export type WormContextType = {
   observerNumber: number;
   setCurrentProject: React.Dispatch<React.SetStateAction<string>>;
   setSeenSplash: (value: boolean) => void;
-  setWorm: (value: 'wisdom' | 'madness') => void;
-  worm: 'wisdom' | 'madness';
+  setWorm: (value: 'wisdom' | 'madness' | 'ID') => void;
+  worm: 'wisdom' | 'madness' | 'ID';
   logoState: 'default' | 'spin' | 'float' | 'wireframe' | 'chaos' | 'explode' | 'ghost' | 'tilt' | 'pulse' | 'disco' | 'jiggle' | 'meltdown';
   setLogoState: (state: 'default' | 'spin' | 'float' | 'wireframe' | 'chaos' | 'explode' | 'ghost' | 'tilt' | 'pulse' | 'disco' | 'jiggle' | 'meltdown') => void;
 };
@@ -25,7 +25,7 @@ export const WormContext = createContext({} as WormContextType)
 WormContext.displayName = 'WormContext'
 
 export const WormProvider = ({ children }: { children: ReactNode }) => {
-  const [worm, setWorm] = useLocalStorage<'wisdom' | 'madness'>('worm', 'madness')
+  const [worm, setWorm] = useLocalStorage<'wisdom' | 'madness' | 'ID'>('worm', 'madness')
   const [logoState, setLogoState] = useState<'default' | 'spin' | 'float' | 'wireframe' | 'chaos' | 'explode' | 'ghost' | 'tilt' | 'pulse' | 'disco' | 'jiggle' | 'meltdown'>('default')
   const [seenSplash, setSeenSplash] = useLocalStorage('seen-splash', false)
   const [observerNumber, setObserverNumber] = useLocalStorage('observer', 0)
