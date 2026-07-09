@@ -2,14 +2,20 @@ import Image from 'next/image'
 import React from 'react'
 import { ProjectType } from '@/features/Madness/Portfolio/data/projects.types'
 import ProjectURLS from '@/features/Madness/Portfolio/components/CaseStudy/components/ProjectURLS'
+import {
+  motion,
+  useScroll,
+  useTransform
+} from 'motion/react'
 
 interface CardHeaderProps {
   item: ProjectType;
   handleNext: () => void;
   handlePrev: () => void;
+  containerNode?: HTMLDivElement | null;
 }
 
-const CaseStudyHeader = ({ item, handleNext, handlePrev }: CardHeaderProps) => {
+const CaseStudyHeader = ({ item, handleNext, handlePrev, containerNode }: CardHeaderProps) => {
   const bgColour = () => {
     const colours: {[name: string]: string} = {
       Cupendium: 'cup-gradient',
@@ -40,13 +46,39 @@ const CaseStudyHeader = ({ item, handleNext, handlePrev }: CardHeaderProps) => {
     return colours[colour]
   }
 
+  const { scrollY } = useScroll({
+    container: containerNode ? { current: containerNode } : undefined
+  })
+  
+  const headerScale = useTransform(scrollY, [0, 150], [1, 0.8])
+  const headerY = useTransform(scrollY, [0, 150], [0, -5])
+
   return (
-    <div
-      className={`bg-[item.bgImage ? flex h-auto w-full flex-row items-center rounded-b-3xl ${item.bgImage ? 'bg-cover' : bgColour()}`}
-      style={item.bgImage ? { backgroundImage: `url(${item.bgImage})`, backgroundPosition: 'center center' } : {}}
+    <motion.div
+      className={
+        'flex h-auto w-full flex-row items-center rounded-b-3xl bg-white'
+      }
+      layout
+      style={{
+        ...(item.bgImage
+          ? {
+              backgroundImage: `url(${item.bgImage})`,
+              backgroundPosition: 'center center'
+            }
+          : {}),
+        scale: headerScale,
+        y: headerY,
+        position: 'sticky',
+        top: '0px',
+        zIndex: 50,
+        transformOrigin: 'top center'
+      }}
     >
+      <div
+        className={`${item.bgImage ? 'bg-cover' : bgColour()} absolute -z-1 top-0 h-full w-full rounded-b-3xl`}
+      />
       <button
-        className={`group z-10 flex h-full cursor-pointer items-center stroke-black group-hover:stroke-white sm:mr-6 sm:p-4 ${buttonBgColour(item.bgColours['1'])} rounded-bl-3xl`}
+        className={`group flex h-full cursor-pointer items-center stroke-black group-hover:stroke-white sm:mr-6 sm:p-4 ${buttonBgColour(item.bgColours['1'])} rounded-bl-3xl`}
         onClick={handlePrev}
       >
         <svg
@@ -66,7 +98,9 @@ const CaseStudyHeader = ({ item, handleNext, handlePrev }: CardHeaderProps) => {
         </svg>
       </button>
       <div className="my-10 flex w-full flex-col items-center justify-between sm:p-3 md:my-2 md:flex-row md:gap-6">
-        <p className={`${item.dark && 'font-bold text-white bg-indigo-500'} glassmorphism mb-8 rounded-3xl border border-indigo-500 p-1 px-2 text-xs tracking-widest text-indigo-500 hover:bg-indigo-500 hover:font-bold hover:text-white md:my-0 md:h-8 md:min-w-32 md:pt-1.5 md:pl-3 md:text-sm`}>
+        <p
+          className={`${item.dark && 'bg-indigo-500 font-bold text-white'} glassmorphism mb-8 rounded-3xl border border-indigo-500 p-1 px-2 text-xs tracking-widest text-indigo-500 hover:bg-indigo-500 hover:font-bold hover:text-white md:my-0 md:h-8 md:min-w-32 md:pt-1.5 md:pl-3 md:text-sm`}
+        >
           CASE STUDY
         </p>
         <div className="relative mb-6 px-4 sm:px-0 md:mb-0 md:px-0">
@@ -79,7 +113,9 @@ const CaseStudyHeader = ({ item, handleNext, handlePrev }: CardHeaderProps) => {
         </div>
         <div className="flex flex-col items-center gap-2 text-right md:flex-row">
           {item.urls.length > 0 && <ProjectURLS urls={item.urls} />}
-          <div className={`${item.dark && 'text-white'} glassmorphism flex w-full flex-col rounded-2xl border px-4 py-2 text-center text-sm md:p-6 md:text-right`}>
+          <div
+            className={`${item.dark && 'text-white'} glassmorphism flex w-full flex-col rounded-2xl border px-4 py-2 text-center text-sm md:p-6 md:text-right`}
+          >
             <p className="-mr-1 font-mono text-xs tracking-[0.3rem]">SERVED</p>
             <div className="grid w-full grid-cols-3 flex-col gap-x-4 md:flex md:gap-0">
               {item.served.map((item) => (
@@ -114,7 +150,7 @@ const CaseStudyHeader = ({ item, handleNext, handlePrev }: CardHeaderProps) => {
           <path d="M17 5v13" />
         </svg>
       </button>
-    </div>
+    </motion.div>
   )
 }
 

@@ -1,9 +1,11 @@
 import { AnimatePresence, motion } from 'motion/react'
 import React, { SetStateAction } from 'react'
+import { Variants } from 'motion'
 
 interface CaseStudyProps {
   children: React.ReactNode;
   closing: boolean;
+  containerNode?: HTMLDivElement | null;
   direction?: number;
   open: boolean;
   setClosing: React.Dispatch<React.SetStateAction<boolean>>;
@@ -26,8 +28,35 @@ const variants = {
   })
 }
 
+const marqueeVariants: Variants = {
+  marquee: {
+    x: [0, -570],
+    transition: {
+      x: {
+        repeat: Infinity,
+        repeatType: 'loop',
+        duration: 15,
+        ease: 'linear'
+      }
+    }
+  },
+  idle: {
+
+  }
+}
+
+const marginTopVariants = {
+  hovered: {
+    marginTop: '80px'
+  },
+  idle: {
+    marginTop: '0px'
+  }
+}
+
 const CaseStudy = ({
   children,
+  containerNode,
   closing,
   direction = 0,
   open,
@@ -55,9 +84,12 @@ const CaseStudy = ({
           variants={variants}
         >
           <div className="relative h-full w-full">
-            <button
-              className="absolute top-8 flex h-8 w-full flex-row items-center justify-center pt-2 font-bold tracking-widest text-red-600 opacity-50 sm:top-0 sm:pb-2 sm:justify-between sm:bg-red-900 sm:opacity-100 md:rounded-t-xl"
+            <motion.button
+              className="absolute top-8 z-20 flex h-8 w-full flex-row items-center justify-center pt-2 font-bold tracking-widest text-red-600 opacity-50 sm:top-0 sm:justify-between sm:bg-red-900 sm:pb-2 sm:opacity-100"
+              initial="idle"
+              layout
               onClick={handleClose}
+              whileHover="marquee"
             >
               <svg
                 className="sm:hidden"
@@ -74,22 +106,46 @@ const CaseStudy = ({
                 <path d="M18 6 6 18" />
                 <path d="m6 6 12 12" />
               </svg>
-              <span className="hidden md:block">EXIT</span>
-              <span className="hidden md:block">EXIT</span>
-              <span className="hidden md:block">EXIT</span>
-              <span className="hidden sm:block">EXIT</span>
-              <span className="hidden sm:block">EXIT</span>
-              <span className="hidden sm:block">EXIT</span>
-              <span className="hidden sm:block">EXIT</span>
-            </button>
-            <div className="-mt-8 flex h-full w-full flex-col items-center justify-center sm:mt-0">
+              <motion.div
+                className="mb-2 hidden size-full text-nowrap md:block"
+                variants={marqueeVariants}
+              >
+                <span>EXIT</span>
+                <span className="ml-60">EXIT</span>
+                <span className="ml-60">EXIT</span>
+                <span className="ml-60">EXIT</span>
+                <span className="ml-60">EXIT</span>
+                <span className="ml-60">EXIT</span>
+                <span className="ml-60">EXIT</span>
+                <span className="ml-60">EXIT</span>
+                <span className="ml-60">EXIT</span>
+                <span className="ml-60">EXIT</span>
+                <span className="ml-60">EXIT</span>
+                <span className="ml-60">EXIT</span>
+                <span className="ml-60">EXIT</span>
+                <span className="ml-60">EXIT</span>
+                <span className="ml-60">EXIT</span>
+                <span className="ml-60">EXIT</span>
+                <span className="ml-60">EXIT</span>
+                <span className="ml-60">EXIT</span>
+                <span className="ml-60">EXIT</span>
+                <span className="ml-60">EXIT</span>
+                <span className="ml-60">EXIT</span>
+                <span className="ml-60">EXIT</span>
+                <span className="ml-60">EXIT</span>
+              </motion.div>
+            </motion.button>
+            <motion.div
+              className="-z-10 -mt-8 flex h-full w-full flex-col items-center justify-center sm:mt-0"
+              variants={marginTopVariants}
+            >
               {children}
-            </div>
+            </motion.div>
           </div>
         </motion.div>
       )}
     </AnimatePresence>
-  )
+  );
 }
 
 export default CaseStudy

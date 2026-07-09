@@ -174,14 +174,14 @@ const About = () => {
   return (
     <div className="relative flex w-screen flex-col items-center bg-neutral-950 py-20 text-white select-none" id="about">
       <h2
-        className={`${vagraFont.className} bg-gradient-to-tr from-[#3F5EFB] to-[#FC466B] bg-clip-text text-[6rem] text-transparent`}
+        className={`${vagraFont.className} bg-linear-to-tr from-[#3F5EFB] to-[#FC466B] bg-clip-text text-[6rem] text-transparent`}
       >
         About
       </h2>
       <p className="mb-5 rounded-3xl border border-indigo-500 px-4 py-0.5 tracking-widest text-indigo-500 hover:bg-indigo-500 hover:font-bold hover:text-white">
         TEAM
       </p>
-      <div className="mb-10 flex flex-col items-center text-center md:grid md:w-[60rem] md:grid-cols-2 md:flex-row md:items-start md:gap-5 md:text-right lg:w-[90%]">
+      <div className="mb-10 flex flex-col items-center text-center md:grid md:w-240 md:grid-cols-2 md:flex-row md:items-start md:gap-5 md:text-right lg:w-[90%]">
         <ProfileCard />
         <p className="mb-4 w-[90%] self-center sm:w-[60%] md:ml-6 md:text-left">
           Using his education in data wrangling, experience in design, and
