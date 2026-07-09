@@ -9,12 +9,7 @@ import ProjectVision from '@/features/Madness/Contact/components/ProjectVisionFo
 import DesignInspiration from '@/features/Madness/Contact/components/DesignInspirationForm'
 import ManagerApproval from '@/features/Madness/Contact/components/ManagerApprovalPetSubmission'
 import { useContact } from '@/context/contactContext'
-import localFont from 'next/font/local'
-import ContactButton from "@/features/Madness/Contact/components/ContactButton";
-
-const instrumentFont = localFont({
-  src: '../../../../public/fonts/InstrumentSerif-Regular.woff2'
-})
+import ContactButton from '@/features/Madness/Contact/components/ContactButton'
 
 const Contact = () => {
   const { isOpen, closeContact, openContact } = useContact()
@@ -112,9 +107,7 @@ const Contact = () => {
                 transition={{ duration: 0.2 }}
               >
                 <div className="wnm-gradient relative z-10 shrink-0 border-b border-gray-100 px-6 py-5 text-center text-white">
-                  <h2
-                    className={`${instrumentFont.className} mt-6 text-4xl font-bold`}
-                  >
+                  <h2 className='font-instrument mt-6 text-4xl font-bold'>
                     Project Inquiry
                   </h2>
                   <p className="mt-1 text-white">Tell us about your vision</p>
@@ -268,7 +261,7 @@ const Contact = () => {
                   </FormProvider>
                 </div>
 
-                <div className="wnm-gradient flex-shrink-0 rounded-b-2xl border-t border-gray-100 px-6 py-4 backdrop-blur">
+                <div className="wnm-gradient shrink-0 rounded-b-2xl border-t border-gray-100 px-6 py-4 backdrop-blur">
                   <button
                     className="text-background w-full rounded-lg bg-indigo-500 py-3 font-mono text-sm font-bold shadow-lg transition-all hover:scale-[1.01] hover:opacity-90 active:scale-[0.99] disabled:opacity-50 disabled:hover:scale-100"
                     disabled={isSubmitting}

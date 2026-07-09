@@ -1,17 +1,15 @@
 'use client'
 
 import React, { useState, useEffect, useRef, ReactNode } from 'react'
+import { usePathname } from 'next/navigation'
 import { motion, AnimatePresence } from 'motion/react'
 import { Variants } from 'motion'
 
 interface CurtainWipeTransitionProps {
-  /** The unique state key. When this changes, the transition triggers. */
-  stateKey: string | number;
   children: ReactNode;
-  /** Number of vertical curtain columns. More panels = more complex wave. */
   panelCount?: number;
-  /** Color theme for the wiping panels */
   curtainColor?: string;
+  triggerKey?: string | number;
 }
 
 const curtainVariants: Variants = {
@@ -22,8 +20,8 @@ const curtainVariants: Variants = {
     scaleY: 1,
     transition: {
       duration: 0.45,
-      ease: [0.76, 0, 0.24, 1], // Custom fluid cubic-bezier
-      delay: index * 0.05 // Staggered drop entry
+      ease: [0.76, 0, 0.24, 1],
+      delay: index * 0.05 // Staggered drop down entry
     }
   }),
   reveal: (index: number) => ({
@@ -31,45 +29,47 @@ const curtainVariants: Variants = {
     transition: {
       duration: 0.5,
       ease: [0.76, 0, 0.24, 1],
-      delay: index * 0.06 // Slightly slower staggered lift
+      delay: index * 0.06 // Staggered wipe up exit (Guaranteed to fire now!)
     }
   })
 }
 
 export const CurtainWipeTransition = ({
-  stateKey,
   children,
   panelCount = 4,
-  curtainColor = 'bg-neutral-950'
+  curtainColor = 'bg-neutral-950',
+  triggerKey = ''
 }: CurtainWipeTransitionProps) => {
-  // Dual-state strategy to keep old content visible during the cover phase
-  const [displayContent, setDisplayContent] = useState<ReactNode>(children)
-  const [isWiping, setIsWiping] = useState(false)
-  const isInitialRender = useRef(true)
+  const pathname = usePathname()
 
-  // Track the actual panels array for mapping layout
-  const panels = Array.from({ length: panelCount })
+  const [displayContent, setDisplayContent] = useState<ReactNode>(children)
+  const [isCovered, setIsCovered] = useState(false)
+
+  const isInitialRender = useRef(true)
+  const pendingContent = useRef<ReactNode>(children)
 
   useEffect(() => {
-    // Skip triggering on the first mount
+    pendingContent.current = children
+  }, [children])
+
+  // Watch for route or key updates to trigger the drop
+  useEffect(() => {
     if (isInitialRender.current) {
       isInitialRender.current = false
       return
     }
+    setIsCovered(true)
+  }, [pathname, triggerKey])
 
-    // Trigger the curtain drop phase
-    setIsWiping(true)
-  }, [stateKey])
+  const panels = Array.from({ length: panelCount })
 
   return (
     <div className="relative w-full overflow-hidden">
-      {/* Dynamic Content Presenter Layer */}
       <div className="w-full">{displayContent}</div>
 
-      {/* OVERLAY CURTAIN SYSTEM */}
       <div className="pointer-events-none absolute inset-0 z-50 flex h-full w-full">
-        <AnimatePresence mode="popLayout">
-          {isWiping && (
+        <AnimatePresence>
+          {isCovered && (
             <div className="flex h-full w-full">
               {panels.map((_, index) => (
                 <motion.div
@@ -79,16 +79,19 @@ export const CurtainWipeTransition = ({
                   custom={index}
                   exit="reveal"
                   initial="hidden"
-                  onAnimationComplete={() => {
-                    // Only use the last panel to manage state switches
+                  onAnimationComplete={(definition) => {
+                    // Only process on the absolute last panel
                     if (index === panelCount - 1) {
-                      // 1. Swap data out while screen is hidden
-                      setDisplayContent(children)
-                      // 2. Trigger the reverse "reveal" lift sequence
-                      setIsWiping(false)
+                      // If it just finished the "cover" animation
+                      if (definition === 'cover') {
+                        // 1. Swap the underlying content safely while screen is hidden
+                        setDisplayContent(pendingContent.current)
+                        // 2. Unmount the curtain completely to force the exit "reveal" stagger
+                        setIsCovered(false)
+                      }
                     }
                   }}
-                  style={{ originY: 0 }} // Wipe down from top edge
+                  style={{ originY: 0 }} // Wipe down from top on enter
                   variants={curtainVariants}
                 />
               ))}

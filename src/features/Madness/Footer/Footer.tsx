@@ -1,10 +1,12 @@
 import LogoText from '@/features/Shared/LogoText/LogoText'
 import VanIsle from '@/features/Madness/Footer/VanIsle'
 import ContactButton from '@/features/Shared/ContactButton/ContactButton'
-import Blobover from "@/features/Shared/Popover/Blobover";
-import React from "react";
+import Blobover from '@/features/Shared/Popover/Blobover'
+import React, { useContext } from 'react'
+import { WormContext } from '@/context/wormContext'
 
 const Footer = () => {
+  const { setWorm } = useContext(WormContext)
   return (
     <footer>
       <div
@@ -13,7 +15,7 @@ const Footer = () => {
       >
         <div className="pointer-events-none fixed bottom-0 h-[700px] w-full">
           <div className="flex h-full w-full flex-col bg-neutral-800">
-            <Section1 />
+            <Section1 setWorm={setWorm} />
             <Section2 />
           </div>
         </div>
@@ -22,9 +24,13 @@ const Footer = () => {
   )
 }
 
-const Section1 = () => (
+const Section1 = ({
+  setWorm
+}: {
+  setWorm: (value: 'madness' | 'wisdom' | 'ID' | 'inquire') => void;
+}) => (
   <>
-    <div className="mx-auto mt-auto pb-10 flex h-40 w-[80%] flex-row items-end justify-between border-b border-white/50">
+    <div className="mx-auto mt-auto flex h-40 w-[80%] flex-row items-end justify-between border-b border-white/50 pb-10">
       <div className="pointer-events-auto flex flex-row gap-4">
         <ContactButton transparent={true} />
         <Blobover
@@ -32,7 +38,8 @@ const Section1 = () => (
           position="right"
           trigger={
             <button
-              className="absolute top-8 right-[7vw] flex size-12 items-center justify-center rounded-[50%] bg-indigo-500 text-white hover:bg-gray-500 sm:relative sm:top-auto sm:right-auto sm:size-16"
+              className="cursor-pointer absolute top-8 right-[7vw] flex size-12 items-center justify-center rounded-[50%] bg-indigo-500 text-white hover:bg-gray-500 sm:relative sm:top-auto sm:right-auto sm:size-16"
+              onClick={() => setWorm('inquire')}
               type="button"
             >
               <span className="size-full">
@@ -65,7 +72,7 @@ const Section1 = () => (
     {/*  <p>Terms & Conditions</p>*/}
     {/*</div>*/}
   </>
-);
+)
 
 const Section2 = () => (
   <div className="flex w-full flex-row">
@@ -99,7 +106,7 @@ const Section2 = () => (
           </p>
         </div>
       </a>
-      <p className="mb-56 text-xs text-white text-right select-none">{`© ${new Date().getFullYear()}`}</p>
+      <p className="mb-56 text-right text-xs text-white select-none">{`© ${new Date().getFullYear()}`}</p>
     </div>
   </div>
 )

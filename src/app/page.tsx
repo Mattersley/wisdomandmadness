@@ -10,6 +10,7 @@ import Madness from '@/features/Madness'
 import LoadingScreen from '@/features/Shared/LoadingScreen/LoadingScreen'
 import { preloadSceneAssets } from '@/hooks/sceneLoader'
 import CurtainWipeTransition from '@/features/Shared/Transitions/CurtainWipeTransition'
+import Inquire from '@/features/Inquire/Inquire'
 
 preloadSceneAssets()
 
@@ -29,18 +30,19 @@ const Home = () => {
         ref={containerRef}
       >
         <CurtainWipeTransition
-          curtainColor="bg-neutral-950"
+          curtainColor={
+            worm === 'ID'
+              ? 'bg-rose-500'
+              : worm === 'inquire'
+                ? 'bg-indigo-500'
+                : 'bg-neutral-950'
+          }
           panelCount={6}
-          stateKey={worm}
+          triggerKey={worm}
         >
           {worm === 'madness' && <Madness containerRef={containerRef} />}
-        </CurtainWipeTransition>
-        <CurtainWipeTransition
-          curtainColor="bg-rose-500"
-          panelCount={6}
-          stateKey={worm}
-        >
           {worm === 'ID' && <ID />}
+          {worm === 'inquire' && <Inquire />}
         </CurtainWipeTransition>
       </main>
     </>

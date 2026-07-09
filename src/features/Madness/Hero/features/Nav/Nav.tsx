@@ -3,7 +3,6 @@ import Link from 'next/link'
 import Contact from '@/features/Madness/Contact/Contact'
 import React, { useContext } from 'react'
 import { WormContext } from '@/context/wormContext'
-import Popover from '@/features/Shared/Popover/Popover'
 import Blobover from '@/features/Shared/Popover/Blobover'
 
 const Nav = () => {
@@ -29,80 +28,13 @@ const Nav = () => {
           </Link>
         </div>
       </div>
-      {/*<div className="absolute top-36 left-24 z-50">*/}
-      {/*  <div className="mr-4 flex flex-row items-center gap-2 rounded-full bg-white/10 p-2 backdrop-blur-sm">*/}
-      {/*    <button*/}
-      {/*      className={`rounded-lg p-2 transition-all duration-300 ${logoState === 'default' ? 'bg-indigo-500 text-white scale-110' : 'text-neutral-400 hover:bg-white/10'}`}*/}
-      {/*      onClick={() => setLogoState('default')}*/}
-      {/*      title="Reset"*/}
-      {/*    >*/}
-      {/*      <RefreshCcw size={16} />*/}
-      {/*    </button>*/}
-      {/*    <button*/}
-      {/*      className={`rounded-lg p-2 transition-all duration-300 ${logoState === 'spin' ? 'bg-indigo-500 text-white scale-110' : 'text-neutral-400 hover:bg-white/10'}`}*/}
-      {/*      onClick={() => setLogoState('spin')}*/}
-      {/*      title="Hyper Spin"*/}
-      {/*    >*/}
-      {/*      <RotateCw size={16} />*/}
-      {/*    </button>*/}
-      {/*    <button*/}
-      {/*      className={`rounded-lg p-2 transition-all duration-300 ${logoState === 'float' ? 'bg-indigo-500 text-white scale-110' : 'text-neutral-400 hover:bg-white/10'}`}*/}
-      {/*      onClick={() => setLogoState('float')}*/}
-      {/*      title="Zero Gravity"*/}
-      {/*    >*/}
-      {/*      <Move size={16} />*/}
-      {/*    </button>*/}
-      {/*    <button*/}
-      {/*      className={`rounded-lg p-2 transition-all duration-300 ${logoState === 'explode' ? 'bg-rose-500 text-white scale-110' : 'text-neutral-400 hover:bg-white/10'}`}*/}
-      {/*      onClick={() => setLogoState('explode')}*/}
-      {/*      title="Explode"*/}
-      {/*    >*/}
-      {/*      <Bomb size={16} />*/}
-      {/*    </button>*/}
-      {/*    <button*/}
-      {/*      className={`rounded-lg p-2 transition-all duration-300 ${logoState === 'ghost' ? 'bg-indigo-500 text-white scale-110' : 'text-neutral-400 hover:bg-white/10'}`}*/}
-      {/*      onClick={() => setLogoState('ghost')}*/}
-      {/*      title="Ghost Mode"*/}
-      {/*    >*/}
-      {/*      <Ghost size={16} />*/}
-      {/*    </button>*/}
-      {/*    <button*/}
-      {/*      className={`rounded-lg p-2 transition-all duration-300 ${logoState === 'pulse' ? 'bg-indigo-500 text-white scale-110' : 'text-neutral-400 hover:bg-white/10'}`}*/}
-      {/*      onClick={() => setLogoState('pulse')}*/}
-      {/*      title="Heartbeat"*/}
-      {/*    >*/}
-      {/*      <Activity size={16} />*/}
-      {/*    </button>*/}
-      {/*    <button*/}
-      {/*      className={`rounded-lg p-2 transition-all duration-300 ${logoState === 'jiggle' ? 'bg-indigo-500 text-white scale-110' : 'text-neutral-400 hover:bg-white/10'}`}*/}
-      {/*      onClick={() => setLogoState('jiggle')}*/}
-      {/*      title="Jiggle"*/}
-      {/*    >*/}
-      {/*      <Drum size={16} />*/}
-      {/*    </button>*/}
-      {/*    <button*/}
-      {/*      className={`rounded-lg p-2 transition-all duration-300 ${logoState === 'disco' ? 'bg-fuchsia-500 text-white scale-110' : 'text-neutral-400 hover:bg-white/10'}`}*/}
-      {/*      onClick={() => setLogoState('disco')}*/}
-      {/*      title="Disco"*/}
-      {/*    >*/}
-      {/*      <Sparkles size={16} />*/}
-      {/*    </button>*/}
-      {/*    <button*/}
-      {/*      className={`rounded-lg p-2 transition-all duration-300 ${logoState === 'meltdown' ? 'bg-orange-600 text-white scale-110' : 'text-neutral-400 hover:bg-white/10'}`}*/}
-      {/*      onClick={() => setLogoState('meltdown')}*/}
-      {/*      title="Meltdown"*/}
-      {/*    >*/}
-      {/*      <Flame size={16} />*/}
-      {/*    </button>*/}
-      {/*  </div>*/}
-      {/*</div>*/}
       <div className="z-50 mx-auto flex flex-row gap-2 md:mx-0 md:ml-2">
         <div className="z-20 flex flex-row gap-2 self-end">
           <Blobover
             colour="rose"
             trigger={
               <button
-                className="absolute top-8 right-[21vw] hidden size-12 items-center justify-center rounded-[50%] bg-rose-500 text-white hover:bg-gray-500 sm:relative sm:top-auto sm:right-auto sm:flex sm:size-16"
+                className="absolute top-8 right-[21vw] hidden size-12 cursor-pointer items-center justify-center rounded-[50%] bg-rose-500 text-white hover:bg-gray-500 sm:relative sm:top-auto sm:right-auto sm:flex sm:size-16"
                 onClick={() => setWorm('ID')}
                 type="button"
               >
@@ -125,13 +57,16 @@ const Nav = () => {
                 </svg>
               </button>
             }
-          >[???]</Blobover>
+          >
+            [???]
+          </Blobover>
 
           <Blobover
             colour="indigo"
             trigger={
               <button
-                className="absolute top-8 right-[7vw] flex size-12 items-center justify-center rounded-[50%] bg-indigo-500 text-white hover:bg-gray-500 sm:relative sm:top-auto sm:right-auto sm:size-16"
+                className="absolute top-8 right-[7vw] flex size-12 cursor-pointer items-center justify-center rounded-[50%] bg-indigo-500 text-white hover:bg-gray-500 sm:relative sm:top-auto sm:right-auto sm:size-16"
+                onClick={() => setWorm('inquire')}
                 type="button"
               >
                 <span className="size-full">
@@ -187,9 +122,6 @@ const Nav = () => {
           </Blobover>
         </div>
         <Contact />
-        {/*<div className="right-[5%] z-20 hidden items-center rounded-[3rem] wnm-gradient text-center text-white hover:bg-gradient-to-tr sm:flex sm:h-16 sm:w-52 md:w-40 lg:w-52">*/}
-        {/*  <p className="w-full text-xs font-bold tracking-widest">GET STARTED</p>*/}
-        {/*</div>*/}
       </div>
     </div>
   )
