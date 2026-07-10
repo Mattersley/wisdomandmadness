@@ -23,17 +23,6 @@ const ID = () => {
           type="8x8"
         />
       </div>
-      {/*<div className="absolute h-screen w-screen">*/}
-      {/*  <div className="grid size-full grid-cols-12 grid-rows-8 gap-0 rounded-3xl bg-linear-to-r p-10 opacity-20">*/}
-      {/*    {Array.from({ length: 60 }).map((_, i) => (*/}
-      {/*      <div*/}
-      {/*        key={i}*/}
-      {/*        className={`-mt-px -ml-px border border-gray-300 bg-indigo-600/10 ${(i % 4) + Math.floor(Math.random() * 3) === 0 && "row-span-2 rounded-full bg-indigo-600/5"} ${(i % 2) + Math.floor(Math.random() * 7.5) === 0 ? "col-span-2 row-span-1 rounded-full bg-rose-600/5" : "col-span-1 row-span-1 rounded-xl"}`}*/}
-      {/*      />*/}
-      {/*    ))}*/}
-      {/*    <div className="col-span-4 col-start-5 row-span-6 row-start-2 bg-gray-100"></div>*/}
-      {/*  </div>*/}
-      {/*</div>*/}
 
       <div className="z-1 flex flex-col items-center justify-center">
         <div className="mb-7 text-center text-white">
@@ -59,27 +48,6 @@ const ID = () => {
 
       <div className="absolute right-10 bottom-10 flex flex-row">
         <div className="font-inter relative flex w-full tracking-widest sm:flex-col sm:items-end sm:justify-end">
-          {/*<button*/}
-          {/*  className="mr-2 flex size-14 items-center justify-center rounded-full bg-gray-300 text-indigo-600 hover:bg-white sm:mr-0 sm:mb-2"*/}
-          {/*  type="button"*/}
-          {/*>*/}
-          {/*  <svg*/}
-          {/*    fill="none"*/}
-          {/*    height="32"*/}
-          {/*    stroke="currentColor"*/}
-          {/*    strokeLinecap="round"*/}
-          {/*    strokeLinejoin="round"*/}
-          {/*    strokeWidth="1"*/}
-          {/*    viewBox="0 0 24 24"*/}
-          {/*    width="32"*/}
-          {/*    xmlns="http://www.w3.org/2000/svg"*/}
-          {/*  >*/}
-          {/*    <path d="M20 11a8.1 8.1 0 0 0 -15.5 -2m-.5 -4v4h4" />*/}
-          {/*    <path d="M4 13a8.1 8.1 0 0 0 15.5 2m.5 4v-4h-4" />*/}
-          {/*    <path d="M12 9l0 3" />*/}
-          {/*    <path d="M12 15l.01 0" />*/}
-          {/*  </svg>*/}
-          {/*</button>*/}
           <button
             className="flex size-14 items-center justify-center rounded-full bg-linear-to-r from-[#3F5EFB] to-[#FC466B] pt-2 text-sm text-white hover:bg-linear-to-b sm:bg-linear-to-t"
             onClick={() => setWorm('madness')}

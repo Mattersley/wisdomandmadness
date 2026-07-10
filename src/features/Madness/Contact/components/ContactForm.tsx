@@ -6,14 +6,6 @@ export const ContactForm = () => {
 
   return (
     <div className="space-y-4 border border-gray-200 rounded-2xl p-4 bg-indigo-50/20">
-      <div className="flex items-center flex-col">
-        <p className={'font-mono opacity-50 text-2xl tracking-wider text-indigo-500 uppercase'}>
-          01.
-        </p>
-        <h3 className={'font-mono font-xl font-bold tracking-wider text-indigo-500 uppercase'}>
-          Contact Info
-        </h3>
-        </div>
       <div className="grid gap-4 sm:grid-cols-2">
         <div className="space-y-1.5 text-center">
           <label className="text-indigo-500 uppercase font-mono tracking-[0.2rem] text-sm" htmlFor="name">

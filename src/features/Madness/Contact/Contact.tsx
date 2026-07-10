@@ -108,7 +108,7 @@ const Contact = () => {
               >
                 <div className="wnm-gradient relative z-10 shrink-0 border-b border-gray-100 px-6 py-5 text-center text-white">
                   <h2 className='font-instrument mt-6 text-4xl font-bold'>
-                    Project Inquiry
+                    Contact Us
                   </h2>
                   <p className="mt-1 text-white">Tell us about your vision</p>
                   <button
@@ -145,74 +145,6 @@ const Contact = () => {
                     >
                       <div className="space-y-6">
                         <ContactForm />
-
-                        <div
-                          className={`glassmorphism ${!simplePlease ? 'grid gap-y-3 sm:grid-cols-3 sm:gap-x-3 sm:gap-y-0' : ''} w-full items-center justify-center rounded-xl border border-indigo-500/50 bg-indigo-500/10 px-6 py-4`}
-                        >
-                          <div className="relative col-span-2 mr-6 flex h-full w-full flex-row items-center justify-center rounded-xl border border-indigo-500 p-4 text-center">
-                            <label
-                              className={`mr-4 w-full ${simplePlease ? 'text-center' : 'text-right'} font-mono text-xs font-bold text-indigo-500 uppercase`}
-                              htmlFor="spa"
-                            >
-                              I just want a simple single page website please!
-                            </label>
-                            <input
-                              checked={simplePlease}
-                              className="peer relative h-6 w-6 cursor-pointer appearance-none rounded-sm border-2 border-gray-500 checked:border-indigo-500 checked:bg-indigo-500"
-                              id="spa"
-                              name="spa"
-                              onChange={handleChange}
-                              type="checkbox"
-                            />
-                            <div className="pointer-events-none absolute right-[0.88rem] hidden h-6 w-6 items-center justify-center stroke-white text-lg font-bold peer-checked:block sm:right-[0.95rem]">
-                              <svg
-                                fill="none"
-                                height="24"
-                                stroke="#ffffff"
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                strokeWidth="2"
-                                viewBox="0 0 24 24"
-                                width="24"
-                                xmlns="http://www.w3.org/2000/svg"
-                              >
-                                <path d="M18 6l-12 12" />
-                                <path d="M6 6l12 12" />
-                              </svg>
-                            </div>
-                          </div>
-                          {!simplePlease && (
-                            <button
-                              className="group col-span-2 flex h-full w-full flex-col items-center justify-center rounded-xl border border-indigo-500 bg-indigo-500 p-3 font-mono text-xs font-bold tracking-widest text-white transition-colors hover:bg-white hover:text-indigo-500 sm:col-span-1"
-                              onClick={() => setShowDetails(!showDetails)}
-                              type="button"
-                            >
-                              <div className="flex h-4 w-full flex-row sm:h-auto">
-                                <svg
-                                  className="size-8 stroke-2 transition-transform duration-300"
-                                  fill="none"
-                                  height={20}
-                                  stroke="currentColor"
-                                  viewBox="0 0 24 24"
-                                  width={20}
-                                >
-                                  <path d="M12 5l0 14" />
-                                  <path d="M5 12l14 0" />
-                                </svg>
-                                <span className="ml-3 text-left uppercase">
-                                  {showDetails
-                                    ? 'Hide Details'
-                                    : 'Go into more detail'}
-                                </span>
-                              </div>
-                              {!showDetails && (
-                                <small className="mt-1 text-[0.5rem] tracking-normal normal-case">
-                                  Only fill out what you want
-                                </small>
-                              )}
-                            </button>
-                          )}
-                        </div>
 
                         <AnimatePresence>
                           {showDetails && (

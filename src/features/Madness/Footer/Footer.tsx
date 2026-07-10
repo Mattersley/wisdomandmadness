@@ -13,6 +13,7 @@ const Footer = () => {
         className="relative h-[700px]"
         style={{ clipPath: 'polygon(0% 0, 100% 0%, 100% 100%, 0 100%)' }}
       >
+        <div className="w-full absolute h-52 bg-neutral-800" />
         <div className="pointer-events-none fixed bottom-0 h-[700px] w-full">
           <div className="flex h-full w-full flex-col bg-neutral-800">
             <Section1 setWorm={setWorm} />

@@ -75,7 +75,7 @@ export const CurtainWipeTransition = ({
                 <motion.div
                   key={index}
                   animate="cover"
-                  className={`h-full flex-1 ${curtainColor} will-change-transform`}
+                  className={`h-full flex-1 -ml-1 ${curtainColor} will-change-transform`}
                   custom={index}
                   exit="reveal"
                   initial="hidden"

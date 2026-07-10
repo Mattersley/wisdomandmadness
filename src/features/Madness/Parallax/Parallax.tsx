@@ -79,7 +79,7 @@ const Parallax = ({
   ] as const
 
   return (
-    <section className="relative w-full snap-none">
+    <section className="relative w-full snap-none bg-white">
       <div className={styles.spacer} />
 
       <div className={styles.gallery} ref={gallery}>
