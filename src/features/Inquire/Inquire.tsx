@@ -103,7 +103,8 @@ const Inquire = () => {
       })
 
       if (!response.ok) {
-        throw new Error('Theres been an error.')
+        const result = await response.json().catch(() => null)
+        throw new Error(result?.error || 'Theres been an error.')
       }
 
       reset()
@@ -115,7 +116,7 @@ const Inquire = () => {
       )
     } catch (e) {
       console.error('[SUBMIT_FAILURE]', e)
-      alert('Form submission error.')
+      alert(e instanceof Error ? e.message : 'Form submission error.')
     }
   }
 

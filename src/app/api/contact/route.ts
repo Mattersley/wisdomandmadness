@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { checkBotId } from 'botid/server'
-import { supabaseAdmin } from '@/lib/supabase'
+import { hasSupabaseAdminConfig, supabaseAdmin } from '@/lib/supabase'
 import crypto from 'crypto'
 
 export const runtime = 'nodejs'
@@ -94,6 +94,7 @@ const parseJsonField = <T>(formData: FormData, key: string, fallback: T): T => {
 }
 
 const buildVisionDetails = (formData: FormData) => {
+  const company = asBoundedString(formData, 'company', 200)
   const visionDetails = asBoundedString(formData, 'visionDetails', 4000)
   const notes = asBoundedString(formData, 'notes', 2000)
   const goals = asBoundedString(formData, 'goals', 2000)
@@ -103,6 +104,7 @@ const buildVisionDetails = (formData: FormData) => {
   if (visionDetails) return visionDetails
 
   return [
+    company && `Organization: ${company}`,
     notes && `Notes: ${notes}`,
     goals && `Goals: ${goals}`,
     targetAudience && `Target audience: ${targetAudience}`,
@@ -194,6 +196,18 @@ export async function POST(request: NextRequest) {
       return json(
         { success: false, error: 'Security verification failed.' },
         403
+      )
+    }
+
+    if (!hasSupabaseAdminConfig || !supabaseAdmin) {
+      console.error('[SUPABASE] Missing contact submission configuration.')
+      return json(
+        {
+          success: false,
+          error:
+            'Contact submissions are not configured. Check Supabase environment variables.'
+        },
+        503
       )
     }
 

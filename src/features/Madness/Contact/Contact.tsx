@@ -58,7 +58,8 @@ const Contact = () => {
       })
 
       if (!response.ok) {
-        throw new Error('Failed to send message')
+        const result = await response.json().catch(() => null)
+        throw new Error(result?.error || 'Failed to send message')
       }
 
       reset()
@@ -68,7 +69,11 @@ const Contact = () => {
       alert('Message sent successfully!')
     } catch (error) {
       console.error('Error submitting form:', error)
-      alert('Something went wrong. Please try again later.')
+      alert(
+        error instanceof Error
+          ? error.message
+          : 'Something went wrong. Please try again later.'
+      )
     }
   }
 
