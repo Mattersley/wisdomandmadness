@@ -1,48 +1,48 @@
-import { createClient } from '@supabase/supabase-js'
+import { createClient } from "@supabase/supabase-js";
 
-const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL || ''
+const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL || "";
 
-const secretKey = process.env.SUPABASE_SECRET_KEY || ''
-const publishableKey = process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY || ''
+const secretKey = process.env.SUPABASE_SECRET_KEY || "";
+const publishableKey = process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY || "";
 
-export const supabasePublishableKey = publishableKey
-const adminKey = secretKey
+export const supabasePublishableKey = publishableKey;
+const adminKey = secretKey;
 
-export const supabaseAdminKeySource = secretKey ? 'SUPABASE_SECRET_KEY' : null
+export const supabaseAdminKeySource = secretKey ? "SUPABASE_SECRET_KEY" : null;
 export const supabasePublishableKeySource = publishableKey
-  ? 'NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY'
-  : null
+  ? "NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY"
+  : null;
 
-export const hasSupabaseAdminConfig = Boolean(supabaseUrl && adminKey)
+export const hasSupabaseAdminConfig = Boolean(supabaseUrl && adminKey);
 export const hasSupabasePublicConfig = Boolean(
-  supabaseUrl && supabasePublishableKey
-)
+  supabaseUrl && supabasePublishableKey,
+);
 
 if (!supabaseUrl) {
   console.warn(
-    '[SUPABASE] Warning: Target endpoint environment string is unassigned.'
-  )
+    "[SUPABASE] Warning: Target endpoint environment string is unassigned.",
+  );
 }
 
 if (!adminKey) {
   console.warn(
-    '[SUPABASE] Warning: Secret key environment string is unassigned.'
-  )
+    "[SUPABASE] Warning: Secret key environment string is unassigned.",
+  );
 }
 
-// Backend administrative client: bypasses RLS policies securely using the Secret Key
+// Backend administrative client: uses the new Secret Key architecture securely
 export const supabaseAdmin = hasSupabaseAdminConfig
   ? createClient(supabaseUrl, adminKey, {
       auth: {
         persistSession: false,
         autoRefreshToken: false,
-        detectSessionInUrl: false
+        detectSessionInUrl: false,
       },
       global: {
         headers: {
-          // Explicitly binds the new opaque secret key to the gateway API layer
-          apikey: adminKey
-        }
-      }
+          // Force-injects the new opaque secret key directly to the gateway API layer
+          apikey: adminKey,
+        },
+      },
     })
-  : null
+  : null;

@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { checkBotId } from 'botid/server'
+import { Redis } from '@upstash/redis'
 import {
   hasSupabaseAdminConfig,
   supabaseAdmin,
@@ -18,11 +19,27 @@ const ALLOWED_IMAGE_TYPES = new Map([
   ['image/gif', 'gif']
 ])
 
-const RATE_LIMIT_WINDOW_MS = 15 * 60 * 1000
+const RATE_LIMIT_WINDOW_SECONDS = 15 * 60 // 🌟 Changed to seconds for Redis (15 mins)
 const RATE_LIMIT_MAX_REQUESTS = 5
 const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
 
-const rateLimitBucket = new Map<string, { count: number; resetAt: number }>()
+// 🌟 Initialize Upstash Redis Client
+const redis = new Redis({
+  url: process.env.UPSTASH_REDIS_REST_URL || '',
+  token: process.env.UPSTASH_REDIS_REST_TOKEN || ''
+})
+
+// 🌟 Anti-Spam Content Moderation Blacklist
+const SPAM_KEYWORDS = [
+  'seo rankings',
+  'buy bitcoin',
+  'crypto wealth',
+  'casino online',
+  'grow your traffic',
+  'work from home',
+  'whatsapp chat',
+  'click here'
+]
 
 class ContactRequestError extends Error {
   status: number
@@ -45,20 +62,32 @@ const getClientIp = (request: NextRequest) => {
   )
 }
 
-const isRateLimited = (key: string) => {
-  const now = Date.now()
-  const current = rateLimitBucket.get(key)
-
-  if (!current || current.resetAt <= now) {
-    rateLimitBucket.set(key, {
-      count: 1,
-      resetAt: now + RATE_LIMIT_WINDOW_MS
-    })
+// 🌟 Upgraded Serverless-Safe Rate Limiter using Redis INCR + EXPIRE
+const isRateLimited = async (ip: string): Promise<boolean> => {
+  if (!process.env.UPSTASH_REDIS_REST_URL) {
+    console.warn(
+      '[SECURITY] Redis URL missing. Falling back to letting request pass.'
+    )
     return false
   }
 
-  current.count += 1
-  return current.count > RATE_LIMIT_MAX_REQUESTS
+  const redisKey = `ratelimit:contact:${ip}`
+
+  // Atomically increment the requests from this IP
+  const currentCount = await redis.incr(redisKey)
+
+  // If it's the first request in the window, set the expiration
+  if (currentCount === 1) {
+    await redis.expire(redisKey, RATE_LIMIT_WINDOW_SECONDS)
+  }
+
+  return currentCount > RATE_LIMIT_MAX_REQUESTS
+}
+
+// 🌟 Block human spammers pasting obvious marketing pitches
+const containsSpamContent = (text: string): boolean => {
+  const lowerText = text.toLowerCase()
+  return SPAM_KEYWORDS.some((keyword) => lowerText.includes(keyword))
 }
 
 const asBoundedString = (
@@ -236,7 +265,8 @@ export async function POST(request: NextRequest) {
     }
 
     const ip = getClientIp(request)
-    if (isRateLimited(ip)) {
+    if (await isRateLimited(ip)) {
+      // 🌟 Added await here
       console.warn(`[SECURITY] Rate limit triggered for ${ip}.`)
       return json(
         { success: false, error: 'Too many submissions. Please try later.' },
@@ -264,6 +294,17 @@ export async function POST(request: NextRequest) {
     const visionDetails = buildVisionDetails(formData)
     const petName = asBoundedString(formData, 'petName', 120)
     const petBio = asBoundedString(formData, 'petBio', 1000)
+
+    // 🌟 Drop human spammers trying to pitch links or standard copy-paste scripts
+    if (
+      containsSpamContent(visionDetails) ||
+      containsSpamContent(name) ||
+      containsSpamContent(petBio)
+    ) {
+      console.warn('[SECURITY] Content filter blocked spam submission.')
+      // Return a fake 200 success code so the spammer thinks they succeeded and moves on
+      return json({ success: true, message: 'Intake registered.' }, 200)
+    }
 
     const services = validateServices(
       parseJsonField<string[]>(formData, 'services', [])
