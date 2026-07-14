@@ -1,9 +1,4 @@
-import localFont from 'next/font/local'
 import { useState } from 'react'
-
-const instrumentFont = localFont({
-  src: '../../../public/fonts/InstrumentSerif-Regular.woff2'
-})
 
 const Pricing = () => {
   const [isMonthly, setIsMonthly] = useState(true)
@@ -11,7 +6,8 @@ const Pricing = () => {
   const pricingTiers = [
     {
       name: 'Small Business',
-      description: 'No obligation consultation on how we can refresh your brand identity and website.',
+      description:
+        'No obligation consultation on how we can refresh your brand identity and website.',
       monthlyPrice: 50,
       oneTimePrice: 1000,
       monthlyFeatures: [
@@ -120,9 +116,9 @@ const Pricing = () => {
   ]
 
   return (
-    <div className="w-2/3 -mb-32 flex flex-col items-center justify-start rounded-3xl bg-white py-20 text-white select-none z-50">
+    <div className="z-50 -mb-32 flex w-2/3 flex-col items-center justify-start rounded-3xl bg-white py-20 text-white select-none">
       <h2
-        className={`${instrumentFont.className} wnm-gradient bg-clip-text text-[6rem] text-transparent`}
+        className={'font-instrument wnm-gradient bg-clip-text text-[6rem] text-transparent'}
       >
         Pricing
       </h2>
@@ -137,7 +133,7 @@ const Pricing = () => {
           Pay Monthly
         </span>
         <button
-          className="relative h-8 w-16 rounded-full bg-gradient-to-r from-[#3F5EFB] to-[#FC466B] transition-all hover:shadow-lg"
+          className="relative h-8 w-16 rounded-full bg-linear-to-r from-[#3F5EFB] to-[#FC466B] transition-all hover:shadow-lg"
           onClick={() => setIsMonthly(!isMonthly)}
         >
           <span
@@ -162,7 +158,7 @@ const Pricing = () => {
             key={index}
             className={`relative flex flex-col rounded-2xl border-2 p-8 transition-all hover:scale-105 ${
               tier.popular
-                ? 'border-transparent bg-gradient-to-br from-[#3F5EFB] to-[#FC466B] shadow-2xl'
+                ? 'border-transparent bg-linear-to-br from-[#3F5EFB] to-[#FC466B] shadow-2xl'
                 : 'border-neutral-200 bg-white hover:border-indigo-300'
             }`}
           >
@@ -188,7 +184,8 @@ const Pricing = () => {
             </p>
 
             <div className="mb-6">
-              {typeof (isMonthly ? tier.monthlyPrice : tier.oneTimePrice) === 'number' ? (
+              {typeof (isMonthly ? tier.monthlyPrice : tier.oneTimePrice) ===
+              'number' ? (
                 <>
                   <span
                     className={`text-5xl font-bold ${
@@ -211,7 +208,9 @@ const Pricing = () => {
                     tier.popular ? 'text-white' : 'text-neutral-800'
                   }`}
                 >
-                  {isMonthly ? `$${tier.monthlyPrice}/month` : tier.oneTimePrice}
+                  {isMonthly
+                    ? `$${tier.monthlyPrice}/month`
+                    : tier.oneTimePrice}
                 </span>
               )}
             </div>
@@ -226,7 +225,7 @@ const Pricing = () => {
                     }`}
                   >
                     <svg
-                      className={`mt-0.5 h-5 w-5 flex-shrink-0 ${
+                      className={`mt-0.5 h-5 w-5 shrink-0 ${
                         tier.popular ? 'text-white' : 'text-indigo-500'
                       }`}
                       fill="none"
@@ -250,7 +249,7 @@ const Pricing = () => {
               className={`rounded-lg py-3 font-semibold transition-all ${
                 tier.popular
                   ? 'bg-white text-indigo-600 hover:bg-neutral-100'
-                  : 'bg-gradient-to-r from-[#3F5EFB] to-[#FC466B] text-white hover:shadow-lg'
+                  : 'bg-linear-to-r from-[#3F5EFB] to-[#FC466B] text-white hover:shadow-lg'
               }`}
             >
               Get Started

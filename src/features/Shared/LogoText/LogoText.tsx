@@ -1,10 +1,3 @@
-import localFont from 'next/font/local'
-const vagraFont = localFont({
-  src: '../../../../public/fonts/vagra-pixel.woff2'
-})
-const instrumentFont = localFont({
-  src: '../../../../public/fonts/InstrumentSerif-Regular.woff2'
-})
 
 interface LogoTextProps {
   colour?: boolean;
@@ -40,7 +33,7 @@ const LogoText = ({
       className={`relative mb-10 flex select-none ${row ? 'flex-row md:items-baseline' : 'flex-col'} ${rightAlign ? 'items-end' : 'items-center'} justify-center gap-2 text-center`}
     >
       <p
-        className={`z-0 leading-32 ${row && 'md:mt-0'} ${textSizes(sizeW)} ${instrumentFont.className} ${colour ? 'text-white opacity-100' : 'opacity-30 hover:opacity-100'} `}
+        className={`z-0 leading-32 ${row && 'md:mt-0'} ${textSizes(sizeW)} font-instrument ${colour ? 'text-white opacity-100' : 'opacity-30 hover:opacity-100'} `}
       >
         Wisdom
       </p>
@@ -53,7 +46,7 @@ const LogoText = ({
         +
       </p>
       <p
-        className={`z-2 -mt-26 leading-38 drop-shadow drop-shadow-black/20 ${row && 'md:mt-0 md:drop-shadow-none'} ${textSizes(sizeM)} ${vagraFont.className} ${colour ? 'bg-linear-to-tr bg-clip-text text-transparent' : 'opacity-30 hover:bg-linear-to-tr hover:bg-clip-text hover:text-transparent hover:opacity-100'} from-[#3F5EFB] to-[#FC466B]`}
+        className={`z-2 -mt-26 leading-38 drop-shadow drop-shadow-black/20 ${row && 'md:mt-0 md:drop-shadow-none'} ${textSizes(sizeM)} font-vagra ${colour ? 'bg-linear-to-tr bg-clip-text text-transparent' : 'opacity-30 hover:bg-linear-to-tr hover:bg-clip-text hover:text-transparent hover:opacity-100'} from-[#3F5EFB] to-[#FC466B]`}
       >
         Madness
       </p>

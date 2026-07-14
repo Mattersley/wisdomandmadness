@@ -1,15 +1,15 @@
 import { useState, useEffect } from 'react'
 import { useForm, SubmitHandler, FormProvider } from 'react-hook-form'
 import { motion, AnimatePresence } from 'motion/react'
-import { Inputs } from './types'
-import ContactForm from './components/ContactForm'
-import Services from '@/features/Madness/Contact/components/ServicesForm'
-import Logistics from '@/features/Madness/Contact/components/LogisticsBudgetForm'
-import ProjectVision from '@/features/Madness/Contact/components/ProjectVisionForm'
-import DesignInspiration from '@/features/Madness/Contact/components/DesignInspirationForm'
-import ManagerApproval from '@/features/Madness/Contact/components/ManagerApprovalPetSubmission'
+import { Inputs } from '../../Inquire/types'
+import ContactForm from '@/features/Inquire/components/ContactForm'
+import Services from '@/features/Inquire/components/02 Services/ServicesForm'
+import Logistics from '@/features/Inquire/components/LogisticsBudgetForm'
+import ProjectVision from '@/features/Inquire/components/ProjectVisionForm'
+import DesignInspiration from '@/features/Inquire/components/DesignInspirationForm'
+import ManagerApproval from '@/features/Inquire/components/ManagerApprovalPetSubmission'
 import { useContact } from '@/context/contactContext'
-import ContactButton from '@/features/Madness/Contact/components/ContactButton'
+import ContactButton from '@/features/Inquire/components/ContactButton'
 
 const Contact = () => {
   const { isOpen, closeContact, openContact } = useContact()
@@ -40,14 +40,14 @@ const Contact = () => {
     }
   }, [isOpen])
 
-  const handleChange = (event: {
-    target: { checked: boolean | ((prevState: boolean) => boolean) };
-  }) => {
-    setSimplePlease(event.target.checked)
-    if (event.target.checked) {
-      setShowDetails(false)
-    }
-  }
+  // const handleChange = (event: {
+  //   target: { checked: boolean | ((prevState: boolean) => boolean) };
+  // }) => {
+  //   setSimplePlease(event.target.checked)
+  //   if (event.target.checked) {
+  //     setShowDetails(false)
+  //   }
+  // }
 
   const onSubmit: SubmitHandler<Inputs> = async (data: any) => {
     // Pass the form data

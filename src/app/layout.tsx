@@ -6,13 +6,20 @@ import { ContactProvider } from '@/context/contactContext'
 import { Analytics } from '@vercel/analytics/next'
 import { WormProvider } from '@/context/wormContext'
 import { VT323, Inter, Instrument_Serif } from 'next/font/google'
+import { vagraFont } from '@/app/fonts'
 
 const vt323 = VT323({ weight: ['400'], variable: '--font-vt323' })
-const inter = Inter({ weight: ['400', '500', '600'], variable: '--font-inter' })
-const instrumentSerif = Instrument_Serif({ weight: ['400'], variable: '--font-instrument-serif'  })
+const inter = Inter({
+  weight: ['400', '500', '600'],
+  variable: '--font-inter'
+})
+const instrumentSerif = Instrument_Serif({
+  weight: ['400'],
+  variable: '--font-instrument-serif'
+})
 
 export const metadata: Metadata = {
-  title: 'ID & Madness Design Co.',
+  title: 'Wisdom & Madness Design Co.',
   description: 'Small Business Web Design.'
 }
 
@@ -26,7 +33,10 @@ const RootLayout = ({
       <EggProvider>
         <ContactProvider>
           <Analytics />
-          <html className={`${vt323.variable} ${inter.variable} ${instrumentSerif.variable}`} lang="en">
+          <html
+            className={`${vagraFont.variable} ${vt323.variable} ${inter.variable} ${instrumentSerif.variable}`}
+            lang="en"
+          >
             <body className="">{children}</body>
           </html>
         </ContactProvider>

@@ -1,87 +1,112 @@
-import { checkBotId } from 'botid/server'
-import { NextResponse } from 'next/server'
+import { NextRequest, NextResponse } from 'next/server'
+import { supabaseAdmin } from '@/lib/supabase'
 
-export async function POST(request: Request) {
-  const verification = await checkBotId()
-  
-  if (verification.isBot) {
-    return NextResponse.json({ error: 'Access denied' }, { status: 403 })
-  } else {
-    try {
-      const body = await request.json()
-      const {
-        name,
-        email,
-        company,
-        phone,
-        budget,
-        services,
-        timeline,
-        projectStatus,
-        inspiration,
-        projectVision,
-        description
-      } = body
-
-      // BotID protection is handled via instrumentation-client.ts
-      // Requests reaching here have passed the bot check
-
-      // 2. Format the email content (Similar to your previous mailto body)
-      const servicesList =
-        Array.isArray(services) && services.length > 0
-          ? services.map((s: string) => `• ${s}`).join('\n')
-          : 'None selected'
-
-      const inspirationLinks = Array.isArray(inspiration)
-        ? inspiration
-          .map((item: { url: string }) => item.url)
-          .filter((url: string) => url)
-          .map((url: string) => `• ${url}`)
-          .join('\n')
-        : 'No links provided'
-
-      const emailContent = `
-New Project Inquiry via Website
-================================
-
-CONTACT DETAILS
---------------------------------
-Name:    ${name || 'N/A'}
-Email:   ${email || 'N/A'}
-Company: ${company || 'N/A'}
-Phone:   ${phone || 'N/A'}
-
-PROJECT OVERVIEW
---------------------------------
-Status:   ${projectStatus}
-Timeline: ${timeline}
-Budget:   $${budget}
-
-SERVICES REQUIRED
---------------------------------
-${servicesList}
-
-PROJECT VISION
---------------------------------
-${projectVision || description || 'No details provided.'}
-
-DESIGN INSPIRATION
---------------------------------
-${inspirationLinks}
-    `.trim()
-
-      // 3. Send Email (Integrate your provider here, e.g., Resend, SendGrid, Nodemailer)
-      // await sendEmail({ to: 'webinquiry@wisdomandmadness.com', subject: 'New Inquiry', text: emailContent })
-
-      console.log('Form received:', emailContent) // For debugging
-
-      return NextResponse.json({ success: true, message: 'Message sent successfully! We will get back to you as soon as we can.' })
-    } catch (error) {
-      console.error('Contact API Error:', error)
+export async function POST(request: NextRequest) {
+  try {
+    const contentType = request.headers.get('content-type') || ''
+    if (!contentType.includes('multipart/form-data')) {
       return NextResponse.json(
-        { error: 'Internal Server Error' },
-        { status: 500 }
+        { success: false, error: 'Expected multipart payload context.' },
+        { status: 400 }
       )
     }
+
+    const formData = await request.formData()
+
+    // Extract base client data values
+    const name = formData.get('name') as string
+    const email = formData.get('email') as string
+    const phone = formData.get('phone') as string
+    const budget = formData.get('budget') as string
+    const timeline = formData.get('timeline') as string
+    const projectStatus = formData.get('projectStatus') as string
+    const visionDetails = formData.get('visionDetails') as string
+    const petName = formData.get('petName') as string
+    const petBio = formData.get('petBio') as string
+
+    // De-serialize array matrices safely
+    const services = JSON.parse((formData.get('services') as string) || '[]')
+    const inspiration = JSON.parse(
+      (formData.get('inspiration') as string) || '[]'
+    )
+
+    let petImageUrl: string | null = null
+
+    // Extract file evidence buffer cleanly if present
+    const file = formData.get('petImage') as File | null
+    if (file && file.size > 0) {
+      const arrayBuffer = await file.arrayBuffer()
+      const buffer = Buffer.from(arrayBuffer)
+
+      // Construct a collision-free file identifier
+      const fileExtension = file.name.split('.').pop()
+      const fileName = `${crypto.randomUUID()}.${fileExtension}`
+      const filePath = `uploads/${fileName}`
+
+      // Stream the raw array buffer up to your targeted Supabase storage cluster
+      const { data: storageData, error: storageError } =
+        await supabaseAdmin.storage
+          .from('pet-evidence')
+          .upload(filePath, buffer, {
+            contentType: file.type,
+            upsert: true
+          })
+
+      if (storageError) {
+        throw new Error(
+          `Supabase Asset Storage Fault: ${storageError.message}`
+        )
+      }
+
+      // Generate the public distribution link reference
+      const { data: publicUrlData } = supabaseAdmin.storage
+        .from('pet-evidence')
+        .getPublicUrl(filePath)
+
+      petImageUrl = publicUrlData?.publicUrl || null
+    }
+
+    // Insert data into your PostgreSQL table
+    const { data: dbData, error: dbError } = await supabaseAdmin
+      .from('project_inquiries')
+      .insert([
+        {
+          name,
+          email,
+          phone,
+          budget,
+          timeline,
+          project_status: projectStatus,
+          vision_details: visionDetails,
+          services,
+          inspiration,
+          pet_name: petName,
+          pet_bio: petBio,
+          pet_image_url: petImageUrl
+        }
+      ])
+      .select()
+
+    if (dbError) {
+      throw new Error(`Supabase Database Write Fault: ${dbError.message}`)
+    }
+
+    return NextResponse.json(
+      {
+        success: true,
+        message: 'Intake dataset registered into database engine successfully.',
+        record: dbData
+      },
+      { status: 200 }
+    )
+  } catch (error: any) {
+    console.error('[API_DATABASE_ERROR]', error)
+    return NextResponse.json(
+      {
+        success: false,
+        error: error.message || 'Internal database processing failure.'
+      },
+      { status: 500 }
+    )
   }
 }

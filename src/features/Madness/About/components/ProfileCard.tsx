@@ -8,12 +8,12 @@ const ProfileCard = () => {
   const showHiddenEgg = eggs.eggs !== 0 && !eggs.eggList[5].found
 
   return (
-    <div className="relative mb-4 flex flex-col items-center border-white/20 py-4 pr-5 transition-colors duration-500 md:items-end md:border-r">
+    <div className="relative mb-4 flex flex-col items-center border-white/50 py-4 pr-5 transition-colors duration-500 md:items-end md:border-r">
       {/* Decorative Animated Accents */}
-      <div className="absolute top-0 right-0 hidden w-5 border-t border-white/20 transition-all duration-500 group-hover:w-10 md:block" />
+      <div className="absolute top-0 right-0 hidden w-5 border-t border-white/50 transition-all duration-500 group-hover:w-10 md:block" />
 
       <p className="font-mono text-xs tracking-[0.2em] text-white/40 uppercase md:text-right">
-        Design <span className="text-rose-500">&#47;&#47;</span> Code
+        Design <span className="text-rose-500/80">&#47;&#47;</span> Code
       </p>
 
       {/* Glitch/Hover Interactive Title */}
@@ -41,13 +41,13 @@ const ProfileCard = () => {
         )}
       </motion.p>
 
-      <div className="absolute top-[50%] -right-[1.27rem] hidden w-5 border-t border-white/20 md:block" />
+      <div className="absolute top-[50%] -right-[1.27rem] hidden w-5 border-t border-white/50 md:block" />
 
       <p className="text-xl font-light tracking-wide text-white/70 md:text-lg">
         Matt Hattersley
       </p>
 
-      <p className="my-4 ml-auto w-80 self-end font-mono text-xs leading-relaxed tracking-widest text-indigo-300/80 uppercase xl:text-right">
+      <p className="my-4 ml-auto w-80 self-end font-mono text-xs leading-relaxed tracking-widest text-indigo-400/80 uppercase xl:text-right">
         Creative Director
         <br />
         <span className="font-sans text-white/40 lowercase italic">
@@ -88,7 +88,7 @@ const ProfileCard = () => {
         </p>
       </motion.a>
 
-      <div className="absolute right-0 bottom-0 hidden w-5 border-t border-white/20 md:block" />
+      <div className="absolute right-0 bottom-0 hidden w-5 border-t border-white/50 md:block" />
     </div>
   )
 }

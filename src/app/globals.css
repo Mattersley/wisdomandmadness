@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Gabarito:wght@400..900&family=Instrument+Serif:ital@0;1&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=VT323&display=swap');@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=family=Instrument+Serif:ital@0;1&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=VT323&display=swap');@import "tailwindcss";
 
 :root {
   --background: #ffffff;
@@ -21,10 +21,10 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-gabarito: "Gabarito", sans-serif;
   --font-vt323: var(--font-vt323, 'VT323', monospace);
   --font-inter: var(--font-inter, 'Inter', sans-serif);
   --font-instrument: var(--font-instrument, 'Instrument Serif', serif);
+  --font-vagra: var(--font-vagra, 'Vagra', sans-serif);
   --text-shadow-crt: 0 0 0.2em currentColor, 1px 1px rgba(255, 0, 255, 0.5),
   -1px -1px rgba(0, 255, 255, 0.4);
   --drop-shadow-crt: 0 0 0.04em currentColor, 1px 1px rgba(255, 0, 255, 0.2),
@@ -71,6 +71,10 @@
     backdrop-filter: blur(5px);
     -webkit-backdrop-filter: blur(5px);
     border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+@utility madness-text {
+    @apply font-vagra bg-linear-to-tr from-[#3F5EFB] to-[#FC466B] bg-clip-text text-transparent
 }
 
 body {
