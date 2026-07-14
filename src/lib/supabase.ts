@@ -3,7 +3,12 @@ import { createClient } from '@supabase/supabase-js'
 const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL || ''
 // Uses the modern secret string variable configuration
 const adminKey =
-  process.env.SUPABASE_SECRET_KEY || process.env.SUPABASE_SERVICE_ROLE_KEY || ''
+  process.env.SUPABASE_SERVICE_ROLE_KEY || process.env.SUPABASE_SECRET_KEY || ''
+export const supabaseAdminKeySource = process.env.SUPABASE_SERVICE_ROLE_KEY
+  ? 'SUPABASE_SERVICE_ROLE_KEY'
+  : process.env.SUPABASE_SECRET_KEY
+    ? 'SUPABASE_SECRET_KEY'
+    : null
 
 export const hasSupabaseAdminConfig = Boolean(supabaseUrl && adminKey)
 

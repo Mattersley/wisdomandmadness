@@ -1,6 +1,10 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { checkBotId } from 'botid/server'
-import { hasSupabaseAdminConfig, supabaseAdmin } from '@/lib/supabase'
+import {
+  hasSupabaseAdminConfig,
+  supabaseAdmin,
+  supabaseAdminKeySource
+} from '@/lib/supabase'
 import crypto from 'crypto'
 
 export const runtime = 'nodejs'
@@ -173,6 +177,17 @@ const verifyBotId = async () => {
   }
 }
 
+const isSupabaseInvalidKeyError = (message: string) =>
+  message.toLowerCase().includes('invalid api key')
+
+const supabaseConfigError = () =>
+  new ContactRequestError(
+    `Supabase rejected the configured API key${
+      supabaseAdminKeySource ? ` from ${supabaseAdminKeySource}` : ''
+    }. Use the project service_role API key in SUPABASE_SERVICE_ROLE_KEY.`,
+    503
+  )
+
 export async function POST(request: NextRequest) {
   try {
     const contentLength = Number(request.headers.get('content-length') || 0)
@@ -282,6 +297,10 @@ export async function POST(request: NextRequest) {
         })
 
       if (storageError) {
+        if (isSupabaseInvalidKeyError(storageError.message)) {
+          throw supabaseConfigError()
+        }
+
         throw new Error(`Supabase Storage: ${storageError.message}`)
       }
 
@@ -312,6 +331,10 @@ export async function POST(request: NextRequest) {
       .select()
 
     if (dbError) {
+      if (isSupabaseInvalidKeyError(dbError.message)) {
+        throw supabaseConfigError()
+      }
+
       throw new Error(`Database: ${dbError.message}`)
     }
 
