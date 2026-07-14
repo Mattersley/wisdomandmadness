@@ -8,9 +8,7 @@ const publishableKey = process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY || ''
 export const supabasePublishableKey = publishableKey
 const adminKey = secretKey
 
-export const supabaseAdminKeySource = secretKey
-  ? 'SUPABASE_SECRET_KEY'
-  : null
+export const supabaseAdminKeySource = secretKey ? 'SUPABASE_SECRET_KEY' : null
 export const supabasePublishableKeySource = publishableKey
   ? 'NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY'
   : null
@@ -37,7 +35,14 @@ export const supabaseAdmin = hasSupabaseAdminConfig
   ? createClient(supabaseUrl, adminKey, {
       auth: {
         persistSession: false,
-        autoRefreshToken: false
+        autoRefreshToken: false,
+        detectSessionInUrl: false
+      },
+      global: {
+        headers: {
+          // Explicitly binds the new opaque secret key to the gateway API layer
+          apikey: adminKey
+        }
       }
     })
   : null
