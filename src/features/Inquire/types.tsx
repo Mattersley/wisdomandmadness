@@ -263,6 +263,7 @@ export interface Inputs {
   phone: string;
   company?: string;
   notes?: string;
+  website_confirm_field?: string;
 
   // Stage 2 Fields
   services: string[];

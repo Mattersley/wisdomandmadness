@@ -1,5 +1,5 @@
 import { useFormContext, useFieldArray } from 'react-hook-form'
-import { Inputs } from '../types'
+import { Inputs } from '../../types'
 
 export const DesignInspiration = () => {
   const { register, control } = useFormContext<Inputs>()

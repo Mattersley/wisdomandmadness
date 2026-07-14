@@ -1,5 +1,5 @@
 import { useFormContext } from 'react-hook-form'
-import { Inputs, PROJECT_STATUSES } from '../types'
+import { Inputs, PROJECT_STATUSES } from '../../types'
 
 export const ProjectVision = () => {
   const { register, formState: { errors } } = useFormContext<Inputs>()

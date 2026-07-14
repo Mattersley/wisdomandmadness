@@ -9,6 +9,14 @@ export const ContactForm = () => {
 
   return (
     <div className="flex w-full flex-col items-start justify-start gap-10">
+      <input
+        {...register('website_confirm_field')}
+        aria-hidden="true"
+        autoComplete="off"
+        className="hidden"
+        tabIndex={-1}
+        type="text"
+      />
       <div className="w-full text-left text-neutral-500">
         Let&#39;s get started, so we can find out more about your project and
         provide you exactly what you need.

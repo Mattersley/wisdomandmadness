@@ -1,8 +1,12 @@
 import { useFormContext } from 'react-hook-form'
-import { Inputs } from '../types'
+import { Inputs } from '../../types'
+import { validatePetImage } from '@/features/Inquire/contactSubmission'
 
 const ManagerApproval = () => {
-  const { register } = useFormContext<Inputs>()
+  const {
+    register,
+    formState: { errors }
+  } = useFormContext<Inputs>()
 
   return (
     <div className="relative rounded-xl border-2 border-dashed border-pink-200 bg-pink-50/50 p-6">
@@ -41,12 +45,19 @@ const ManagerApproval = () => {
             Photo Evidence
           </label>
           <input
-            accept="image/*"
+            accept="image/jpeg,image/png,image/webp,image/gif"
             id="petImage"
             type="file"
-            {...register('petImage')}
+            {...register('petImage', {
+              validate: validatePetImage
+            })}
             className="bg-background w-full rounded-lg border border-gray-200 px-3 py-2 text-xs text-gray-500 file:mr-4 file:rounded-full file:border-0 file:bg-pink-500 file:px-4 file:py-0.5 file:text-xs file:font-bold file:text-white hover:file:bg-pink-500"
           />
+          {errors.petImage && (
+            <span className="text-xs text-red-500">
+              {errors.petImage.message}
+            </span>
+          )}
         </div>
         <div className="space-y-1.5 sm:col-span-2 text-center">
           <label className="text-xs font-mono uppercase text-center font-medium text-pink-500" htmlFor="petBio">

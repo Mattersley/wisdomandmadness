@@ -5,11 +5,12 @@ import { Inputs } from '../../Inquire/types'
 import ContactForm from '@/features/Inquire/components/01 Contact/ContactForm'
 import Services from '@/features/Inquire/components/02 Services/ServicesForm'
 import Logistics from '@/features/Inquire/components/03 LogisticsBudget/LogisticsBudgetForm'
-import ProjectVision from '@/features/Inquire/components/ProjectVisionForm'
-import DesignInspiration from '@/features/Inquire/components/DesignInspirationForm'
-import ManagerApproval from '@/features/Inquire/components/ManagerApprovalPetSubmission'
+import ProjectVision from '@/features/Inquire/components/04 Vision/ProjectVisionForm'
+import DesignInspiration from '@/features/Inquire/components/05 Inspo/DesignInspirationForm'
+import ManagerApproval from '@/features/Inquire/components/06 ManagerApproval/ManagerApprovalPetSubmission'
 import { useContact } from '@/context/contactContext'
 import ContactButtonLiquid from '@/features/Shared/ContactButtons/ContactButtonLiquid'
+import { buildContactFormData } from '@/features/Inquire/contactSubmission'
 
 const Contact = () => {
   const { isOpen, closeContact, openContact } = useContact()
@@ -49,17 +50,11 @@ const Contact = () => {
   //   }
   // }
 
-  const onSubmit: SubmitHandler<Inputs> = async (data: any) => {
-    // Pass the form data
-    const payload = { ...data, simpleWebsite: simplePlease }
-
+  const onSubmit: SubmitHandler<Inputs> = async (data) => {
     try {
       const response = await fetch('/api/contact', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(payload)
+        body: buildContactFormData(data)
       })
 
       if (!response.ok) {
@@ -107,7 +102,7 @@ const Contact = () => {
                 transition={{ duration: 0.2 }}
               >
                 <div className="wnm-gradient relative z-10 shrink-0 border-b border-gray-100 px-6 py-5 text-center text-white">
-                  <h2 className='font-instrument mt-6 text-4xl font-bold'>
+                  <h2 className="font-instrument mt-6 text-4xl font-bold">
                     Contact Us
                   </h2>
                   <p className="mt-1 text-white">Tell us about your vision</p>

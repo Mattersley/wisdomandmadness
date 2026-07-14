@@ -13,10 +13,11 @@ import { getStageFieldsToValidate } from '@/features/Inquire/validationMap'
 import ContactForm from '@/features/Inquire/components/01 Contact/ContactForm'
 import Services from '@/features/Inquire/components/02 Services/ServicesForm'
 import Logistics from '@/features/Inquire/components/03 LogisticsBudget/LogisticsBudgetForm'
-import ProjectVision from '@/features/Inquire/components/ProjectVisionForm'
-import DesignInspiration from '@/features/Inquire/components/DesignInspirationForm'
-import ManagerApproval from '@/features/Inquire/components/ManagerApprovalPetSubmission'
-import ReviewForm from '@/features/Inquire/components/ReviewForm'
+import ProjectVision from '@/features/Inquire/components/04 Vision/ProjectVisionForm'
+import DesignInspiration from '@/features/Inquire/components/05 Inspo/DesignInspirationForm'
+import ManagerApproval from '@/features/Inquire/components/06 ManagerApproval/ManagerApprovalPetSubmission'
+import ReviewForm from '@/features/Inquire/components/07 Review/ReviewForm'
+import { buildContactFormData } from '@/features/Inquire/contactSubmission'
 
 const stageVariants = {
   enter: (direction: number) => ({
@@ -94,41 +95,17 @@ const Inquire = () => {
     }
   }
 
-  const onSubmit: SubmitHandler<Inputs> = async (data: any) => {
+  const onSubmit: SubmitHandler<Inputs> = async (data) => {
     try {
-      const formData = new FormData()
-
-      // 1. Append simple structural primitives
-      formData.append('name', data.name || '')
-      formData.append('email', data.email || '')
-      formData.append('phone', data.phone || '')
-      formData.append('budget', data.budget || '')
-      formData.append('timeline', data.timeline || '')
-      formData.append('projectStatus', data.projectStatus || '')
-      formData.append('visionDetails', data.visionDetails || '')
-      formData.append('petName', data.petName || '')
-      formData.append('petBio', data.petBio || '')
-
-      // 2. Stringify complex compound layers so the receiver parses them seamlessly
-      formData.append('services', JSON.stringify(data.services || []))
-      formData.append('inspiration', JSON.stringify(data.inspiration || []))
-
-      // 3. Extract and map FileList binary references from our ManagerApproval input
-      if (data.petImage && data.petImage.length > 0) {
-        formData.append('petImage', data.petImage[0])
-      }
-
-      // 4. Send multipart/form-data payload across the API channel
       const response = await fetch('/api/contact', {
         method: 'POST',
-        body: formData // Note: Omitting Content-Type header lets the browser inject the correct boundary token automatically
+        body: buildContactFormData(data)
       })
 
       if (!response.ok) {
         throw new Error('Theres been an error.')
       }
 
-      // 5. Hard system reset state upon success
       reset()
       setStageStep([1, -1])
       setCurrentStage(1)
