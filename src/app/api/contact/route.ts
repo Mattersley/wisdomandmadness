@@ -180,11 +180,20 @@ const verifyBotId = async () => {
 const isSupabaseInvalidKeyError = (message: string) =>
   message.toLowerCase().includes('invalid api key')
 
+const isSupabasePermissionError = (message: string) =>
+  message.toLowerCase().includes('permission denied')
+
 const supabaseConfigError = () =>
   new ContactRequestError(
     `Supabase rejected the configured API key${
       supabaseAdminKeySource ? ` from ${supabaseAdminKeySource}` : ''
     }. Use the project secret API key in SUPABASE_SECRET_KEY.`,
+    503
+  )
+
+const supabasePermissionError = (message: string) =>
+  new ContactRequestError(
+    `Supabase denied the contact submission. Confirm SUPABASE_SECRET_KEY is a server-only service role/secret key and that it has INSERT permission on project_inquiries. Original error: ${message}`,
     503
   )
 
@@ -310,7 +319,7 @@ export async function POST(request: NextRequest) {
       petImageUrl = publicUrlData?.publicUrl || null
     }
 
-    const { data: dbData, error: dbError } = await supabaseAdmin
+    const { error: dbError } = await supabaseAdmin
       .from('project_inquiries')
       .insert([
         {
@@ -328,20 +337,20 @@ export async function POST(request: NextRequest) {
           pet_image_url: petImageUrl
         }
       ])
-      .select()
 
     if (dbError) {
       if (isSupabaseInvalidKeyError(dbError.message)) {
         throw supabaseConfigError()
       }
 
+      if (isSupabasePermissionError(dbError.message)) {
+        throw supabasePermissionError(dbError.message)
+      }
+
       throw new Error(`Database: ${dbError.message}`)
     }
 
-    return json(
-      { success: true, message: 'Intake registered.', record: dbData },
-      200
-    )
+    return json({ success: true, message: 'Intake registered.' }, 200)
   } catch (error) {
     const message =
       error instanceof Error ? error.message : 'Unable to process submission.'
