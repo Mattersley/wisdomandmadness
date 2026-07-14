@@ -1,5 +1,5 @@
 import { useFormContext } from 'react-hook-form'
-import { Inputs, TIMELINES } from '../types'
+import { Inputs, TIMELINES } from '../../types'
 
 export const Logistics = () => {
   const { register, watch } = useFormContext<Inputs>()

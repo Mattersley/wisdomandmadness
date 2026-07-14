@@ -7,7 +7,7 @@ interface ContactButtonProps {
   openContact: () => void;
 }
 
-const ContactButton = ({ openContact }: ContactButtonProps) => {
+const ContactButtonLiquid = ({ openContact }: ContactButtonProps) => {
   const triggerRef = useRef<HTMLButtonElement | null>(null)
   const [isHovered, setIsHovered] = useState(false)
 
@@ -127,4 +127,4 @@ const ContactButton = ({ openContact }: ContactButtonProps) => {
   )
 }
 
-export default ContactButton
+export default ContactButtonLiquid

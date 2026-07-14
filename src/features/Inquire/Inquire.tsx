@@ -10,9 +10,9 @@ import FormErrorBanner from '@/features/Inquire/components/FormErrorBanner'
 import { getStageFieldsToValidate } from '@/features/Inquire/validationMap'
 
 // All step imports mapped in sequential system context
-import ContactForm from '@/features/Inquire/components/ContactForm'
+import ContactForm from '@/features/Inquire/components/01 Contact/ContactForm'
 import Services from '@/features/Inquire/components/02 Services/ServicesForm'
-import Logistics from '@/features/Inquire/components/LogisticsBudgetForm'
+import Logistics from '@/features/Inquire/components/03 LogisticsBudget/LogisticsBudgetForm'
 import ProjectVision from '@/features/Inquire/components/ProjectVisionForm'
 import DesignInspiration from '@/features/Inquire/components/DesignInspirationForm'
 import ManagerApproval from '@/features/Inquire/components/ManagerApprovalPetSubmission'

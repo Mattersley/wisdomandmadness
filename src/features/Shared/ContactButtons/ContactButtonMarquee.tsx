@@ -31,7 +31,7 @@ interface ContactButtonProps {
   onClick?: () => void;
 }
 
-const ContactButton = ({ transparent, onClick }: ContactButtonProps) => {
+const ContactButtonMarquee = ({ transparent, onClick }: ContactButtonProps) => {
   const { openContact } = useContact()
   const triggerRef = useRef<HTMLButtonElement | null>(null)
 
@@ -122,4 +122,4 @@ const ContactButton = ({ transparent, onClick }: ContactButtonProps) => {
   )
 }
 
-export default ContactButton
+export default ContactButtonMarquee

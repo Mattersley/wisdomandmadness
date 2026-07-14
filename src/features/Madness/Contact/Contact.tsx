@@ -2,14 +2,14 @@ import { useState, useEffect } from 'react'
 import { useForm, SubmitHandler, FormProvider } from 'react-hook-form'
 import { motion, AnimatePresence } from 'motion/react'
 import { Inputs } from '../../Inquire/types'
-import ContactForm from '@/features/Inquire/components/ContactForm'
+import ContactForm from '@/features/Inquire/components/01 Contact/ContactForm'
 import Services from '@/features/Inquire/components/02 Services/ServicesForm'
-import Logistics from '@/features/Inquire/components/LogisticsBudgetForm'
+import Logistics from '@/features/Inquire/components/03 LogisticsBudget/LogisticsBudgetForm'
 import ProjectVision from '@/features/Inquire/components/ProjectVisionForm'
 import DesignInspiration from '@/features/Inquire/components/DesignInspirationForm'
 import ManagerApproval from '@/features/Inquire/components/ManagerApprovalPetSubmission'
 import { useContact } from '@/context/contactContext'
-import ContactButton from '@/features/Inquire/components/ContactButton'
+import ContactButtonLiquid from '@/features/Shared/ContactButtons/ContactButtonLiquid'
 
 const Contact = () => {
   const { isOpen, closeContact, openContact } = useContact()
@@ -79,7 +79,7 @@ const Contact = () => {
 
   return (
     <>
-      <ContactButton openContact={openContact} />
+      <ContactButtonLiquid openContact={openContact} />
       {/*<button*/}
       {/*  className="wnm-gradient absolute top-8 right-[6vw] z-20 h-12 w-28 cursor-pointer items-center rounded-[3rem] text-center text-white hover:bg-linear-to-tr sm:relative sm:top-0 sm:right-0 sm:flex sm:h-16 sm:w-52 md:w-40 lg:w-52"*/}
       {/*  onClick={openContact}*/}

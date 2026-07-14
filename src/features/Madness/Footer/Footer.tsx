@@ -1,6 +1,6 @@
 import LogoText from '@/features/Shared/LogoText/LogoText'
 import VanIsle from '@/features/Madness/Footer/VanIsle'
-import ContactButton from '@/features/Shared/ContactButton/ContactButton'
+import ContactButtonMarquee from '@/features/Shared/ContactButtons/ContactButtonMarquee'
 import Blobover from '@/features/Shared/Popover/Blobover'
 import React, { useContext } from 'react'
 import { WormContext } from '@/context/wormContext'
@@ -33,7 +33,7 @@ const Section1 = ({
   <>
     <div className="mx-auto mt-auto flex h-40 w-[80%] flex-row items-end justify-between border-b border-white/50 pb-10">
       <div className="pointer-events-auto flex flex-row gap-4">
-        <ContactButton transparent={true} />
+        <ContactButtonMarquee transparent={true} />
         <Blobover
           colour="indigo"
           position="right"

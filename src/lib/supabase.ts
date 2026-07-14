@@ -1,17 +1,21 @@
 import { createClient } from '@supabase/supabase-js'
 
 const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL || ''
-const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || ''
-const supabaseServiceKey = process.env.SUPABASE_SERVICE_ROLE_KEY || ''
+// Uses the modern publishable string variable configuration
+const publishableKey = process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY || ''
+// Uses the modern secret string variable configuration
+const secretKey = process.env.SUPABASE_SECRET_KEY || "";
 
 if (!supabaseUrl) {
-  console.warn('Missing SUPABASE_URL environment variable.')
+  console.warn(
+    '[SUPABASE] Warning: Target endpoint environment string is unassigned.'
+  )
 }
 
-// We use the service role key on the backend to bypass RLS policies during intake
+// Backend administrative client: bypasses RLS policies securely using the Secret Key
 export const supabaseAdmin = createClient(
   supabaseUrl,
-  supabaseServiceKey || supabaseAnonKey,
+  secretKey || publishableKey,
   {
     auth: {
       persistSession: false,
