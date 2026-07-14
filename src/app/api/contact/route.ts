@@ -184,7 +184,7 @@ const supabaseConfigError = () =>
   new ContactRequestError(
     `Supabase rejected the configured API key${
       supabaseAdminKeySource ? ` from ${supabaseAdminKeySource}` : ''
-    }. Use the project service_role API key in SUPABASE_SERVICE_ROLE_KEY.`,
+    }. Use the project secret API key in SUPABASE_SECRET_KEY.`,
     503
   )
 
@@ -220,7 +220,7 @@ export async function POST(request: NextRequest) {
         {
           success: false,
           error:
-            'Contact submissions are not configured. Check Supabase environment variables.'
+            'Contact submissions are not configured. Check SUPABASE_SECRET_KEY and NEXT_PUBLIC_SUPABASE_URL.'
         },
         503
       )
