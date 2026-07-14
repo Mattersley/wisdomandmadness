@@ -2,20 +2,24 @@ import { createClient } from '@supabase/supabase-js'
 
 const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL || ''
 
-// Public publishable key for client-side interactions
-export const supabasePublishableKey =
-  process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY || ''
+const secretKey = process.env.SUPABASE_SECRET_KEY || ''
+const publishableKey = process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY || ''
 
-// Private secret key for backend administrative access
-const adminKey = process.env.SUPABASE_SECRET_KEY || ''
+export const supabasePublishableKey = publishableKey
+const adminKey = secretKey
 
-// Configuration safety flags
+export const supabaseAdminKeySource = secretKey
+  ? 'SUPABASE_SECRET_KEY'
+  : null
+export const supabasePublishableKeySource = publishableKey
+  ? 'NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY'
+  : null
+
 export const hasSupabaseAdminConfig = Boolean(supabaseUrl && adminKey)
 export const hasSupabasePublicConfig = Boolean(
   supabaseUrl && supabasePublishableKey
 )
 
-// Missing configuration warnings
 if (!supabaseUrl) {
   console.warn(
     '[SUPABASE] Warning: Target endpoint environment string is unassigned.'
