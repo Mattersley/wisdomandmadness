@@ -6,28 +6,25 @@ import type { MotionValue } from 'motion'
 import { motion, useScroll, useSpring, useTransform } from 'motion/react'
 
 const images = [
-  '6.png',
-  '5.png',
-  '3.png',
-
-  '13.png',
   '1.png',
-  '9.png',
-
-  '10.png',
+  '3.png',
+  '5.png',
+  '6.png',
   '7.png',
-  '11.png',
-
-  '12.png',
   '8.png',
+  '9.png',
+  '10.png',
+  '11.png',
+  '12.png',
+  '13.png',
   '14.png'
 ]
 
 const columns = [
-  [images[0], images[1], images[2], images[3], images[4], images[5]],
-  [images[6], images[7], images[8], images[9], images[10], images[11]],
-  [images[2], images[5], images[8], images[11], images[1], images[4]],
-  [images[9], images[10], images[0], images[3], images[6], images[7]]
+  [images[0], images[2], images[6], images[8], images[7], images[10]],
+  [images[4], images[5], images[5], images[5], images[4], images[0]],
+  [images[10], images[5], images[3], images[6], images[1], images[3]],
+  [images[4], images[5], images[6], images[7], images[8], images[10]]
 ]
 
 const wrap = (min: number, max: number, value: number) => {

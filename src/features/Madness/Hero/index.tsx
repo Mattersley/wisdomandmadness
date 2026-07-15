@@ -42,7 +42,7 @@ const Hero = () => {
                   width={20}
                 />
               </div>
-              <div className="absolute top-26 right-6 z-2 flex flex-col gap-3 text-right text-xs">
+              <div className="hidden absolute top-26 right-6 z-2 sm:flex flex-col gap-3 text-right text-xs">
                 <p>linear-gradient()</p>
                 <div className="flex flex-row justify-end gap-2">
                   <div className="size-4 rounded-[50%] bg-[#FC466B]" />

@@ -131,7 +131,7 @@ export const VanIsle = () => {
         />
       </motion.div>
 
-      <div className="pointer-events-none w-full text-right font-mono text-xs text-white select-none">
+      <div className="pointer-events-none w-full text-center md:text-right font-mono text-xs text-white select-none">
         <p className="leading-relaxed">
           Proudly serving the world, from our base on{' '}
           <strong>Vancouver Island</strong> in BC, Canada

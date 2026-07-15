@@ -76,7 +76,7 @@ const ContactButtonMarquee = ({ transparent, onClick }: ContactButtonProps) => {
 
   return (
     <motion.button
-      className={`group relative z-20 hidden cursor-pointer items-center justify-center overflow-hidden rounded-full border border-white/20 font-mono text-xs tracking-widest text-white uppercase backdrop-blur-md transition-all duration-300 ease-out will-change-transform select-none sm:flex sm:h-16 sm:w-52 md:w-44 lg:w-52 ${
+      className={`group relative z-20 cursor-pointer items-center justify-center overflow-hidden rounded-full border border-white/20 font-mono text-xs tracking-widest text-white uppercase backdrop-blur-md transition-all duration-300 ease-out will-change-transform select-none flex h-16 w-40 md:w-44 lg:w-52 ${
         transparent
           ? 'bg-white/5 hover:border-white hover:bg-white'
           : 'border-neutral-800 bg-neutral-950 hover:bg-neutral-900'

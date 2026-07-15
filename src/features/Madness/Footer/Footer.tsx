@@ -13,7 +13,7 @@ const Footer = () => {
         className="relative h-[700px]"
         style={{ clipPath: 'polygon(0% 0, 100% 0%, 100% 100%, 0 100%)' }}
       >
-        <div className="w-full absolute h-52 bg-neutral-800" />
+        <div className="absolute h-52 w-full bg-neutral-800" />
         <div className="pointer-events-none fixed bottom-0 h-[700px] w-full">
           <div className="flex h-full w-full flex-col bg-neutral-800">
             <Section1 setWorm={setWorm} />
@@ -31,21 +31,21 @@ const Section1 = ({
   setWorm: (value: 'madness' | 'wisdom' | 'ID' | 'inquire') => void;
 }) => (
   <>
-    <div className="mx-auto mt-auto flex h-40 w-[80%] flex-row items-end justify-between border-b border-white/50 pb-10">
-      <div className="pointer-events-auto flex flex-row gap-4">
+    <div className="mx-auto mt-auto flex w-[80%] flex-col-reverse items-center border-b border-white/50 pb-10 md:h-40 md:flex-row md:items-end md:justify-between">
+      <div className="pointer-events-auto mt-10 flex w-full flex-row items-center justify-center gap-4 md:mt-0 md:justify-start">
         <ContactButtonMarquee transparent={true} />
         <Blobover
           colour="indigo"
           position="right"
           trigger={
             <button
-              className="cursor-pointer absolute top-8 right-[7vw] flex size-12 items-center justify-center rounded-[50%] bg-indigo-500 text-white hover:bg-gray-500 sm:relative sm:top-auto sm:right-auto sm:size-16"
+              className="relative top-auto right-auto mt-2 -mb-2 flex size-16 cursor-pointer items-center justify-center rounded-[50%] bg-indigo-500 text-white hover:bg-gray-500"
               onClick={() => setWorm('inquire')}
               type="button"
             >
               <span className="size-full">
                 <svg
-                  className="mx-auto mt-4 size-6 sm:size-8"
+                  className="mx-auto mt-4 size-8"
                   fill="none"
                   stroke="currentColor"
                   strokeLinecap="round"

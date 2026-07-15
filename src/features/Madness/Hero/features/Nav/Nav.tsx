@@ -5,6 +5,8 @@ import React, { useContext } from 'react'
 import { WormContext } from '@/context/wormContext'
 import Blobover from '@/features/Shared/Popover/Blobover'
 
+// Make the contact button open menu <sm
+
 const Nav = () => {
   const { setWorm } = useContext(WormContext)
 
@@ -65,7 +67,7 @@ const Nav = () => {
             colour="indigo"
             trigger={
               <button
-                className="absolute top-8 right-[7vw] flex size-12 cursor-pointer items-center justify-center rounded-[50%] bg-indigo-500 text-white hover:bg-gray-500 sm:relative sm:top-auto sm:right-auto sm:size-16"
+                className="hidden absolute top-8 right-[7vw] sm:flex size-12 cursor-pointer items-center justify-center rounded-[50%] bg-indigo-500 text-white hover:bg-gray-500 sm:relative sm:top-auto sm:right-auto sm:size-16"
                 onClick={() => setWorm('inquire')}
                 type="button"
               >
