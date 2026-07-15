@@ -17,47 +17,38 @@ const EggCounter = () => {
   return (
     <>
       {eggs.eggs > 0 && (
-        <button
-          className={`group relative flex flex-row items-center gap-2 rounded-3xl bg-yellow-500 p-2 text-white transition-transform ${
+        <div
+          className={`shadow-3xl group relative mr-4 flex w-80 flex-row items-center gap-2 rounded-3xl bg-yellow-500 p-2 text-white transition-transform ${
             isPulsing ? 'animate-bounce' : ''
           }`}
-          onClick={resetEggCount}
-          type="button"
         >
-          <span className="absolute -left-10 z-[100] hidden text-white group-hover:block">
-            <svg
-              fill="none"
-              height="30"
-              stroke="currentColor"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth="1.5"
-              viewBox="0 0 24 24"
-              width="30"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path d="M0 0h24v24H0z" fill="none" stroke="none" />
-              <path d="M19.95 11a8 8 0 1 0 -.5 4m.5 5v-5h-5" />
-            </svg>
-          </span>
-          <svg
-            fill="white"
-            height="34"
-            stroke="currentColor"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth="1"
-            viewBox="0 0 24 24"
-            width="34"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path d="M0 0h24v24H0z" fill="none" stroke="none" />
-            <path d="M19 14.083c0 4.154 -2.966 6.74 -7 6.917c-4.2 0 -7 -2.763 -7 -6.917c0 -5.538 3.5 -11.09 7 -11.083c3.5 .007 7 5.545 7 11.083z" />
-          </svg>
-          <p className="absolute left-[1.3rem] font-mono text-xs font-bold text-yellow-500">
-            {eggs.eggs}
-          </p>
-        </button>
+          {eggs.eggList.map((egg) => (
+            <div key={egg.name} className="flex w-full">
+              {egg.found ? (
+                <div className="relative flex items-center justify-center">
+                  <svg
+                    fill="white"
+                    height="34"
+                    stroke="currentColor"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="1"
+                    viewBox="0 0 24 24"
+                    width="34"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path d="M0 0h24v24H0z" fill="none" stroke="none" />
+                    <path d="M19 14.083c0 4.154 -2.966 6.74 -7 6.917c-4.2 0 -7 -2.763 -7 -6.917c0 -5.538 3.5 -11.09 7 -11.083c3.5 .007 7 5.545 7 11.083z" />
+                  </svg>
+                  <p className="absolute font-mono text-xs font-bold text-yellow-500">
+                    {egg.id}
+                  </p>
+                </div>
+              ): <div className="flex text-yellow-600/40 font-bold text-2xl items-center font-mono justify-center text-center mx-auto">?</div>}
+            </div>
+          ))}
+          <button className="absolute cursor-pointer text-red-800 -right-6" onClick={resetEggCount}>X</button>
+        </div>
       )}
     </>
   )

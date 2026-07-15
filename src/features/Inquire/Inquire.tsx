@@ -169,7 +169,7 @@ const Inquire = () => {
   const currentMeta = getStageMetadata(currentStage)
 
   return (
-    <div className="h-screen w-screen bg-neutral-950 px-4 sm:pt-6">
+    <div className="h-screen w-screen bg-neutral-950 px-4 sm:pt-6 overflow-y-scroll md:overflow-hidden">
       <div className="relative z-10 flex size-full md:-mb-24">
         <button className="font-vt323 absolute -top-2 left-[48vw] z-40 hidden rounded-2xl border px-3 text-neutral-700 hover:border-rose-500 hover:bg-rose-500 hover:text-white sm:block">
           OBS#{}-INQUIRY
@@ -194,12 +194,14 @@ const Inquire = () => {
               </svg>
               Project Inquiry Wizard
             </h2>
-            <p className="text-xs text-white">Tell us about your vision.</p>
+            <p className="hidden text-xs text-white sm:block">
+              Tell us about your vision.
+            </p>
           </div>
 
           <div className="relative flex size-full flex-col md:gap-x-6">
-            <div className="relative mt-9 flex h-3/4 w-full flex-col items-center justify-center rounded-3xl bg-white sm:justify-start">
-              <div className="font-vt323 flex min-h-30 w-full flex-row items-center justify-center bg-indigo-500/10 text-center text-4xl sm:justify-start sm:pl-50">
+            <div className="relative mt-9 flex w-full flex-col items-center justify-center rounded-3xl bg-white md:h-3/4 md:justify-start">
+              <div className="font-vt323 flex min-h-20 w-full flex-row items-center justify-center bg-indigo-500/10 text-center text-3xl sm:min-h-22 md:min-h-30 md:text-4xl lg:justify-start lg:pl-50">
                 {currentMeta.title}
                 <span className="-mt-4 ml-1 font-mono text-lg font-bold text-indigo-500">
                   0{currentStage}.
@@ -214,7 +216,7 @@ const Inquire = () => {
                 stageComplete={highestStageReached - 1}
               />
 
-              <div className="relative size-full sm:pl-48">
+              <div className="relative size-full px-10 pb-30 lg:pb-0 lg:pl-48">
                 <FormProvider {...methods}>
                   <form
                     className="flex size-full flex-col items-center justify-center"
@@ -226,7 +228,7 @@ const Inquire = () => {
                         <motion.div
                           key={currentStage}
                           animate="center"
-                          className="size-full px-32 pt-10 pb-32"
+                          className="size-full pt-10 pb-40 lg:pb-0 xl:px-32"
                           custom={direction}
                           exit="exit"
                           initial="enter"
@@ -255,7 +257,7 @@ const Inquire = () => {
                 </FormProvider>
 
                 {/* Control Actions Bar */}
-                <div className="absolute right-8 bottom-6 z-50 flex flex-row items-center gap-3 text-sm">
+                <div className="absolute right-10 bottom-58 z-50 flex flex-row items-center gap-3 text-sm md:bottom-64 lg:right-8 lg:bottom-6">
                   {currentStage > 1 && (
                     <button
                       className="cursor-pointer rounded-xl border border-neutral-200 bg-white px-5 py-3 font-mono text-xs tracking-wider text-neutral-600 uppercase transition-all hover:bg-neutral-50"
@@ -304,8 +306,8 @@ const Inquire = () => {
                 </div>
 
                 {/* Decorative Background Assets */}
-                <div className="absolute bottom-0 left-0 z-2 hidden h-18 w-19 rounded-tr-3xl bg-neutral-950 md:block" />
-                <div className="absolute bottom-18 left-0 z-10 hidden -rotate-90 md:block">
+                <div className="absolute bottom-0 left-0 z-2 hidden h-18 w-19 rounded-tr-3xl bg-neutral-950 lg:block" />
+                <div className="absolute bottom-18 left-0 z-10 hidden -rotate-90 lg:block">
                   <Image
                     alt="image"
                     height={20}
@@ -313,7 +315,7 @@ const Inquire = () => {
                     width={20}
                   />
                 </div>
-                <div className="absolute bottom-0 left-19 z-10 hidden -rotate-90 md:block">
+                <div className="absolute bottom-0 left-19 z-10 hidden -rotate-90 lg:block">
                   <Image
                     alt="image"
                     height={20}
@@ -322,7 +324,7 @@ const Inquire = () => {
                   />
                 </div>
 
-                <div className="absolute -bottom-20 z-50 sm:-bottom-2 sm:left-0">
+                <div className="absolute -top-43 right-2 z-50 sm:-top-47 sm:scale-80 md:-top-55 lg:top-auto lg:right-auto lg:-bottom-2 lg:left-0 lg:scale-100">
                   <Blobover
                     colour="black"
                     position="bottom"

@@ -1,8 +1,9 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import Egg from '@/features/Madness/Egg/Egg'
 import { projects } from '@/features/Madness/Portfolio/data/projects'
 import PortfolioNavBar from '@/features/Madness/Portfolio/components/NavBar/PortfolioNavBar'
 import ProjectContainer from '@/features/Madness/Portfolio/components/ProjectContainer/ProjectContainer'
+import { EggContext } from '@/context/eggContext'
 
 interface PortfolioPropTypes {
   currentProject: string;
@@ -13,6 +14,7 @@ const Portfolio = ({
   currentProject,
   setCurrentProject
 }: PortfolioPropTypes) => {
+  const { eggs } = useContext(EggContext)
   const [direction, setDirection] = useState(0)
   const currentIndex = projects.findIndex(
     (item) => item.name === currentProject
@@ -53,9 +55,11 @@ const Portfolio = ({
         ))}
       </div>
 
-      <div className="absolute right-3 bottom-3 sm:right-10 sm:bottom-10">
-        <Egg id={0} />
-      </div>
+      {!eggs.eggList[0].found && (
+        <div className="absolute right-3 bottom-3 sm:right-10 sm:bottom-10">
+          <Egg id={1} />
+        </div>
+      )}
     </div>
   )
 }

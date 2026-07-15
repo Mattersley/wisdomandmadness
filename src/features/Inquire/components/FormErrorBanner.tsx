@@ -22,7 +22,7 @@ const FormErrorBanner = ({
       {hasActiveErrors && (
         <motion.div
           animate={{ opacity: 1, y: 0, scale: 1 }}
-          className="bottom-8 right-1/2 left-1/2 -translate-x-1/2 absolute flex w-full max-w-3xl items-center gap-3 rounded-xl border border-rose-200 bg-rose-50 px-4 py-3 text-rose-700 shadow-sm"
+          className="mt-2 flex w-full max-w-3xl items-center gap-3 rounded-xl border border-rose-200 bg-rose-50 px-4 py-3 text-rose-700 shadow-sm lg:absolute lg:right-1/2 lg:bottom-8 lg:left-1/2 lg:-translate-x-1/2"
           exit={{ opacity: 0, y: -10, scale: 0.95 }}
           initial={{ opacity: 0, y: -15, scale: 0.95 }}
         >

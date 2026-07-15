@@ -2,12 +2,9 @@ import { useState, useEffect } from 'react'
 import { useForm, SubmitHandler, FormProvider } from 'react-hook-form'
 import { motion, AnimatePresence } from 'motion/react'
 import { Inputs } from '../../Inquire/types'
-import ContactForm from '@/features/Inquire/components/01 Contact/ContactForm'
+import ContactForm from '@/features/Inquire/components/01 Contact/ContactForm';
 import Services from '@/features/Inquire/components/02 Services/ServicesForm'
 import Logistics from '@/features/Inquire/components/03 LogisticsBudget/LogisticsBudgetForm'
-import ProjectVision from '@/features/Inquire/components/04 Vision/ProjectVisionForm'
-import DesignInspiration from '@/features/Inquire/components/05 Inspo/DesignInspirationForm'
-import ManagerApproval from '@/features/Inquire/components/06 ManagerApproval/ManagerApprovalPetSubmission'
 import { useContact } from '@/context/contactContext'
 import ContactButtonLiquid from '@/features/Shared/ContactButtons/ContactButtonLiquid'
 import { buildContactFormData } from '@/features/Inquire/contactSubmission'
@@ -110,7 +107,7 @@ const Contact = () => {
                   <h2 className="font-instrument mt-6 text-4xl font-bold">
                     Contact Us
                   </h2>
-                  <p className="mt-1 text-white">Tell us about your vision</p>
+                  <p className="mt-1 text-white">Ask us anything</p>
                   <button
                     className="absolute top-5 right-5 rounded-full p-1 text-white transition-colors hover:bg-gray-100 hover:text-gray-900"
                     onClick={closeContact}
@@ -144,7 +141,7 @@ const Contact = () => {
                       onSubmit={handleSubmit(onSubmit)}
                     >
                       <div className="space-y-6">
-                        <ContactForm />
+                        <ContactForm isPopup={true} />
 
                         <AnimatePresence>
                           {showDetails && (
@@ -171,24 +168,6 @@ const Contact = () => {
                           )}
                         </AnimatePresence>
                       </div>
-
-                      <AnimatePresence>
-                        {showDetails && (
-                          <motion.div
-                            animate={{ height: 'auto', opacity: 1 }}
-                            className="overflow-hidden"
-                            exit={{ height: 0, opacity: 0 }}
-                            initial={{ height: 0, opacity: 0 }}
-                            transition={{ duration: 0.3, ease: 'easeInOut' }}
-                          >
-                            <div className="space-y-10 pt-2 lg:pt-0">
-                              <ProjectVision />
-                              <DesignInspiration />
-                              <ManagerApproval />
-                            </div>
-                          </motion.div>
-                        )}
-                      </AnimatePresence>
                     </form>
                   </FormProvider>
                 </div>

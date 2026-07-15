@@ -12,31 +12,31 @@ const createInitialEggState = {
     eggs: 0,
     eggList:
       [{
-        id: 0,
+        id: 1,
         name: 'portfolio',
         found: false
       },{
-        id: 1,
+        id: 2,
         name: 'title',
         found: false
       },{
-        id: 2,
+        id: 3,
         name: 'parallax',
         found: false
       },{
-        id: 3,
+        id: 4,
         name: 'wisdomPage',
         found: false
       },{
-        id: 4,
+        id: 5,
         name: 'aboutFeature',
         found: false
       },{
-        id: 5,
+        id: 6,
         name: 'myName',
         found: false
       },{
-        id: 6,
+        id: 7,
         name: 'IDCard',
         found: false
       }

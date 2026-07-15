@@ -11,10 +11,7 @@ const Egg = ({ id }: { id: number }) => {
   return (
     <>
       {!eggs.eggList[id].found && (
-        <button className="cursor-hover-text group relative size-full" onClick={handleEggFound}>
-          <p className="absolute -top-2 -left-1.5 z-100 hidden font-mono text-3xl font-bold tracking-tighter group-hover:block group-hover:animate-bounce">
-            ??
-          </p>
+        <button className="group relative size-full cursor-help" onClick={handleEggFound}>
           <svg
             fill="none"
             height="24"

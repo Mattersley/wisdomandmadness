@@ -16,7 +16,7 @@ const About = () => {
         About
       </h2>
       <motion.p
-        className="mt-4 mb-12 cursor-pointer rounded-full border border-indigo-500 px-6 py-1 font-mono text-xs tracking-[0.25em] text-indigo-500 uppercase transition-all duration-300 hover:border-indigo-500 hover:bg-indigo-500 hover:text-white"
+        className="mt-4 mb-12 rounded-full border border-indigo-500 px-6 py-1 font-mono text-xs tracking-[0.25em] text-indigo-500 uppercase transition-all duration-300 hover:border-indigo-500 hover:bg-indigo-500 hover:text-white"
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.98 }}
       >

@@ -24,10 +24,10 @@ const ProfileCard = () => {
       >
         MAT_AT
         {showHiddenEgg ? (
-          <span className="relative ml-2 inline-block animate-bounce">
+          <span className="relative ml-2 inline-block">
             🥚
-            <span className="absolute top-0 right-0 z-10 text-transparent opacity-0 transition-opacity hover:opacity-100">
-              <Egg id={5} />
+            <span className="absolute w-14 h-19 -top-2 right-2 z-20 text-transparent opacity-0 transition-opacity hover:opacity-100">
+              <Egg id={6} />
             </span>
           </span>
         ) : (

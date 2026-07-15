@@ -31,8 +31,8 @@ const ProgressNav = ({
   const steps = [1, 2, 3, 4, 5, 6, 7]
 
   return (
-    <div className="absolute bottom-0 z-30 flex h-32 w-full flex-row items-center justify-center gap-3 bg-neutral-400/10 sm:h-full sm:w-40 sm:flex-col sm:self-start">
-      <div className="select-none absolute -top-17 right-0 flex w-auto scale-90 flex-row items-center gap-4 sm:top-8 sm:left-7">
+    <div className="absolute bottom-0 z-30 flex h-32 w-full flex-row items-center justify-center gap-3 bg-neutral-400/10 lg:h-full lg:w-40 lg:flex-col lg:self-start">
+      <div className="select-none absolute -top-17 right-0 flex w-auto scale-90 flex-row items-center gap-4 lg:top-8 lg:left-7">
         <Image
           alt={'Gradient Circle Image'}
           height={30}
@@ -44,7 +44,7 @@ const ProgressNav = ({
         </p>
       </div>
 
-      <div className="relative flex flex-row items-center gap-2.5 sm:flex-col">
+      <div className="scale-90 sm:scale-100 relative flex flex-row items-center gap-2.5 lg:flex-col">
         {steps.map((step) => {
           const isActive = currentStage === step
           const isCompleted = stageComplete >= step && !isActive
@@ -57,7 +57,7 @@ const ProgressNav = ({
           return (
             <div
               key={step}
-              className="relative flex flex-row items-center gap-2.5 sm:flex-col"
+              className="relative flex flex-row items-center sm:gap-2.5 lg:flex-col"
             >
               <button
                 className={`group relative flex size-10 items-center justify-center rounded-full border font-mono text-xs font-bold transition-all duration-300 ${
@@ -85,7 +85,7 @@ const ProgressNav = ({
                 </span>
               </button>
               {step <= 6 && (
-                <div className="h-3 w-px border border-l border-neutral-200" />
+                <div className="hidden sm:block h-3 w-px border border-l border-neutral-200" />
               )}
             </div>
           )
