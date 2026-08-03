@@ -1,12 +1,17 @@
+import { useContext } from 'react'
+import { WormContext } from '@/context/wormContext'
+import Hero from '@/features/Madness/Hero'
 import Portfolio from '@/features/Madness/Portfolio/Portfolio'
 import Parallax from '@/features/Madness/Parallax/Parallax'
 import About from '@/features/Madness/About/About'
 import Footer from '@/features/Madness/Footer/Footer'
-import { useContext } from 'react'
-import { WormContext } from '@/context/wormContext'
-import Hero from '@/features/Madness/Hero'
+import PortfolioTest from "@/features/ButtonTest/PortfolioTest";
 
-const Madness = ({containerRef}: {containerRef: React.RefObject<HTMLDivElement | null>}) => {
+const Madness = ({
+  containerRef
+}: {
+  containerRef: React.RefObject<HTMLDivElement | null>;
+}) => {
   const { setCurrentProject, currentProject } = useContext(WormContext)
 
   return (
@@ -15,10 +20,7 @@ const Madness = ({containerRef}: {containerRef: React.RefObject<HTMLDivElement |
         <Hero />
       </section>
       <section className="w-full">
-        <Portfolio
-          currentProject={currentProject}
-          setCurrentProject={setCurrentProject}
-        />
+        <PortfolioTest />
       </section>
       <section className="relative w-full">
         <Parallax container={containerRef} />
@@ -30,7 +32,7 @@ const Madness = ({containerRef}: {containerRef: React.RefObject<HTMLDivElement |
         <Footer />
       </section>
     </>
-  ) 
+  )
 }
 
 export default Madness

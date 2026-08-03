@@ -17,7 +17,7 @@ export const ServicesReceiptTracker = () => {
 
   return (
     <motion.div
-      className="relative -mt-20 -mr-22 w-80 bg-white p-6 font-mono text-gray-800 shadow-xl before:absolute before:-top-2.5 before:left-0 before:h-2.5 before:w-full before:bg-[linear-gradient(45deg,white_5px,transparent_0),linear-gradient(-45deg,white_5px,transparent_0)] before:bg-size-[10px_10px] before:bg-bottom-left before:bg-repeat-x after:absolute after:-bottom-2.5 after:left-0 after:h-2.5 after:w-full after:bg-[linear-gradient(135deg,white_5px,transparent_0),linear-gradient(-135deg,white_5px,transparent_0)] after:bg-size-[10px_10px] after:bg-top-left after:bg-repeat-x"
+      className="hidden xl:block relative -mt-20 -mr-22 w-80 bg-white p-6 font-mono text-gray-800 shadow-xl before:absolute before:-top-2.5 before:left-0 before:h-2.5 before:w-full before:bg-[linear-gradient(45deg,white_5px,transparent_0),linear-gradient(-45deg,white_5px,transparent_0)] before:bg-size-[10px_10px] before:bg-bottom-left before:bg-repeat-x after:absolute after:-bottom-2.5 after:left-0 after:h-2.5 after:w-full after:bg-[linear-gradient(135deg,white_5px,transparent_0),linear-gradient(-135deg,white_5px,transparent_0)] after:bg-size-[10px_10px] after:bg-top-left after:bg-repeat-x"
       layout
       transition={springConfig}
     >

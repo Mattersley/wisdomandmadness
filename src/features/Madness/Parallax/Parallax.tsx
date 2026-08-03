@@ -24,7 +24,7 @@ const columns = [
   [images[0], images[2], images[6], images[8], images[7], images[10]],
   [images[4], images[5], images[5], images[5], images[4], images[0]],
   [images[10], images[5], images[3], images[6], images[1], images[3]],
-  [images[4], images[5], images[6], images[7], images[8], images[10]]
+  [images[4], images[5], images[6], images[7], images[8], images[9]]
 ]
 
 const wrap = (min: number, max: number, value: number) => {

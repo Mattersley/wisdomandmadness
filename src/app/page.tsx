@@ -11,6 +11,7 @@ import LoadingScreen from '@/features/Shared/LoadingScreen/LoadingScreen'
 import { preloadSceneAssets } from '@/hooks/sceneLoader'
 import CurtainWipeTransition from '@/features/Shared/Transitions/CurtainWipeTransition'
 import Inquire from '@/features/Inquire/Inquire'
+import ButtonTest from "@/features/ButtonTest/ButtonTest";
 
 preloadSceneAssets()
 

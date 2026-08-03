@@ -80,7 +80,7 @@ export const Services = () => {
                         <Icon size={14} />
                       </div>
                       <h4
-                        className={`text-sm font-bold tracking-tight transition-colors ${isChecked ? 'text-indigo-600' : 'text-neutral-800'}`}
+                        className={`text-xl font-vt323 uppercase transition-colors ${isChecked ? 'text-indigo-600' : 'text-neutral-800'}`}
                       >
                         {service.title}
                       </h4>

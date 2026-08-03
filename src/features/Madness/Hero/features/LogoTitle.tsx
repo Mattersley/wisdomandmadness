@@ -66,7 +66,7 @@ const LogoTitle = () => {
     if (viewport.width < 2) return viewport.width / 3
     if (viewport.width < 3) return viewport.width / 2.5
     if (viewport.width > 4) return viewport.width / 6
-    return viewport.width / 5
+    return viewport.width / 6
   }
 
   // CRITICAL FIX: Removed <Suspense fallback={null}>.

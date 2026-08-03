@@ -12,12 +12,14 @@ const Hero = () => {
   return (
     <div className="w-screen snap-start bg-neutral-950 sm:pt-6 md:h-screen">
       <div className="relative z-10 flex size-full md:-mb-24">
+        <div className="absolute bottom-0 z-50 h-1/2 w-screen lg:hidden"></div>
+
         <button className="font-vt323 absolute -top-2 left-[48vw] z-40 hidden rounded-2xl border px-3 text-neutral-700 hover:border-indigo-500 hover:bg-indigo-500 hover:text-white sm:block">
           OBS#{observerNumber}-MADNESS
         </button>
         <div className="w-full flex-row md:px-20">
           <Nav />
-          <div className="pointer-events-none absolute inset-0 z-40">
+          <div className="pointer-events-none absolute inset-0 sm:z-40">
             <ThreeD />
           </div>
 
@@ -42,7 +44,7 @@ const Hero = () => {
                   width={20}
                 />
               </div>
-              <div className="hidden absolute top-26 right-6 z-2 sm:flex flex-col gap-3 text-right text-xs">
+              <div className="absolute top-26 right-6 z-2 hidden flex-col gap-3 text-right text-xs sm:flex">
                 <p>linear-gradient()</p>
                 <div className="flex flex-row justify-end gap-2">
                   <div className="size-4 rounded-[50%] bg-[#FC466B]" />

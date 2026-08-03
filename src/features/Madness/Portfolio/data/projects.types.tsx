@@ -1,23 +1,28 @@
 export type ProjectType = {
-    bgColours: {
-      '1': string;
-      '2': string;
-    };
-    bgImage?: string;
-    bgOpacity: number;
-    dark?: boolean;
-    image: {
-      alt: string;
-      src: string;
-      height: number;
-      width: number;
-    };
-    name: string;
-    served: string[];
-    urls:
-      {
-        url: string,
-        favi: string
-      }[];
-    z: number;
-}
+  id: number;
+  name: string;
+  tagline?: string;
+  overview?: string;
+  served: string[];
+  stack?: string[];
+  image: {
+    alt: string;
+    src: string;
+    height: number;
+    width: number;
+  };
+  urls: {
+    url: string;
+    favi: string;
+  }[];
+  bgColours: {
+    '1': string;
+    '2': string;
+  };
+  bgImage?: string;
+  bgOpacity: number;
+  dark?: boolean;
+  theme?: string;
+  z: number;
+  infoPosition?: string;
+};

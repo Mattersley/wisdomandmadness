@@ -31,7 +31,7 @@ const ProgressNav = ({
   const steps = [1, 2, 3, 4, 5, 6, 7]
 
   return (
-    <div className="absolute bottom-0 z-30 flex h-32 w-full flex-row items-center justify-center gap-3 bg-neutral-400/10 lg:h-full lg:w-40 lg:flex-col lg:self-start">
+    <div className="absolute bottom-0 z-30 flex h-32 rounded-l-3xl  w-full flex-row items-center justify-center gap-3 bg-neutral-400/10 lg:h-full lg:w-40 lg:flex-col lg:self-start">
       <div className="select-none absolute -top-17 right-0 flex w-auto scale-90 flex-row items-center gap-4 lg:top-8 lg:left-7">
         <Image
           alt={'Gradient Circle Image'}

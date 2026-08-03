@@ -10,7 +10,7 @@ const ThreeD = () => {
 
   return (
     <div
-      className="absolute sm:-top-6 left-0 z-40 mt-16 h-2/3 w-screen sm:mt-0 sm:h-screen"
+      className="absolute left-0 z-1 h-2/3 w-screen sm:-top-6 sm:z-40 sm:mt-0 sm:h-screen"
       ref={ref}
     >
       <Canvas
@@ -22,7 +22,7 @@ const ThreeD = () => {
         dpr={[1, 2]}
         gl={{
           antialias: true,
-          powerPreference: 'high-performance'
+          powerPreference: 'low-power'
         }}
       >
         <OrbitControls
