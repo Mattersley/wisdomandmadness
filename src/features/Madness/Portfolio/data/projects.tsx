@@ -13,12 +13,21 @@ export const projects = [
       height: 75
     },
     served: [
-      'Brand ID',
-      'Logo Design',
-      'Typography',
-      'Hosting',
+      'Branding',
+      'Packaging',
       'Website',
-      'Web Dither'
+      'Web App',
+      'UI/UX',
+      'Marketing'
+    ],
+    stack: [
+      'WordPress',
+      'NextJS',
+      'React',
+      'Typescript',
+      'Supabase',
+      'Three.js',
+      'StoryBook'
     ],
     urls: [
       {
@@ -30,7 +39,8 @@ export const projects = [
         favi: '/images/Portfolio/Favis/Pandonuts.png'
       }
     ],
-    theme: 'light'
+    theme: 'light',
+    infoPosition: 'center'
   },
   {
     id: 2,
@@ -45,7 +55,7 @@ export const projects = [
       width: 400,
       height: 200
     },
-    served: ['Brand ID', 'Logo Design', 'Typography', 'Hosting', 'Web Dither'],
+    served: ['Branding', 'Web App', 'UI/UX', 'Concept'],
     urls: [
       {
         url: 'https://www.cupendium.com',
@@ -55,7 +65,7 @@ export const projects = [
     tagline: 'Tasting Log, Digital & Printable Tools for Pour-Over Coffee',
     overview:
       'Serene Lake required a high-end visual storytelling engine that could handle heavy WebGL assets without dipping below 60fps. Our design focused on fluid interactive micro-moments.',
-    stack: ['Three.js', 'WebGL', 'GSAP', 'Shopify Plus API'],
+    stack: ['React', 'Typescript', 'NextJS', 'Stripe', 'Supabase'],
     theme: 'light'
   },
   {
@@ -72,7 +82,7 @@ export const projects = [
       width: 130,
       height: 100
     },
-    served: ['Brand ID', 'Logo Design', 'Typography', 'Hosting', 'Web Dither'],
+    served: ['Branding', 'Concept', 'Menus'],
     urls: [],
     tagline:
       'A multi faceted new concept in hospitality. Building upon extensive knowledge in distilling, chemistry, cocktails, coffee, tea, pastry, and modern & ethical culinary practises',
@@ -94,7 +104,7 @@ export const projects = [
       width: 450,
       height: 200
     },
-    served: ['Brand ID', 'Logo Design', 'Typography', 'Packaging'],
+    served: ['Branding', 'Packaging'],
     urls: [],
     tagline:
       'Brand identity and design systems for global environmental scale.',
@@ -118,13 +128,14 @@ export const projects = [
       width: 250,
       height: 200
     },
-    served: ['Brand ID', 'Logo Design', 'Typography', 'Packaging', 'Website'],
+    served: ['Branding', 'Packaging', 'Website', 'Marketing'],
     urls: [],
     tagline: 'Tasting Log, Digital & Printable Tools for Pour-Over Coffee',
     overview:
       'Serene Lake required a high-end visual storytelling engine that could handle heavy WebGL assets without dipping below 60fps. Our design focused on fluid interactive micro-moments.',
     stack: ['Three.js', 'WebGL', 'GSAP', 'Shopify Plus API'],
-    theme: 'light'
+    theme: 'light',
+    infoPosition: 'center'
   },
   {
     id: 6,
@@ -140,7 +151,7 @@ export const projects = [
       width: 450,
       height: 100
     },
-    served: ['Brand ID', 'Logo Design', 'Typography', 'Web Dither'],
+    served: ['Branding', 'Web App'],
     urls: [],
     tagline: 'Tasting Log, Digital & Printable Tools for Pour-Over Coffee',
     overview:
@@ -161,7 +172,7 @@ export const projects = [
       width: 250,
       height: 200
     },
-    served: ['Brand ID', 'Logo Design', 'Typography'],
+    served: ['Branding', 'Concept'],
     urls: [],
     tagline: 'Tasting Log, Digital & Printable Tools for Pour-Over Coffee',
     overview:
@@ -211,6 +222,7 @@ export const projects = [
     overview:
       'Serene Lake required a high-end visual storytelling engine that could handle heavy WebGL assets without dipping below 60fps. Our design focused on fluid interactive micro-moments.',
     stack: ['Three.js', 'WebGL', 'GSAP', 'Shopify Plus API'],
-    theme: 'light'
+    theme: 'light',
+    infoPosition: 'center'
   }
 ]

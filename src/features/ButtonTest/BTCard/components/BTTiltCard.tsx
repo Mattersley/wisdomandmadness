@@ -5,7 +5,7 @@ import { ProjectType } from '@/features/Madness/Portfolio/data/projects.types'
 interface TiltCardProps {
   card: ProjectType;
   isActive: boolean;
-  onSelect: (event: React.MouseEvent<HTMLDivElement>) => void;
+  onSelect: () => void;
 }
 
 const TiltCard = ({ card, onSelect, isActive }: TiltCardProps) => {
@@ -13,10 +13,11 @@ const TiltCard = ({ card, onSelect, isActive }: TiltCardProps) => {
   const x = useMotionValue(0)
   const y = useMotionValue(0)
 
-  const rotateX = useTransform(y, [-0.5, 0.5], [15, -15])
-  const rotateY = useTransform(x, [-0.5, 0.5], [-15, 15])
-  const logoX = useTransform(x, [-0.5, 0.5], [-20, 20])
-  const logoY = useTransform(y, [-0.5, 0.5], [-20, 20])
+  // Fallback cleanly to 0 transformation if the card becomes active
+  const rotateX = useTransform(y, [-0.5, 0.5], isActive ? [0, 0] : [15, -15])
+  const rotateY = useTransform(x, [-0.5, 0.5], isActive ? [0, 0] : [-15, 15])
+  const logoX = useTransform(x, [-0.5, 0.5], isActive ? [0, 0] : [-20, 20])
+  const logoY = useTransform(y, [-0.5, 0.5], isActive ? [0, 0] : [-20, 20])
 
   const handleMouseMove = (e: React.MouseEvent) => {
     if (!cardRef.current || isActive) return
@@ -33,7 +34,12 @@ const TiltCard = ({ card, onSelect, isActive }: TiltCardProps) => {
   return (
     <div
       className="perspective-1000 h-full w-full rounded-3xl"
-      onClick={(e) => !isActive && onSelect(e)}
+      onClick={() => {
+        if (!isActive) {
+          handleMouseLeave() // Reset tilt states instantly before animating
+          onSelect()
+        }
+      }}
     >
       <motion.div
         className={`transform-style-3d relative flex h-full w-full flex-col justify-end overflow-hidden rounded-3xl p-8 shadow-2xl ${
@@ -45,7 +51,7 @@ const TiltCard = ({ card, onSelect, isActive }: TiltCardProps) => {
         style={{ rotateX, rotateY }}
       >
         <motion.div
-          className="pointer-events-none absolute inset-0 transform-gpu rounded-3xl bg-cover bg-center brightness-75 contrast-125"
+          className="pointer-events-none absolute inset-0 transform-gpu rounded-3xl bg-cover bg-center"
           layoutId={`card-image-${card.id}`}
           style={{
             backgroundImage: `url(/images/Portfolio/Cards/${card.name}BG.png)`

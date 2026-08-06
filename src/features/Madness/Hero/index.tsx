@@ -19,7 +19,7 @@ const Hero = () => {
         </button>
         <div className="w-full flex-row md:px-20">
           <Nav />
-          <div className="pointer-events-none absolute inset-0 sm:z-40">
+          <div className="pointer-events-none absolute inset-0">
             <ThreeD />
           </div>
 

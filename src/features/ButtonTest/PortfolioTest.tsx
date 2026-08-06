@@ -13,7 +13,7 @@ const PortfolioTest = () => {
       }
       id="work"
     >
-      <div>
+      <div className="w-full">
         <ButtonTest />
       </div>
       {!eggs.eggList[0].found && (

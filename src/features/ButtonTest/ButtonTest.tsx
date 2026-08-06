@@ -8,54 +8,29 @@ import { projects } from '@/features/Madness/Portfolio/data/projects'
 
 const ButtonTest = () => {
   const [activeId, setActiveId] = useState<number | null>(null)
-  const [zoomOrigin, setZoomOrigin] = useState('center center')
-  const [ejectOrigin, setEjectOrigin] = useState('center center')
   const [slideDirection, setSlideDirection] = useState<'left' | 'right' | null>(
     null
   )
-
-  // New State tracker for navigation filters
   const [activeFilter, setActiveFilter] = useState<string | null>(null)
 
-  const cardRefs = useRef<Record<number, HTMLDivElement | null>>({})
-  const containerRef = useRef<HTMLDivElement>(null)
-
-  // 1. Compute dynamically filtered items based on navigation choice
   const filteredProjects = projects.filter((project) => {
     if (!activeFilter) return true
-
-    // Check if filter exists inside 'served' matrix or 'stack' arrays
     const insideServed = project.served?.some(
       (s) => s.toLowerCase() === activeFilter.toLowerCase()
     )
     const insideStack = project.stack?.some(
       (t) => t.toLowerCase() === activeFilter.toLowerCase()
     )
-
     return insideServed || insideStack
   })
 
-  // 2. Adjust pagination bounds to point strictly to the remaining items
   const activeCard = projects.find((c) => c.id === activeId)
   const activeIndex = filteredProjects.findIndex((c) => c.id === activeId)
-  const vortexEase = cubicBezier(1, 0, 0.15, 1)
 
-  const updateZoomOriginToCardCenter = (id: number) => {
-    const el = cardRefs.current[id]
-    if (el) {
-      const rect = el.getBoundingClientRect()
-      const centerX = rect.left + rect.width / 2
-      const centerY = rect.top + rect.height / 2
-      const originX = `${(centerX / window.innerWidth) * 100}%`
-      const originY = `${(centerY / window.innerHeight) * 100}%`
-      const exactCoordinates = `${originX} ${originY}`
-      setZoomOrigin(exactCoordinates)
-      setEjectOrigin(exactCoordinates)
-    }
-  }
+  // Smooth cinematic ease-in-out curve
+  const vortexEase = cubicBezier(0.76, 0, 0.24, 1)
 
   const handleSelectCard = (id: number) => {
-    updateZoomOriginToCardCenter(id)
     setSlideDirection(null)
     setActiveId(id)
   }
@@ -67,63 +42,59 @@ const ButtonTest = () => {
     if (nextIndex >= filteredProjects.length) nextIndex = 0
     if (nextIndex < 0) nextIndex = filteredProjects.length - 1
 
-    const nextProject = filteredProjects[nextIndex]
-    updateZoomOriginToCardCenter(nextProject.id)
+    setActiveId(filteredProjects[nextIndex].id)
     setSlideDirection(direction === 'next' ? 'right' : 'left')
-    setActiveId(nextProject.id)
   }
 
   const handleEject = () => {
-    setZoomOrigin(ejectOrigin)
-    requestAnimationFrame(() => {
-      setActiveId(null)
-    })
+    setActiveId(null)
   }
 
   return (
-    <div className="relative w-full overflow-hidden bg-white text-white select-none dark:bg-neutral-950">
-      {/* Insert custom filter Navbar with binding handles */}
-      <PortfolioNavBar
-        currentFilter={activeFilter}
-        onFilterChange={setActiveFilter}
-      />
-
+    <div className="relative min-h-screen w-full overflow-x-hidden bg-white text-white select-none dark:bg-neutral-950">
       <motion.div
-        animate={{ scale: activeId ? 12 : 1 }}
-        className="flex transform-gpu items-center justify-center p-6 pt-20"
-        ref={containerRef}
-        style={{ transformOrigin: zoomOrigin }}
-        transition={{ duration: activeId ? 1.2 : 0.5, ease: vortexEase }}
+        animate={{ opacity: activeId ? 0 : 1, y: activeId ? -10 : 0 }}
+        className="w-full"
+        transition={{ duration: 0.3, ease: vortexEase }}
       >
-        {/* Render filtered data matrix gracefully with Framer Layout animations */}
-        <motion.div
-          className="grid w-full grid-cols-1 gap-12 lg:grid-cols-2 xl:grid-cols-4"
-          layout
-        >
-          <AnimatePresence mode="popLayout">
-            {filteredProjects.map((card) => (
-              <motion.div
-                key={card.id}
-                animate={{ opacity: 1, scale: 1 }}
-                className="relative aspect-video h-52 w-full"
-                exit={{ opacity: 0, scale: 0.9 }}
-                initial={{ opacity: 0, scale: 0.9 }}
-                layout
-                ref={(el) => {
-                  cardRefs.current[card.id] = el
-                }}
-                transition={{ duration: 0.3 }}
-              >
-                <TiltCard
-                  card={card}
-                  isActive={activeId === card.id}
-                  onSelect={() => handleSelectCard(card.id)}
-                />
-              </motion.div>
-            ))}
-          </AnimatePresence>
-        </motion.div>
+        <PortfolioNavBar
+          currentFilter={activeFilter}
+          onFilterChange={setActiveFilter}
+        />
       </motion.div>
+
+      {/* Container is kept stable at scale 1 to prevent layout calculations from breaking */}
+      <div className="flex w-full origin-center items-center justify-center p-0 pt-10 lg:p-10 2xl:p-20 xl:pt-20">
+        <div className="grid w-full grid-cols-1 gap-12 lg:grid-cols-2 xl:grid-cols-3">
+          {filteredProjects.map((card) => {
+            const isThisCardActive = activeId === card.id
+            const isAnyCardActive = activeId !== null
+
+            return (
+              <div key={card.id} className="relative aspect-video h-52 w-full">
+                <motion.div
+                  animate={{
+                    opacity: isAnyCardActive && !isThisCardActive ? 0 : 1,
+                    scale: isAnyCardActive && !isThisCardActive ? 0.92 : 1,
+                    filter:
+                      isAnyCardActive && !isThisCardActive
+                        ? 'blur(4px)'
+                        : 'blur(0px)'
+                  }}
+                  className="h-full w-full"
+                  transition={{ duration: 0.4, ease: vortexEase }}
+                >
+                  <TiltCard
+                    card={card}
+                    isActive={isThisCardActive}
+                    onSelect={() => handleSelectCard(card.id)}
+                  />
+                </motion.div>
+              </div>
+            )
+          })}
+        </div>
+      </div>
 
       <AnimatePresence>
         {activeId && activeCard && (

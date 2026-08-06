@@ -1,18 +1,14 @@
-import { useContext } from 'react'
-import { WormContext } from '@/context/wormContext'
 import Hero from '@/features/Madness/Hero'
-import Portfolio from '@/features/Madness/Portfolio/Portfolio'
 import Parallax from '@/features/Madness/Parallax/Parallax'
 import About from '@/features/Madness/About/About'
 import Footer from '@/features/Madness/Footer/Footer'
-import PortfolioTest from "@/features/ButtonTest/PortfolioTest";
+import PortfolioTest from '@/features/ButtonTest/PortfolioTest'
 
 const Madness = ({
   containerRef
 }: {
   containerRef: React.RefObject<HTMLDivElement | null>;
 }) => {
-  const { setCurrentProject, currentProject } = useContext(WormContext)
 
   return (
     <>
