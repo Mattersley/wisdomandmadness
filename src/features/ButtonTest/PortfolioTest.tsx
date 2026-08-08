@@ -9,7 +9,7 @@ const PortfolioTest = () => {
   return (
     <div
       className={
-        'no-scrollbar relative flex h-auto min-h-screen w-screen snap-mandatory snap-center flex-col items-center justify-start bg-white px-10 py-20 sm:px-10 md:px-30 md:pt-32'
+        'no-scrollbar flex h-auto min-h-screen w-screen snap-mandatory snap-center flex-col items-center justify-start bg-white px-10 py-20 sm:px-10 md:px-30 md:pt-32'
       }
       id="work"
     >

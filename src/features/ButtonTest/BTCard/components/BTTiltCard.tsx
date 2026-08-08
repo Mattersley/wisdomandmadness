@@ -1,23 +1,22 @@
 import { useRef } from 'react'
 import { motion, useMotionValue, useTransform } from 'motion/react'
+
 import { ProjectType } from '@/features/Madness/Portfolio/data/projects.types'
 
 interface TiltCardProps {
   card: ProjectType;
   isActive: boolean;
-  onSelect: () => void;
+  onSelect: (rect: DOMRect) => void;
 }
 
 const TiltCard = ({ card, onSelect, isActive }: TiltCardProps) => {
-  const cardRef = useRef<HTMLDivElement>(null)
+  const cardRef = useRef<HTMLDivElement | null>(null)
   const x = useMotionValue(0)
   const y = useMotionValue(0)
-
-  // Fallback cleanly to 0 transformation if the card becomes active
-  const rotateX = useTransform(y, [-0.5, 0.5], isActive ? [0, 0] : [15, -15])
-  const rotateY = useTransform(x, [-0.5, 0.5], isActive ? [0, 0] : [-15, 15])
-  const logoX = useTransform(x, [-0.5, 0.5], isActive ? [0, 0] : [-20, 20])
-  const logoY = useTransform(y, [-0.5, 0.5], isActive ? [0, 0] : [-20, 20])
+  const rotateX = useTransform(y, [-0.5, 0.5], [15, -15])
+  const rotateY = useTransform(x, [-0.5, 0.5], [-15, 15])
+  const logoX = useTransform(x, [-0.5, 0.5], [-20, 20])
+  const logoY = useTransform(y, [-0.5, 0.5], [-20, 20])
 
   const handleMouseMove = (e: React.MouseEvent) => {
     if (!cardRef.current || isActive) return
@@ -35,37 +34,60 @@ const TiltCard = ({ card, onSelect, isActive }: TiltCardProps) => {
     <div
       className="perspective-1000 h-full w-full rounded-3xl"
       onClick={() => {
-        if (!isActive) {
-          handleMouseLeave() // Reset tilt states instantly before animating
-          onSelect()
+        if (!isActive && cardRef.current) {
+          handleMouseLeave()
+          onSelect(cardRef.current.getBoundingClientRect())
         }
       }}
+      ref={cardRef}
     >
       <motion.div
-        className={`transform-style-3d relative flex h-full w-full flex-col justify-end overflow-hidden rounded-3xl p-8 shadow-2xl ${
-          isActive ? 'pointer-events-none' : 'cursor-pointer'
-        }`}
+        animate={{
+          rotateX: 0,
+          rotateY: 0
+        }}
+        className="transform-style-3d relative flex h-full w-full cursor-pointer flex-col items-center justify-center overflow-hidden rounded-3xl border border-white/10 p-8"
         onMouseLeave={handleMouseLeave}
         onMouseMove={handleMouseMove}
-        ref={cardRef}
-        style={{ rotateX, rotateY }}
+        style={{
+          rotateX: isActive ? 0 : rotateX,
+          rotateY: isActive ? 0 : rotateY
+        }}
+        transition={{
+          duration: 2.5,
+          ease: [0.76, 0, 0.24, 1]
+        }}
       >
-        <motion.div
-          className="pointer-events-none absolute inset-0 transform-gpu rounded-3xl bg-cover bg-center"
-          layoutId={`card-image-${card.id}`}
+        {/* WHITE BASE LAYER */}
+        <div className="absolute inset-0 bg-white" />
+
+        {/* CARD IMAGE */}
+        <div
+          className="pointer-events-none absolute inset-0 z-10 bg-cover bg-center"
           style={{
             backgroundImage: `url(/images/Portfolio/Cards/${card.name}BG.png)`
           }}
         />
 
+        {/* LOGO */}
         <motion.div
-          className="pointer-events-none absolute inset-0 flex items-center justify-center rounded-3xl p-6 select-none"
-          style={{ x: logoX, y: logoY }}
+          animate={{
+            opacity: isActive ? 0 : 1,
+            scale: isActive ? 0.8 : 1
+          }}
+          className="pointer-events-none absolute inset-0 z-20 flex items-center justify-center p-6"
+          style={{
+            x: isActive ? 0 : logoX,
+            y: isActive ? 0 : logoY
+          }}
+          transition={{
+            duration: 1,
+            ease: [0.76, 0, 0.24, 1]
+          }}
         >
-          <motion.img
+          <img
             alt={card.image.alt}
-            className="max-h-60 w-full translate-z-40 rounded-3xl object-contain"
-            layoutId={`card-logo-${card.id}`}
+            className="max-h-60 w-full translate-z-40 transform-gpu object-contain"
             src={`/images/Portfolio/Cards/${card.name}FG.png`}
           />
         </motion.div>
