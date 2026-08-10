@@ -42,10 +42,6 @@ const TiltCard = ({ card, onSelect, isActive }: TiltCardProps) => {
       ref={cardRef}
     >
       <motion.div
-        animate={{
-          rotateX: 0,
-          rotateY: 0
-        }}
         className="transform-style-3d relative flex h-full w-full cursor-pointer flex-col items-center justify-center overflow-hidden rounded-3xl border border-white/10 p-8"
         onMouseLeave={handleMouseLeave}
         onMouseMove={handleMouseMove}
@@ -61,29 +57,24 @@ const TiltCard = ({ card, onSelect, isActive }: TiltCardProps) => {
         {/* WHITE BASE LAYER */}
         <div className="absolute inset-0 bg-white" />
 
-        {/* CARD IMAGE */}
-        <div
+        {/* CARD IMAGE - Added matching layoutId for the source background container */}
+        <motion.div
           className="pointer-events-none absolute inset-0 z-10 bg-cover bg-center"
+          layoutId={`bg-${card.id}`}
           style={{
             backgroundImage: `url(/images/Portfolio/Cards/${card.name}BG.png)`
           }}
         />
 
-        {/* LOGO */}
+        {/* LOGO - Matching layoutId */}
         <motion.div
-          animate={{
-            opacity: isActive ? 0 : 1,
-            scale: isActive ? 0.8 : 1
-          }}
           className="pointer-events-none absolute inset-0 z-20 flex items-center justify-center p-6"
+          layoutId={`logo-${card.id}`}
           style={{
             x: isActive ? 0 : logoX,
             y: isActive ? 0 : logoY
           }}
-          transition={{
-            duration: 1,
-            ease: [0.76, 0, 0.24, 1]
-          }}
+          transition={{ duration: 2.5, ease: [0.76, 0, 0.24, 1] }}
         >
           <img
             alt={card.image.alt}

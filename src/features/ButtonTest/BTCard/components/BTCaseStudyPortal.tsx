@@ -20,7 +20,6 @@ const CaseStudyPortal = ({
   slideDirection
 }: CaseStudyPortalProps) => {
   const isLight = activeCard.theme === 'light'
-
   const scrollContainerRef = useRef<HTMLDivElement | null>(null)
 
   useEffect(() => {
@@ -35,12 +34,10 @@ const CaseStudyPortal = ({
       x: direction === 'right' ? '25%' : direction === 'left' ? '-25%' : 0,
       opacity: 0
     }),
-
     animate: {
       x: 0,
       opacity: 1
     },
-
     exit: (direction: 'left' | 'right' | null) => ({
       x: direction === 'right' ? '-25%' : direction === 'left' ? '25%' : 0,
       opacity: 0
@@ -59,23 +56,21 @@ const CaseStudyPortal = ({
       8: 'size-80 -mx-70 -mt-12 -mb-20',
       9: 'size-60 -mx-70 -my-10'
     }
-
     return classMap[id] || ''
   }
 
   return (
     <motion.div
-      className={`fixed inset-0 z-120 h-screen w-screen overflow-y-auto ${
+      className={`no-scrollbar no-scrollbar-track no-scrollbar-thumb fixed inset-0 z-120 h-screen w-screen overflow-y-auto ${
         isLight ? 'bg-white text-neutral-950' : 'bg-neutral-950 text-white'
       }`}
       ref={scrollContainerRef}
     >
-      {/* Safety layer for transparent images */}
-
-      <div className="pointer-events-none fixed inset-0 -z-10 bg-white" />
+      <div
+        className={`${isLight ? 'bg-white' : 'bg-neutral-950'} pointer-events-none fixed inset-0 -z-10`}
+      />
 
       {/* HERO CONTROLS */}
-
       <div className="pointer-events-auto absolute top-0 right-0 left-0 z-200 flex w-full items-center justify-between p-8 md:p-16">
         <div className="flex gap-2">
           <button
@@ -111,13 +106,13 @@ const CaseStudyPortal = ({
               height="16"
               stroke="currentColor"
               strokeWidth="2"
-              viewBox="0 0 24\"
+              viewBox="0 0 24 24"
               width="16"
             >
               <path d="M9 5l7 7-7 7" />
             </svg>
           </button>
-        </div>{' '}
+        </div>
         <button
           className={`rounded-full border px-8 py-3 font-mono text-xs tracking-widest uppercase shadow-lg backdrop-blur-xl transition-all ${
             isLight
@@ -131,9 +126,8 @@ const CaseStudyPortal = ({
       </div>
 
       {/* HERO METADATA */}
-
       <div
-        className="bg-cover pointer-events-none rounded-b-3xl inset-0 z-190 flex h-screen flex-col justify-end p-16 select-none"
+        className="pointer-events-none inset-0 z-190 flex h-screen flex-col justify-end rounded-b-3xl bg-cover p-16 select-none"
         style={{
           backgroundImage: `url(/images/Portfolio/Cards/${activeCard.name}BG.png)`
         }}
@@ -172,9 +166,7 @@ const CaseStudyPortal = ({
               }`}
             >
               <span
-                className={`mb-3 block font-mono text-xs tracking-widest uppercase ${
-                  isLight ? 'text-neutral-900' : 'text-neutral-400'
-                }`}
+                className={`mb-3 block font-mono text-xs tracking-widest uppercase ${isLight ? 'text-neutral-900' : 'text-neutral-400'}`}
               >
                 // CASE STUDY
               </span>
@@ -186,16 +178,17 @@ const CaseStudyPortal = ({
                 style={{
                   aspectRatio: `${activeCard.image.width} / ${activeCard.image.height}`
                 }}
+                transition={{
+                  duration: 2.5,
+                  ease: vortexEase
+                }}
               />
 
               <p
-                className={`mt-6 max-w-2xl font-mono text-base leading-relaxed tracking-wide md:text-xl ${
-                  isLight ? 'text-neutral-900' : 'text-neutral-300'
-                }`}
+                className={`mt-6 max-w-2xl font-mono text-base leading-relaxed tracking-wide md:text-xl ${isLight ? 'text-neutral-900' : 'text-neutral-300'}`}
               >
                 {activeCard.tagline}
               </p>
-
               <div
                 className={`mt-12 flex w-full flex-col items-center gap-1 font-mono text-[10px] tracking-widest uppercase ${
                   isLight ? 'text-neutral-800' : 'text-neutral-500'
@@ -380,7 +373,7 @@ const CaseStudyPortal = ({
                     </span>
 
                     <h3 className="mt-3 font-serif text-4xl leading-none font-light tracking-tight italic md:text-6xl">
-                      &#34;Controlled Chaos.&#34;
+                      "Controlled Chaos."
                     </h3>
 
                     <p className="max-w-2xl font-mono text-base leading-relaxed opacity-70 select-text">
