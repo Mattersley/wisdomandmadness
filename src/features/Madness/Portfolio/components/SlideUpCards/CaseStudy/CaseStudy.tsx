@@ -40,9 +40,7 @@ const marqueeVariants: Variants = {
       }
     }
   },
-  idle: {
-
-  }
+  idle: {}
 }
 
 const marginTopVariants = {
@@ -145,7 +143,7 @@ const CaseStudy = ({
         </motion.div>
       )}
     </AnimatePresence>
-  );
+  )
 }
 
 export default CaseStudy

@@ -1,13 +1,12 @@
 import { useState } from 'react'
 
-const useCardGestures = (
+const useBTCardGestures = (
   isCurrentCard: boolean,
   handlers: {
-    onClick: () => void
-    onClose: () => void
-    onPointerEnter: (e: React.TouchEvent) => void
-    onPointerLeave: () => void
-    onPointerMove: (e: React.TouchEvent) => void
+    onClick: () => void;
+    onPointerEnter: (e: React.TouchEvent) => void;
+    onPointerLeave: () => void;
+    onPointerMove: (e: React.TouchEvent) => void;
   }
 ) => {
   const [touchStart, setTouchStart] = useState<number | null>(null)
@@ -51,9 +50,6 @@ const useCardGestures = (
       }
       return
     }
-    if (pullDistance > pullThreshold) {
-      handlers.onClose()
-    }
 
     // Reset states
     setTouchStart(null)
@@ -70,4 +66,4 @@ const useCardGestures = (
   }
 }
 
-export default useCardGestures
+export default useBTCardGestures
