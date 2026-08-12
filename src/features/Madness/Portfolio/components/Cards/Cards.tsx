@@ -1,14 +1,14 @@
 import { useState } from 'react'
 import { AnimatePresence, motion, cubicBezier } from 'motion/react'
 
-import TiltCard from '@/features/ButtonTest/BTCard/components/BTTiltCard'
-import CaseStudyPortal from '@/features/ButtonTest/BTCard/components/BTCaseStudyPortal'
-import BTPortalReveal from '@/features/ButtonTest/BTCard/components/BTPortalReveal'
+import TiltCard from '@/features/Madness/Portfolio/components/Cards/components/TiltCard'
+import CaseStudy from '@/features/Madness/Portfolio/components/Cards/components/CaseStudy'
+import PortalReveal from '@/features/Madness/Portfolio/components/Cards/components/PortalReveal'
 
 import { projects } from '@/features/Madness/Portfolio/data/projects'
 import PortfolioNavBar from '@/features/Madness/Portfolio/components/NavBar/PortfolioNavBar'
 
-const ButtonTest = () => {
+const Cards = () => {
   const [activeId, setActiveId] = useState<number | null>(null)
   const [zoomingId, setZoomingId] = useState<number | null>(null)
   const [revealData, setRevealData] = useState<{
@@ -76,10 +76,7 @@ const ButtonTest = () => {
                     filter: anotherZooming ? 'blur(16px)' : 'blur(0px)'
                   }}
                   className="relative aspect-video h-52 w-full"
-                  transition={{
-                    duration: 2.5,
-                    ease: slowVortexEase
-                  }}
+                  transition={{ duration: 2.5, ease: slowVortexEase }}
                 >
                   <TiltCard
                     card={card}
@@ -94,7 +91,7 @@ const ButtonTest = () => {
       </div>
 
       {revealData && (
-        <BTPortalReveal
+        <PortalReveal
           card={projects.find((p) => p.id === revealData.cardId)!}
           onComplete={handleRevealComplete}
           rect={revealData.rect}
@@ -103,7 +100,7 @@ const ButtonTest = () => {
 
       <AnimatePresence>
         {activeId && activeCard && (
-          <CaseStudyPortal
+          <CaseStudy
             activeCard={activeCard}
             activeId={activeId}
             handleEject={handleEject}
@@ -125,4 +122,4 @@ const ButtonTest = () => {
   )
 }
 
-export default ButtonTest
+export default Cards

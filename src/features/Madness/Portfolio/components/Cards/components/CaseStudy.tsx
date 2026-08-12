@@ -11,7 +11,7 @@ interface CaseStudyPortalProps {
   slideDirection: 'left' | 'right' | null;
 }
 
-const CaseStudyPortal = ({
+const CaseStudy = ({
   activeCard,
   activeId,
   handleEject,
@@ -127,7 +127,7 @@ const CaseStudyPortal = ({
 
       {/* HERO METADATA */}
       <div
-        className="pointer-events-none inset-0 z-190 flex h-screen flex-col justify-end rounded-b-3xl bg-cover p-16 select-none"
+        className="pointer-events-none inset-0 z-190 -mt-2 flex h-screen flex-col justify-end rounded-b-3xl bg-cover p-16 select-none"
         style={{
           backgroundImage: `url(/images/Portfolio/Cards/${activeCard.name}BG.png)`
         }}
@@ -157,7 +157,7 @@ const CaseStudyPortal = ({
             variants={slideVariants}
           >
             <div
-              className={`flex flex-col ${
+              className={`-mb-2 flex flex-col ${
                 activeCard.infoPosition === 'right'
                   ? 'items-end'
                   : activeCard.infoPosition === 'center'
@@ -190,8 +190,8 @@ const CaseStudyPortal = ({
                 {activeCard.tagline}
               </p>
               <div
-                className={`mt-12 flex w-full flex-col items-center gap-1 font-mono text-[10px] tracking-widest uppercase ${
-                  isLight ? 'text-neutral-800' : 'text-neutral-500'
+                className={`mt-12 flex w-full flex-col gap-1 font-mono text-[10px] tracking-widest uppercase ${
+                  isLight ? 'text-neutral-800' : 'text-neutral-400'
                 }`}
               >
                 <span>Scroll Down to Review</span>
@@ -216,7 +216,7 @@ const CaseStudyPortal = ({
 
       {/* DOCUMENT BODY */}
 
-      <div className="pt-screen pointer-events-auto relative z-150 min-h-screen w-full">
+      <div className="pointer-events-auto relative z-150 w-full">
         <AnimatePresence
           custom={slideDirection}
           initial={false}
@@ -225,7 +225,7 @@ const CaseStudyPortal = ({
           <motion.div
             key={activeId}
             animate="animate"
-            className={`relative px-8 py-24 select-text md:px-16 md:py-32 ${
+            className={`relative px-8 py-20 select-text md:px-16 ${
               isLight
                 ? 'bg-neutral-50 text-neutral-950'
                 : 'bg-neutral-900 text-white'
@@ -239,18 +239,16 @@ const CaseStudyPortal = ({
             }}
             variants={slideVariants}
           >
-            <div className="mx-auto grid max-w-5xl grid-cols-1 gap-16 md:grid-cols-3">
+            <div className="mx-auto">
               {/* SIDE PANEL */}
 
               <div
-                className={`space-y-8 border-l pl-6 font-mono text-xs tracking-wider ${
-                  isLight
-                    ? 'border-neutral-300 text-neutral-600'
-                    : 'border-white/10 text-neutral-400'
-                }`}
+                className={
+                  'flex w-full flex-row justify-center gap-10 space-y-8 font-mono text-xs tracking-wider select-none'
+                }
               >
                 {' '}
-                <div>
+                <div className="w-30">
                   <h4
                     className={`mb-2 uppercase ${
                       isLight ? 'text-neutral-900' : 'text-white'
@@ -274,11 +272,11 @@ const CaseStudyPortal = ({
                     // STACK
                   </h4>
 
-                  <div className="mt-3 flex flex-wrap gap-2">
+                  <div className="mt-3 flex w-60 flex-wrap gap-2">
                     {activeCard.stack?.map((tech) => (
                       <span
                         key={tech}
-                        className={`rounded border px-2 py-1 text-[10px] ${
+                        className={`cursor-alias rounded border px-2 py-1 text-[10px] hover:bg-gray-200 ${
                           isLight
                             ? 'border-neutral-200 bg-white text-neutral-800'
                             : 'border-white/5 bg-neutral-800 text-neutral-300'
@@ -290,7 +288,7 @@ const CaseStudyPortal = ({
                   </div>
                 </div>
                 {activeCard.urls && activeCard.urls.length > 0 && (
-                  <div>
+                  <div className="w-60">
                     <h4
                       className={`mb-3 uppercase ${
                         isLight ? 'text-neutral-900' : 'text-white'
@@ -303,7 +301,7 @@ const CaseStudyPortal = ({
                       {activeCard.urls.map((link, index) => (
                         <a
                           key={index}
-                          className={`group flex items-center gap-3 rounded-lg border p-3 font-mono text-[11px] tracking-wide transition-all ${
+                          className={`group flex w-50 items-center gap-3 rounded-lg border p-3 font-mono text-[11px] tracking-wide transition-all ${
                             isLight
                               ? 'border-neutral-200 bg-white text-neutral-800 hover:border-neutral-900 hover:bg-neutral-50'
                               : 'border-white/5 bg-neutral-800/40 text-neutral-300 hover:border-white/20 hover:bg-neutral-800/80'
@@ -330,17 +328,72 @@ const CaseStudyPortal = ({
                     </div>
                   </div>
                 )}
+                {activeCard.colourPalettes && (
+                  <div>
+                    <h4
+                      className={`mb-3 uppercase ${
+                        isLight ? 'text-neutral-900' : 'text-white'
+                      }`}
+                    >
+                      // PALETTES
+                    </h4>
+                    <div className="mt-2 flex h-20 flex-col gap-3">
+                      {activeCard.colourPalettes.pal && (
+                        <div className="flex flex-row items-start gap-2 font-mono text-xs">
+                          <p className="mt-1.5 text-[10px]">MAIN</p>
+                          {activeCard.colourPalettes.pal.map((colour) => (
+                            <div
+                              key={colour}
+                              className="group flex cursor-crosshair flex-col items-center gap-1"
+                            >
+                              <div
+                                className={
+                                  'h-6 w-18 rounded transition-all group-hover:h-18'
+                                }
+                                style={{
+                                  background: colour
+                                }}
+                              />
+                              {colour}
+                            </div>
+                          ))}
+                        </div>
+                      )}
+                      {activeCard.colourPalettes.bg && (
+                        <div className="flex flex-row items-start gap-2 font-mono text-xs">
+                          <p className="mt-1.5 text-[10px]">GRAD</p>
+                          {activeCard.colourPalettes.bg.map((colour) => (
+                            <div
+                              key={colour}
+                              className="group flex cursor-crosshair flex-col items-center gap-1"
+                            >
+                              <div
+                                className={
+                                  'h-6 w-18 rounded transition-all group-hover:h-18'
+                                }
+                                style={{
+                                  background: colour
+                                }}
+                              />
+                              {colour}
+                            </div>
+                          ))}
+                        </div>
+                      )}
+                    </div>
+                  </div>
+                )}
               </div>
 
               {/* MAIN CONTENT */}
 
-              <div className="space-y-8 md:col-span-2">
+              <div className="mx-auto mt-20 max-w-5xl items-center justify-center space-y-8 text-center">
                 <h2
-                  className={`font-serif text-3xl font-light tracking-tight italic ${
+                  className={`font-instrument text-3xl font-bold ${
                     isLight ? 'text-neutral-900' : 'text-white'
                   }`}
                 >
-                  Project Architecture Overviews
+                  Project Overview
                 </h2>
 
                 <p
@@ -361,38 +414,14 @@ const CaseStudyPortal = ({
                   layout recalculation overhead entirely. Every node transition
                   performs with crisp execution precision.
                 </p>
-
-                <section className="grid grid-cols-1 gap-3 border-t border-current/10 py-20">
-                  <div className="font-mono text-xs tracking-widest opacity-40">
-                    // THE CONCEPTUAL ANCHOR
-                  </div>
-
-                  <div className="space-y-8">
-                    <span className="rounded bg-current/10 px-2 py-1 font-mono text-[10px] tracking-widest uppercase">
-                      Narrative Direction
-                    </span>
-
-                    <h3 className="mt-3 font-serif text-4xl leading-none font-light tracking-tight italic md:text-6xl">
-                      "Controlled Chaos."
-                    </h3>
-
-                    <p className="max-w-2xl font-mono text-base leading-relaxed opacity-70 select-text">
-                      To break the client out of a sterile corporate mold, we
-                      constructed a visual sandbox built entirely on the
-                      friction between brutalist grid structures and fluid,
-                      organic motion. Every interaction is designed to feel
-                      alive, deliberately disrupting the predictability of
-                      standard layout rules to provoke user curiosity.
-                    </p>
-                  </div>
-                </section>
               </div>
             </div>
           </motion.div>
+          {activeCard.content && activeCard.content}
         </AnimatePresence>
       </div>
     </motion.div>
   )
 }
 
-export default CaseStudyPortal
+export default CaseStudy

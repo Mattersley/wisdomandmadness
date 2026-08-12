@@ -1,9 +1,9 @@
-import use3DCard from '@/features/Madness/Portfolio/components/Card/hooks/use3DCard'
+import use3DCard from '@/features/Madness/Portfolio/components/SlideUpCards/Card/hooks/use3DCard'
 import React, { useContext } from 'react'
 import WisdomLogo from '@/assets/WisdomLogo'
 import Image from 'next/image'
 import { WormContext } from '@/context/wormContext'
-import useCardGestures from '@/features/Madness/Portfolio/components/Card/hooks/useCardGestures'
+import useCardGestures from '@/features/Madness/Portfolio/components/SlideUpCards/Card/hooks/useCardGestures'
 import { motion, useAnimation } from 'motion/react'
 
 const IDCard = () => {
@@ -39,7 +39,7 @@ const IDCard = () => {
       x: [0, -1, 1, -1, 0],
       transition: { duration: 0.2, repeat: 2 }
     })
-    
+
     await new Promise((resolve) => setTimeout(resolve, 600))
 
     // 3. Eject
@@ -48,7 +48,7 @@ const IDCard = () => {
       scale: 1,
       transition: { duration: 0.4, ease: 'backOut' }
     })
-    
+
     setIsAnimating(false)
   }
 
@@ -65,7 +65,7 @@ const IDCard = () => {
     onPointerLeave: handlePointerLeave,
     onPointerMove: handlePointerMove
   })
-  
+
   return (
     <motion.div
       animate={controls}
@@ -85,10 +85,10 @@ const IDCard = () => {
         rotateY: isAnimating ? undefined : rotateY,
         scale: isAnimating ? undefined : scale,
         y: 0, // Initial y for motion to take over
-        ...({
+        ...{
           transform: `translateY(${pullDistance}px)`,
           transition: pullDistance ? 'none' : 'transform 0.3s ease'
-        })
+        }
       }}
       whileHover={isAnimating ? {} : { scale: 0.95 }}
       whileTap={isAnimating ? {} : { scale: 1.1 }}

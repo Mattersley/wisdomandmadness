@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import React from 'react'
 import { ProjectType } from '@/features/Madness/Portfolio/data/projects.types'
-import ProjectURLS from '@/features/Madness/Portfolio/components/CaseStudy/components/ProjectURLS'
+import ProjectURLS from '@/features/Madness/Portfolio/components/SlideUpCards/ProjectURLS'
 import {
   motion,
   useScroll,

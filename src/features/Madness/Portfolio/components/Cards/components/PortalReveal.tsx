@@ -1,4 +1,3 @@
-import { useEffect, useState } from 'react'
 import { AnimatePresence, motion } from 'motion/react'
 import { ProjectType } from '@/features/Madness/Portfolio/data/projects.types'
 
@@ -8,15 +7,7 @@ interface BTPortalRevealProps {
   onComplete: () => void;
 }
 
-const BTPortalReveal = ({ card, rect, onComplete }: BTPortalRevealProps) => {
-  const [open, setOpen] = useState(false)
-
-  useEffect(() => {
-    requestAnimationFrame(() => {
-      setOpen(true)
-    })
-  }, [])
-
+const PortalReveal = ({ card, rect, onComplete }: BTPortalRevealProps) => {
   const handleComplete = () => {
     onComplete()
   }
@@ -39,10 +30,8 @@ const BTPortalReveal = ({ card, rect, onComplete }: BTPortalRevealProps) => {
   return (
     <AnimatePresence>
       <motion.div
-        animate={
-          open ? { clipPath: 'inset(0px 0px 0px 0px round 0px)' } : undefined
-        }
-        className="fixed inset-0 z-100 overflow-hidden bg-white"
+        animate={{ clipPath: 'inset(0px 0px 0px 0px round 0px)' }}
+        className="pointer-events-none fixed inset-0 z-100 overflow-hidden bg-white"
         initial={{
           clipPath: `inset(${rect.top}px ${window.innerWidth - rect.right}px ${window.innerHeight - rect.bottom}px ${rect.left}px round 24px)`
         }}
@@ -54,7 +43,6 @@ const BTPortalReveal = ({ card, rect, onComplete }: BTPortalRevealProps) => {
       >
         <div className="absolute inset-0 bg-white" />
 
-        {/* Background Image: Static, locked within mask container to prevent growing */}
         <div
           className="absolute inset-0 bg-cover bg-center bg-no-repeat"
           style={{
@@ -116,4 +104,4 @@ const BTPortalReveal = ({ card, rect, onComplete }: BTPortalRevealProps) => {
   )
 }
 
-export default BTPortalReveal
+export default PortalReveal

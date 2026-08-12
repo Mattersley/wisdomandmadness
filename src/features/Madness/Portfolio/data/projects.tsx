@@ -1,10 +1,18 @@
+import Pando from '@/features/Madness/Portfolio/components/CaseStudies/Pando/Pando'
+import Cupendium from '@/features/Madness/Portfolio/components/CaseStudies/Cupendium/Cupendium'
+
 export const projects = [
   {
     id: 1,
     name: 'Pando',
+    tagline: 'Gourmet donuts',
     z: 20,
     bgColours: { 1: '#FFE6FA', 2: '#E3FDF5' },
     bgOpacity: 1,
+    colourPalettes: {
+      pal: ['#800080', '#CC99CC', '#333333'],
+      bg: ['#FFE6FA', '#E3FDF5']
+    },
     dark: false,
     image: {
       src: '/images/Portfolio/CaseStudies/PandoLogo.png',
@@ -40,13 +48,15 @@ export const projects = [
       }
     ],
     theme: 'light',
-    infoPosition: 'center'
+    infoPosition: 'center',
+    content: <Pando />
   },
   {
     id: 2,
     name: 'Cupendium',
     z: 60,
     bgColours: { 1: '#f4d03f', 2: '#16a085' },
+    colourPalettes: { bg: ['#f4d03f', '#16a085']},
     bgOpacity: 0.2,
     dark: false,
     image: {
@@ -66,7 +76,8 @@ export const projects = [
     overview:
       'Serene Lake required a high-end visual storytelling engine that could handle heavy WebGL assets without dipping below 60fps. Our design focused on fluid interactive micro-moments.',
     stack: ['React', 'Typescript', 'NextJS', 'Stripe', 'Supabase'],
-    theme: 'light'
+    theme: 'light',
+    content: <Cupendium />
   },
   {
     id: 3,

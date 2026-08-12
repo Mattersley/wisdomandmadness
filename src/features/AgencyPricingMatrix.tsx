@@ -34,7 +34,7 @@ const AgencyPricingMatrix = ({ dark = false }: ComponentProps)=> {
       name: 'Absolute Reality',
       scope: 'THE FULL CONFLICT',
       price: '$45,000+',
-      desc: 'The ultimate deployment. We dictate the creative direction, forge physical components, and deploy the entire digital network.',
+      desc: 'The ultimate deployment. We dictate the creative direction, forge physical CaseStudies, and deploy the entire digital network.',
       features: [
         'Complete Concept Bible & Story Arc',
         'Liquid R&D / Menu Concept Consulting',

@@ -1,3 +1,5 @@
+import React from 'react'
+
 export type ProjectType = {
   id: number;
   name: string;
@@ -25,4 +27,6 @@ export type ProjectType = {
   theme?: string;
   z: number;
   infoPosition?: string;
+  content?: React.ReactNode;
+  colourPalettes?: { pal?: string[]; bg?: string[] };
 };

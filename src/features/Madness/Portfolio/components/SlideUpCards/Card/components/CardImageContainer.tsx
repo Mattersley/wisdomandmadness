@@ -1,7 +1,7 @@
-import use3DCard from '@/features/Madness/Portfolio/components/Card/hooks/use3DCard'
+import use3DCard from '@/features/Madness/Portfolio/components/SlideUpCards/Card/hooks/use3DCard'
 import { motion } from 'motion/react'
 import React, { SetStateAction } from 'react'
-import useCardGestures from '@/features/Madness/Portfolio/components/Card/hooks/useCardGestures'
+import useCardGestures from '@/features/Madness/Portfolio/components/SlideUpCards/Card/hooks/useCardGestures'
 
 interface CardContainerProps {
   children: React.ReactNode;

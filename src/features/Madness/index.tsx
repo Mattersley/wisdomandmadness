@@ -2,21 +2,20 @@ import Hero from '@/features/Madness/Hero'
 import Parallax from '@/features/Madness/Parallax/Parallax'
 import About from '@/features/Madness/About/About'
 import Footer from '@/features/Madness/Footer/Footer'
-import PortfolioTest from '@/features/ButtonTest/PortfolioTest'
+import Portfolio from '@/features/Madness/Portfolio/Portfolio'
 
 const Madness = ({
   containerRef
 }: {
   containerRef: React.RefObject<HTMLDivElement | null>;
 }) => {
-
   return (
     <>
       <section className="w-full">
         <Hero />
       </section>
       <section className="w-full">
-        <PortfolioTest />
+        <Portfolio />
       </section>
       <section className="relative w-full">
         <Parallax container={containerRef} />
