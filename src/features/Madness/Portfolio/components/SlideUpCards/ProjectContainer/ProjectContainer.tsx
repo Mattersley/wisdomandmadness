@@ -5,7 +5,7 @@ import Pando from '@/features/Madness/Portfolio/components/CaseStudies/Pando/Pan
 import Druid from '@/features/Madness/Portfolio/components/CaseStudies/Druid/Druid'
 import Cupendium from '@/features/Madness/Portfolio/components/CaseStudies/Cupendium/Cupendium'
 import React, { useState } from 'react'
-import { ProjectType } from '@/features/Madness/Portfolio/data/projects.types'
+import { ProjectType } from '@/features/Madness/data/projects.types'
 import LiquidInquirer from '@/features/Madness/Portfolio/components/CaseStudies/LiquidInquirer/LiquidInquirer'
 import CIMS from '@/features/Madness/Portfolio/components/CaseStudies/CIMS/CIMS'
 import GlassRoots from '@/features/Madness/Portfolio/components/CaseStudies/GlassRoots/GlassRoots'

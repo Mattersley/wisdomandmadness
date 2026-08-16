@@ -1,5 +1,5 @@
 import { AnimatePresence, motion } from 'motion/react'
-import { ProjectType } from '@/features/Madness/Portfolio/data/projects.types'
+import { ProjectType } from '@/features/Madness/data/projects.types'
 
 interface BTPortalRevealProps {
   card: ProjectType;

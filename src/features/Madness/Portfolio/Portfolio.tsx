@@ -1,7 +1,7 @@
 import React, { useContext } from 'react'
-import Egg from '@/features/Madness/Egg/Egg'
+import Egg from '@/features/Madness/Eggs/Egg'
 import Cards from '@/features/Madness/Portfolio/components/Cards/Cards'
-import { EggContext } from '@/context/eggContext'
+import { EggContext } from '@/features/Madness/Eggs/context/eggContext'
 
 const Portfolio = () => {
   const { eggs } = useContext(EggContext)
@@ -9,18 +9,34 @@ const Portfolio = () => {
   return (
     <div
       className={
-        'no-scrollbar flex h-auto min-h-screen w-screen snap-mandatory snap-center flex-col items-center justify-start bg-white px-10 py-20 sm:px-10 md:px-30 md:pt-32'
+        'no-scrollbar shadow-xl rounded-b-4xl -mb-7 flex h-auto min-h-screen w-screen snap-mandatory snap-center flex-col items-center justify-start bg-white px-10 py-20 sm:px-10 md:px-30 md:pt-32'
       }
       id="work"
     >
+      <div className="absolute right-1/2 hidden xl:block">
+        <div className="-mt-20 h-60 border-r border-gray-500/10" />
+        <div className="-mt-6 -mr-[29vw] flex w-[58vw] flex-row items-center justify-between border-t border-gray-500/10">
+          <div className="h-4 border-r border-gray-500/10" />
+          <div className="h-4 border-r border-gray-500/10" />
+        </div>
+      </div>
       <div className="w-full">
         <Cards />
       </div>
       {!eggs.eggList[0].found && (
-        <div className="mt-40 -mr-20 -mb-40 ml-auto h-8">
+        <div className="mt-20 -mb-10 ml-auto h-8 opacity-20 md:mt-10 md:-mr-20 md:-mb-10 xl:mt-20 xl:-mb-10">
           <Egg id={1} />
         </div>
       )}
+      <div className="relative hidden xl:block">
+        <div className="absolute top-0 2xl:-top-16 right-0">
+          <div className="-mr-[29vw] flex w-[58vw] flex-row items-center justify-between border-b border-gray-500/10">
+            <div className="h-4 border-r border-gray-500/10" />
+            <div className="h-4 border-r border-gray-500/10" />
+          </div>
+          <div className="h-40 -mt-4 border-r border-gray-500/10" />
+        </div>
+      </div>
     </div>
   )
 }

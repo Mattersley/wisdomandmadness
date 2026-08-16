@@ -3,7 +3,7 @@ import Link from 'next/link'
 import Contact from '@/features/Madness/Contact/Contact'
 import React, { useContext } from 'react'
 import { WormContext } from '@/context/wormContext'
-import Blobover from '@/features/Shared/Popover/Blobover'
+import Blobover from '@/features/Shared/Blobover/Blobover'
 
 // Make the contact button open menu <sm
 
@@ -31,10 +31,10 @@ const Nav = () => {
         </div>
       </div>
       <div className="z-50 mx-auto flex flex-row gap-2 md:mx-0 md:ml-2">
-        <div className="absolute top-8 flex flex-row sm:hidden gap-1 right-36">
+        <div className="absolute top-8 right-36 flex flex-row gap-1 sm:hidden">
           <button
             className="size-12 cursor-pointer items-center justify-center rounded-[50%] bg-rose-500 text-white hover:bg-gray-500"
-            onClick={() => setWorm("ID")}
+            onClick={() => setWorm('ID')}
             type="button"
           >
             <svg
@@ -57,7 +57,7 @@ const Nav = () => {
           </button>
           <button
             className="size-12 cursor-pointer items-center justify-center rounded-[50%] bg-indigo-500 text-white hover:bg-gray-500"
-            onClick={() => setWorm("inquire")}
+            onClick={() => setWorm('inquire')}
             type="button"
           >
             <span className="size-full">
@@ -85,7 +85,7 @@ const Nav = () => {
             trigger={
               <button
                 className="absolute top-8 right-[21vw] hidden size-12 cursor-pointer items-center justify-center rounded-[50%] bg-rose-500 text-white hover:bg-gray-500 sm:relative sm:top-auto sm:right-auto sm:flex sm:size-16"
-                onClick={() => setWorm("ID")}
+                onClick={() => setWorm('ID')}
                 type="button"
               >
                 <svg
@@ -116,7 +116,7 @@ const Nav = () => {
             trigger={
               <button
                 className="absolute top-8 right-[7vw] hidden size-12 cursor-pointer items-center justify-center rounded-[50%] bg-indigo-500 text-white hover:bg-gray-500 sm:relative sm:top-auto sm:right-auto sm:flex sm:size-16"
-                onClick={() => setWorm("inquire")}
+                onClick={() => setWorm('inquire')}
                 type="button"
               >
                 <span className="size-full">
@@ -174,7 +174,7 @@ const Nav = () => {
         <Contact />
       </div>
     </div>
-  );
+  )
 }
 
 export default Nav

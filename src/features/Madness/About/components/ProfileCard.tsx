@@ -1,7 +1,7 @@
 import { useContext } from 'react'
-import { EggContext } from '@/context/eggContext'
+import { EggContext } from '@/features/Madness/Eggs/context/eggContext'
 import { motion } from 'motion/react'
-import Egg from '@/features/Madness/Egg/Egg'
+import Egg from '@/features/Madness/Eggs/Egg'
 
 const ProfileCard = () => {
   const { eggs } = useContext(EggContext)

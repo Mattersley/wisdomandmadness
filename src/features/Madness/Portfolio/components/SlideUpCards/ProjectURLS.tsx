@@ -1,6 +1,6 @@
 import Image from 'next/image'
 import React from 'react'
-import { ProjectType } from '@/features/Madness/Portfolio/data/projects.types'
+import { ProjectType } from '@/features/Madness/data/projects.types'
 
 const ProjectURLS = ({ urls }: { urls: ProjectType['urls'] }) => {
   const urlRegex = /^(https?:\/\/)?(www\.)?/

@@ -1,14 +1,24 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { WormContext } from '@/context/wormContext'
 import IDCard from '@/features/ID/features/IDCard/IDCard'
-import { DitheringShader } from '@/features/Dither/components/ui/dithering-shader'
-import Egg from '@/features/Madness/Egg/Egg'
-import { EggContext } from '@/context/eggContext'
+import { DitheringShader } from '@/features/Unused/Dither/components/ui/dithering-shader'
+import Egg from '@/features/Madness/Eggs/Egg'
+import { EggContext } from '@/features/Madness/Eggs/context/eggContext'
 
 const ID = () => {
   const { setWorm } = useContext(WormContext)
   const { eggs } = useContext(EggContext)
   const showHiddenEgg = eggs.eggs !== 0 && !eggs.eggList[6].found
+  const [isAnimating, setIsAnimating] = useState(false)
+  const [showEgg, setShowEgg] = useState(false)
+
+  useEffect(() => {
+    if (isAnimating) {
+      setTimeout(() => {
+        setShowEgg(true)
+      }, 520)
+    }
+  }, [isAnimating])
 
   return (
     <div className="flex h-screen w-screen flex-col items-center justify-center bg-gray-100">
@@ -30,7 +40,9 @@ const ID = () => {
           <p className="text-xl">Your ID card has been assigned</p>
         </div>
         {!showHiddenEgg && (
-          <div className="absolute top-1/2 right-1/2 -mt-17 -mr-15 -translate-x-1/2 -translate-y-1/2 text-6xl">
+          <div
+            className={`${showEgg && 'z-100'} absolute top-1/2 right-1/2 -mr-15 -translate-x-1/2 -translate-y-1/2 text-6xl`}
+          >
             <span>🥚</span>
             <span className="absolute right-9 z-50 -mt-7 -mr-4 scale-290 text-transparent">
               <Egg id={6} />
@@ -38,10 +50,8 @@ const ID = () => {
           </div>
         )}
         <div className="relative" style={{ contain: 'layout' }}>
-          {/* Fixed dimensions container to prevent layout shifts */}
-
           <div className="relative h-[700px] w-[400px] overflow-y-hidden">
-            <IDCard />
+            <IDCard isAnimating={isAnimating} setIsAnimating={setIsAnimating} />
           </div>
         </div>
       </div>

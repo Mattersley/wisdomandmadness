@@ -1,6 +1,7 @@
 import { useEffect, useRef } from 'react'
 import { motion, AnimatePresence, Easing } from 'motion/react'
-import { ProjectType } from '@/features/Madness/Portfolio/data/projects.types'
+import { ProjectType } from '@/features/Madness/data/projects.types'
+import Image from 'next/image'
 
 interface CaseStudyPortalProps {
   activeCard: ProjectType;
@@ -273,61 +274,29 @@ const CaseStudy = ({
                   </h4>
 
                   <div className="mt-3 flex w-60 flex-wrap gap-2">
-                    {activeCard.stack?.map((tech) => (
-                      <span
-                        key={tech}
-                        className={`cursor-alias rounded border px-2 py-1 text-[10px] hover:bg-gray-200 ${
+                    {Object.entries(activeCard.stack!).map(([name, tech]) => (
+                      <a
+                        key={name}
+                        className={`flex w-27 cursor-alias flex-row gap-2 rounded border px-2 py-2 text-[10px] hover:bg-gray-200 ${
                           isLight
                             ? 'border-neutral-200 bg-white text-neutral-800'
                             : 'border-white/5 bg-neutral-800 text-neutral-300'
                         }`}
+                        href={tech}
+                        rel="noopener noreferrer"
+                        target="_blank"
                       >
-                        {tech}
-                      </span>
+                        <Image
+                          alt={`${name} Icon`}
+                          height={12}
+                          src={`https://www.google.com/s2/favicons?domain=${tech}&sz=12`}
+                          width={12}
+                        />
+                        {name}
+                      </a>
                     ))}
                   </div>
                 </div>
-                {activeCard.urls && activeCard.urls.length > 0 && (
-                  <div className="w-60">
-                    <h4
-                      className={`mb-3 uppercase ${
-                        isLight ? 'text-neutral-900' : 'text-white'
-                      }`}
-                    >
-                      // LINKS
-                    </h4>
-
-                    <div className="flex flex-col gap-2.5">
-                      {activeCard.urls.map((link, index) => (
-                        <a
-                          key={index}
-                          className={`group flex w-50 items-center gap-3 rounded-lg border p-3 font-mono text-[11px] tracking-wide transition-all ${
-                            isLight
-                              ? 'border-neutral-200 bg-white text-neutral-800 hover:border-neutral-900 hover:bg-neutral-50'
-                              : 'border-white/5 bg-neutral-800/40 text-neutral-300 hover:border-white/20 hover:bg-neutral-800/80'
-                          }`}
-                          href={link.url}
-                          rel="noopener noreferrer"
-                          target="_blank"
-                        >
-                          <img
-                            alt="favicon"
-                            className="h-4 w-4 object-contain"
-                            onError={(e) => {
-                              e.currentTarget.src =
-                                '/images/Portfolio/Cards/fallback-link.png'
-                            }}
-                            src={link.favi}
-                          />
-
-                          <span className="truncate group-hover:underline">
-                            {link.url.replace(/^https?:\/\/(www\.)?/, '')}
-                          </span>
-                        </a>
-                      ))}
-                    </div>
-                  </div>
-                )}
                 {activeCard.colourPalettes && (
                   <div>
                     <h4
@@ -383,6 +352,49 @@ const CaseStudy = ({
                     </div>
                   </div>
                 )}
+                {activeCard.urls && activeCard.urls.length > 0 && (
+                  <div className="w-60">
+                    <h4
+                      className={`mb-3 uppercase ${
+                        isLight ? 'text-neutral-900' : 'text-white'
+                      }`}
+                    >
+                      // VISIT
+                    </h4>
+
+                    <div className="flex flex-col gap-2.5">
+                      {activeCard.urls.map((link, index) => (
+                        <a
+                          key={index}
+                          className={`group flex w-50 items-center gap-3 rounded-lg border p-3 font-mono text-[11px] tracking-wide transition-all ${
+                            isLight
+                              ? 'border-neutral-200 bg-white text-neutral-800 hover:border-neutral-900 hover:bg-neutral-50'
+                              : 'border-white/5 bg-neutral-800/40 text-neutral-300 hover:border-white/20 hover:bg-neutral-800/80'
+                          }`}
+                          href={link.url}
+                          rel="noopener noreferrer"
+                          target="_blank"
+                        >
+                          <Image
+                            alt="favicon"
+                            className="h-4 w-4 object-contain"
+                            height={16}
+                            onError={(e) => {
+                              e.currentTarget.src =
+                                '/images/Portfolio/Cards/fallback-link.png'
+                            }}
+                            src={link.favi}
+                            width={16}
+                          />
+
+                          <span className="truncate group-hover:underline">
+                            {link.url.replace(/^https?:\/\/(www\.)?/, '')}
+                          </span>
+                        </a>
+                      ))}
+                    </div>
+                  </div>
+                )}
               </div>
 
               {/* MAIN CONTENT */}
@@ -402,17 +414,6 @@ const CaseStudy = ({
                   }`}
                 >
                   {activeCard.overview}
-                </p>
-
-                <p
-                  className={`font-mono text-sm leading-relaxed tracking-wide ${
-                    isLight ? 'text-neutral-700' : 'text-neutral-400'
-                  }`}
-                >
-                  By isolating key rendering blocks and binding structural
-                  interactions into native hardware threads, we eliminated
-                  layout recalculation overhead entirely. Every node transition
-                  performs with crisp execution precision.
                 </p>
               </div>
             </div>

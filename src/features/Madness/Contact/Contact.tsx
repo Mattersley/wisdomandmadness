@@ -16,10 +16,10 @@ const Contact = () => {
 
   const methods = useForm<Inputs>({
     defaultValues: {
-      budget: '500',
+      budget: '0',
       services: [],
-      timeline: '1-3m',
-      projectStatus: 'new',
+      timeline: '0',
+      projectStatus: undefined,
       inspiration: [{ url: '' }]
     }
   })

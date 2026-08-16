@@ -1,7 +1,7 @@
-import LogoText from '@/features/Shared/LogoText/LogoText'
-import VanIsle from '@/features/Madness/Footer/VanIsle'
+import LogoText from '@/features/Madness/Footer/components/LogoText'
+import VanIsle from '@/features/Madness/Footer/components/VanIsle'
 import ContactButtonMarquee from '@/features/Shared/ContactButtons/ContactButtonMarquee'
-import Blobover from '@/features/Shared/Popover/Blobover'
+import Blobover from '@/features/Shared/Blobover/Blobover'
 import React, { useContext } from 'react'
 import { WormContext } from '@/context/wormContext'
 
@@ -16,6 +16,11 @@ const Footer = () => {
         <div className="absolute h-52 w-full bg-neutral-800" />
         <div className="pointer-events-none fixed bottom-0 h-[700px] w-full">
           <div className="flex h-full w-full flex-col bg-neutral-800">
+            <div className="mx-auto h-8 border-r border-white/10" />
+            <div className="mx-auto flex w-1/4 lg:w-2/3 justify-between border-t border-white/10">
+              <div className="h-5 border-r border-white/10" />
+              <div className="h-5 border-r border-white/10" />
+            </div>
             <Section1 setWorm={setWorm} />
             <Section2 />
           </div>

@@ -14,10 +14,10 @@ const Madness = ({
       <section className="w-full">
         <Hero />
       </section>
-      <section className="w-full">
+      <section className="w-full z-100">
         <Portfolio />
       </section>
-      <section className="relative w-full">
+      <section className="relative w-full -z-100">
         <Parallax container={containerRef} />
       </section>
       <section className="w-full">

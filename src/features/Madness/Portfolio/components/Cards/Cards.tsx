@@ -5,7 +5,7 @@ import TiltCard from '@/features/Madness/Portfolio/components/Cards/components/T
 import CaseStudy from '@/features/Madness/Portfolio/components/Cards/components/CaseStudy'
 import PortalReveal from '@/features/Madness/Portfolio/components/Cards/components/PortalReveal'
 
-import { projects } from '@/features/Madness/Portfolio/data/projects'
+import { projects } from '@/features/Madness/data/projects'
 import PortfolioNavBar from '@/features/Madness/Portfolio/components/NavBar/PortfolioNavBar'
 
 const Cards = () => {
@@ -26,8 +26,7 @@ const Cards = () => {
     return (
       project.served?.some(
         (s) => s.toLowerCase() === activeFilter.toLowerCase()
-      ) ||
-      project.stack?.some((t) => t.toLowerCase() === activeFilter.toLowerCase())
+      )
     )
   })
 
@@ -61,7 +60,7 @@ const Cards = () => {
         onFilterChange={setActiveFilter}
       />
       <div className="flex w-full items-center justify-center p-0 pt-10 lg:p-10 xl:pt-20 2xl:p-20">
-        <div className="grid w-full grid-cols-1 gap-12 lg:grid-cols-2 xl:grid-cols-3">
+        <div className="grid xl:pt-10 w-full grid-cols-1 gap-12 lg:grid-cols-2 xl:grid-cols-3 justify-items-center">
           <AnimatePresence mode="popLayout">
             {filteredProjects.map((card) => {
               const isZooming = zoomingId === card.id
@@ -75,7 +74,7 @@ const Cards = () => {
                     scale: anotherZooming ? 0.85 : 1,
                     filter: anotherZooming ? 'blur(16px)' : 'blur(0px)'
                   }}
-                  className="relative aspect-video h-52 w-full"
+                  className="relative h-48 sm:h-60 sm:w-3/4 md:w-11/12 lg:w-full lg:h-52 xl:h-60 w-full"
                   transition={{ duration: 2.5, ease: slowVortexEase }}
                 >
                   <TiltCard

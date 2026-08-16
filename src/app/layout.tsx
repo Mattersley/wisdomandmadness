@@ -1,7 +1,7 @@
 import React from 'react'
 import type { Metadata } from 'next'
 import './globals.css'
-import { EggProvider } from '@/context/eggContext'
+import { EggProvider } from '@/features/Madness/Eggs/context/eggContext'
 import { ContactProvider } from '@/context/contactContext'
 import { Analytics } from '@vercel/analytics/next'
 import { WormProvider } from '@/context/wormContext'

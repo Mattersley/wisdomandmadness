@@ -1,4 +1,4 @@
-import Blobover from '@/features/Shared/Popover/Blobover'
+import Blobover from '@/features/Shared/Blobover/Blobover'
 import React, { useContext, useState } from 'react'
 import { WormContext } from '@/context/wormContext'
 import Image from 'next/image'

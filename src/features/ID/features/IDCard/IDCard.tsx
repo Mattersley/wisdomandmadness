@@ -6,9 +6,8 @@ import { WormContext } from '@/context/wormContext'
 import useCardGestures from '@/features/Madness/Portfolio/components/SlideUpCards/Card/hooks/useCardGestures'
 import { motion, useAnimation } from 'motion/react'
 
-const IDCard = () => {
+const IDCard = ({ isAnimating, setIsAnimating }: {isAnimating: boolean, setIsAnimating: React.Dispatch<React.SetStateAction<boolean>> }) => {
   const controls = useAnimation()
-  const [isAnimating, setIsAnimating] = React.useState(false)
   const {
     handlePointerEnter,
     handlePointerMove,
@@ -17,7 +16,7 @@ const IDCard = () => {
     rotateY,
     scale
   } = use3DCard({ cardRotation: 40, cardScale: 1.1, off: isAnimating })
-  const { observerNumber, setSeenSplash } = useContext(WormContext)
+  const { observerNumber } = useContext(WormContext)
   const [rando, setRando] = React.useState(() => Math.random())
   const today = new Date()
 

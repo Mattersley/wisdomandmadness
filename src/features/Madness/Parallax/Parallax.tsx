@@ -1,9 +1,8 @@
 'use client'
 import React, { useEffect, useRef, useState } from 'react'
 import styles from './parallax.module.scss'
-import Image from 'next/image'
-import type { MotionValue } from 'motion'
-import { motion, useScroll, useSpring, useTransform } from 'motion/react'
+import { useScroll, useSpring, useTransform } from 'motion/react'
+import ParallaxColumn from '@/features/Madness/Parallax/components/ParallaxColumn'
 
 const images = [
   '1.png',
@@ -27,11 +26,14 @@ const columns = [
   [images[4], images[5], images[6], images[7], images[8], images[9]]
 ]
 
-const wrap = (min: number, max: number, value: number) => {
-  const range = max - min
+// const wrap = (min: number, max: number, value: number) => {
+//   const range = max - min
+//
+//   return ((((value - min) % range) + range) % range) + min
+// }
 
-  return ((((value - min) % range) + range) % range) + min
-}
+// TODO: On smaller screens make the second column the only one visible, not the first.
+// TODO: Ensure images don't repeat next to each other.
 
 const Parallax = ({
   container
@@ -93,74 +95,6 @@ const Parallax = ({
   )
 }
 
-const ParallaxColumn = ({
-  direction,
-  images,
-  y
-}: {
-  direction: 1 | -1;
-  images: string[];
-  y: MotionValue<number>;
-}) => {
-  const loopRef = useRef<HTMLDivElement>(null)
-  const [loopHeight, setLoopHeight] = useState(0)
-  const wrappedY = useTransform(y, (latest) => {
-    if (loopHeight === 0) {
-      return 0
-    }
 
-    const offset = wrap(0, loopHeight, latest)
-
-    return direction === 1 ? -offset : -loopHeight + offset
-  })
-  const repeatedImages = [images, images, images]
-
-  useEffect(() => {
-    const loop = loopRef.current
-
-    if (!loop) {
-      return
-    }
-
-    const updateLoopHeight = () => setLoopHeight(loop.offsetHeight)
-    const observer = new ResizeObserver(updateLoopHeight)
-
-    updateLoopHeight()
-    observer.observe(loop)
-
-    return () => observer.disconnect()
-  }, [])
-
-  return (
-    <div className={styles.column}>
-      <motion.div className={styles.track} style={{ y: wrappedY }}>
-        {repeatedImages.map((imageSet, setIndex) => (
-          <div
-            key={setIndex}
-            aria-hidden={setIndex > 0}
-            className={styles.loop}
-            ref={setIndex === 0 ? loopRef : undefined}
-          >
-            {imageSet.map((src, imageIndex) => {
-              return (
-                <div
-                  key={`${setIndex}-${src}-${imageIndex}`}
-                  className={styles.imageContainer}
-                >
-                  <Image
-                    alt=""
-                    fill
-                    sizes="min-width: 250px"
-                    src={`/images/Parallax/${src}`}
-                  />
-                </div>
-              )
-            })}
-          </div>
-        ))}
-      </motion.div>
-    </div>
-  )
-}
 
 export default Parallax

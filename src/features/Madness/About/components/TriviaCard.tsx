@@ -66,7 +66,7 @@ const contentVariants: Variants = {
 const TriviaCard = () => {
   return (
     <motion.div
-      className="relative mx-auto mt-6 hidden w-[90%] cursor-help flex-col items-center justify-center overflow-hidden rounded-3xl border backdrop-blur-xs transition-colors duration-500 select-none sm:flex md:w-[70%] xl:w-[30%]"
+      className="relative mx-auto mt-6 hidden w-[90%] cursor-help flex-col items-center justify-center overflow-hidden rounded-3xl border backdrop-blur-xs transition-colors duration-500 select-none sm:flex md:w-[70%] xl:w-[50%] 2xl:w-[30%]"
       initial="hidden"
       variants={containerVariants}
       whileHover="visible"

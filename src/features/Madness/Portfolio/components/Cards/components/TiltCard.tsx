@@ -1,7 +1,7 @@
 import { useRef } from 'react'
 import { motion, useMotionValue, useTransform } from 'motion/react'
 
-import { ProjectType } from '@/features/Madness/Portfolio/data/projects.types'
+import { ProjectType } from '@/features/Madness/data/projects.types'
 
 interface TiltCardProps {
   card: ProjectType;
@@ -42,7 +42,7 @@ const TiltCard = ({ card, onSelect, isActive }: TiltCardProps) => {
       ref={cardRef}
     >
       <motion.div
-        className="transform-style-3d relative flex h-full w-full cursor-pointer flex-col items-center justify-center overflow-hidden rounded-3xl border border-white/10 p-8"
+        className="shadow-xl transform-style-3d relative flex h-full w-full cursor-pointer flex-col items-center justify-center overflow-hidden rounded-3xl p-8"
         onMouseLeave={handleMouseLeave}
         onMouseMove={handleMouseMove}
         style={{

@@ -1,9 +1,9 @@
-import LavaLamp from '@/features/Shared/LavaLamp/LavaLamp'
+import LavaLamp from '@/features/Madness/Hero/features/LavaLamp/LavaLamp'
 import Nav from '@/features/Madness/Hero/features/Nav/Nav'
-import ThreeD from '@/features/Shared/3dDonut/ThreeD'
+import ThreeD from '@/features/Madness/Hero/features/ThreeDText/ThreeDText'
 import Image from 'next/image'
 import React, { useContext } from 'react'
-import HeroText from '@/features/Madness/Hero/features/HeroText'
+import HeroText from '@/features/Madness/Hero/features/HeroText/HeroText'
 import { WormContext } from '@/context/wormContext'
 
 const Hero = () => {
@@ -12,7 +12,7 @@ const Hero = () => {
   return (
     <div className="w-screen snap-start bg-neutral-950 sm:pt-6 md:h-screen">
       <div className="relative z-10 flex size-full md:-mb-24">
-        <div className="absolute bottom-0 z-50 h-1/2 w-screen lg:hidden"></div>
+        <div className="absolute bottom-0 z-50 h-1/2 w-screen lg:hidden" />
 
         <button className="font-vt323 absolute -top-2 left-[48vw] z-40 hidden rounded-2xl border px-3 text-neutral-700 hover:border-indigo-500 hover:bg-indigo-500 hover:text-white sm:block">
           OBS#{observerNumber}-MADNESS
@@ -25,9 +25,7 @@ const Hero = () => {
 
           <div className="relative flex h-[95%] w-full flex-col md:gap-x-6">
             <div className="relative mx-auto -mb-12 min-h-[120vh] w-[98%] rounded-3xl bg-white sm:mt-4 sm:min-h-[90vh] md:z-1 md:-mt-14 md:min-h-[95vh] md:w-full">
-              {/*features Buttons BG*/}
               <div className="absolute top-0 right-0 z-2 hidden h-18 w-md rounded-bl-3xl bg-neutral-950 md:block md:w-98 lg:w-md" />
-              {/*Corners of LavaLamp*/}
               <div className="absolute top-18 right-0 z-10 hidden rotate-90 md:block">
                 <Image
                   alt="image"
