@@ -9,7 +9,8 @@ import ProgressNav from '@/features/Inquire/components/ProgressNav'
 import FormErrorBanner from '@/features/Inquire/components/FormErrorBanner'
 import { getStageFieldsToValidate } from '@/features/Inquire/validationMap'
 
-// All step imports mapped in sequential system context
+// TODO: Add charity/non-profit/pro bono box
+
 import ContactForm from '@/features/Inquire/components/01 Contact/ContactForm'
 import Services from '@/features/Inquire/components/02 Services/ServicesForm'
 import Logistics from '@/features/Inquire/components/03 LogisticsBudget/LogisticsBudgetForm'
@@ -169,7 +170,7 @@ const Inquire = () => {
   const currentMeta = getStageMetadata(currentStage)
 
   return (
-    <div className="h-screen w-screen bg-neutral-950 px-4 sm:pt-6 overflow-y-scroll md:overflow-hidden">
+    <div className="h-screen w-screen overflow-y-scroll bg-neutral-950 px-4 sm:pt-6 md:overflow-hidden">
       <div className="relative z-10 flex size-full md:-mb-24">
         <button className="font-vt323 absolute -top-2 left-[48vw] z-40 hidden rounded-2xl border px-3 text-neutral-700 hover:border-rose-500 hover:bg-rose-500 hover:text-white sm:block">
           OBS#{}-INQUIRY

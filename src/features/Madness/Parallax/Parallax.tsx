@@ -1,4 +1,5 @@
 'use client'
+
 import React, { useEffect, useRef, useState } from 'react'
 import styles from './parallax.module.scss'
 import { useScroll, useSpring, useTransform } from 'motion/react'
@@ -25,15 +26,6 @@ const columns = [
   [images[10], images[5], images[3], images[6], images[1], images[3]],
   [images[4], images[5], images[6], images[7], images[8], images[9]]
 ]
-
-// const wrap = (min: number, max: number, value: number) => {
-//   const range = max - min
-//
-//   return ((((value - min) % range) + range) % range) + min
-// }
-
-// TODO: On smaller screens make the second column the only one visible, not the first.
-// TODO: Ensure images don't repeat next to each other.
 
 const Parallax = ({
   container
@@ -80,7 +72,6 @@ const Parallax = ({
   return (
     <section className="relative w-full snap-none bg-white">
       <div className={styles.spacer} />
-
       <div className={styles.gallery} ref={gallery}>
         {columns.map((columnImages, index) => (
           <ParallaxColumn
@@ -92,9 +83,7 @@ const Parallax = ({
         ))}
       </div>
     </section>
-  )
+  );
 }
-
-
 
 export default Parallax

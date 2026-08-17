@@ -8,7 +8,7 @@ import {
   useTransform,
   Variants
 } from 'motion/react'
-import { useContact } from '@/context/contactContext'
+import { useContact } from '@/features/Madness/Contact/context/contactContext'
 
 // Hardcoded layout values are eliminated.
 // A -50% translation combined with duplicated text guarantees a pixel-perfect, seamless infinite loop.

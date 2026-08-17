@@ -2,8 +2,8 @@ import { useState } from 'react'
 import { AnimatePresence, motion, cubicBezier } from 'motion/react'
 
 import TiltCard from '@/features/Madness/Portfolio/components/Cards/components/TiltCard'
-import CaseStudy from '@/features/Madness/Portfolio/components/Cards/components/CaseStudy'
-import PortalReveal from '@/features/Madness/Portfolio/components/Cards/components/PortalReveal'
+import CaseStudy from '@/features/Madness/Portfolio/components/CaseStudy/CaseStudy'
+import PortalReveal from '@/features/Madness/Portfolio/components/CaseStudy/components/PortalReveal'
 
 import { projects } from '@/features/Madness/data/projects'
 import PortfolioNavBar from '@/features/Madness/Portfolio/components/NavBar/PortfolioNavBar'

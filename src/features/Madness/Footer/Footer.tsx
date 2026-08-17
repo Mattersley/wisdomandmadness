@@ -17,7 +17,7 @@ const Footer = () => {
         <div className="pointer-events-none fixed bottom-0 h-[700px] w-full">
           <div className="flex h-full w-full flex-col bg-neutral-800">
             <div className="mx-auto h-8 border-r border-white/10" />
-            <div className="mx-auto flex w-1/4 lg:w-2/3 justify-between border-t border-white/10">
+            <div className="mx-auto flex w-1/4 justify-between border-t border-white/10 lg:w-2/3">
               <div className="h-5 border-r border-white/10" />
               <div className="h-5 border-r border-white/10" />
             </div>
@@ -81,8 +81,8 @@ const Section1 = ({
 )
 
 const Section2 = () => (
-  <div className="flex w-full flex-row">
-    <div className="3xl:ml-32 3xl:scale-125 mt-auto -mb-14 -ml-68 hidden h-52 scale-50 sm:block md:-mb-10 md:-ml-36 md:scale-75 xl:-mb-5 xl:-ml-8 xl:scale-95">
+  <div className="flex w-full flex-row items-center justify-center">
+    <div className="mt-auto -mb-14 -ml-20 hidden h-52 scale-50 sm:block md:-mb-13 md:-ml-24 md:scale-60 lg:-ml-58 lg:-mb-11 lg:scale-70 xl:-mb-5 xl:-ml-5 xl:scale-95 ">
       <LogoText
         colour={true}
         rightAlign={false}
@@ -91,7 +91,7 @@ const Section2 = () => (
         sizeW={10}
       />
     </div>
-    <div className="mt-auto -mb-16 -ml-26 h-52 scale-50 sm:hidden">
+    <div className="mt-auto -mb-16 h-52 scale-50 sm:hidden">
       <LogoText
         colour={true}
         footer={true}
@@ -108,7 +108,7 @@ const Section2 = () => (
       >
         <div className="flex flex-col">
           <p className="font-anonymous mt-1 text-xs font-light text-white select-none">
-            designed/coded in house by MAT_AT 👁
+            designed/coded in house 👁
           </p>
         </div>
       </a>

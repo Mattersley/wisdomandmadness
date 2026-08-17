@@ -4,7 +4,7 @@ import TriviaCard from '@/features/Madness/About/components/TriviaCard'
 const About = () => {
   return (
     <div
-      className="shadow-xl relative flex w-screen flex-col items-center -mt-7 rounded-t-4xl bg-neutral-950 py-20 text-white select-none"
+      className="drop-shadow-2xl relative flex w-screen flex-col items-center -mt-7 rounded-t-4xl bg-neutral-950 py-20 text-white select-none"
       id="about"
     >
       <div className="-mt-20 h-20 border-r border-white/20" />

@@ -1,36 +1,42 @@
 import WisdomAndMadnessLogo from '@/assets/WisdomLogo'
-import Link from 'next/link'
 import Contact from '@/features/Madness/Contact/Contact'
 import React, { useContext } from 'react'
 import { WormContext } from '@/context/wormContext'
 import Blobover from '@/features/Shared/Blobover/Blobover'
+import { RefProps } from '@/features/Madness/Hero'
 
-// Make the contact button open menu <sm
-
-const Nav = () => {
+const Nav = ({ refs }: RefProps) => {
   const { setWorm } = useContext(WormContext)
 
   return (
     <div className="relative flex w-full flex-col items-end justify-between gap-y-4 px-4 pt-6 sm:px-6 sm:pt-8 md:px-0">
-      <div className="z-20 flex size-12 h-16 w-full flex-row items-center justify-between rounded-[3rem] bg-white px-6 sm:z-0 sm:px-10">
+      <div className="flex size-12 h-16 w-full flex-row items-center justify-between rounded-[3rem] bg-white px-6 sm:px-10">
         <div className="flex flex-row items-center">
           <div className="size-10 text-black">
             <WisdomAndMadnessLogo />
           </div>
-          <p className="ml-2 hidden text-xs sm:block">
+          <p className="ml-2 hidden text-xs select-none sm:block">
             Wisdom + Madness Design Co.
           </p>
         </div>
-        <div className="z-50 ml-6 hidden flex-row items-center gap-4 sm:flex">
-          <Link href="#work">
+        <div className="ml-6 hidden flex-row items-center gap-4 sm:flex">
+          <button
+            className="cursor-pointer hover:text-gray-500/20"
+            onClick={() => refs.workRef.current?.scrollIntoView()}
+            type="button"
+          >
             <p className="text-xs tracking-widest">WORK</p>
-          </Link>
-          <Link href="#about">
+          </button>
+          <button
+            className="cursor-pointer hover:text-gray-500/20"
+            onClick={() => refs.aboutRef.current?.scrollIntoView()}
+            type="button"
+          >
             <p className="text-xs tracking-widest">ABOUT</p>
-          </Link>
+          </button>
         </div>
       </div>
-      <div className="z-50 mx-auto flex flex-row gap-2 md:mx-0 md:ml-2">
+      <div className="mx-auto flex flex-row gap-2 md:mx-0 md:ml-2">
         <div className="absolute top-8 right-36 flex flex-row gap-1 sm:hidden">
           <button
             className="size-12 cursor-pointer items-center justify-center rounded-[50%] bg-rose-500 text-white hover:bg-gray-500"
@@ -79,7 +85,7 @@ const Nav = () => {
             </span>
           </button>
         </div>
-        <div className="z-20 flex flex-row gap-2 self-end">
+        <div className="z-10 flex flex-row gap-2 self-end">
           <Blobover
             colour="rose"
             trigger={

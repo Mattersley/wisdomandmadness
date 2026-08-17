@@ -1,36 +1,36 @@
 const eggList = [
   {
-    id: 1,
+    id: 0,
     name: 'portfolio',
     found: false
   },
   {
-    id: 2,
-    name: 'title',
+    id: 1,
+    name: 'heroText',
     found: false
   },
   {
-    id: 3,
+    id: 2,
     name: 'parallax',
     found: false
   },
   {
-    id: 4,
+    id: 3,
     name: 'wisdomPage',
     found: false
   },
   {
-    id: 5,
+    id: 4,
     name: 'aboutFeature',
     found: false
   },
   {
-    id: 6,
+    id: 5,
     name: 'myName',
     found: false
   },
   {
-    id: 7,
+    id: 6,
     name: 'IDCard',
     found: false
   }

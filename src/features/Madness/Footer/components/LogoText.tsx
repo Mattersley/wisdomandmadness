@@ -46,7 +46,7 @@ const LogoText = ({
         +
       </p>
       <p
-        className={`z-2 -mt-26 leading-38 drop-shadow drop-shadow-black/20 ${row && 'md:mt-0 md:drop-shadow-none'} ${textSizes(sizeM)} font-vagra ${colour ? 'bg-linear-to-tr bg-clip-text text-transparent' : 'opacity-30 hover:bg-linear-to-tr hover:bg-clip-text hover:text-transparent hover:opacity-100'} from-[#3F5EFB] to-[#FC466B]`}
+        className={`z-2 -mt-26 leading-38 drop-shadow drop-shadow-black/20 ${row && '-mb-16 md:mt-0 md:drop-shadow-none'} ${textSizes(sizeM)} font-vagra ${colour ? 'bg-linear-to-tr bg-clip-text text-transparent' : 'opacity-30 hover:bg-linear-to-tr hover:bg-clip-text hover:text-transparent hover:opacity-100'} from-[#3F5EFB] to-[#FC466B]`}
       >
         Madness
       </p>

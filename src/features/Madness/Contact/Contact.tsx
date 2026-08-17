@@ -1,18 +1,19 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useContext } from 'react'
 import { useForm, SubmitHandler, FormProvider } from 'react-hook-form'
 import { motion, AnimatePresence } from 'motion/react'
 import { Inputs } from '../../Inquire/types'
-import ContactForm from '@/features/Inquire/components/01 Contact/ContactForm';
+import ContactForm from '@/features/Inquire/components/01 Contact/ContactForm'
 import Services from '@/features/Inquire/components/02 Services/ServicesForm'
 import Logistics from '@/features/Inquire/components/03 LogisticsBudget/LogisticsBudgetForm'
-import { useContact } from '@/context/contactContext'
+import { useContact } from '@/features/Madness/Contact/context/contactContext'
 import ContactButtonLiquid from '@/features/Shared/ContactButtons/ContactButtonLiquid'
 import { buildContactFormData } from '@/features/Inquire/contactSubmission'
+import { WormContext } from '@/context/wormContext'
 
 const Contact = () => {
+  const { setWorm } = useContext(WormContext)
   const { isOpen, closeContact, openContact } = useContact()
   const [showDetails, setShowDetails] = useState(false)
-  const [simplePlease, setSimplePlease] = useState(false)
 
   const methods = useForm<Inputs>({
     defaultValues: {
@@ -38,15 +39,6 @@ const Contact = () => {
     }
   }, [isOpen])
 
-  // const handleChange = (event: {
-  //   target: { checked: boolean | ((prevState: boolean) => boolean) };
-  // }) => {
-  //   setSimplePlease(event.target.checked)
-  //   if (event.target.checked) {
-  //     setShowDetails(false)
-  //   }
-  // }
-
   const onSubmit: SubmitHandler<Inputs> = async (data) => {
     try {
       const response = await fetch('/api/contact', {
@@ -60,7 +52,6 @@ const Contact = () => {
       }
 
       reset()
-      setSimplePlease(false)
       closeContact()
       setShowDetails(false)
       alert('Message sent successfully!')
@@ -77,12 +68,6 @@ const Contact = () => {
   return (
     <>
       <ContactButtonLiquid openContact={openContact} />
-      {/*<button*/}
-      {/*  className="wnm-gradient absolute top-8 right-[6vw] z-20 h-12 w-28 cursor-pointer items-center rounded-[3rem] text-center text-white hover:bg-linear-to-tr sm:relative sm:top-0 sm:right-0 sm:flex sm:h-16 sm:w-52 md:w-40 lg:w-52"*/}
-      {/*  onClick={openContact}*/}
-      {/*>*/}
-      {/*  <p className="w-full text-xs font-bold tracking-widest">CONTACT</p>*/}
-      {/*</button>*/}
 
       <AnimatePresence>
         {isOpen && (
@@ -94,7 +79,6 @@ const Contact = () => {
               initial={{ opacity: 0 }}
               onClick={closeContact}
             />
-
             <div className="pointer-events-none fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6">
               <motion.div
                 animate={{ opacity: 1, scale: 1, y: 0 }}
@@ -129,7 +113,7 @@ const Contact = () => {
                   </button>
                 </div>
 
-                <div className="flex-1 overflow-y-auto scroll-smooth p-6 sm:p-8">
+                <div className="flex-1 overflow-y-auto scroll-smooth p-6 text-center sm:p-8">
                   <FormProvider {...methods}>
                     <form
                       className={
@@ -170,6 +154,17 @@ const Contact = () => {
                       </div>
                     </form>
                   </FormProvider>
+                  <p className="mt-6 font-mono text-xs">
+                    Try our{' '}
+                    <button
+                      className="cursor-pointer font-bold text-indigo-500 hover:bg-indigo-500 hover:text-white"
+                      onClick={() => setWorm('inquire')}
+                      type="button"
+                    >
+                      [INQUIRY WIZARD]
+                    </button>{' '}
+                    if you would like to go into more detail than this.
+                  </p>
                 </div>
 
                 <div className="wnm-gradient shrink-0 rounded-b-2xl border-t border-gray-100 px-6 py-4 backdrop-blur">

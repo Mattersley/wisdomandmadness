@@ -9,7 +9,7 @@ const Portfolio = () => {
   return (
     <div
       className={
-        'no-scrollbar shadow-xl rounded-b-4xl -mb-7 flex h-auto min-h-screen w-screen snap-mandatory snap-center flex-col items-center justify-start bg-white px-10 py-20 sm:px-10 md:px-30 md:pt-32'
+        'no-scrollbar -mb-7 flex h-auto min-h-[1300px] w-screen snap-mandatory snap-center flex-col items-center justify-start rounded-b-4xl bg-white px-10 py-20 shadow-xl sm:px-10 md:px-30 md:pt-32'
       }
       id="work"
     >
@@ -24,19 +24,10 @@ const Portfolio = () => {
         <Cards />
       </div>
       {!eggs.eggList[0].found && (
-        <div className="mt-20 -mb-10 ml-auto h-8 opacity-20 md:mt-10 md:-mr-20 md:-mb-10 xl:mt-20 xl:-mb-10">
-          <Egg id={1} />
+        <div className="mt-20 -mb-10 ml-auto h-8 opacity-20 md:mt-10 md:-mr-20 md:-mb-10 xl:mt-10 xl:-mb-10">
+          <Egg id={0} />
         </div>
       )}
-      <div className="relative hidden xl:block">
-        <div className="absolute top-0 2xl:-top-16 right-0">
-          <div className="-mr-[29vw] flex w-[58vw] flex-row items-center justify-between border-b border-gray-500/10">
-            <div className="h-4 border-r border-gray-500/10" />
-            <div className="h-4 border-r border-gray-500/10" />
-          </div>
-          <div className="h-40 -mt-4 border-r border-gray-500/10" />
-        </div>
-      </div>
     </div>
   )
 }

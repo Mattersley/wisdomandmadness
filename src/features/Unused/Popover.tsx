@@ -113,13 +113,11 @@ const Popover = ({
         {isOpen && (
           <motion.div
             animate="visible"
+            className={`absolute z-50 w-max max-w-sm rounded-xl border p-3 text-sm shadow-2xl shadow-black/40 ${positionClasses[position]} ${themeClasses[colour]}`}
+            exit="exit"
             initial="hidden"
             variants={getVariants(position)}
-            exit="exit"
-            // 2. Added 'shadow-2xl shadow-black/40' for high depth definition across light and dark views
-            className={`absolute z-50 w-max max-w-sm rounded-xl border p-3 text-sm shadow-2xl shadow-black/40 ${positionClasses[position]} ${themeClasses[colour]}`}
           >
-            {/* SPEECH-BUBBLE POINTER ARROW */}
             <div
               aria-hidden="true"
               className={`absolute size-3 ${arrowClasses[position]} ${arrowThemeClasses[colour]}`}

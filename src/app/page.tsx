@@ -3,7 +3,7 @@
 import { useContext } from 'react'
 import EggCounter from '@/features/Madness/Eggs/EggCounter'
 import { useRef } from 'react'
-import { useContact } from '@/context/contactContext'
+import { useContact } from '@/features/Madness/Contact/context/contactContext'
 import { WormContext } from '@/context/wormContext'
 import ID from '@/features/ID'
 import Madness from '@/features/Madness'
@@ -23,7 +23,7 @@ const Home = () => {
     <>
       <LoadingScreen />
       <div className="fixed left-1/2 -ml-40 bottom-10 z-50">
-        <EggCounter />
+        <EggCounter orientation="horizontal" />
       </div>
       <main
         className={`no-scrollbar relative h-screen w-screen overflow-x-clip ${isOpen ? 'overflow-hidden' : 'overflow-auto'} ${currentProject ? 'overflow-hidden' : 'overflow-auto'}`}

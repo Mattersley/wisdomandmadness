@@ -10,11 +10,11 @@ const ThreeDText = () => {
 
   return (
     <div
-      className="h-full pointer-events-none absolute left-0 z-1 w-screen overflow-visible sm:-top-6 sm:z-10 sm:mt-0"
+      className="pointer-events-none absolute left-0 z-10 h-full w-screen overflow-visible sm:-top-6 sm:mt-0"
       ref={containerRef}
     >
       <div
-        className="h-1/2 pointer-events-auto absolute top-0 left-0 z-20 lg:h-2/3 w-full"
+        className="pointer-events-auto absolute left-0 z-20 h-[75vh] w-full sm:top-50 sm:h-[53vh] md:h-[52vh] lg:h-[58vh] xl:h-[60vh]"
         ref={hitboxRef}
       />
 

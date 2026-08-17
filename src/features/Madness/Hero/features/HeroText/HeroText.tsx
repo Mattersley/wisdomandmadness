@@ -1,15 +1,10 @@
-import { Inter } from 'next/font/google'
 import Image from 'next/image'
 
 import WisdomLogo from '@/assets/WisdomLogo'
-import { useState } from 'react'
+import { useContext, useState } from 'react'
 import herotext from '@/features/Madness/data/herotext'
-
-// eslint-disable-next-line new-cap
-const inter = Inter({
-  subsets: ['latin'],
-  display: 'swap' // Recommended for better user experience
-})
+import Egg from '@/features/Madness/Eggs/Egg'
+import { EggContext } from '@/features/Madness/Eggs/context/eggContext'
 
 const currentDate = new Date()
 const year = currentDate.getFullYear()
@@ -22,6 +17,7 @@ const HeroText = ({
   dark?: boolean;
   text?: boolean;
 }) => {
+  const { eggs } = useContext(EggContext)
   const [activeWing, setActiveWing] = useState<'sys' | 'art' | 'real'>('sys')
   const [selectedWing, setSelectedWing] = useState<
     'sys' | 'art' | 'real' | null
@@ -57,12 +53,11 @@ const HeroText = ({
         'xs:bottom-10 absolute right-0 bottom-0 z-50 flex w-full p-4 select-none sm:bottom-0 sm:p-10'
       }
     >
-      <div
-        className={`${inter.className} mx-auto flex w-full border border-gray-500/30 p-7 text-left sm:p-10`}
-      >
-        <div className="absolute top-4 right-1/2 mt-6 hidden xl:block">
-          <div className="h-28 border-r border-gray-500/10" />
-          <div className="-mt-6 -mr-45 flex w-90 flex-row items-center justify-between border-t border-gray-500/10">
+      <div className="font-inter mx-auto flex w-full border border-gray-500/30 p-7 text-left sm:p-10">
+        <div className="absolute top-0 right-1/2 mt-6 -mr-45 hidden flex-col items-center xl:flex">
+          <div className="-mt-18 w-10 border-b border-gray-500/10" />
+          <div className="mx-auto h-46 border-r border-gray-500/10" />
+          <div className="-mt-6 flex w-90 flex-row items-center justify-between border-t border-gray-500/10">
             <div className="h-4 border-r border-gray-500/10" />
             <div className="h-4 border-r border-gray-500/10" />
           </div>
@@ -89,11 +84,7 @@ const HeroText = ({
             </div>
           </div>
           {text && (
-            <div
-              className={
-                'flex w-full flex-col font-mono text-xs tracking-tight transition-all duration-700 ease-in-out'
-              }
-            >
+            <div className="flex w-full flex-col font-mono text-xs tracking-tight transition-all duration-700 ease-in-out">
               <div
                 className={`flex w-full flex-col gap-3 transition-colors duration-300 ${
                   dark ? 'border-neutral-400' : 'border-neutral-800'
@@ -141,7 +132,7 @@ const HeroText = ({
                           <div className="relative z-10 hidden flex-col pr-4 lg:flex">
                             <div className="flex items-center gap-1.5">
                               <span
-                                className={`font-mono text-[1rem] font-bold tracking-wider uppercase transition-colors duration-500 ${getWingTextColor(key, isSelected)}`}
+                                className={`font-vt323 text-[1.4rem] font-bold tracking-wider uppercase transition-colors duration-500 ${getWingTextColor(key, isSelected)}`}
                               >
                                 {wing.title}
                               </span>
@@ -149,7 +140,7 @@ const HeroText = ({
                           </div>
                         </button>
                         <span
-                          className={`${selectedWing === key ? wing.accentTextClass : `${wing.accentTextClass}/50`} font-mono text-xs font-bold tracking-wider uppercase transition-colors duration-500 lg:hidden`}
+                          className={`${selectedWing === key ? wing.accentTextClass : `${wing.accentTextClass}/50`} font-vt323 text-lg font-bold tracking-wider uppercase transition-colors duration-500 lg:hidden`}
                         >
                           {wing.title}
                         </span>
@@ -169,7 +160,7 @@ const HeroText = ({
                   className="mt-4 animate-[fadeIn_0.5s_ease-out_both] text-center leading-0"
                 >
                   <span
-                    className={`${herotext[activeWing].accentTextClass} text-center font-mono text-sm font-bold tracking-wide uppercase transition-colors duration-500 sm:text-lg xl:text-xl`}
+                    className={`${herotext[activeWing].accentTextClass} font-vt323 text-center text-xl tracking-wide uppercase transition-colors duration-500 sm:text-xl lg:text-2xl xl:text-3xl`}
                   >
                     {selectedWing !== null && herotext[activeWing].subtitle}
                   </span>
@@ -191,7 +182,11 @@ const HeroText = ({
                   {/*    className={`absolute top-0 left-0 h-full w-10 animate-[loadingLine_8s_infinite_ease-in-out] ${herotext[activeWing].accentBgClass}`}*/}
                   {/*  />*/}
                   {/*</div>*/}
-
+                  {activeWing === 'real' && !eggs.eggList[1].found && (
+                    <div className="absolute bottom-13 right-13 z-1000 -ml-3 opacity-40">
+                      <Egg id={1} />
+                    </div>
+                  )}
                   <ul
                     className={`mt-4 flex flex-col justify-between gap-2 font-mono text-xs uppercase transition-opacity duration-300 select-none sm:flex-row sm:gap-4 lg:gap-10 2xl:mx-auto 2xl:max-w-2/3 ${
                       selectedWing
