@@ -3,7 +3,7 @@ import WisdomLogo from '@/assets/WisdomLogo'
 import Image from 'next/image'
 import { motion } from 'motion/react'
 import { WormContext } from '@/context/wormContext'
-import Typewriter from "@/features/Unused/Splash/components/Typewriter/Typewriter";
+import Typewriter from '@/features/Unused/Splash/components/Typewriter/Typewriter'
 
 
 const wnmAscii = `                                                                
