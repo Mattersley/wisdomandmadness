@@ -1,10 +1,6 @@
 import React from "react";
-import {
-  ComponentProps,
-  WorkflowStep,
-} from "@/features/Madness/Pricing/CombinedAgencyPortal";
 
-interface WalkthroughProps extends ComponentProps {
+interface WalkthroughProps {
   currentStep: number;
   setCurrentStep: (step: number) => void;
   dark: boolean;
@@ -13,9 +9,9 @@ interface WalkthroughProps extends ComponentProps {
 const WorkflowWalkthrough = ({
   dark = false,
   currentStep,
-  setCurrentStep,
+  setCurrentStep
 }: WalkthroughProps) => {
-  const steps: WorkflowStep[] = [
+  const steps = [
     {
       phase: "STEP 01",
       title: "Strategy & Brand Identity",
