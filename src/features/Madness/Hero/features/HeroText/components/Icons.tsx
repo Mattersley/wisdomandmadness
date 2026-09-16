@@ -2,7 +2,11 @@ import React from 'react'
 
 // WING 01: SYSTEMS (Digital Infrastructure & Code)
 // A precise, sharp grid circuit system emphasizing backend logic and database stacks.
-export const SystemsIcon = ({ className = 'w-6 h-6' }: { className?: string }) => {
+export const SystemsIcon = ({
+  className = 'w-6 h-6'
+}: {
+  className?: string;
+}) => {
   return (
     <svg
       className={className}

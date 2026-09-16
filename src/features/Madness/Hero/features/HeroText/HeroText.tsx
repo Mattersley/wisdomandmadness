@@ -31,8 +31,8 @@ const HeroText = ({
       return key === 'real' ? 'text-black' : 'text-white'
     }
 
-    if (key === 'sys') return 'text-indigo-500'
-    if (key === 'art') return 'text-rose-500'
+    if (key === 'sys') return 'text-rose-500'
+    if (key === 'art') return 'text-indigo-500'
     return 'text-white'
   }
 
