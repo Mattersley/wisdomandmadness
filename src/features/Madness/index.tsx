@@ -36,7 +36,7 @@ const Madness = ({
         </div>
       </section>
       {!eggs.eggList[2].found && (
-        <div className="pointer-events-auto absolute bottom-1/4 left-1/2 z-50 -mb-53 -ml-3 opacity-40">
+        <div className="pointer-events-auto absolute bottom-1/2 left-1/2 z-50 -mb-53 -ml-3 opacity-40">
           <Egg id={2} />
         </div>
       )}
@@ -50,7 +50,7 @@ const Madness = ({
         <Footer />
       </section>
     </>
-  );
+  )
 }
 
 export default Madness

@@ -1,9 +1,9 @@
 import React, { useContext, useState } from 'react'
 import WisdomLogo from '@/assets/WisdomLogo'
 import Image from 'next/image'
-import Typewriter from '@/features/Unused/80sDash/Typewriter/Typewriter'
 import { motion } from 'motion/react'
 import { WormContext } from '@/context/wormContext'
+import Typewriter from "@/features/Unused/Splash/components/Typewriter/Typewriter";
 
 const wnmAscii = `                                                                
                        ##               ##                      
