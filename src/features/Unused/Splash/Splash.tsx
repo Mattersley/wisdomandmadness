@@ -97,34 +97,34 @@ const Splash = () => {
         <div className="relative col-span-6 -mt-20 flex size-full flex-col items-center justify-center sm:mt-0">
           <div className="sm:mb-10">
             <pre className="hidden bg-linear-to-tl from-[#3F5EFB] to-[#FC466B] bg-clip-text leading-none whitespace-pre text-transparent md:block sm:scale-60 md:scale-90">
-              <Typewriter
-                change={false}
-                cursorSize={3}
-                delay={0}
-                removeAfter={true}
-                speed={8}
-                text={wnmAscii2}
-              />
+              {/*<Typewriter*/}
+              {/*  change={false}*/}
+              {/*  cursorSize={3}*/}
+              {/*  delay={0}*/}
+              {/*  removeAfter={true}*/}
+              {/*  speed={8}*/}
+              {/*  text={wnmAscii2}*/}
+              {/*/>*/}
             </pre>
             <pre className="scale-70 sm:scale-100 bg-linear-to-tl from-[#3F5EFB] to-[#FC466B] bg-clip-text leading-none whitespace-pre text-transparent md:hidden">
-              <Typewriter
-                change={false}
-                cursorSize={3}
-                delay={0}
-                removeAfter={true}
-                speed={8}
-                text={wnmAscii3}
-              />
+              {/*<Typewriter*/}
+              {/*  change={false}*/}
+              {/*  cursorSize={3}*/}
+              {/*  delay={0}*/}
+              {/*  removeAfter={true}*/}
+              {/*  speed={8}*/}
+              {/*  text={wnmAscii3}*/}
+              {/*/>*/}
             </pre>
             <div className="-mt-12 bg-linear-to-tl from-[#3F5EFB] to-[#FC466B] bg-clip-text text-center leading-none whitespace-pre text-transparent sm:-mt-5 sm:text-xl md:-mt-3 lg:-mt-6 lg:text-2xl lg:mr-10">
-              <Typewriter
-                change={false}
-                cursorSize={3}
-                delay={8}
-                removeAfter={true}
-                speed={2}
-                text={'://>WISDOM & MADNESS DESIGN CO.<//'}
-              />
+              {/*<Typewriter*/}
+              {/*  change={false}*/}
+              {/*  cursorSize={3}*/}
+              {/*  delay={8}*/}
+              {/*  removeAfter={true}*/}
+              {/*  speed={2}*/}
+              {/*  text={'://>WISDOM & MADNESS DESIGN CO.<//'}*/}
+              {/*/>*/}
             </div>
           </div>
           <div className="text-center leading-2 sm:leading-3">
@@ -132,25 +132,25 @@ const Splash = () => {
               <div className="mb-10 flex h-full w-full items-center justify-center text-xl tracking-[1rem] uppercase">
                 <div className="w-80 text-2xl leading-5 tracking-widest text-wrap sm:mr-2 sm:text-3xl sm:leading-normal md:w-full md:text-4xl">
                   <span className="font-bold">
-                    <Typewriter
-                      change={false}
-                      cursorSize={7}
-                      delay={10}
-                      removeAfter={true}
-                      speed={2}
-                      text={`Good ${greeting()} Observer #${observerNumber === 0 ? '0000' : observerNumber}`}
-                    />
+                    {/*<Typewriter*/}
+                    {/*  change={false}*/}
+                    {/*  cursorSize={7}*/}
+                    {/*  delay={10}*/}
+                    {/*  removeAfter={true}*/}
+                    {/*  speed={2}*/}
+                    {/*  text={`Good ${greeting()} Observer #${observerNumber === 0 ? '0000' : observerNumber}`}*/}
+                    {/*/>*/}
                   </span>
                   <span className="text-2xl text-[#3ea34b] sm:text-4xl">
-                    <Typewriter
-                      change={false}
-                      cursorSize={7}
-                      delay={13}
-                      onEnd={() => setButtonsVisible(true)}
-                      removeAfter={true}
-                      speed={2}
-                      text="YOU HAVE A CHOICE"
-                    />
+                    {/*<Typewriter*/}
+                    {/*  change={false}*/}
+                    {/*  cursorSize={7}*/}
+                    {/*  delay={13}*/}
+                    {/*  onEnd={() => setButtonsVisible(true)}*/}
+                    {/*  removeAfter={true}*/}
+                    {/*  speed={2}*/}
+                    {/*  text="YOU HAVE A CHOICE"*/}
+                    {/*/>*/}
                   </span>
                 </div>
               </div>
@@ -213,14 +213,14 @@ const Splash = () => {
                 </motion.div>
               )}
               <div className="mt-5 text-2xl leading-3 font-bold text-[#3ea34b] sm:text-3xl sm:leading-normal lg:mt-10 lg:text-4xl">
-                <Typewriter
-                  change={false}
-                  cursorSize={7}
-                  delay={17}
-                  removeAfter={false}
-                  speed={6}
-                  text="??????"
-                />
+                {/*<Typewriter*/}
+                {/*  change={false}*/}
+                {/*  cursorSize={7}*/}
+                {/*  delay={17}*/}
+                {/*  removeAfter={false}*/}
+                {/*  speed={6}*/}
+                {/*  text="??????"*/}
+                {/*/>*/}
               </div>
             </div>
           </div>
